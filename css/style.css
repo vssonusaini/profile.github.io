@@ -32,7 +32,8 @@ nav ul li a{
     text-decoration: none;
     font-size: 13px;
     padding: 5px;
-	color:black;
+	color:black;font: bold normal normal 14px/1.4em avenir-lt-w01_85-heavy1475544,sans-serif,bold;
+    color: #000000;
 }
 nav ul li a:hover{
     color: blue;
@@ -119,6 +120,7 @@ box-shadow: -8px 12px 18px -14px rgba(0,0,0,0.6);
     font-size: 13px;
     font-weight: 20px;
     transition: 0.2s;
+	font: bold normal normal 14px/1.4em avenir-lt-w01_85-heavy1475544,sans-serif,bold;
 }
 .resume:hover{
     background-color: white;
@@ -133,6 +135,7 @@ box-shadow: -8px 12px 18px -14px rgba(0,0,0,0.6);
     margin-left: 20px;
     color: black;
     transition: 0.2s;
+	font: bold normal normal 14px/1.4em avenir-lt-w01_85-heavy1475544,sans-serif,bold;
 }
 .proj:hover{
     background-color: blue;
