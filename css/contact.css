@@ -291,7 +291,7 @@
             .wrapper{
             display: grid;
             grid-template-columns: auto;
-            grid-template-rows: 100px 100px 200px;
+            grid-template-rows: 100px 600px 200px;
         }
         .content{
             background-image: linear-gradient(to bottom,#fff 20%,#7ac38f 80%);
