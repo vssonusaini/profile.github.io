@@ -1,10 +1,3 @@
-header{
-    padding-top: 200px;
-    padding-bottom: 100px;
- background-color:  aqua;
-   
-}
-  
 .form-style-9{
     background-color: white;
 	max-width: 450px;
@@ -13,7 +6,8 @@ header{
 	margin: 50px auto;
 	box-shadow: 1px 1px 25px rgba(23, 23, 24, 0.35);
 	border-radius: 10px;
-	border: 2px solid blue;
+	border: 2px solid #069370;
+	margin: 180px 0px 0px 270px;
 }
 .form-style-9 ul{
 	padding:0;
@@ -61,9 +55,9 @@ header{
 .form-style-9 ul li input[type="submit"],
 .form-style-9 ul li input[type="reset"] {
     padding: 10px 30px 10px 30px;
-    border: 1px solid blue;
+    border: 1px solid#069370;
     border-radius: 100px;
-    background-color: blue;
+    background-color: #069370;
     color: white;
     font-size: 13px;
     font-weight: 20px;
@@ -74,4 +68,22 @@ header{
 .form-style-9 ul li input[type="reset"]:hover {
     background-color: white;
     color: black;
+}
+
+@media (max-width:675px){ 
+
+	.form-style-9{
+		background-color: white;
+		max-width: 450px;
+		background: #FAFAFA;
+		padding: 30px;
+		margin: 50px auto;
+		box-shadow: 1px 1px 25px rgba(23, 23, 24, 0.35);
+		border-radius: 10px;
+		border: 2px solid #069370;
+      	margin: 100px 20px;
+	}
+  .form{
+	background-image: linear-gradient(to bottom,#fff 20%,#7ac38f 80%);
+  }
 }
