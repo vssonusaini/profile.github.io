@@ -1,99 +1,181 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/menu.css">
-    <title>Sonu Saini</title>
+    <title>V S Sonu Saini</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/form.css">
+    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-   <div class="wrapper">
-       <div class="header">
-           <div class="hide">
-            <header>
-                <a href="" class="logobox"><span class="logo">Sonu Saini</span><span class="addmore"> / WEB DEVELOPER</span></a>
-                <div class="menu-toggle"></div>
-                <nav>
-                    <ul>
-                        <li><a href="" class="active">ABOUT ME</a></li>
-                        <li><a href="">RESUME</a></li>
-                        <li><a href="">PROJECTS</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                    </ul>
-                </nav>
-                <div class="clearfix"></div>
-            </header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top animate__animated animate__fadeInDown">
+        <a class="navbar-brand p-2" href="#">
+            <h1 class="color">Sonu Saini<spen class="nav-text">/ WEB DEVELOPER</spen>
+            </h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav animate__animated animate__fadeInRight">
+                <li class="nav-item mr-4 ">
+                    <a class="nav-link " href="#"><b class="color">ABOUT ME</b></a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link" href="RESUME.html"><b class="black">RESUME</b></a>
+                </li>
+                <!-- <li class="nav-item mr-4">
+                    <a class="nav-link" href="#"><b class="black"> PROJECTS</b></a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#extraLargeModal"><b class="black" >CONTACT US</b></a>
+                </li>
+            </ul>
         </div>
-       </div>
-       <div class="content">
-         <div class="main">
-             <div class="img"><img src="img/sonuedite.jpg" alt="">
-                <h1>Sonu<br>
-                    Saini</h1>
-                    <div class="line"></div>
-                    <span >WEB DEVELOPER</span>
-               </div>
-               <div class="link">
-                <ul>
-                    <li><img id="comp-k0med56p0imageimageimage" alt="Facebook" data-type="image" itemprop="image" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp" style="width: 25px; height: 25px; object-fit: cover;"></li>
-                    <li><img id="comp-k0med56p1imageimageimage" alt="Twitter" data-type="image" itemprop="image" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp" style="width: 25px; height: 25px; object-fit: cover;"></li>
-                    <li><img id="comp-k0med56p2imageimageimage" alt="LinkedIn" data-type="image" itemprop="image" src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp" style="width: 25px; height: 25px; object-fit: cover;"></li>
-                    <li><img id="comp-k0med56p3imageimageimage" alt="Instagram" data-type="image" itemprop="image" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp" style="width: 25px; height: 25px; object-fit: cover;"></li>
-                </ul>
+    </nav>
+    <div id="extraLargeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog animate__animated animate__flipInY">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Login Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
-                <div class="text">
+                <div class="modal-body">
+                    <div class="form">
+                        <script type="text/javascript">var submitted = false;</script>
+                        <form class="form-style-9" method="post" target="hidden_iframe"
+                            onsubmit="return validateForm(); ">
+                            <ul>
+                                <li>
+                                    <input type="text" required name="name" class="field-style field-split align-left"
+                                        placeholder="Name" />
+                                    <input type="text" class="field-style field-split align-right"
+                                        placeholder="Last Name" />
+
+                                </li>
+                                <li>
+                                    <input type="email" required name="email" class="field-style field-split align-left"
+                                        placeholder="Email" />
+                                    <input type="text" required name="phone" class="field-style field-split align-right"
+                                        placeholder="Phone Number" />
+                                </li>
+                                <li>
+                                    <input type="text" name="Subject" class="field-style field-full align-none"
+                                        placeholder="Subject" />
+                                </li>
+                                <li>
+                                    <textarea name="message" class="field-style" placeholder="Message"></textarea>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" >Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row mx-auto main-box">
+            <div class="col-md-5">
+                <div class="box animate__animated animate__flipInY">
+                    <img src="./img/sonu.jpg"   title="Hello I Am Sonu" class="rounded-circle mt-4" alt="">
+                    <h2 class="mt-2">Sonu<br /> Saini</h2>
+                    <div class="bordera mx-auto mt-4"></div>
+                    <div class="text mt-5">
+                        <span><b> WEB DEVELOPER</b></span>
+                    </div>
+                    <div class="container">
+                        <div class="row  mt-3 p-3 link">
+                            <div class="col-3"><img id="comp-k0med56p0imageimageimage" alt="Facebook" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;"></li>
+                            </div>
+                            <div class="col-3"><img id="comp-k0med56p1imageimageimage" alt="Twitter" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
+                            <div class="col-3"><img id="comp-k0med56p2imageimageimage" alt="LinkedIn" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
+                            <div class="col-3"><img id="comp-k0med56p3imageimageimage" alt="Instagram" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="texta animate__animated animate__lightSpeedInRight">
                     <h1 class="font_3">Hello</h1>
-                    <p class="font_5"><!--Here's who I am&nbsp;&amp; what I do--></p>
+                    <p class="font_5">Here's who I am&nbsp;&amp; what I do</p>
+                    <p class="font_8">&nbsp;</p>
+                    <p class="font_8">I’m a great place for you to tell a story and let your users know a little more
+                        about you.</p>
+
                     <a href="" class="resume">RESUME</a>
-                    <a href="" class="proj" >PROJECTS</a>
+                    <a href="" class="proj">PROJECTS</a>
                     <p class="gap"></p>
                     <p class="font_8" style="display: none;">
-                     I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double
-                      click me to add your own content and make changes to the font.</p>
-                      <p class="font_8" >&nbsp;</p>
-                      <p class="font_8"><!--I’m a great place for you to tell a story and let your users know a little more about you.--></p>
-                 </div>
+                        I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text”
+                        or double
+                        click me to add your own content and make changes to the font.</p>
+                </div>
             </div>
-            
-         </div>
-
-
-
-       <div class="footer">
-           <div class="copy">
-            <p class="font_9">© 2023 by Sonu&nbsp;Saini.<br>
-                Proudly created with Sonu </p>
-           </div>
-           <div class="one">
-           <div class="number">
-            <p class="call">Call&nbsp;&nbsp;</p>
-            <p class="num">9812846715</p>
-           </div>
-
-           <div class="icona">
-            <p class="call">Follow</p>
-            <div class="icon">
-            <img alt="Facebook" data-type="image" itemprop="image" style="width: 19px; height: 19px; object-fit: cover;" src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_19,h_19,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp">
-            <img alt="Twitter" data-type="image" itemprop="image" style="width: 19px; height: 19px; object-fit: cover;" src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_19,h_19,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp">
-            <img alt="Linkedin" data-type="image" itemprop="image" style="width: 19px; height: 19px; object-fit: cover;" src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_19,h_19,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp">
-            <img alt="Instagram" data-type="image" itemprop="image" style="width: 19px; height: 19px; object-fit: cover;" src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_19,h_19,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp">
         </div>
+    </div>
+    <!-- footer start -->
+    <div class="container-fluid">
+        <div class="row footer mt-5 p-5 animate__fadeInUp animate__animated">
+            <div class="col-md-8 footer-copy">© 2023 by Sonu Saini. <br>Proudly created with Sonu
+                </div>
+            <div class="col-md-2 text-center footer-copy display">Call : <br>9812846715</div>
+                
+            <div class="col-md-2 text-center footer-copy display">Follow<br>
+                <a href=""><img id="comp-k0med56p0imageimageimage" alt="Facebook" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;"></a>
+                                    <img id="comp-k0med56p1imageimageimage" alt="Twitter" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;">
+                                    <img id="comp-k0med56p2imageimageimage" alt="LinkedIn" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;">
+                                    <img id="comp-k0med56p3imageimageimage" alt="Instagram" data-type="image"
+                                    itemprop="image"
+                                    src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp"
+                                    style="width: 25px; height: 25px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
 
-       </div>
-      </div>
-   </div>
-   
-   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  
-    <script type="text/javascript">
-       $(document).ready(function(){
-           $('.menu-toggle').click(function(){
-            $('.menu-toggle').toggleClass('active')
-            $('nav').toggleClass('active')
-           })
-       })
-</script>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
