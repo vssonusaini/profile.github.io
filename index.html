@@ -2,180 +2,926 @@
 <html lang="en">
 
 <head>
+
+    <!-- Simple Page Needs
+================================================== -->
     <title>V S Sonu Saini</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./css/style.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/form.css">
-    <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="description" content="Mat - Resume & vCard HTML Template">
+    <meta name="keywords" content="personal, vcard, portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon
+================================================== -->
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- CSS
+================================================== -->
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="cubeportfolio/css/cubeportfolio.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.css" />
+    <link rel="stylesheet" href="css/owl.carousel.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/colors/turquoise.css" id="color" />
+
+    <!-- color -->
+    <link rel="stylesheet" href="./css/bg-color.css">
+
+    <!-- Google Web fonts
+================================================== -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
+
+    <!-- Font Icons
+================================================== -->
+    <!-- <link rel="stylesheet" href="./icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css"/> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./icon-fonts/web-design/flaticon.css" />
+
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top animate__animated animate__fadeInDown">
-        <a class="navbar-brand p-2" href="#">
-            <h1 class="color">Sonu Saini<spen class="nav-text">/ WEB DEVELOPER</spen>
-            </h1>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
-            <ul class="navbar-nav animate__animated animate__fadeInRight">
-                <li class="nav-item mr-4 ">
-                    <a class="nav-link " href="#"><b class="color">ABOUT ME</b></a>
-                </li>
-                <!-- <li class="nav-item mr-4">
-                    <a class="nav-link" href="RESUME.html"><b class="black">RESUME</b></a>
-                </li> -->
-                <!-- <li class="nav-item mr-4">
-                    <a class="nav-link" href="#"><b class="black"> PROJECTS</b></a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#extraLargeModal"><b class="black" >CONTACT US</b></a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div id="extraLargeModal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog animate__animated animate__flipInY">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login Form</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <div class="form">
-                        <script type="text/javascript">var submitted = false;</script>
-                        <form class="form-style-9" method="post" target="hidden_iframe"
-                            onsubmit="return validateForm(); ">
-                            <ul>
-                                <li>
-                                    <input type="text" required name="name" class="field-style field-split align-left"
-                                        placeholder="Name" />
-                                    <input type="text" class="field-style field-split align-right"
-                                        placeholder="Last Name" />
-
-                                </li>
-                                <li>
-                                    <input type="email" required name="email" class="field-style field-split align-left"
-                                        placeholder="Email" />
-                                    <input type="text" required name="phone" class="field-style field-split align-right"
-                                        placeholder="Phone Number" />
-                                </li>
-                                <li>
-                                    <input type="text" name="Subject" class="field-style field-full align-none"
-                                        placeholder="Subject" />
-                                </li>
-                                <li>
-                                    <textarea name="message" class="field-style" placeholder="Message"></textarea>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal" >Send</button>
-                </div>
-            </div>
+    <!-- Preloading -->
+    <div id="preloader">
+        <div class="spinner">
         </div>
     </div>
-    <div class="container-fluid">
 
-        <div class="row mx-auto main-box">
-            <div class="col-md-5">
-                <div class="box animate__animated animate__flipInY">
-                    <img src="./img/sonu.jpg"   title="Hello I Am Sonu" class="rounded-circle mt-4" alt="">
-                    <h2 class="mt-2">Sonu<br /> Saini</h2>
-                    <div class="bordera mx-auto mt-4"></div>
-                    <div class="text mt-5">
-                        <span><b> WEB DEVELOPER</b></span>
+    <!-- Wrapper -->
+    <div class="wrapper top_60 container">
+        <div class="row">
+
+            <!-- Profile Section
+================================================== -->
+
+
+            <div class="col-lg-3 col-md-4">
+                <div class="profile">
+                    <div class="profile-name">
+                        <span class="name">V S Sonu Saini</span><br>
+                        <span class="job">Web Developer</span>
                     </div>
-                    <div class="container">
-                        <div class="row  mt-3 p-3 link">
-                            <div class="col-3"><img id="comp-k0med56p0imageimageimage" alt="Facebook" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;"></li>
+                    <figure class="profile-image">
+                        <img src="images/profile.jpg" alt="">
+                    </figure>
+                    <ul class="profile-information">
+                        <li></li>
+                        <li>
+                            <p><span>Name:</span> Sonu Saini</p>
+                        </li>
+                        <li>
+                            <p><span>Birthday:</span> 06 December 1999</p>
+                        </li>
+                        <li>
+                            <p><span>Job:</span> Freelancer</p>
+                        </li>
+                        <li>
+                            <p><span>Email:</span> vssonusaini464@gmail..</p>
+                        </li>
+                        <li>
+                            <p><span>Skype:</span> vsonusaini464</p>
+                        </li>
+                    </ul>
+                    <div class="col-md-12">
+                        <button class="site-btn icon">Download Cv <i class="fa fa-download"
+                                aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Page Tab Container Div -->
+            <div id="ajax-tab-container" class="col-lg-9 col-md-8 tab-container">
+
+                <!-- Header
+================================================== -->
+                <div class="row">
+                    <header class="col-md-12">
+                        <nav>
+                            <div class="row">
+                                <!-- navigation bar -->
+                                <div class="col-md-8 col-sm-8 col-xs-4">
+                                    <ul class="tabs">
+                                        <li class="tab">
+                                            <a class="home-btn" href="#home"><i class="fa fa-home"
+                                                    aria-hidden="true"></i></a>
+                                        </li>
+                                        <li class="tab"><a href="#resume">RESUME</a></li>
+                                        <li class="tab"><a href="#portfolio">PORTFOLIO</a></li>
+                                        <li class="tab"><a href="#blog">BLOG</a></li>
+                                        <li class="tab"><a href="#contact">CONTACT</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
+                                    <a href="mailto:vssonusaini464@gmail.com"
+                                        class="pull-right site-btn icon hidden-xs">Hire Me
+                                        <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
+                                    <div class="hamburger pull-right hidden-lg hidden-md"><i class="fa fa-bars"
+                                            aria-hidden="true"></i></div>
+                                    <div class="hidden-md social-icons pull-right">
+                                        <a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a class="ins" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a class="dr" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-3"><img id="comp-k0med56p1imageimageimage" alt="Twitter" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
-                            <div class="col-3"><img id="comp-k0med56p2imageimageimage" alt="LinkedIn" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
-                            <div class="col-3"><img id="comp-k0med56p3imageimageimage" alt="Instagram" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;"></div>
-                        </div>
+                        </nav>
+                    </header>
+
+                    <!-- Page Content
+    ================================================== -->
+                    <div class="col-md-12">
+                        <div id="content" class="panel-container">
+
+                            <!-- Home Page
+            ================================================== -->
+                            <div id="home">
+                                <!-- Text Section -->
+                                <div class="row">
+                                    <section class="about-me line col-md-12 padding_30 padbot_45">
+                                        <div class="section-title"><span></span>
+                                            <h2>About Me</h2>
+                                        </div>
+                                        <p class="top_30">Hi! I am Aryan Twanju, a web designer/developer focused on
+                                            crafting great web experiences. Designing and Coding have been my passion
+                                            since the days I started working with computers but I found myself into web
+                                            design/development since 2018. I enjoy creating beautifully designed,
+                                            intuitive and functional websites.
+                                            <br>
+                                            <br> For over past 1 years, I have worked for some of the best digital
+                                            agencies and wonderful clients to create some award winning works. And, I
+                                            can make this happen for your business as well.</p>
+                                    </section>
+                                </div>
+                                <!-- My Services Section -->
+                                <div class="row">
+                                    <section class="services line graybg col-md-12 padding_50 padbot_50">
+                                        <div class="section-title bottom_45"><span></span>
+                                            <h2>My Services</h2>
+                                        </div>
+                                        <div class="row">
+                                            <!-- a service -->
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-html"></i>
+                                                    </div>
+                                                    <span class="title">Web Development</span>
+                                                    <p class="little-text">I have been working on web design for 1
+                                                        years.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-attach"></i>
+                                                    </div>
+                                                    <span class="title">Branding Identity</span>
+                                                    <p class="little-text">We will make you a brand that is catchy and
+                                                        leaves a trace.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-vector"></i>
+                                                    </div>
+                                                    <span class="title">Illustrator</span>
+                                                    <p class="little-text">I have been working on illustration design
+                                                        for 1 years.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a service -->
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <div class="service">
+                                                    <div class="icon">
+                                                        <i class="flaticon-schedule"></i>
+                                                    </div>
+                                                    <span class="title">Fast Delivery</span>
+                                                    <p class="little-text">I deliver your business as fast as possible.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- Skills Section -->
+                                <div class="row">
+                                    <section class="design-skills col-md-6 padding_60 padbot_50">
+                                        <div class="section-title bottom_45"><span></span>
+                                            <h2>Design Skills</h2>
+                                        </div>
+                                        <ul class="skill-list">
+                                            <li>
+                                                <h3>Photoshop</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:80%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>Sketch</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:60%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>Adobe Xd</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:30%;"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                    <section class="code-skills col-md-6 padding_60">
+                                        <div class="section-title bottom_45"><span></span>
+                                            <h2>Code Skills</h2>
+                                        </div>
+                                        <ul class="skill-list">
+                                            <li>
+                                                <h3>Javascript</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:80%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>HTML5</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:60%;"></div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <h3>CSS3</h3>
+                                                <div class="progress">
+                                                    <div class="percentage" style="width:30%;"></div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <!-- Resume Page
+            ================================================== -->
+                            <div id="resume">
+                                <!-- Resume Section -->
+                                <div class="row">
+                                    <section class="education">
+                                        <div class="section-title top_30"><span></span>
+                                            <h2>Resume</h2>
+                                        </div>
+                                        <div class="row">
+                                            <!-- Working History -->
+                                            <div class="working-history col-md-6 padding_15 padbot_30">
+                                                <ul class="timeline col-md-12 top_30">
+                                                    <li><i class="fa fa-suitcase" aria-hidden="true"></i>
+                                                        <h2 class="timeline-title">Working History</h2>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title">Vio Director - Youtube Inc</h3>
+                                                        <span>2020 - Present</span>
+                                                        <p class="little-text">Expenses as material breeding insisted
+                                                            building to in. Continual so distrusts pronounce by
+                                                            unwilling listening. Thing do taste on we manor.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title">Google Digital Marketing</h3>
+                                                        <span>2018</span>
+                                                        <p class="little-text">So insisted received is occasion advanced
+                                                            honoured. Among ready to which up. Attacks smiling and may
+                                                            out assured moments man nothing outward.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title">Junior Designer - Creative Shake</h3>
+                                                        <span>2018</span>
+                                                        <p class="little-text">Excited him now natural saw passage
+                                                            offices you minuter. At by asked being court hopes. Farther
+                                                            so friends am to detract.</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- Education History -->
+                                            <div class="education-history col-md-6 padding_15 padbot_30">
+                                                <ul class="timeline col-md-12 top_30">
+                                                    <li><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                                        <h2 class="timeline-title">Education History</h2>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title">IIHT University</h3>
+                                                        <span>2019</span>
+                                                        <p class="little-text">Expenses as material breeding insisted
+                                                            building to in. Continual so distrusts pronounce by
+                                                            unwilling listening. Thing do taste on we manor.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title">Drawing Course</h3>
+                                                        <span>2015 - 2019</span>
+                                                        <p class="little-text">So insisted received is occasion advanced
+                                                            honoured. Among ready to which up. Attacks smiling and may
+                                                            out assured moments man nothing outward.</p>
+                                                    </li>
+                                                    <!-- a work -->
+                                                    <li>
+                                                        <h3 class="line-title"> High School</h3>
+                                                        <span>2018</span>
+                                                        <p class="little-text">Excited him now natural saw passage
+                                                            offices you minuter. At by asked being court hopes. Farther
+                                                            so friends am to detract.</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- Clients Section -->
+                                <div class="row">
+                                    <section class="clients col-md-12 graybg padding_45 padbot_45">
+                                        <div class="section-title bottom_30"><span></span>
+                                            <h2>Clients</h2>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="images/client-01.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="images/client-02.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="images/client-03.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                                <div class="client">
+                                                    <img src="images/client-04.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <!-- Testimonials -->
+                                <div class="row">
+                                    <section class="testimonials bottom_30">
+                                        <div class="section-title top_60 bottom_30"><span></span>
+                                            <h2>Testimonials</h2>
+                                        </div>
+                                        <div class="owl-carousel row" data-items="3" data-autoplay="3000"
+                                            data-pagination="true">
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in
+                                                        time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate
+                                                        to work again.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in
+                                                        time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate
+                                                        to work again.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-1.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Jack Garratt</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Great designer! he finished our work wonderfully and just in
+                                                        time. thanks for everything.</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-2.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">April M. Griffin</span>
+                                                            <span class="job">Founder</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Our logo and business card design look great. Thanks Henry</p>
+                                                </div>
+                                            </div>
+                                            <!-- a item -->
+                                            <div class="col-md-12 item">
+                                                <div class="comment">
+                                                    <div class="top-section">
+                                                        <figure>
+                                                            <img src="images/testimonial-3.jpg" alt="">
+                                                        </figure>
+                                                        <div class="name-info">
+                                                            <span class="name">Larry M. Johnson</span>
+                                                            <span class="job">Freelancer</span>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <p>Henry is a very creative and talented designer. I do not hesitate
+                                                        to work again.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <!-- Portfolio Page
+            ================================================== -->
+
+            
+                            <div id="portfolio" class="row bottom_45">
+                                <section class="col-md-12">
+                                    <div class="col-md-12 content-header bottom_15">
+                                        <div class="section-title top_30 bottom_30"><span></span>
+                                            <h2>Portfolio</h2>
+                                        </div>
+                                        <div id="filters-container">
+                                            <!-- '*' means shows all item elements -->
+                                            <div data-filter="*" class="cbp-filter-item cbp-filter-item-active">All
+                                            </div>
+                                            <div data-filter=".webdesign" class="cbp-filter-item">Web Design</div>
+                                            <div data-filter=".motion" class="cbp-filter-item">Motion Graphic</div>
+                                            <div data-filter=".illustration" class="cbp-filter-item">Illustration</div>
+                                            <div data-filter=".photography" class="cbp-filter-item">Photography</div>
+                                        </div>
+                                    </div>
+                                    <div id="grid-container" class="top_60">
+                                        <!-- a work -->
+                                        <div class="cbp-item webdesign">
+                                            <a href="#" class=" ">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-01.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Babel Admin</span><br />
+                                                        <span class="info">An admin template design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a video work -->
+                                        <div class="cbp-item cbp-lightbox motion">
+                                            <a href="http://www.youtube.com/watch?v=bpOSxM0rNPM&rel=0&autoplay=1"
+                                                class="cbp-lightbox">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-play" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-02.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">George Motion</span><br />
+                                                        <span class="info">An motion graphic design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a image work -->
+                                        <div class="cbp-item cbp-lightbox photography">
+                                            <a href="images/works/work-06.jpg" class="cbp-lightbox">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-picture-o" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-06.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Amazon Travel</span><br />
+                                                        <span class="info">Nature photography work.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a work -->
+                                        <div class="cbp-item webdesign">
+                                            <a href="#" class=" ">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-03.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">My Workspace</span><br />
+                                                        <span class="info">My current workspace design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a video work -->
+                                        <div class="cbp-item motion">
+                                            <a href="https://vimeo.com/199074744" class="cbp-lightbox">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-play" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-04.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Recoba Template</span><br />
+                                                        <span class="info">Html template design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a work -->
+                                        <div class="cbp-item webdesign">
+                                            <a href="#" class="">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-05.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Doddy App</span><br />
+                                                        <span class="info">Mobile app ui kit design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a work -->
+                                        <div class="cbp-item illustration">
+                                            <a href="#" class="">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-07.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Bob Stayler </span><br />
+                                                        <span class="info">Illustration characher design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a work -->
+                                        <div class="cbp-item illustration">
+                                            <a href="#" class="">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-08.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Exemag Wordpress Theme</span><br />
+                                                        <span class="info">Multiconcept Blog Theme.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                        <!-- a work -->
+                                        <div class="cbp-item illustration">
+                                            <a href="#" class="">
+                                                <figure>
+                                                    <div class="icon">
+                                                        <i class="fa fa-clone" aria-hidden="true"></i>
+                                                    </div>
+                                                    <img src="images/works/work-09.jpg" alt="">
+                                                    <figcaption>
+                                                        <span class="title">Babel Admin Html Code</span><br />
+                                                        <span class="info">An admin template design.</span>
+                                                    </figcaption>
+                                                </figure>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- load more button -->
+                                    <div id="js-loadMore-agency" class="cbp-l-loadMore-button top_30">
+                                        <a href="load-more/portfolio.html" class="cbp-l-loadMore-link site-btn"
+                                            rel="nofollow">
+                                            <span class="cbp-l-loadMore-defaultText">Load More (<span
+                                                    class="cbp-l-loadMore-loadItems">3</span>)</span>
+                                            <span class="cbp-l-loadMore-loadingText">Loading...</span>
+                                            <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                                        </a>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <!-- Blog Page
+            ================================================== -->
+                            <div id="blog">
+                                <div class="row">
+                                    <section class="blog col-md-12 bottom_30">
+                                        <div class="col-md-12 content-header">
+                                            <div class="section-title top_30 bottom_15"><span></span>
+                                                <h2>Blog Posts</h2>
+                                            </div>
+                                        </div>
+                                        <div id="grid-blog" class="row">
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="./blog-posts/blog-1.html" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-6.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">General</span>
+                                                        <h2 class="title">See my current workspace</h2>
+                                                        <p class="little-text">The first thing to remember about success
+                                                            is that it is a process.</p>
+                                                        <span class="date">8 Nov 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="./blog-posts/blog-music-version.html" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-2.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">Web Design</span>
+                                                        <h2 class="title">How to become a web designer?</h2>
+                                                        <p class="little-text">He must have tried it a hundred times,
+                                                            shut his eyes so that he wouldn't have to look at the
+                                                            floundering.</p>
+                                                        <span class="date">27 Oct 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="./blog-posts/blog-video-version.html" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-3.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">User İnterface</span>
+                                                        <h2 class="title">Why is it better to work nights?</h2>
+                                                        <p class="little-text">Legs, and only stopped when he began to
+                                                            feel a mild, dull pain there that he had never felt.</p>
+                                                        <span class="date">19 Oct 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="#" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-4.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">Photography</span>
+                                                        <h2 class="title">Can you work everywhere?</h2>
+                                                        <p class="little-text">Drops of rain could be heard hitting the
+                                                            pane, which made him feel quite sad..</p>
+                                                        <span class="date">28 Sep 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="#" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-5.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">Other</span>
+                                                        <h2 class="title">How to connect your imac or macBook</h2>
+                                                        <p class="little-text">However hard he threw himself onto his
+                                                            right, he always rolled back to where he was.</p>
+                                                        <span class="date">19 Agu 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!-- a blog -->
+                                            <div class="cbp-item">
+                                                <a href="#" class="blog-box">
+                                                    <div class="blog-img">
+                                                        <img src="images/blogs/blog-6.jpg" alt="">
+                                                    </div>
+                                                    <div class="blog-box-info">
+                                                        <span class="category">Work Space</span>
+                                                        <h2 class="title">I'm starting a new project</h2>
+                                                        <p class="little-text">The first thing to remember about success
+                                                            is that it is a process...</p>
+                                                        <span class="date">1 Jul 20</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- load more button -->
+                                        <div id="load-posts" class="cbp-l-loadMore-button top_60">
+                                            <a href="#" class="cbp-l-loadMore-link site-btn"
+                                                rel="nofollow">
+                                                <span class="cbp-l-loadMore-defaultText">Load More (<span
+                                                        class="cbp-l-loadMore-loadItems">3</span>)</span>
+                                                <span class="cbp-l-loadMore-loadingText">Loading...</span>
+                                                <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                                            </a>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <!-- Contact Page
+            ================================================== -->
+                            <div id="contact">
+                                <div class="row">
+                                    <!-- Contact Form -->
+                                    <section class="contact-form col-md-6 padding_30 padbot_45">
+                                        <div class="section-title top_15 bottom_30"><span></span>
+                                            <h2>Contact Form</h2>
+                                        </div>
+                                        <form class="site-form">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input class="site-input" placeholder="Name">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input class="site-input" placeholder="E-mail">
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <textarea class="site-area" placeholder="Message"></textarea>
+                                                </div>
+                                                <div class="col-md-12 top_15 bottom_30">
+                                                    <button class="site-btn" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </section>
+                                    <!-- Contact Informations -->
+                                    <section class="contact-info col-md-6 padding_30 padbot_45">
+                                        <div class="section-title top_15 bottom_30"><span></span>
+                                            <h2>Contact Informations</h2>
+                                        </div>
+                                        <ul>
+                                            <li><span>Address:</span> Sector 95B, Gurugram, Haryana 122505 </li>
+                                            <li><span>Phone:</span> +91 9812846715</li>
+                                            <li><span>Job:</span> Freelancer</li>
+                                            <li><span>E-mail:</span> vssonusaini464@gmail.com</li>
+                                            <li><span>Skype:</span> </li>
+                                            <li>
+                                                <div class="social-icons top_15">
+                                                    <a class="fb" href="#"><i class="fa fa-facebook"
+                                                            aria-hidden="true"></i></a>
+                                                    <a class="tw" href="#"><i class="fa fa-twitter"
+                                                            aria-hidden="true"></i></a>
+                                                    <a class="ins" href="#"><i class="fa fa-instagram"
+                                                            aria-hidden="true"></i></a>
+                                                    <a class="dr" href="#"><i class="fa fa-dribbble"
+                                                            aria-hidden="true"></i></a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </section>
+                                    <!-- Contact Map -->
+                                    <section class="contact-map col-md-12 top_15 bottom_15">
+                                        <div class="section-title bottom_30"><span></span>
+                                            <h2>Contact Map.</h2>
+                                        </div>
+
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6386.29175170649!2d76.93529560206713!3d28.438053667254607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d166c91a06c5b%3A0x21d37f497b1a988c!2sNew%20Colony%2C%20Sector%2095B%2C%20Gurugram%2C%20Haryana%20122505!5e1!3m2!1sen!2sin!4v1601114092557!5m2!1sen!2sin"
+                                            height="350" frameborder="0" style="border:0;" allowfullscreen=""
+                                            aria-hidden="false" tabindex="0"></iframe>
+
+                                    </section>
+                                </div>
+                            </div>
+
+                        </div><!-- Content - End -->
+                    </div> <!-- col-md-12 end -->
+                </div><!-- row end -->
+                <!-- Footer
+================================================== -->
+                <footer>
+                    <div class="footer col-md-12 top_30 bottom_30">
+                        <div class="name col-md-4 hidden-md hidden-sm hidden-xs">V S Sonu Saini.</div>
+                        <div class="copyright col-lg-8 col-md-12">© 2018 - 2020 All rights reserved. Designed by <a
+                                href="#">Me</a> </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="texta animate__animated animate__lightSpeedInRight">
-                    <h1 class="font_3">Hello</h1>
-                    <p class="font_5">Here's who I am&nbsp;&amp; what I do</p>
-                    <p class="font_8">&nbsp;</p>
-                    <!-- <p class="font_8">I’m a great place for you to tell a story and let your users know a little more
-                        about you.</p> -->
+                </footer>
 
-                    <a href="" class="resume">RESUME</a>
-                    <a href="" class="proj">PROJECTS</a>
-                    <p class="gap"></p>
-                    <!-- <p class="font_8" style="display: none;">
-                        I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text”
-                        or double
-                        click me to add your own content and make changes to the font.</p> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- footer start -->
-    <div class="container-fluid">
-        <div class="row footer mt-5 p-5 animate__fadeInUp animate__animated">
-            <div class="col-md-8 footer-copy">© 2023 by Sonu Saini. <br>Proudly created with Sonu
-                </div>
-            <div class="col-md-2 text-center footer-copy display">Call : <br>9812846715</div>
-                
-            <div class="col-md-2 text-center footer-copy display">Follow<br>
-                <a href=""><img id="comp-k0med56p0imageimageimage" alt="Facebook" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/0fdef751204647a3bbd7eaa2827ed4f9.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/0fdef751204647a3bbd7eaa2827ed4f9.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;"></a>
-                                    <img id="comp-k0med56p1imageimageimage" alt="Twitter" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/c7d035ba85f6486680c2facedecdcf4d.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/c7d035ba85f6486680c2facedecdcf4d.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;">
-                                    <img id="comp-k0med56p2imageimageimage" alt="LinkedIn" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/6ea5b4a88f0b4f91945b40499aa0af00.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/6ea5b4a88f0b4f91945b40499aa0af00.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;">
-                                    <img id="comp-k0med56p3imageimageimage" alt="Instagram" data-type="image"
-                                    itemprop="image"
-                                    src="https://static.wixstatic.com/media/01c3aff52f2a4dffa526d7a9843d46ea.png/v1/fill/w_25,h_25,al_c,q_85,usm_0.66_1.00_0.01/01c3aff52f2a4dffa526d7a9843d46ea.webp"
-                                    style="width: 25px; height: 25px; object-fit: cover;">
-            </div>
-        </div>
-    </div>
-    <!-- Optional JavaScript -->
+            </div> <!-- Tab Container - End -->
+        </div> <!-- Row - End -->
+    </div> <!-- Wrapper - End -->
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
+    <!-- Javascripts
+================================================== -->
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easytabs.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <!-- for color alternatives -->
+    <script src="js/jquery.cookie-1.4.1.min.js"></script>
+    <!-- <script src="js/Demo.js"></script> -->
+    <link rel="stylesheet" href="css/Demo.min.css" />
+
+
+
+
 </body>
 
 </html>
