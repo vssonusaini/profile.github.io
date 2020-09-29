@@ -4,7 +4,7 @@
 
 header nav a.home-btn, .estate figure .imgout .price, .site-btn, .timeline li:first-child i, nav ul li a:after, .owl-theme .owl-controls .owl-page span, .skill-list .progress .percentage, ul.profile-information li:first-child:before{
     background: #006eff !important;
-/*     background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%); */
+/*     background-image:url linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%); */
 
 }
 
