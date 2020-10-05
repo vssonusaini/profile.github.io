@@ -1781,7 +1781,7 @@ footer .footer .copyright a:hover{
 
 @media (max-width: 768px) {
 
-	.element {
+	.element-item {
     display: none;
 }
     header{
