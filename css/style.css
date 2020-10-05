@@ -311,6 +311,14 @@ h6{
     display:table;
     text-align: center;
 }
+#logoa{
+    position: fixed;
+    top:58%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-bottom: 1px solid  #ff9a44;
+    font-weight: bold;
+}
 
 @keyframes spinner {
   to {transform: rotate(360deg);}
@@ -1872,7 +1880,7 @@ footer .footer .copyright a:hover{
     .timeline li .line-title {
         line-height: 20px;
     }
-
+     
 
 }
 
