@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+          <style>
+                    .main_box {
+                              /* border: 1px solid; */
+                              width: 50%;
+                              height: 20rem;
+                              text-align: center;
+                              margin: 0 auto;
+                              display: flex;
+                              margin-top: 5rem;
+                    }
+
+                    .input_box {
+                              text-align: left;
+                              /* border: 1px solid; */
+                              height: 19rem;
+                              width: 50%;
+                    }
+
+                    .qr_box {
+                              height: 19rem;
+                              /* border: 1px solid; */
+                              width: 50%;
+                              text-align: center;
+                    }
+          </style>
+</head>
+
+<body>
+          <div class="main_box">
+                    <div class="input_box">
+                              <label for="">Make Qr Code</label>
+                              <input type="text " id="qrdata" onchange="generatQR()">
+                              <!-- <textarea name="" id="qrdata" onchange="generatQR()" cols="30" rows="10"></textarea> -->
+                    </div>
+                    <div class="qr_box">
+                              <div id="qrcode"></div>
+                    </div>
+          </div>
+          <script src="./js/qrcode.min.js"></script>
+          <script>
+                    var qrdata = document.getElementById('qrdata');
+                    var qrcode = new QRCode(document.getElementById("qrcode"));
+                    function generatQR() {
+                              var data = qrdata.value;
+                              qrcode.makeCode(data);
+                    };
+                  
+          </script>
+</body>
+
+</html>

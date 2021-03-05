@@ -10,6 +10,15 @@
           </style>
 </head>
 <body>
-         <a href="https://3ab5c613ef85.ngrok.io/">Opan</a>
+        <script>
+                 fetch('https://script.googleusercontent.com/macros/echo?user_content_key=Opklaunz0rdOScjrNCoIBNWQLmXtncmV-ZX7jJ5mh042pjHoLvuIatS1bSPAZok2YVKg8L39ArCo8t1usYWl4RRD0i-YgSUsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCuX5mjSGgQ3k6vr9M8ALxyZA887EoGrhyMEq9Xw-_WUSwBo2kClYm2ndPWNUyxT9g&lib=MFjBOzfJkmIeZ1ZBtC9txguj-0yJRUXWL').then(function(response){
+                           return response.json();
+                 }).then(function(obj){
+                           console.log(obj);
+                 }).catch(function (error){
+                           console.error('Some');
+                           console.error(error);
+              });
+        </script>
 </body>   
 </html>
