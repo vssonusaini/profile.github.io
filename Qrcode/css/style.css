@@ -54,6 +54,8 @@ nav select {
           padding: 0.2rem 1rem;
           outline: none;
           border: none;
+          background:var(--bg-color);
+          border-radius: 3px;
 }
 
 .main_box {
@@ -88,6 +90,7 @@ nav select {
           font-size: 1rem;
           outline: none;
           border: 1px solid var(--border-color);
+          border-radius: 3px;
 }
 
 footer {
