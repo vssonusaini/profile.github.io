@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap');
+* {
+          padding: 0;
+          box-sizing: border-box;
+          margin: 0;
+}
+
+:root {
+          --main-color: white;
+          --bg-color: whitesmoke;
+          --border-color: rgb(141, 232, 189);
+          --border-sd: rgba(141, 232, 190, 0.522);
+          --footer-color: #1e1e1e;
+}
+
+body {
+          font-family: 'Nunito', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          font-weight: bold;
+          background: var(--bg-color);
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          height: 100vh;
+}
+
+nav {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          width: 100%;
+          padding: 0.3rem;
+          background: var(--main-color);
+}
+
+nav .logo {
+          font-size: 1.3rem;
+}
+
+nav .dot {
+          color: var(--border-color);
+          font-weight: 900;
+}
+
+nav ul li {
+          display: inline-block;
+          list-style: none;
+          margin-left: 1rem;
+}
+
+nav select {
+          padding: 0.2rem 1rem;
+          outline: none;
+          border: none;
+}
+
+.main_box {
+          /* border: 1px solid; */
+          margin: 2rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background: var(--main-color);
+          border-radius: 4px;
+          -webkit-box-shadow: 0px 12px 39px -4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 12px 39px -4px var(--border-sd);
+}
+
+.qr_box {
+          padding: 1rem;
+          border-radius: 10px;
+}
+
+.input_box {
+          margin: 1rem 0;
+          padding: 1rem;
+          display: flex;
+          justify-content: space-between;
+          flex-direction: column;
+          align-items: center;
+}
+
+.input_box input {
+          padding: 0.5rem;
+          font-size: 1rem;
+          outline: none;
+          border: 1px solid var(--border-color);
+}
+
+footer {
+          padding: 1rem;
+          font-size: 60%;
+          text-align: center;
+          background: var(--footer-color);
+          border-radius: 8px;
+          color: #9c9c9c;
+          width: 95%;
+          margin: 1rem;
+}
+
+footer a {
+          color: var(--main-color);
+          text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+          .main_box {
+                    width: 60%;
+                    height: 600px;
+          }
+          footer {
+                    font-size: 80%;
+                    width: 90%;
+                    margin: 2rem;
+          }
+}
+
+@media screen and (min-width: 1024px) {
+          .main_box {
+                    margin: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: var(--main-color);
+                    border-radius: 4px;
+                    -webkit-box-shadow: 0px 12px 39px -4px rgba(0, 0, 0, 0.15);
+                    box-shadow: 0px 12px 39px -4px var(--border-sd);
+          }
+          footer {
+                    display: flex;
+                    justify-content: space-between;
+                    font-size: 80%;
+                    width: 95%;
+                    margin: 1rem;
+          }
+}
