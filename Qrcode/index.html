@@ -8,6 +8,7 @@
           <title>QrCode App</title>
           <link rel="stylesheet" href="./css/style.css">
           <link href="./theater-masks-solid.svg" rel="shortcut icon" type="image/x-icon" />
+          <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
@@ -17,13 +18,7 @@
                               Qr<span class="dot">.</span>
                     </div>
                     <ul>
-                              <li>
-                                        <select >
-                                                  <option value="">Thame</option>
-                                                  <option value="">Dark</option>
-                                                  <option value="">Light</option>
-                                        </select>
-                              </li>
+                              <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
                     </ul>
           </nav>
 
@@ -32,8 +27,8 @@
                     <div class="qr_box">
                               <div id="qrcode"></div>
                     </div>
-
-                    <div class="input_box" id="show-hide">
+                    <div id="write_value"></div>
+                    <div class="input_box">
                               <label for="">Make Qr Code</label>
                               <input type="text " id="qrdata" onchange="generatQR()">
                     </div>
@@ -44,17 +39,53 @@
 
           <footer>
                     <div>Designed by<a href="https://sainisahab.com/" target="tab"> . SainiSahab</a></div>
-                    <p>© 2020 - 2021 All rights reserved. </p>
+                    <p>&#169; 2020 - 2021 All rights reserved. </p>
           </footer>
           <script src="./js/qrcode.min.js"></script>
           <script>
+                    window.onbeforeunload = db();
+
+                    function db() {
+                              var getvalue = localStorage.getItem('value');
+                              document.getElementById('write_value').innerText = getvalue;
+                    }
+
                     var qrdata = document.getElementById('qrdata');
                     var qrcode = new QRCode(document.getElementById("qrcode"));
+
                     function generatQR() {
                               var data = qrdata.value;
-                              qrcode.makeCode(data);
+                              localStorage.setItem('value', data);
+                              db();
+                              bar();
                     };
+                    window.onchange = bar();
+                    function bar() {
+                              let a = localStorage.getItem('value');
+                              qrcode.makeCode(a);
+                    }
 
+
+                    const themeButton = document.getElementById('theme-button')
+                    console.log(themeButton);
+                    const darkTheme = 'dark-theme'
+                    const iconTheme = 'bx-sun'
+
+                    const selectedTheme = localStorage.getItem('selected-theme')
+                    const selectedIcon = localStorage.getItem('selected-icon')
+                    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+                    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
+                    if (selectedTheme) {
+                              document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+                              themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+                    }
+
+                    themeButton.addEventListener('click', () => {
+                              document.body.classList.toggle(darkTheme)
+                              themeButton.classList.toggle(iconTheme)
+                              localStorage.setItem('selected-theme', getCurrentTheme())
+                              localStorage.setItem('selected-icon', getCurrentIcon())
+                    });
           </script>
 </body>
 
