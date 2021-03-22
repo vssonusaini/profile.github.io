@@ -8,7 +8,7 @@
     <title>V S Sonu Saini</title>
     <meta charset="UTF-8">
     <meta name="description" content="Sonu Saini Template">
-    <meta name="keywords" content="Sonu Profie, Saini Sahab, V S Sonu Saini">
+    <meta name="keywords" content="Sonu Profie, Saini Sahab, V S Sonu Saini,Qrcode.js">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Favicon
@@ -37,10 +37,10 @@
 <body>
     <!-- Preloading -->
     <div id="preloader">
-        <div class="spinner">
-        </div>
-        <p id="logoa">Welcome To sainisahab.com</p>
-    </div>
+          <div class="spinner">
+          </div>
+          <p id="logoa">Welcome To sainisahab.com</p>
+      </div>
 
     <!-- Wrapper -->
     <div class="wrapper top_60 container">
@@ -95,107 +95,113 @@
                                 </div>
                                 <div class="post-content">
                                     <h1 class="blog-title bottom_30 top_0 " style="font-size: 2rem;">
-                                        Window.requestAnimationFrame()</h1>
-                                    <p>The<b> <u> window.requestAnimationFrame() </u></b> method tells the browser that
-                                        you wish to perform an animation and requests that the browser calls a specified
-                                        function to update an animation before the next repaint. The method takes a
-                                        callback as an argument to be invoked before the repaint.</p>
-                                    <br>
-                                    <p style="background-color: antiquewhite;padding: 0.2rem;"><b> Note: </b> Your
-                                        callback routine must itself call <b> <u> requestAnimationFrame() </u></b> again
-                                        if you want to animate another frame at the next repaint. <b> <u>
-                                                requestAnimationFrame() </u></b> is 1 shot.
-                                    </p>
-                                    <!-- <br> -->
-                                    <!-- <blockquote>"Oh, God", he thought, "what a strenuous career it is that I've chosen!
-                                        Travelling day in and day out.” </blockquote> -->
-                                    <br>
-                                    <p>You should call this method whenever you're ready to update your animation
-                                        onscreen. This will request that your animation function be called before the
-                                        browser performs the next repaint. The number of callbacks is usually 60 times
-                                        per second, but will generally match the display refresh rate in most web
-                                        browsers as per W3C recommendation. <b> <u> requestAnimationFrame() </u></b>
-                                        calls are paused in most browsers when running in background tabs or hidden <b>
-                                            <u> iframe </u></b> s in order to improve performance and battery life.</p>
-                                    <br>
-                                    <p>The callback method is passed a single argument, a <b> <u> DOMHighResTimeStamp
-                                            </u></b>, which indicates the current time (based on the number of
-                                        milliseconds since time origin). When multiple callbacks queued by <b> <u>
-                                                requestAnimationFrame() </u></b> begin to fire in a single frame, each
-                                        receives the same timestamp even though time has passed during the computation
-                                        of every previous callback's workload (in the code example below we only animate
-                                        the frame when the timestamp changes, i.e. on the first callback). This
-                                        timestamp is a decimal number, in milliseconds, but with a minimal precision of
-                                        1ms (1000 µs).</p>
+                                        QRCode.js</h1>
+                                    <p>QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM. QRCode.js has no dependencies.</p>
                                     <div class="section-title bottom_15 top_60"><span></span>
-                                        <h3>Syntax</h3>
+                                        <h3>JS CDN</h3>
                                     </div>
                                     <div class="code">
                                         <pre
                                             style="display: block;
                                         font-family: monospace;
                                         white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
-window.requestAnimationFrame(callback);</pre>
+<code style="font-family: monospace;">&lt;script src="https://sainisahab.com/Qrcode/js/qrcode.min.js"&gt;&lt;script&gt;</code></pre>
                                     </div>
-                                    <hr>
                                     <div class="section-title bottom_15 top_60"><span></span>
-                                        <h3>Parameters</h3>
-                                    </div>
-
-                                    <dl>
-                                        <dt style="font-size: 0.8rem;">Callback</dt>
-                                        <dd style="margin-left: 0.6rem;">
-                                            <p>The function to call when it's time to update your animation for the next
-                                                repaint. The callback function is passed one single argument, a
-                                                <b><u> DOMHighResTimeStamp</u> </b>similar to the one returned by <b><u>
-                                                        performance.now() </u></b>, indicating
-                                                the point in time when <b><u> requestAnimationFrame() </u> </b> starts
-                                                to execute callback
-                                                functions.
-                                            </p>
-                                        </dd>
-                                    </dl>
-                                    <div class="section-title bottom_15 top_60"><span></span>
-                                        <h3>Return value</h3>
-                                    </div>
-
-                                    <p>A <b> long </b>integer value, the request id, that uniquely identifies the entry
-                                        in the callback list. This is a non-zero value, but you may not make any
-                                        other assumptions about its value. You can pass this value to
-                                        <b><u> window.cancelAnimationFrame() </u></b> to cancel the refresh callback
-                                        request.
-
-                                    <div class="section-title bottom_15 top_60"><span></span>
-                                        <h3>Example</h3>
+                                        <h3>Basic Usages</h3>
                                     </div>
                                     <div class="code">
                                         <pre
                                             style="display: block;
                                         font-family: monospace;
-                                        white-space: pre;
-                                        margin: 1em 0px;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;">
-function get() {
-    var range = document.getElementById('range').value;
-    document.getElementById('show_value').innerHTML = range;
-    window.requestAnimationFrame(get);
-}
-window.requestAnimationFrame(get);</pre>
+                                        white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
+<code style="font-family: monospace;">&lt;div id="qrcode"&gt;&lt;/div&gt;
+
+&lt;script type="text/javascript"&gt;
+          new QRCode(document.getElementById("qrcode"), "sainisahab.com");
+&lt;/script&gt;</code></pre>
+                                    </div>
+          
+                                    <blockquote style="font-size: 0.8rem;">or with some options</blockquote>
+                                    <div class="code">
+                                        <pre
+                                            style="display: block;
+                                        font-family: monospace;
+                                        white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
+var qrcode = new QRCode("test", {
+          text: "http://jindo.dev.naver.com/collie",
+          width: 128,
+          height: 128,
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel.H
+      });</pre>
+                                    </div>
+                                    <blockquote style="font-size: 0.8rem;">and you can use some methods</blockquote>
+                                    <div class="code">
+                                        <pre
+                                            style="display: block;
+                                        font-family: monospace;
+                                        white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
+qrcode.clear(); // clear the code.
+qrcode.makeCode("http://naver.com"); // make another code.</pre>
                                     </div>
                                     <div class="section-title bottom_15 top_60"><span></span>
-                                        <h3>Run</h3>
+                                        <h3>Sample Code</h3>
                                     </div>
-                                    <div class="Example " style="display: flex;justify-content: space-around;">
-                                        <div class=""> <input type="range" id="range" min="1" max="100" value="0"></div>
-                                        <div id="show_value"></div>
-                                        <script>
-                                            function get() {
-                                                var range = document.getElementById('range').value;
-                                                document.getElementById('show_value').innerHTML = '<h6>  ' + range + '</h6>';
-                                                window.requestAnimationFrame(get);
-                                            }
-                                            window.requestAnimationFrame(get);
+                                    <div class="code">
+                                        <blockquote style="font-size: 0.8rem;">HTML</blockquote>
+                                        <pre
+                                            style="display: block;
+                                        font-family: monospace;
+                                        white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
+&lt;div id="qrcode"&gt;&lt;/div&gt;
+&lt;input type="text " id="Value" onchange="app()"&gt;</pre>
+                                    </div>
+                                    <br>
+                                    <div class="code">
+                                        <blockquote style="font-size: 0.8rem;">Javascript</blockquote>
+                                        <pre
+                                            style="display: block;
+                                        font-family: monospace;
+                                        white-space: pre;padding: 1rem;background-color: rgba(255, 228, 196, 0.652); width: 100%;box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%);">
+&lt;script&gt;  
+          var qr = document.getElementById('Value');
+          var qrcode = new QRCode(document.getElementById("qrcode"));
+          
+          function app(){
+                    var value = qr.value;
+                    qrcode.makeCode(value);
+          }
+ &lt;script&gt;</pre>
+                                    </div>
+                                    <div class="section-title bottom_15 top_60"><span></span>
+                                        <h3>Run Code</h3>
+                                    </div>
+                                    <div class="Example top_20" style="display: flex;justify-content: space-around; align-items: center;" >
+                                        <div  style="display: flex;flex-direction: column; " >
+                                            <label for="">Input Value</label>
+                                            <input type="text " id="Value" onchange="app()">
+                                        </div>
+                                        
+                                        <div id="qrcode" style="margin: 1rem;"></div>
+                                        <script src="../Qrcode/js/qrcode.min.js"></script>
+                                        <script>  
+                                                           var qr = document.getElementById('Value');
+                                                           var qrcode = new QRCode(document.getElementById("qrcode"));
+                                                  function app(){
+                                                           var value = qr.value;
+                                                           qrcode.makeCode(value);
+                                                  }
+                                                 
                                         </script>
+                                       
                                     </div>
+
+                                    <div class="section-title bottom_15 top_60"><span></span>
+                                        <h3>Browser Compatibility</h3>
+                                    </div>
+<p>IE6~10, Chrome, Firefox, Safari, Opera, Mobile Safari, Android, Windows Mobile, ETC.</p>
                                 </div>
 
                                 <!-- Related Post -->
@@ -236,9 +242,8 @@ window.requestAnimationFrame(get);</pre>
                                         <!-- a post -->
                                         <li>
                                             <a href="#">
-                                                <div class="info">Web Design <span>April 14, 17</span></div>
-                                                <p class="little-text">How to convert a Sketch design file into a
-                                                    layered Photoshop file</p>
+                                                <div class="info">QR Code  <span>March 22, 21 </span></div>
+                                                <p class="little-text">QR Code Generator javascript</p>
                                             </a>
                                         </li>
                                         <!-- a post -->
