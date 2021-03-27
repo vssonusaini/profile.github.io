@@ -59,8 +59,20 @@ nav select {
           padding: 0.2rem 1rem;
           outline: none;
           border: none;
-          background: var(--bg-color);
+          background: var(--body-color);
           border-radius: 3px;
+          color: var(--text-color);
+          font-weight: bold;
+          font-family: 'Nunito', sans-serif;
+          -webkit-font-smoothing: antialiased;
+}
+/* nav select option{
+          color: #000;
+} */
+
+#qrcode{
+              padding: 0.4rem;
+              background: #fff;
 }
 
 #write_value{
@@ -102,6 +114,10 @@ nav select {
           outline: none;
           border: 1px solid var(--border-color);
           border-radius: 3px;
+         background: var(--body-color);
+          color: var(--text-color);
+          font-family: 'Nunito', sans-serif;
+          -webkit-font-smoothing: antialiased;
 }
 
 footer {
@@ -116,7 +132,7 @@ footer {
 }
 
 footer a {
-          color: var(--main-color);
+         color: #fff;
           text-decoration: none;
 }
 
@@ -159,10 +175,10 @@ footer a {
 }
 
 body.dark-theme {
-          --main-color: #85b89a;
-          --body-color: #e6cbd1;
+          --main-color: #2e302f;
+          --body-color: #111111;
           --text-color: #fff;
           --border-color: rgb(141, 232, 189);
-          --border-sd: rgba(141, 232, 190, 0.522);
+          --border-sd: rgba(245, 245, 245, 0.056);
           --footer-color: #1e1e1e;
 }

@@ -3,36 +3,45 @@
 
 <head>
           <meta charset="UTF-8">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="description" content="Sonu Saini Template">
+          <meta name="keywords" content="Sonu Profie, Saini Sahab, V S Sonu Saini">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>QrCode App</title>
           <link rel="stylesheet" href="./css/style.css">
           <link href="./theater-masks-solid.svg" rel="shortcut icon" type="image/x-icon" />
+          <link rel="stylesheet" href="./css/sels.css">
           <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
 </head>
 
 <body>
           <nav>
-                    <div class="logo">
-                              Qr<span class="dot">.</span>
+                    <div class="logo" id="logo">
                     </div>
                     <ul>
                               <li><i class='bx bx-moon change-theme' id="theme-button"></i></li>
+                              <li> <select name="" id="barcode_data" onchange="change()">
+                                                  <option value="s">Select Code</option>
+                                                  <option value="qrcode">Qr Code</option>
+                                                  <option value="barcodea">Bar Code</option>
+                                        </select></li>
                     </ul>
+
           </nav>
 
           <div class="main_box">
-
                     <div class="qr_box">
                               <div id="qrcode"></div>
+                              <div id="barcodea" style="display: none;">
+                                        <svg id="barcode"></svg>
+                              </div>
+
                     </div>
                     <div id="write_value"></div>
                     <div class="input_box">
                               <label for="">Make Qr Code</label>
                               <input type="text " id="qrdata" onchange="generatQR()">
                     </div>
-
           </div>
 
 
@@ -42,16 +51,47 @@
                     <p>&#169; 2020 - 2021 All rights reserved. </p>
           </footer>
           <script src="./js/qrcode.min.js"></script>
+          <script src="./js/barcode.js"></script>
           <script>
+
+
+                    function change() {
+                              var select_value = document.getElementById('barcode_data').value;
+                              localStorage.setItem('select_value', select_value);
+                              show();
+                    }
+
+                    function show() {
+
+                              var a = localStorage.getItem('select_value');
+                              var date_bar = document.getElementById('barcode_data').value = a;
+                              console.log(a);
+                              if (a == "qrcode") {
+                                        document.getElementById('qrcode').style.display = "block";
+                                        document.getElementById('barcodea').style.display = "none";
+                                        document.getElementById('logo').innerHTML = 'Qr<span class="dot">.</span>';
+                              }
+                              if (a == "barcodea") {
+                                        document.getElementById('barcodea').style.display = "block";
+                                        document.getElementById('qrcode').style.display = "none";
+                                        document.getElementById('logo').innerHTML = 'Br<span class="dot">.</span>';
+                              }
+                    }
+
+
                     window.onbeforeunload = db();
 
                     function db() {
                               var getvalue = localStorage.getItem('value');
                               document.getElementById('write_value').innerText = getvalue;
+                              show();
                     }
 
+
                     var qrdata = document.getElementById('qrdata');
-                    var qrcode = new QRCode(document.getElementById("qrcode"));
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                              correctLevel: QRCode.CorrectLevel.H
+                    });
 
                     function generatQR() {
                               var data = qrdata.value;
@@ -63,8 +103,12 @@
                     function bar() {
                               let a = localStorage.getItem('value');
                               qrcode.makeCode(a);
+                              JsBarcode("#barcode", a, {
+                                        width: 2,
+                                        height: 250,
+                                        displayValue: false
+                              });
                     }
-
 
                     const themeButton = document.getElementById('theme-button')
                     console.log(themeButton);
@@ -86,6 +130,8 @@
                               localStorage.setItem('selected-theme', getCurrentTheme())
                               localStorage.setItem('selected-icon', getCurrentIcon())
                     });
+
+
           </script>
 </body>
 
