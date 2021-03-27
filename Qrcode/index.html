@@ -39,7 +39,7 @@
                     </div>
                     <div id="write_value"></div>
                     <div class="input_box">
-                              <label for="">Make Qr Code</label>
+                              <label for="">Make <span id="w"></span> Code</label>
                               <input type="text " id="qrdata" onchange="generatQR()">
                     </div>
           </div>
@@ -70,11 +70,13 @@
                                         document.getElementById('qrcode').style.display = "block";
                                         document.getElementById('barcodea').style.display = "none";
                                         document.getElementById('logo').innerHTML = 'Qr<span class="dot">.</span>';
+                                        document.getElementById('w').innerText = 'Qr';
                               }
                               if (a == "barcodea") {
                                         document.getElementById('barcodea').style.display = "block";
                                         document.getElementById('qrcode').style.display = "none";
                                         document.getElementById('logo').innerHTML = 'Br<span class="dot">.</span>';
+                                        document.getElementById('w').innerText = 'Br';
                               }
                     }
 
@@ -105,7 +107,7 @@
                               qrcode.makeCode(a);
                               JsBarcode("#barcode", a, {
                                         width: 2,
-                                        height: 250,
+                                        height: 220,
                                         displayValue: false
                               });
                     }

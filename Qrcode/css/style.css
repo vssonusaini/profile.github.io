@@ -65,10 +65,8 @@ nav select {
           font-weight: bold;
           font-family: 'Nunito', sans-serif;
           -webkit-font-smoothing: antialiased;
+          cursor: pointer;
 }
-/* nav select option{
-          color: #000;
-} */
 
 #qrcode{
               padding: 0.4rem;
