@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap');
+* {
+          padding: 0;
+          box-sizing: border-box;
+          margin: 0;
+}
+
+/* :root {
+          --main-color: white;
+          --body-color: whitesmoke;
+          --text-color: #000;
+          --border-color: rgb(141, 232, 189);
+          --border-sd: rgba(141, 232, 190, 0.522);
+          --footer-color: #1e1e1e;
+          --text-size: 0.8rem;
+          --heading-size: 0.6rem;
+          --table-heading: 0.9rem;
+} */
+
+body.scale-cv {
+          --main-color: white;
+          --body-color: whitesmoke;
+          --text-color: #000;
+          --border-color: rgb(141, 232, 189);
+          --border-sd: rgba(141, 232, 190, 0.522);
+          --footer-color: #1e1e1e;
+          --text-size: 0.8rem;
+          --heading-size: 0.6rem;
+          --table-heading: 0.9rem;
+          --widht: 100%;
+          --display: none;
+          --border-style: none;
+}
+
+:root {
+          --main-color: white;
+          --body-color: whitesmoke;
+          --text-color: #000;
+          --border-color: rgb(141, 232, 189);
+          --border-sd: rgba(141, 232, 190, 0.522);
+          --footer-color: #1e1e1e;
+          --text-size: 0.8rem;
+          --heading-size: 0.6rem;
+          --table-heading: 0.9rem;
+          --widht: 60%;
+          --display: block;
+          --border-style: none;
+}
+
+body {
+          font-family: 'Nunito', sans-serif;
+          -webkit-font-smoothing: antialiased;
+          background: whitesmoke;
+}
+
+.resume {
+          width: var(--widht);
+          background: #fff;
+          margin: 1rem auto;
+          padding: 1rem;
+}
+
+.name {
+          font-size: 3rem;
+}
+
+.details {
+          display: flex;
+          justify-content: space-between;
+}
+
+.heading_div {
+          text-align: center;
+          width: 100%;
+          background: whitesmoke;
+          border: var(--border-style);
+          font-size: var(--heading-size);
+          font-weight: bold;
+          margin: 1rem 0;
+}
+
+.objective {
+          font-size: var(--text-size);
+          font-weight: bold;
+          padding: 0 1rem;
+}
+
+.heading_div h1 {
+          padding: 0.2rem;
+}
+
+table {
+          width: 100%;
+          text-align: center;
+          border-spacing: 0;
+          border: var(--border-style);
+          border-collapse: collapse;
+}
+
+thead {
+          background: var(--body-color);
+          font-size: var(--table-heading);
+          border: var(--border-style);
+}
+
+tbody {
+          background: rgba(242, 240, 240, 0.254);
+}
+
+tr {
+          border: var(--border-style);
+}
+
+table td {
+          font-size: var(--text-size);
+          padding: 0.1rem;
+          border: var(--border-style);
+}
+
+ul {
+          font-family: 'Nunito', sans-serif;
+          margin-left: 3rem;
+          padding: 0.5rem;
+          font-size: var(--text-size);
+          font-weight: bold;
+          color: rgb(77, 76, 76);
+}
+
+b {
+          color: #000;
+          font-weight: 900;
+}
+
+span {
+          color: rgb(77, 76, 76);
+}
+
+.fild_2 {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 50%;
+}
+
+.fild_3 {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          width: 100%;
+}
+
+.w_50 {
+          width: 50%;
+          text-align: left;
+}
+
+.m_top {
+          margin-top: 1rem;
+}
+
+#date_of_value, #place, #date {
+          font-size: 0.8rem;
+}
+
+section.top {
+          position: relative;
+}
+
+.btn {
+          position: absolute;
+          top: 0;
+          right: 0;
+          cursor: pointer;
+          display: var(--display);
+}
