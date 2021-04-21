@@ -177,7 +177,14 @@ $(window).load(function () {
 
 }); // window load end 
 
-
+fetch('https://api.covid19api.com/summary').then((apidata) => {
+          return apidata.json();
+}).then((actualdata) => {
+          var maindata = actualdata.Countries[76];
+          document.getElementById('NewConfirmed').innerHTML = maindata.NewConfirmed;
+          document.getElementById('NewDeaths').innerHTML = maindata.NewDeaths;
+          document.getElementById('NewRecovered').innerHTML = maindata.NewRecovered;
+});
 
 
 

@@ -1788,8 +1788,8 @@ footer .footer .copyright a:hover{
         margin-top: 30px;
     }
 
-    header nav ul{
-    }
+    /* header nav ul{
+    } */
 
     header nav ul.tabs li:first-child, header nav .menuout ul.tabs li {
         display: block;

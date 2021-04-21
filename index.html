@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="./css/colors/turquoise.css" id="color" />
+    <!-- covid css -->
+    <link rel="stylesheet" href="./css/covid.css">
     <!-- Google Web fonts
 ================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet">
@@ -39,12 +41,14 @@
 </head>
 
 <body>
+
     <!-- Preloading -->
     <div id="preloader">
         <div class="spinner">
         </div>
         <p id="logoa">Welcome To sainisahab.com</p>
     </div>
+
 
     <!-- Wrapper -->
     <div class="wrapper top_60 container">
@@ -134,11 +138,22 @@
                                 </div>
                             </div>
                         </nav>
+
                     </header>
+                    <div class="covid">
+                        <div class="carona">
+                            <div class="flex icons"><i class="fas fa-viruses"></i></div>
+                            <div class="flex"><span class="" id="NewConfirmed"></span>Total Confirmed </div>
+
+                            <div class="flex"><span class="" id="NewRecovered"></span> Total Recovered </div>
+                            <div class="flex"><span class="" id="NewDeaths"></span> Total Deaths </div>
+                        </div>
+                    </div>
 
                     <!-- Page Content
     ================================================== -->
                     <div class="col-md-12">
+
                         <div id="content" class="panel-container">
 
                             <!-- Home Page
@@ -635,7 +650,7 @@
                                         </div>
                                         <!-- a image work -->
                                         <div class="cbp-item apps">
-                                            <a href="./Qrcode/index.html" target="_tap" >
+                                            <a href="./Qrcode/index.html" target="_tap">
                                                 <figure>
                                                     <div class="icon">
                                                         <i class="fa fa-clone" aria-hidden="true"></i>
@@ -768,12 +783,17 @@
                                                 <a href="./blog-posts/requestAnimationFrame.html" class="blog-box">
                                                     <div class="blog-img">
                                                         <img src="images/blogs/js.jpg" alt="">
-                            
+
                                                     </div>
                                                     <div class="blog-box-info">
                                                         <span class="category" id="title-o">Javascript</span>
-                                                        <h2 class="title" id="heading-o">Window.requestAnimationFrame()</h2>
-                                                        <p class="little-text" id="pra-o">The window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests that the browser calls a specified function to update an animation before the next repaint. </p>
+                                                        <h2 class="title" id="heading-o">Window.requestAnimationFrame()
+                                                        </h2>
+                                                        <p class="little-text" id="pra-o">The
+                                                            window.requestAnimationFrame() method tells the browser that
+                                                            you wish to perform an animation and requests that the
+                                                            browser calls a specified function to update an animation
+                                                            before the next repaint. </p>
                                                         <span class="date" id="date-o">19 Mar 21</span>
                                                     </div>
                                                 </a>
@@ -787,7 +807,9 @@
                                                     <div class="blog-box-info">
                                                         <span class="category">Javascript</span>
                                                         <h2 class="title">Qr Code JavaScript</h2>
-                                                        <p class="little-text">QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM. </p>
+                                                        <p class="little-text">QRCode.js is javascript library for
+                                                            making QRCode. QRCode.js supports Cross-browser with HTML5
+                                                            Canvas and table tag in DOM. </p>
                                                         <span class="date">22 Mar 21</span>
                                                     </div>
                                                 </a>
@@ -965,7 +987,7 @@
     <!-- Javascripts
 ================================================== -->
 
-<!-- 
+    <!-- 
     <script src="./js/cursor/plugins.js"></script>
     <script src="./js/cursor/scripts.js"></script> -->
 
