@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap');
+* {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+}
+
+:root {
+          --main_color: #fff;
+          --back_color: whitesmoke;
+          --text_color: #000;
+          --border_color: rgb(46, 46, 46);
+          --btn_color: rgb(106, 235, 179);
+          --btn_hover_color: rgb(19, 191, 139);
+}
+
+body {
+          background: var(--back_color);
+          font-family: 'Nunito', sans-serif;
+          -webkit-font-smoothing: antialiased;
+}
+
+/* root css */
+
+a {
+          text-decoration: none;
+}
+
+ul li {
+          list-style: none;
+}
+
+/* Nab Bar Start */
+
+.nav_bar {
+          width: 100%;
+          height: 3rem;
+          background: var(--main_color);
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          text-transform: capitalize;
+          overflow: hidden;
+          z-index: 999;
+}
+
+.menu_bar ul li {
+          display: inline-block;
+          list-style: none;
+          margin-right: 1rem;
+}
+
+.menu_bar ul li a {
+          text-decoration: none;
+          color: var(--text_color);
+          font-weight: bold;
+          cursor: pointer;
+}
+
+/* Nab Bar End */
+
+/* User Pofile */
+
+.user_profile_div {
+          background: var(--main_color);
+          width: 15%;
+          font-weight: bold;
+          color: var(--text_color);
+          position: fixed;
+          right: 200px;
+          padding: 1rem;
+          transform: translate(20px, -300px);
+          transition: all .3s;
+          z-index: -1;
+}
+
+.user_profile_toggle {
+          transform: translate(20px, 0px);
+}
+
+.user_profile_div ul li {
+          margin-top: 1rem;
+}
+
+/* form css start */
+
+.login_signin {
+          position: fixed;
+          top: 10%;
+          left: 2%;
+          transform: translate(-400px, 0px);
+          transition: all .3s;
+}
+
+.login_signin_toggle {
+          transform: translate(0px, 0px);
+}
+
+.login {
+          width: 20rem;
+          background: var(--main_color);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem 0;
+          text-align: center;
+          border-radius: 6px;
+}
+
+.heading {
+          margin-bottom: 1rem;
+}
+
+.login .rows input {
+          padding: 0.4rem 0.3rem;
+          border-bottom: 1px solid var(--border_color);
+          margin: 0.3rem;
+          font-size: 1rem;
+          border-radius: 0.4rem;
+          border: 1px solid var(--border_color);
+}
+
+.login .login_btn {
+          width: 60%;
+          margin: 0 auto;
+          margin-top: 1rem;
+}
+
+.login .login_btn button {
+          width: 100%;
+          padding: 0.5rem 1rem;
+          background: var(--btn_color);
+          border: none;
+          outline: none;
+          border-radius: 3px;
+          font-weight: bold;
+          color: #fff;
+}
+
+#sign_div {
+          display: none;
+}
+
+.move_toggle_text {
+          margin-top: 1rem;
+}
+
+.move_toggle_text a {
+          font-size: 0.8rem;
+          color: var(--text_color);
+          cursor: pointer;
+}
+
+.move_toggle_text span {
+          color: var(--btn_color);
+}
+
+/* card css start */
+
+.product_div {
+          width: 100%;
+          display: flex;
+}
+
+.product_div .card {
+          width: 15%;
+          overflow: hidden;
+          margin: 1rem;
+          background: var(--main_color);
+          border-radius: 5px;
+          border: 1px solid var(--border_color);
+}
+
+.product_div .img img {
+          width: 100%;
+          border-bottom: 1px solid var(--border_color);
+}
+
+.card .product_ditalis {
+          padding: 0.1rem 0.2rem;
+}
+
+.card .product_name {
+          font-size: 1.3rem;
+          font-weight: bold;
+}
+
+.card .product_rate {
+          display: flex;
+          align-items: center;
+          font-size: 0.8rem;
+}
+
+.card .rate, .product_disccount, .product_off {
+          margin-right: 0.3rem;
+}
+
+.card .rate {
+          font-size: 1rem;
+          font-weight: bold;
+}
+
+.card .card_btn {
+          display: flex;
+          justify-content: center;
+          border-top: 1px solid var(--border_color);
+}
+
+.card .card_btn button {
+          width: 50%;
+          border: none;
+          outline: none;
+          padding: 0.5rem 0.4rem;
+          font-size: 1rem;
+          font-weight: bold;
+          background: var(--btn_color);
+          color: #fff;
+}
+
+.card .card_btn .add {
+          border-right: 1px solid var(--border_color);
+}
