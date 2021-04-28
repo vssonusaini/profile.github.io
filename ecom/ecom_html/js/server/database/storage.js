@@ -46,3 +46,38 @@ if (food === null) {
           localStorage.setItem("food", JSON.stringify(food));
 }
 
+var sliders = JSON.parse(localStorage.getItem('sliders'));
+if (sliders === null) {
+          sliders = [];
+          sliders = [{
+                    id: 0,
+                    heading: "Limited Offer",
+                    promo_off: "30% OFF",
+                    promo_code: "SJHH43",
+                    promo_valid : "12/04/2021", 
+                    image: "image/foody-upload-api-foody-mobile-suon-10-jpg-181121104208.jpg"
+          }, {
+                    id: 1,
+                    heading: "Limited Offer",
+                    promo_off: "30% OFF",
+                    promo_code: "SJHH43",
+                    promo_valid : "12/04/2021", 
+                    image: "image/foody-upload-api-foody-mobile-suon-10-jpg-181121104208.jpg"
+          }, {
+                    id: 2,
+                    heading: "Limited Offer",
+                    promo_off: "30% OFF",
+                    promo_code: "SJHH43",
+                    promo_valid : "12/04/2021", 
+                    image: "image/foody-upload-api-foody-mobile-suon-10-jpg-181121104208.jpg"
+          }, {
+                    id: 3,
+                    heading: "Limited Offer",
+                    promo_off: "30% OFF",
+                    promo_code: "SJHH43",
+                    promo_valid : "12/04/2021", 
+                    image: "image/foody-upload-api-foody-mobile-suon-10-jpg-181121104208.jpg"
+          }];
+          localStorage.setItem("sliders", JSON.stringify(sliders));
+}
+

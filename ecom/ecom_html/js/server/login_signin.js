@@ -10,13 +10,13 @@ if (checkLogin == -1) {
           document.getElementById("admin").style.display = 'block';
           document.getElementById('login_btn').style.display = 'none';
           document.getElementById('user_profile_btn').style.display = 'block';
-          document.getElementById("user_profile_username").innerHTML = account[checkLogin].username;
+          document.getElementById("user_profile_btn").innerHTML = account[checkLogin].username;
           document.getElementById("user_profile_usernamea").innerHTML = account[checkLogin].username;
 } else if (account[checkLogin].level == 0) {
           document.getElementById("admin").style.display = 'none';
           document.getElementById('login_btn').style.display = 'none';
           document.getElementById('user_profile_btn').style.display = 'block';
-          document.getElementById("user_profile_username").innerHTML = account[checkLogin].username;
+          document.getElementById("user_profile_btn").innerHTML = account[checkLogin].username;
           document.getElementById("user_profile_usernamea").innerHTML = account[checkLogin].username;
 
 }
@@ -31,12 +31,12 @@ function Login() {
 
                               if (account[i].level == 0) {
                                         document.getElementById("statusLogin").innerHTML = "Logged in successfully";
-                                        document.getElementById("user_profile_username").innerHTML = account[i].username;
+                                        document.getElementById("user_profile_btn").innerHTML = account[i].username;
                                         location.reload();
 
                               } else if (account[i].level == 1) {
                                         document.getElementById("statusLogin").innerHTML = "Logged in successfully";
-                                        document.getElementById("user_profile_username").innerHTML = account[i].username;
+                                        document.getElementById("user_profile_btn").innerHTML = account[i].username;
 
                                         location.reload();
                               }
