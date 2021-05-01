@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+          <meta charset="UTF-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Gate Pass</title>
+          <link rel="stylesheet" href="./css/style.css">
+          <!--using FontAwesome--------------->
+          <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
+</head>
+
+<body>
+          <div class="main_contanier">
+
+                    <div class="input_div">
+                              <div class="selecter">
+                                        <label for="">Destination Dc</label>
+                                        <select id="destination_dc">
+                                                  <option value="North RDC to Noida DC">North RDC to Noida DC</option>
+                                                  <option value="North RDC to Chandu DC">North RDC to Chandu DC</option>
+                                        </select>
+                              </div>
+                              <input type="text" id="input_hub_value" onkeyup="search_hub()"
+                                        placeholder="Search for names..">
+                              <ul id="Hub_list">
+                                        <li><a href="#">edk</a></li>
+                                        <li><a href="#">lr</a></li>
+
+                                        <li><a href="#">sv</a></li>
+                                        <li><a href="#">Bob</a></li>
+
+                                        <li><a href="#">bwd</a></li>
+                                        <li><a href="#">cp</a></li>
+                                        <li><a href="#">pg</a></li>
+                              </ul>
+                    </div>
+
+
+                    <!-- gate pass formate -->
+
+                    <div class="format_div">
+                              <div class="mail_format">
+                                        <div class="copy_btn_div">
+                                                  <h1 style="text-transform: capitalize;">gate pass format</h1>
+                                                  <button class="btn copy_btn" data-clipboard-action="copy"
+                                                            data-clipboard-target="#copy">copy <span class="alert"
+                                                                      id="alert">Copied!</span></button>
+                                        </div>
+                                        <table border="1" id="copy">
+                                                  <thead>
+                                                            <tr>
+                                                                      <th class="nub">Hub</th>
+                                                                      <th>Destination_Dc</th>
+                                                                      <th>Big crates</th>
+                                                                      <th>cust crate </th>
+                                                                      <th>Small Crate </th>
+                                                                      <th>NC </th>
+                                                                      <th>Box </th>
+                                                                      <th>Bag </th>
+                                                                      <th>pallets </th>
+                                                                      <th>belt </th>
+                                                                      <th>Total </th>
+                                                            </tr>
+                                                  </thead>
+                                                  <tbody id="show_gata_format">
+
+                                                  </tbody>
+                                                  <tfoot id="total_count">
+
+                                                  </tfoot>
+                                        </table>
+
+                              </div>
+
+                              <div class="edit_gatepass">
+                                        <div class="headng">
+                                                  <h1>Edit</h1>
+                                        </div>
+                                        <table>
+                                                  <thead>
+                                                            <tr>
+                                                                      <td class="nub">Hub</td>
+                                                                      <td>Destination_Dc</td>
+                                                                      <td>Big crates</td>
+                                                                      <td>cust crate </td>
+                                                                      <td>Small Crate </td>
+                                                                      <td>NC </td>
+                                                                      <td>Box </td>
+                                                                      <td>Bag </td>
+                                                                      <td>pallets </td>
+                                                                      <td>belt </td>
+                                                                      <td>Total </td>
+                                                                      <td> </td>
+                                                            </tr>
+                                                  </thead>
+                                                  <tbody id="show_gata_pass_data">
+
+
+
+                                                  </tbody>
+                                                  <tfoot id="total_count_edit">
+
+                                                  </tfoot>
+                                        </table>
+                              </div>
+                    </div>
+          </div>
+
+
+          <div class="add_hub_value" id="add_hub_value">
+                    <div class="main_content">
+                              <div class="header">
+                                        <h1>Add Hub</h1><span class="close" id="close">&times;</span>
+                              </div>
+                              <div class="hub_input_content">
+                                        <table border="1">
+                                                  <thead>
+                                                            <tr>
+                                                                      <th class="nub">Hub</th>
+                                                                      <th>Destination_Dc</th>
+                                                                      <th>Big crates</th>
+                                                                      <th>cust crate </th>
+                                                                      <th>Small Crate </th>
+                                                                      <th>NC </th>
+                                                                      <th>Box </th>
+                                                                      <th>Bag </th>
+                                                                      <th>pallets </th>
+                                                                      <th>belt </th>
+                                                            </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                            <tr>
+                                                                      <td id="hun_name" class="nub"></td>
+                                                                      <td id="destination_dc_value">Destination_Dc</td>
+                                                                      <td><input type="number" id="Big_crates"></td>
+                                                                      <td><input type="number" id="cust_crate"></td>
+                                                                      <td><input type="number" id="Small_Crate"></td>
+                                                                      <td><input type="number" id="NC"></td>
+                                                                      <td><input type="number" id="Box"></td>
+                                                                      <td><input type="number" id="Bag"></td>
+                                                                      <td><input type="number" id="pallets"></td>
+                                                                      <td><input type="number" id="belt"></td>
+                                                            </tr>
+
+                                                  </tbody>
+                                        </table>
+                                        <div class="add_hub_btn">
+                                                  <button id="add_data_btn">Add</button>
+                                        </div>
+                              </div>
+                    </div>
+
+          </div>
+
+
+          <script src="./js/main.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+          <script>
+                    var clipboard = new ClipboardJS('.btn');
+
+                    clipboard.on('success', function (e) {
+                              document.getElementById('alert').style.display = 'block';
+                              console.info('Action:', e.action);
+                              console.info('Text:', e.text);
+                              console.info('Trigger:', e.trigger);
+
+                              e.clearSelection();
+                    });
+
+                    clipboard.on('error', function (e) {
+                              console.error('Action:', e.action);
+                              console.error('Trigger:', e.trigger);
+                    });
+          </script>
+</body>
+
+</html>
