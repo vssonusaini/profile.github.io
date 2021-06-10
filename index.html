@@ -889,19 +889,20 @@
                                         <div class="section-title top_15 bottom_30"><span></span>
                                             <h2>Contact Form</h2>
                                         </div>
-                                        <form class="site-form">
+                                        <form class="site-form"  method="post" autocomplete="off" name="google-sheet">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <input class="site-input" placeholder="Name">
+                                                    <input class="site-input" placeholder="Name" value=""  name="Name">
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input class="site-input" placeholder="E-mail">
+                                                    <input class="site-input" placeholder="E-mail" value="" name="Email">
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <textarea class="site-area" placeholder="Message"></textarea>
+                                                    <textarea class="site-area" placeholder="Message" value="" name="Message"></textarea>
                                                 </div>
                                                 <div class="col-md-12 top_15 bottom_30">
-                                                    <button class="site-btn" type="submit">Submit</button>
+<!--                                                     <button class="site-btn" type="submit">Submit</button> -->
+                                                    <input type="submit" name="submit" class="site-btn" value="Submit" />
                                                 </div>
                                             </div>
                                         </form>
