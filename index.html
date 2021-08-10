@@ -645,22 +645,27 @@
                         <span></span>
                         <h2>Contact Form</h2>
                       </div>
-                      <form class="site-form">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <input class="site-input" placeholder="Name" />
-                          </div>
-                          <div class="col-md-6">
-                            <input class="site-input" placeholder="E-mail" />
-                          </div>
-                          <div class="col-md-12">
-                            <textarea class="site-area" placeholder="Message"></textarea>
-                          </div>
-                          <div class="col-md-12 top_15 bottom_30">
-                            <button class="site-btn" type="submit">Submit</button>
-                          </div>
-                        </div>
-                      </form>
+                     <form class="site-form"  method="post" autocomplete="off" name="google-sheet">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <input class="site-input" placeholder="Name" value=""  name="Name">
+                                                </div>
+                                                 <div class="col-md-6">
+                                                    <input class="site-input" placeholder="Phone Number" value="" name="Phone">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input class="site-input" placeholder="E-mail" value="" name="Email">
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <textarea class="site-area" placeholder="Message" value="" name="Message"></textarea>
+                                                </div>
+                                                <div class="col-md-12 top_15 bottom_30">
+<!--                                                     <button class="site-btn" type="submit">Submit</button> -->
+                                                    <input type="submit" name="submit" class="site-btn" value="Submit" />
+                                                </div>
+                                            </div>
+                                        </form>
                     </section>
                     <!-- Contact Informations -->
                     <section class="contact-info col-md-6 padding_30 padbot_45">
