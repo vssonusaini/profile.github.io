@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMS</title>
+
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="./CSS/Style.css" />
+    <!--using FontAwesome--------------->
+    <!-- <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script> -->
+  </head>
+  <body>
+    <div class="contanier">
+      <!-- nav Bar -->
+      <nav class="nav_bar">
+        <div class="logo">IMS</div>
+        <div class="menu_bar" id="menu-bar">
+          <ul class="menu_list">
+            <li><a href="./product_master.html">Product Master</a></li>
+            <li><a href="./record.html">Record</a></li>
+            <li><a href="#">Reports</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- text Bar -->
+      <div class="text_bar">
+        <div class="box">
+          <span id="Purchase_Amount">0</span>
+          <span>Purchase</span>
+        </div>
+        <div class="box">
+          <span id="Sale_Amount">0</span>
+          <span>Sale</span>
+        </div>
+        <div class="box">
+          <span>0</span>
+          <span>profit</span>
+        </div>
+        <div class="box">
+          <span id="Inventory_qty">0</span>
+          <span>Inventory Qty.</span>
+        </div>
+        <div class="box">
+          <span id="Inventory_amt">0</span>
+          <span>Inventory Amt.</span>
+        </div>
+      </div>
+
+      <!-- main_fild -->
+      <div class="grid_div">
+        <div class="avail_stock">
+          <form>
+            <input type="text" placeholder="Search" id="myInput" />
+            <button>Refresh</button>
+            <button>Extract</button>
+          </form>
+          <hr />
+          <div class="top_heading">Available Stocks</div>
+
+          <table>
+            <thead>
+              <tr>
+                <td>Product Name</td>
+                <td>Available Qty.</td>
+              </tr>
+            </thead>
+            <tbody id="Available_Stocks"></tbody>
+          </table>
+        </div>
+
+        <div class="sal_purc">
+          <div class="top_heading">Sale/Purchase Transactions</div>
+          <div class="form">
+            <table>
+              <tr>
+                <td>
+                  <select name="Transaction_type" id="Transaction_type">
+                    <option value="Sale">Sale</option>
+                    <option value="Purchase">Purchase</option>
+                  </select>
+                </td>
+                <td>
+                  <!-- <input type="text" placeholder="Product" id="Product"/> -->
+                  <select name="Transaction_type" id="Product" onchange="show_Sale_Price(value)"></select>
+                </td>
+
+                <td><input type="number" placeholder="Qty" id="Quantity" onchange="sum_value_id()" /></td>
+              </tr>
+              <tr>
+                <td><input type="date" placeholder="date" id="datePicker" /></td>
+                <td><input type="number" placeholder="Rate" id="Sale_Purchase" /></td>
+                <td><button onclick="Sale_Purchase();">Add</button></td>
+              </tr>
+            </table>
+          </div>
+          <!-- show_transaction -->
+          <div class="show_transaction">
+            <table>
+              <tr>
+                <td>Show Transactions :</td>
+                <td class="show_transaction_bar" style="width: 30rem">
+                  <label for="all"><span>All</span> <input type="radio" value="All" onclick="get(value)" id="all" name="radio" checked /></label>
+                  <label for="Purchase"><span>Purchase</span> <input type="radio" onclick="get(value)" value="Purchase" id="Purchase" name="radio" /></label>
+                  <label for="Sale"><span>Sale</span> <input type="radio" id="Sale" onclick="get(value)" value="Sale" name="radio" /></label>
+                  <input type="text" id="hidanvalue" />
+                </td>
+              </tr>
+            </table>
+            <table class="show_transaction_data">
+              <tr>
+                <td>Product Name</td>
+                <td>Type</td>
+                <td>Quantity</td>
+                <td>Price</td>
+                <td>Amount</td>
+                <td>Date</td>
+              </tr>
+              <div class="show_transaction_tbody">
+                <tbody id="Transactions_data_print"></tbody>
+              </div>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./JS/Main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      index_page();
+
+      function get(v) {
+        document.getElementById("hidanvalue").value = v;
+      }
+
+      $(document).ready(function () {
+        $("#hidanvalue").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#Transactions_data_print tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+      });
+
+      $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $("#Available_Stocks tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          });
+        });
+      });
+
+      Date.prototype.toDateInputValue = function () {
+        var local = new Date(this);
+        local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+        return local.toJSON().slice(0, 10);
+      };
+      document.getElementById("datePicker").value = new Date().toDateInputValue();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Master</title>
+    <link rel="stylesheet" href="./CSS/Style.css" />
+  </head>
+  <body>
+    <!-- nav Bar -->
+    <nav class="nav_bar">
+      <div class="logo">IMS</div>
+      <div class="menu_bar" id="menu-bar">
+        <ul class="menu_list">
+          <li><a href="./index.html">Dasebord</a></li>
+          <li><a href="./product_master.html">Product Master</a></li>
+          <li><a href="#">Record</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </div>
+    </nav>
+    <br />
+    <div class="sal_purc">
+      <div class="top_heading">Sale/Purchase Transactions</div>
+      <div class="form" >
+        <table>
+          <tr>
+            <td><input type="date" /></td>
+            <td><input type="date" /></td>
+            <td><button>Refresh</button></td>
+          </tr>
+        </table>
+      </div>
+      <!-- show_transaction -->
+      <div class="show_transaction">
+        <table class="show_transaction_data">
+          <tr>
+            <td>Id</td>
+            <td>Product Name</td>
+            <td>Product Price</td>
+            <td>Sale Price</td>
+          </tr>
+          <div class="show_transaction_tbody">
+            <tr>
+              <td>1</td>
+              <td>book</td>
+              <td>Purchase</td>
+              <td>1200</td>
+            </tr>
+          </div>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
