@@ -1,0 +1,86 @@
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Sarabun Italic"), local("Sarabun-Italic"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVhJx26TKEr37c9aBB5k3wM.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Sarabun Light"), local("Sarabun-Light"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YL5rilUs7g.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Sarabun Regular"), local("Sarabun-Regular"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVjJx26TKEr37c9aBtJmg.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Sarabun Medium"), local("Sarabun-Medium"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YOZqilUs7g.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Sarabun SemiBold"), local("Sarabun-SemiBold"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YMptilUs7g.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Sarabun Bold"), local("Sarabun-Bold"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YK5silUs7g.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Sarabun";
+  font-style: normal;
+  font-weight: 800;
+  src: local("Sarabun ExtraBold"), local("Sarabun-ExtraBold"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YLJvilUs7g.ttf) format("truetype");
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #4d4d4d;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2;
+}
+
+p {
+  margin: 0;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #3a52ff;
+}
+
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
