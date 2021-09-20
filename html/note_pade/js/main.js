@@ -53,6 +53,8 @@ function AddNote() {
     alert("Enter Plasea");
   }
   cluse();
+  document.getElementById("Title").value = '';
+  document.getElementById("Content").value = '';
   Noteprinf();
 }
 
