@@ -1,185 +1,166 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap");
 * {
-          padding: 0;
-          box-sizing: border-box;
-          margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 body {
-          background: whitesmoke;
-          font-family: 'Nunito', sans-serif;
-          -webkit-font-smoothing: antialiased;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
-          --range_bk_color: rgb(9, 47, 102);
-          --range_btn_color: rgb(126, 92, 208);
-          --range_hover_color: rgb(20, 62, 141);
+  --range_bk_color: rgb(255, 255, 255);
+  --range_btn_color: rgb(81, 192, 243);
+  --range_hover_color: rgb(223, 223, 223);
 }
 
-.main_contanier {
-          display: flex;
-          justify-content: space-around;
+.main_div {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.input_box {
-          width: 30%;
-          background: #fff;
-          height: 40rem;
-          overflow: hidden;
+.tool_box {
+  width: 400px;
+  max-width: 100%;
+  min-height: 400px;
+  margin: 40px auto;
+
+  border-radius: 3px;
+  padding: 40px 20px;
+  font-size: 0.85em;
+  -webkit-box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  background-color: #f4f7fc;
+
+  transition: all ease-in 0.25s;
 }
 
-.heading {
-          text-align: center;
-          padding: 1rem;
+.code_display {
+  border: 1px solid;
+  height: 4rem;
+  padding-left: 0.4rem;
 }
-
-.input_container {
-          width: 100%;
-          text-align: center;
-          padding: 1rem;
-}
-
-.input_container input {
-          width: 100%;
-          margin-top: 1rem;
-}
-
 .input_label {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.output_display {
-          width: 65%;
-          height: 40rem;
-          background: #fff;
-          overflow: hidden;
+.color_input {
+  justify-content: space-between;
 }
 
-.box {
-          width: 100%;
-          height: 30rem;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+/* ----------------input--------- */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
 }
 
-.shadow_box {
-          height: 300px;
-          width: 300px;
-          background: chartreuse;
+input[type="range"]:focus {
+  outline: none;
 }
 
-.code {
-          width: 70%;
-          margin: 0 auto;
-          padding: 0.8rem;
-          background: linear-gradient( -30deg, #273149, #1c273f);
-          text-align: center;
-          border-radius: 0.5rem;
-          color: white;
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: var(--range_bk_color);
+  border-radius: 25px;
+  border: 0px solid #000101;
 }
 
-input[type=range] {
-          -webkit-appearance: none;
-          margin: 10px 0;
-          width: 100%;
+input[type="range"]::-webkit-slider-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 30px;
+  border-radius: 7px;
+  background: var(--range_btn_color);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -3.6px;
 }
 
-input[type=range]:focus {
-          outline: none;
+input[type="range"]:focus::-webkit-slider-runnable-track {
+  background: var(--range_hover_color);
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-          width: 100%;
-          height: 12.8px;
-          cursor: pointer;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          background: var(--range_bk_color);
-          border-radius: 25px;
-          border: 0px solid #000101;
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  background: #ac51b5;
+  border-radius: 25px;
+  border: 0px solid #000101;
 }
 
-input[type=range]::-webkit-slider-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 39px;
-          border-radius: 7px;
-          background: var(--range_btn_color);
-          cursor: pointer;
-          -webkit-appearance: none;
-          margin-top: -3.6px;
+input[type="range"]::-moz-range-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #65001c;
+  cursor: pointer;
 }
 
-input[type=range]:focus::-webkit-slider-runnable-track {
-          background: var(--range_hover_color);
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 12.8px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 39px 0;
+  color: transparent;
 }
 
-input[type=range]::-moz-range-track {
-          width: 100%;
-          height: 12.8px;
-          cursor: pointer;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          background: #ac51b5;
-          border-radius: 25px;
-          border: 0px solid #000101;
+input[type="range"]::-ms-fill-lower {
+  background: #ac51b5;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
 
-input[type=range]::-moz-range-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 39px;
-          border-radius: 7px;
-          background: #65001c;
-          cursor: pointer;
+input[type="range"]::-ms-fill-upper {
+  background: #ac51b5;
+  border: 0px solid #000101;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
 }
 
-input[type=range]::-ms-track {
-          width: 100%;
-          height: 12.8px;
-          cursor: pointer;
-          background: transparent;
-          border-color: transparent;
-          border-width: 39px 0;
-          color: transparent;
+input[type="range"]::-ms-thumb {
+  box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  border: 0px solid #000000;
+  height: 20px;
+  width: 39px;
+  border-radius: 7px;
+  background: #65001c;
+  cursor: pointer;
 }
 
-input[type=range]::-ms-fill-lower {
-          background: #ac51b5;
-          border: 0px solid #000101;
-          border-radius: 50px;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+input[type="range"]:focus::-ms-fill-lower {
+  background: #ac51b5;
 }
 
-input[type=range]::-ms-fill-upper {
-          background: #ac51b5;
-          border: 0px solid #000101;
-          border-radius: 50px;
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ac51b5;
 }
 
-input[type=range]::-ms-thumb {
-          box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-          border: 0px solid #000000;
-          height: 20px;
-          width: 39px;
-          border-radius: 7px;
-          background: #65001c;
-          cursor: pointer;
-}
-
-input[type=range]:focus::-ms-fill-lower {
-          background: #ac51b5;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-          background: #ac51b5;
-}
-
-body {
-          padding: 30px;
+@media screen and (max-width: 480px) {
+  .tool_box {
+    width: 400px;
+    max-width: 80%;
+    min-height: 400px;
+  }.code_display {
+    border: 1px solid;
+    height: 5rem;
+  }
 }
