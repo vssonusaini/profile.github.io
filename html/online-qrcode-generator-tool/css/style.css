@@ -159,6 +159,7 @@ body.dark-theme {
   padding: 1rem;
   transition: all 1s ease-in-out;
   display: none;
+ overflow-y: auto;
 }
 .history ul {
   list-style: none;
