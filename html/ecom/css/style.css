@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap");
+* {
+  padding: 0;
+
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --main_color: #fff;
+  --body_color: whitesmoke;
+  --text_color: #000;
+  --theme_color: rgb(145, 233, 123);
+  --theme_text_color: #fff;
+  --light_border: rgba(104, 104, 104, 0.241);
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--body-color);
+}
+
+/* -----scrollbar Css--------- */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: #4d4d4d;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c2c2c2;
+}
+
+/* ------main_css------ */
+.container {
+  width: 100%;
+}
+
+/* -----nav bar ------ */
+.nav_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 3rem;
+  padding: 0 1rem;
+  background-color: var(--main_color);
+}
+
+.logo {
+  font-size: 0.8rem;
+}
+.nav_bar_menu ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.nav_bar_menu ul li a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.nav_bar_menu ul li a.links {
+  color: var(--text_color);
+  padding: 04rem 1rem;
+}
+
+/* -----------------header ---------- */
+header {
+  width: 100%;
+  height: 50rem;
+  background: url("../image/bg2.jpg") no-repeat;
+  background-size: cover;
+}
+
+header p:nth-child(1) {
+  font-size: 240%;
+  font-weight: bold;
+  margin-left: 140px;
+  position: absolute;
+  margin-top: 110px;
+}
+header p:nth-child(2) {
+  margin-left: 140px;
+  position: absolute;
+  margin-top: 295px;
+}
+
+header button {
+  margin-left: 140px;
+  position: absolute;
+  margin-top: 370px;
+  background: var(--theme_color);
+  padding: 10px;
+  border: 0;
+  border-radius: 30px;
+  color: var(--text-color);
+  padding-left: 30px;
+  padding-right: 30px;
+  -webkit-box-shadow: 10px 13px 38px -19px rgba(251, 146, 0, 1);
+  -moz-box-shadow: 10px 13px 38px -19px rgba(251, 146, 0, 1);
+  box-shadow: 10px 13px 38px -19px rgba(251, 146, 0, 1);
+}
+/* ------------------ */
+
+/* -----product-list------ */
+#product_list {
+  width: 90%;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+  align-items: center;
+}
+
+.product_list .products {
+  text-decoration: none;
+  color: var(--text-color);
+  border: 1px solid rgba(225, 223, 223, 0.508);
+  background-color: var(--main-color);
+  padding: 0.6rem;
+  border-radius: 6px;
+  transition: all 600ms;
+  margin: 1rem;
+}
+
+.product_list .products:hover {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+
+.product_list img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.product_list .detelis .rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.4rem;
+}
+
+.product_list .detelis .product_title {
+  margin: 0.4rem 0;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.product_list .detelis .p p {
+  text-align: justify;
+  padding-right: 0.4rem;
+  font-size: 0.9rem;
+}
+
+.product_list .detelis .product_add_btn {
+  width: 100%;
+  text-align: right;
+}
+.product_list .detelis button {
+  margin-top: 1rem;
+  padding: 0.4rem 1.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--theme_color);
+  border-radius: 3px;
+}
+
+/* ================= */
+/* ------------login Form ------------- */
+.slider_form {
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(92, 91, 91, 0.152);
+  backdrop-filter: blur(2px);
+  display: none;
+}
+/* --javascrti css----- */
+.login_form_class {
+  display: flex;
+  justify-content: center;
+}
+
+.login_form {
+  position: relative;
+  top: -100%;
+  width: 25%;
+  height: 18rem;
+  background-color: #fff;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+/* --javascrti css----- */
+.login_class {
+  top: 5rem;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 1rem;
+  border-bottom: 1px solid var(--light_border);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  padding: 1rem 2rem;
+}
+
+.input_div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.4rem 0;
+  font-size: 0.8rem;
+  width: 80%;
+  font-weight: bold;
+}
+.input_div input {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--light_border);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.input_div button {
+  padding: 0.3rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--light_border);
+  border-radius: 4px;
+  font-family: "Nunito", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#errer {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.2rem 0;
+}
+.sign {
+  padding: 0.6rem;
+  text-decoration: none;
+}
+.sign a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--text_color);
+}
+.sign a span {
+  color: var(--theme_color);
+}
+/* ------Responsive Web Design Media Queries------------- */
+@media screen and (max-width: 700px) {
+  .login_form {
+    width: 55%;
+  }
+}

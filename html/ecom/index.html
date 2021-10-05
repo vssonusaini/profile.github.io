@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food App</title>
+
+    <!-- ----main_css --- -->
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- -----style css ------- -->
+    <link rel="stylesheet" href="./css/option.css" />
+
+    <!-- -----icons link------ -->
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- main container -->
+    <div class="container">
+      <!-- -----nav_bar ------------- -->
+      <div class="nav_bar">
+        <!-- -----logo------ -->
+        <div class="logo">
+          <h1>Food App</h1>
+        </div>
+
+        <div class="nav_bar_menu">
+          <ul>
+            <li><a href="index.html" class="links">Home</a></li>
+            <li><a href="#" class="links">Cart</a></li>
+            <li id="menu_login_button">
+              <a href="#" class="links" onclick="login_form()">Login &nbsp;<i class="bx bx-log-in"></i></a>
+            </li>
+            <li id="menu_account_login" style="display: none">
+              <a href="#" class="manu_links dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-user"></i>&nbsp;<span id="username"></span></a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#"><h2 id="hello_user"></h2></a>
+                <a class="dropdown-item " id="admin" style="display: none;" href="#"> <i class="bx bxs-dashboard"></i>&nbsp; Dasebord</a>
+                <a class="dropdown-item" href="#"><i class="bx bxs-cart"></i>&nbsp; My Order</a>
+                <a class="dropdown-item" href="#"><i class="bx bx-lock-alt"></i>&nbsp; Chenga Password</a>
+                <a class="dropdown-item" href="#" onclick="Logout()"><i class="bx bx-log-out"></i>&nbsp; Log Out</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ------header----- -->
+      <header>
+        <p>
+          Your Favorite Food<br />Delivered Hot &amp;<br />
+          Fresh
+        </p>
+        <p>
+          Healthy switcher chefs do all the prep work, like peeding,<br />
+          chopping &amp; marinating, so you can cook a fresh food
+        </p>
+        <button onclick="toggle_btn()">book Noew</button>
+      </header>
+
+      <!-- -----product------- -->
+      <div class="product_list" id="product_list"></div>
+
+      <!-- -------login Form ---------------- -->
+      <div class="slider_form">
+        <div class="login_form">
+          <div class="heading">
+            <h3 id="Heading_Value">Login</h3>
+            <i class="bx bx-x-circle" onclick="cluse()"></i>
+          </div>
+          <!-- ----------form---------- -->
+          <div class="form" id="login">
+            <div class="input_div">
+              <label for="username"><i class="bx bx-user"></i>&nbsp;User Id : </label>
+              <input type="text" placeholder="user name" id="usernameLogin" />
+            </div>
+            <div class="input_div">
+              <label for="password"><i class="bx bx-lock-alt"></i>&nbsp;Password : </label>
+              <input type="text" placeholder="password" id="passwordLogin" />
+            </div>
+            <div class="input_div">
+              <button onclick="Login()">Login&nbsp;<i class="bx bx-log-in"></i></button>
+            </div>
+            <div id="statusLogin"></div>
+            <div class="sign">
+              <a href="#" onclick="singup_form_toggle()">You do not have an account,<span> Sign up</span> here</a>
+            </div>
+          </div>
+
+          <div class="form" id="sign_up" style="display: none">
+            <div class="input_div">
+              <label for="usernameSignup"><i class="bx bx-user"></i>&nbsp;User Id : </label>
+              <input type="text" placeholder="user name" id="usernameSignup" />
+            </div>
+            <div class="input_div">
+              <label for="passwordSignup"><i class="bx bx-lock-alt"></i>&nbsp;Password : </label>
+              <input type="text" placeholder="password" id="passwordSignup" />
+            </div>
+            <div class="input_div">
+              <label for="RepasswordSignup"><i class="bx bx-lock-alt"></i>&nbsp;Password : </label>
+              <input type="text" placeholder="password" id="RepasswordSignup" />
+            </div>
+            <div class="input_div">
+              <button onclick="Signup()">Sign Up&nbsp;<i class="bx bx-log-in"></i></button>
+            </div>
+            <div id="statusSignup"></div>
+            <div class="sign">
+              <a href="#" onclick="login_form_toggle()"> You already have an account,<span> Log In</span> here</a>
+            </div>
+          </div>
+
+          <!-- ------form end----------- -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ----------style js -------------- -->
+    <script src="./js/bundle.js"></script>
+    <script src="./js/app.js"></script>
+
+    <!-- -------DATABBASE------ -->
+    <script src="./js/main.js"></script>
+  </body>
+</html>
