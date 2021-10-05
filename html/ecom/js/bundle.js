@@ -1,10 +1,9 @@
 /*------------------------------------------------------------------
 
-Project Name :      Vetra - HTML Admin Dashboard Template
+Project Name :      Sonu Saini - HTML Admin Dashboard Template
 Version :           1.0
-Author :            Laborasyon
-Author Portfolio :  https://themeforest.net/user/laborasyon/portfolio
-Author Website :    https://laborasyon.com/
+Author :            V S Sonu Saini
+Author Website :    https://sainisahab.com/
 
 ------------------------------------------------------------------*/
 
