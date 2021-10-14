@@ -12,7 +12,7 @@
     <meta name="msvalidate.01" content="EA747F89402F7D3014CF02BF9C186249" />
     <!-- Favicon
 ================================================== -->
-    <link href="favicon.svg" rel="shortcut icon" type="image/x-icon" />
+    <link href="./favicon.svg" rel="shortcut icon" type="image/x-icon" />
 
     <!-- CSS
 ================================================== -->
@@ -22,21 +22,8 @@
     <link rel="stylesheet" href="css/owl.theme.css" />
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/colors/main_color.css" />
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-NT4Z9SB");
-    </script>
-    <!-- End Google Tag Manager -->
+    <link rel="stylesheet" href="css/colors/yellow.css" />
+
     <!-- Google Web fonts
 ================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" />
@@ -44,15 +31,9 @@
     <!-- Font Icons
 ================================================== -->
     <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
-    <script type="application/ld+json">
-      { "@context": "https://schema.org", "@type": "Review", "name": "V S Sonu Saini", "url": "https://sainisahab.com", "author": "V S Sonu Saini", "reviewBody": "Hi! I am Sonu Saini, a web designer/developer focused on crafting great web experiences. Designing and Coding have been my passion since the days I started working with computers but I found myself into web design/development since 2018. I enjoy creating beautifully designed, intuitive and functional websites.", "reviewRating": { "@type": "Rating", "ratingValue": "4.6" }, "itemReviewed": { "@type": "LocalBusiness", "name": "Bast Web Tools", "priceRange": "Free", "image": "https://sainisahab.com/images/profile.jpg", "address": { "@type": "PostalAddress", "telephone": "+919812846715", "addressCountry": { "@type": "Country", "name": ["India", "United States", "Singapore"] } } } }
-    </script>
+    <link rel="stylesheet" href="icon-fonts/web-design/flaticon.css" />
   </head>
-
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NT4Z9SB" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <!-- Preloading -->
     <div id="preloader">
       <div class="spinner"></div>
@@ -65,12 +46,12 @@
 ================================================== -->
         <div class="col-lg-3 col-md-4">
           <div class="profile">
-            <div class="profile-name">
+            <div class="profile-name" id="profile-name">
               <span class="name">V S Sonu Saini</span><br />
               <span class="job">Web Developer</span>
             </div>
             <figure class="profile-image">
-              <img src="images/profile.jpg" alt="v s sonu saini" />
+              <img src="images/profile.jpg" alt="vssonusaini-profile" />
             </figure>
             <ul class="profile-information">
               <li></li>
@@ -86,7 +67,7 @@
               </li>
             </ul>
             <div class="col-md-12">
-              <button class="site-btn icon"><a href="./html/cv/" style="color: #fff">Download Cv</a> <i class="fa fa-download" aria-hidden="true"></i></button>
+              <a style="width: 10rem" href="/html/cv/" class="site-btn icon">Download Cv <i class="fa fa-download" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -108,6 +89,7 @@
                       <li class="tab"><a href="#resume">RESUME</a></li>
                       <li class="tab"><a href="#portfolio">PORTFOLIO</a></li>
                       <li class="tab"><a href="#blog">BLOG</a></li>
+                      <li class="tab"><a href="#gallery">GALLERY</a></li>
                       <li class="tab"><a href="#contact">CONTACT</a></li>
                     </ul>
                   </div>
@@ -326,22 +308,22 @@
                       <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-01.jpg" alt="clients-img" />
+                            <img src="images/client-01.jpg" alt="client-01" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-02.jpg" alt="clients-img" />
+                            <img src="images/client-02.jpg" alt="client-02" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-03.jpg" alt="clients-img" />
+                            <img src="images/client-03.jpg" alt="client-03" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-04.jpg" alt="clients-img" />
+                            <img src="images/client-04.jpg" alt="client-04" />
                           </div>
                         </div>
                       </div>
@@ -360,7 +342,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="Jack Garratt" />
+                                <img src="images/testimonial-1.jpg" alt="testimonial-1" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -376,7 +358,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="April M. Griffin" />
+                                <img src="images/testimonial-2.jpg" alt="testimonial-2" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -392,7 +374,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="Larry M. Johnson" />
+                                <img src="images/testimonial-3.jpg" alt="testimonial-3" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -408,7 +390,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="Jack Garratt" />
+                                <img src="images/testimonial-1.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -424,7 +406,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="Griffin" />
+                                <img src="images/testimonial-2.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -440,7 +422,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="Larry M." />
+                                <img src="images/testimonial-3.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -456,7 +438,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="jack Garratt" />
+                                <img src="images/testimonial-1.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -472,7 +454,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="April M. Griffin" />
+                                <img src="images/testimonial-2.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -488,7 +470,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="Larry M. Johnson" />
+                                <img src="images/testimonial-3.jpg" alt="testimonial" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -587,12 +569,12 @@
                     </div>
                     <!-- load more button -->
                     <!-- <div id="js-loadMore-agency" class="cbp-l-loadMore-button top_30">
-                      <a href="load-more/portfolio.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
-                        <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
-                        <span class="cbp-l-loadMore-loadingText">Loading...</span>
-                        <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
-                      </a>
-                    </div> -->
+                        <a href="load-more/portfolio.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
+                          <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
+                          <span class="cbp-l-loadMore-loadingText">Loading...</span>
+                          <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                        </a>
+                      </div> -->
                   </section>
                 </div>
 
@@ -610,7 +592,7 @@
                       <div id="grid-blog" class="row">
                         <!-- a blog -->
                         <div class="cbp-item">
-                          <a href="blog-posts/bast_laptop.html" class="blog-box">
+                          <a href="blog-posts/bast-laptop/" class="blog-box">
                             <div class="blog-img">
                               <img src="images/blogs/Lenovo_ideapad_slim_blog.jpg" alt="Lenovo_ideapad_slim_blog" />
                             </div>
@@ -626,7 +608,7 @@
 
                         <!-- a blog -->
                         <div class="cbp-item">
-                          <a href="./blog-posts/requestAnimationFrame.html" class="blog-box">
+                          <a href="./blog-posts/requestAnimationFrame/" class="blog-box">
                             <div class="blog-img">
                               <img src="images/blogs/js.jpg" alt="Javascript" />
                             </div>
@@ -640,7 +622,7 @@
                         </div>
 
                         <div class="cbp-item">
-                          <a href="./blog-posts/Qrcode.html" class="blog-box">
+                          <a href="./blog-posts/Qrcode/" class="blog-box">
                             <div class="blog-img">
                               <img src="images/works/Qrcodeapp.jpg" alt="Javascript" />
                             </div>
@@ -667,6 +649,113 @@
                   </div>
                 </div>
 
+                <!-- ---Gallery ---- -->
+                <div id="gallery">
+                  <div class="row">
+                    <section class="gallery line graybg col-md-12 padding_50 padbot_50">
+                      <div class="section-title bottom_30">
+                        <span></span>
+                        <h2>Photo Gallery</h2>
+                      </div>
+                      <div id="widget-gallery">
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/01.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/01.jpg" alt="01" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/02.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/02.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/03.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/03.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/04.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/04.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/05.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/05.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/06.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/06.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/07.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/07.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <!-- a photo -->
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/08.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/08.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/09.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/09.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/10.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/10.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                        <div class="cbp-item cbp-lightbox">
+                          <a href="images/gallery/11.jpg" class="cbp-lightbox">
+                            <figure>
+                              <img src="images/gallery/11.jpg" alt="image-1" />
+                            </figure>
+                          </a>
+                        </div>
+                      </div>
+                      <!-- load more button -->
+                      <div id="gallery-load-posts" class="cbp-l-loadMore-button top_60">
+                        <a href="/load-more/gallery.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
+                          <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
+                          <span class="cbp-l-loadMore-loadingText">Loading...</span>
+                          <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                        </a>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                <!-- ---gelley end-- -->
                 <!-- Contact Page
             ================================================== -->
                 <div id="contact">
@@ -728,7 +817,6 @@
                         <span></span>
                         <h2>Contact Map.</h2>
                       </div>
-
                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7016.698439750747!2d76.92710437404355!3d28.438887414141387!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d166c91a06c5b%3A0x21d37f497b1a988c!2sNew%20Colony%2C%20Sector%2095B%2C%20Gurugram%2C%20Haryana%20122505!5e0!3m2!1sen!2sin!4v1601433884328!5m2!1sen!2sin" height="350" frameborder="0" style="border: 0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </section>
                   </div>
@@ -743,8 +831,8 @@
 ================================================== -->
           <footer>
             <div class="footer col-md-12 top_30 bottom_30">
-              <div class="name col-md-4 hidden-md hidden-sm hidden-xs">V S Sonu Saini.</div>
-              <div class="copyright col-lg-8 col-md-12">© 2021 All rights reserved. Designed by <a href="#">Me</a></div>
+              <div class="name col-md-4 hidden-md hidden-sm hidden-xs">V S Sonu Saini</div>
+              <div class="copyright col-lg-8 col-md-12">© 2017 All rights reserved. Designed by <a href="#">Me</a></div>
             </div>
           </footer>
         </div>
@@ -759,6 +847,7 @@
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
     <script src="js/jquery.easytabs.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
