@@ -9,8 +9,8 @@ header nav a.home-btn,
 nav ul li a:after,
 .owl-theme .owl-controls .owl-page span,
 .skill-list .progress .percentage,
-ul.profile-information li:first-child:before {
-  /* background: #006eff !important; */
+ul.profile-information li:first-child:before,
+::-webkit-scrollbar-thumb {
   background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
 }
 
