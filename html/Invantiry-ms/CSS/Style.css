@@ -1,256 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap");
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --main_color: #fff;
-  --back_color: rgb(238, 240, 242);
-  --text_color: #000;
-  --font-family: "Nunito", sans-serif;
-  --thema_color: #023047;
-  --light_border: rgb(208, 214, 220);
-}
-
-body {
-  font-family: "Nunito", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background: var(--back_color);
-}
-
-.contanier {
-  width: 100%;
-}
-
-.nav_bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--main_color);
-  padding: 0 2rem;
-}
-
-.logo {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.menu_list {
-  display: flex;
-}
-
-.menu_list li {
-  list-style: none;
-  /* margin-right: 1rem; */
-}
-
-.menu_list li a {
-  text-decoration: none;
-  display: block;
-  color: var(--text_color);
-  padding: 0.8rem 1rem;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  font-weight: 400;
-}
-
-.menu_list li a:hover {
-  background: var(--thema_color);
-  color: #fff;
-}
-
-/* <!-- text Bar --> */
-.text_bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0.6rem 1rem;
-  height: 10rem;
-}
-
-.text_bar .box {
-  width: 15%;
-  height: 6rem;
-  border-radius: 5px;
-  background: var(--main_color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: 1px solid var(--light_border);
-}
-
-.text_bar .box span:nth-child(1) {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.text_bar .box span:nth-child(2) {
-  font-weight: bold;
-  margin-top: 0.4rem;
-  text-transform: capitalize;
-}
-
-/* main_fild */
-.grid_div {
-  display: grid;
-  grid-template-columns: 30% 62%;
-  justify-content: space-around;
-}
-
-.avail_stock,
-.sal_purc {
-  background: var(--main_color);
-  height: 40rem;
-  border-radius: 3px;
-}
-
-.top_heading {
-  display: block;
-  padding: 1rem;
-  text-align: center;
-}
-
-/* Available Stocks */
-.avail_stock form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid var(--light_border);
-  margin: 0.4rem;
-  border-radius: 6px;
-  padding: 0.1rem 0.2rem;
-}
-
-.avail_stock form input {
-  padding: 0.6rem 0.4rem;
-  width: 60%;
-  border: none;
-  outline: none;
-  font-family: var(--font-family);
-}
-
-.avail_stock form button {
-  padding: 0.6rem 1.4rem;
-  width: 20%;
-  border: none;
-  outline: none;
-  font-family: var(--font-family);
-  font-weight: bold;
-  background: var(--thema_color);
-  color: #fff;
-}
-.avail_stock form button:nth-child(3) {
-  border-radius: 0 6px 6px 0;
-  margin: 0 0 0 0.2rem;
-}
-
-.avail_stock table {
-  width: 90%;
-  border-collapse: collapse;
-  margin: 0 auto;
-}
-
-.avail_stock table tr,
-.avail_stock table td {
-  border: 1px solid;
-  padding: 0.2rem 0.6rem;
-}
-
-.avail_stock table tbody {
-  font-size: 0.8rem;
-}
-
-/* Sale/Purchase Transactions */
-.sal_purc .form table {
-  width: 80%;
-  margin: 0 auto;
-  border-collapse: collapse;
-}
-
-.sal_purc table tr,
-.sal_purc table td {
-  /* border: 1px solid; */
-  padding: 0.2rem 0.6rem;
-}
-
-.sal_purc .form table input,
-.sal_purc .form table select {
-  padding: 0.4rem;
-  width: 100%;
-  height: 2.3rem;
-  border: 2px solid;
-  border-radius: 4px;
-  outline: none;
-  border-color: var(--light_border);
-}
-
-.sal_purc .form table input:focus {
-  border-color: var(--thema_color);
-}
-
-.sal_purc .form table button {
-  padding: 0.6rem;
-  width: 100%;
-  color: #fff;
-  background: var(--thema_color);
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  font-size: 0.9rem;
-  height: 2.3rem;
-  font-weight: bold;
-  font-family: var(--font-family);
-}
-
-/* show_transaction */
-
-.show_transaction {
-  width: 80%;
-  margin: 0 auto;
-  margin-top: 1rem;
-}
-
-.show_transaction label {
-  border: 1px solid var(--light_border);
-  width: auto;
-  padding: 0.2rem 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 3px;
-  margin-right: 1rem;
-  cursor: pointer;
-}
-
-.show_transaction input {
-  margin-left: 1rem;
-  background: var(--thema_color);
-}
-
-.show_transaction .show_transaction_bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.show_transaction .show_transaction_data {
-  width: 100%;
-  margin-top: 1rem;
-  border-collapse: collapse;
-}
-
-
-.show_transaction .show_transaction_data tr,
-.show_transaction .show_transaction_data td {
-  border: 1px solid;
-}
-
-.show_transaction .show_transaction_data {
-  font-size: 0.8rem;
-  text-transform: capitalize;
-}
+@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,700&display=swap);
+*{padding:0;margin:0;box-sizing:border-box}
+:root{--main_color:#fff;--back_color:rgb(238, 240, 242);--text_color:#000;--font-family:"Nunito",sans-serif;--thema_color:#023047;--light_border:rgb(208, 214, 220)}
+body{font-family:Nunito,sans-serif;-webkit-font-smoothing:antialiased;background:var(--back_color)}
+.contanier{width:100%}
+.nav_bar{display:flex;align-items:center;justify-content:space-between;background-color:var(--main_color);padding:0 2rem}
+.logo{font-size:2rem;font-weight:700}
+.menu_list{display:flex}
+.menu_list li{list-style:none}
+.menu_list li a{text-decoration:none;display:block;color:var(--text_color);padding:.8rem 1rem;font-size:.9rem;text-transform:uppercase;font-weight:400}
+.menu_list li a:hover{background:var(--thema_color);color:#fff}
+.text_bar{display:flex;align-items:center;justify-content:space-around;padding:.6rem 1rem;height:10rem}
+.text_bar .box{width:15%;height:6rem;border-radius:5px;background:var(--main_color);display:flex;align-items:center;justify-content:center;flex-direction:column;border:1px solid var(--light_border)}
+.text_bar .box span:nth-child(1){font-size:2rem;font-weight:700}
+.text_bar .box span:nth-child(2){font-weight:700;margin-top:.4rem;text-transform:capitalize}
+.grid_div{display:grid;grid-template-columns:30% 62%;justify-content:space-around}
+.avail_stock,.sal_purc{background:var(--main_color);height:40rem;border-radius:3px}
+.top_heading{display:block;padding:1rem;text-align:center}
+.avail_stock form{display:flex;align-items:center;justify-content:space-between;align-items:center;border:1px solid var(--light_border);margin:.4rem;border-radius:6px;padding:.1rem .2rem}
+.avail_stock form input{padding:.6rem .4rem;width:60%;border:none;outline:0;font-family:var(--font-family)}
+.avail_stock form button{padding:.6rem 1.4rem;width:20%;border:none;outline:0;font-family:var(--font-family);font-weight:700;background:var(--thema_color);color:#fff}
+.avail_stock form button:nth-child(3){border-radius:0 6px 6px 0;margin:0 0 0 .2rem}
+.avail_stock table{width:90%;border-collapse:collapse;margin:0 auto}
+.avail_stock table td,.avail_stock table tr{border:1px solid;padding:.2rem .6rem}
+.avail_stock table tbody{font-size:.8rem}
+.sal_purc .form table{width:80%;margin:0 auto;border-collapse:collapse}
+.sal_purc table td,.sal_purc table tr{padding:.2rem .6rem}
+.sal_purc .form table input,.sal_purc .form table select{padding:.4rem;width:100%;height:2.3rem;border:2px solid;border-radius:4px;outline:0;border-color:var(--light_border)}
+.sal_purc .form table input:focus{border-color:var(--thema_color)}
+.sal_purc .form table button{padding:.6rem;width:100%;color:#fff;background:var(--thema_color);border:none;outline:0;border-radius:3px;font-size:.9rem;height:2.3rem;font-weight:700;font-family:var(--font-family)}
+.show_transaction{width:80%;margin:0 auto;margin-top:1rem}
+.show_transaction label{border:1px solid var(--light_border);width:auto;padding:.2rem .5rem;display:flex;align-items:center;justify-content:space-between;border-radius:3px;margin-right:1rem;cursor:pointer}
+.show_transaction input{margin-left:1rem;background:var(--thema_color)}
+.show_transaction .show_transaction_bar{width:100%;display:flex;align-items:center;justify-content:space-between}
+.show_transaction .show_transaction_data{width:100%;margin-top:1rem;border-collapse:collapse}
+.show_transaction .show_transaction_data td,.show_transaction .show_transaction_data tr{border:1px solid}
+.show_transaction .show_transaction_data{font-size:.8rem;text-transform:capitalize}
