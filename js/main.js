@@ -52,6 +52,7 @@ $(document).ready(function () {
   $("#grid-container").cubeportfolio({
     layoutMode: "grid",
     filters: "#filters-container",
+    search: "#js-search-url",
     gridAdjustment: "responsive",
     animationType: "skew",
     defaultFilter: "*",

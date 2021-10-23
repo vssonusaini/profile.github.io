@@ -3333,6 +3333,7 @@ if (typeof Object.create !== 'function') {
 
         // reset filters active class after the search is used
         parent.registerEvent('resetFiltersVisual', function() {
+            
             var arr = parent.options.defaultFilter.split('|');
 
             t.filters.each(function(index, el) {
