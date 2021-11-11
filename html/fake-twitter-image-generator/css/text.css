@@ -1,0 +1,78 @@
+.tweet-Preview{margin:3rem;width:30rem;border:1px solid;color:#aaafb8;border:1px solid var(--boder-color);background-color:var(--body-color);padding:1rem;border-radius:2px}
+.tweet-Preview h2{font-size:22px;font-weight:500}
+.tweet-Preview .tweet_box{border:1px #eff3f4 solid;background-color:#fff;margin:32px 0 34px;width:440px}
+.tweet-Preview .tweet_box.dim{border:1px #15202b solid;background-color:#15202b}
+.tweet-Preview .tweet_box.dark{border:1px #000 solid;background-color:#000}
+@media (max-width:940px){
+.tweet-Preview .tweet_box{width:400px}
+}
+@media (max-width:890px){
+.tweet-Preview .tweet_box{max-width:440px;width:100%;margin:32px auto}
+}
+.tweet-Preview .tweet{border:1px transparent solid;background-color:#fff;padding:0 16px;font-size:15px;width:100%;-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.tweet-Preview .tweet .head{padding-top:12px;display:flex;justify-content:space-between}
+.tweet-Preview .tweet .head .title{display:flex;align-items:center}
+.tweet-Preview .tweet .head .title img{display:inline-block;border-radius:50%;margin-right:12px;transform:translateZ(0);-webkit-transform:translateZ(0);image-rendering:-webkit-optimize-contrast;image-rendering:optimize-contrast}
+.tweet-Preview .tweet .head .title .text .top{font-weight:700;display:flex;align-items:center}
+.tweet-Preview .tweet .head .title .text .top .tweet_name{margin-right:2px}
+.tweet-Preview .tweet .head .title .text .top .verified{font-weight:400;color:#1da1f2}
+.tweet-Preview .tweet .head .title .text .top .verified.hide{display:none}
+.tweet-Preview .tweet .head .title .text .bottom{color:#536471}
+.tweet-Preview .tweet .head .dots{color:#536471}
+.tweet-Preview .tweet .content .message{padding-top:16px;font-size:23px}
+.tweet-Preview .tweet .content .message .highlight{color:#1b95e0}
+.tweet-Preview .tweet .content .tweet_info{color:#536471;padding:16px 0;display:flex}
+.tweet-Preview .tweet .stats{border-top:1px #eff3f4 solid;color:#536471;padding:16px 4px;display:flex;flex-wrap:wrap}
+.tweet-Preview .tweet .stats .stat{margin-right:24px}
+.tweet-Preview .tweet .stats .stat .count{font-weight:700;color:#0f1419}
+.tweet-Preview .tweet .stats .stat.hide{display:none}
+@media (max-width:520px){
+.tweet-Preview .tweet .stats .stat{margin-right:12px}
+}
+.tweet-Preview .tweet .tail{border-top:1px #eff3f4 solid;padding:12px 0;display:flex;justify-content:space-around}
+.tweet-Preview .tweet .tail svg{color:#536471}
+.tweet-Preview .tweet.dim{background-color:#15202b;color:#fff}
+.tweet-Preview .tweet.dim .head .title .text .top .verified{color:#fff}
+.tweet-Preview .tweet.dim .head .title .text .bottom,.tweet-Preview .tweet.dim .head .title .text .dots{color:#798a96}
+.tweet-Preview .tweet.dim .content .tweet_info{color:#798a96}
+.tweet-Preview .tweet.dim .content .tweet_info .tweet_client{color:#1b95e0}
+.tweet-Preview .tweet.dim .stats{border-top:1px #38444d solid;color:#798a96}
+.tweet-Preview .tweet.dim .stats .stat .count{color:#fff}
+.tweet-Preview .tweet.dim .tail{border-top:1px #38444d solid}
+.tweet-Preview .tweet.dim .tail svg{color:#798a96}
+.tweet-Preview .tweet.dark{background-color:#000;color:#d9d9d9}
+.tweet-Preview .tweet.dark .head .title .text .top .verified{color:#d9d9d9}
+.tweet-Preview .tweet.dark .head .title .text .bottom,.tweet-Preview .tweet.dark .head .title .text .dots{color:#6e767d}
+.tweet-Preview .tweet.dark .content .tweet_info{color:#6e767d}
+.tweet-Preview .tweet.dark .content .tweet_info .tweet_client{color:#1b95e0}
+.tweet-Preview .tweet.dark .stats{border-top:1px #2f3336 solid;color:#6e767d}
+.tweet-Preview .tweet.dark .stats .stat .count{color:#d9d9d9}
+.tweet-Preview .tweet.dark .tail{border-top:1px #2f3336 solid}
+.tweet-Preview .tweet.dark .tail svg{color:#6e767d}
+@media (max-width:395px){
+.tweet-Preview .tweet{font-size:14px}
+.tweet-Preview .tweet .content .message{font-size:21px}
+.tweet-Preview .tweet .stats{padding:16px 0}
+.tweet-Preview .tweet .stats .stat{margin-right:8px}
+}
+.tweet-Preview .btn{display:block;border:none;border-radius:6px;border-radius:99px;background-color:var(--theme-color);color:#fff;font:inherit;margin:auto;padding:11px 33px;cursor:pointer}
+@media (hover:hover){
+.tweet-Preview .btn{transition:background .2s ease-in}
+.tweet-Preview .btn:hover{background-color:#1a90d9}
+}
+@media (hover:none){
+.tweet-Preview .btn:active{background-color:#1a90d9}
+}
+@media (max-width:890px){
+.tweet-Preview{width:75%;margin:0 auto 16px;position:static}
+}
+@media (max-width:700px){
+.tweet-Preview{width:85%;margin:0 auto 16px}
+}
+@media (max-width:640px){
+.tweet-Preview{width:95%;margin:0 auto 16px}
+}
+@media (max-width:520px){
+.tweet-Preview{background-color:var(--body-color);width:100%;margin:0 auto 16px;box-shadow:none;border:none;border-radius:0;padding:24px 0}
+}
+.tweet-desk .tweet .stats .stat .count{font-weight:700;color:#0f1419}

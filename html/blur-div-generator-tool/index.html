@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <title>Blur App</title>
+  </head>
+  <body>
+    <div id="snow"></div>
+    <div class="container">
+      <div class="preview" id="preview">
+        <div class="glass" id="glass"></div>
+      </div>
+
+      <div class="controlbar">
+        <div class="controls">
+          <div class="heading">
+            <h1>Blur</h1>
+          </div>
+          <div class="input">
+            <label for="blur">Blur : <span id="blur_value"></span></label><br />
+            <input type="range" id="blur" min="0" max="100" />
+          </div>
+          <div class="input">
+            <label for="transparency">Transparency : <span id="transparency_value"></span></label><br />
+            <input type="range" id="transparency" />
+          </div>
+        </div>
+
+        <div class="background_set">
+          <div class="heading">
+            <h1>Background Theme</h1>
+          </div>
+
+          <div class="input">
+            <label for="seachable-select">Background Theme : </label>
+            <!-- <img src="./image/1682077.png" alt=""> -->
+            <select id="bg-theme">
+              <option value="7.webp">wallpaper 1</option>
+              <option value="6.webp">wallpaper 2</option>
+              <option value="4.webp">wallpaper 3</option>
+              <option value="2.webp">wallpaper 4</option>
+              <option value="1682077.png">wallpaper 5</option>
+              <option value="pastel">None</option>
+            </select>
+          </div>
+
+          <div class="input">
+            <br />
+            <label for="snow_size">snow size</label>
+            <input type="range" id="snow_size" />
+          </div>
+        </div>
+
+        <div class="code">
+          <div class="heading">
+            <h1>Code</h1>
+          </div>
+          <div id="code"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./js/main.js" defer></script>
+  </body>
+</html>
