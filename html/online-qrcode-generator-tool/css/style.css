@@ -11,7 +11,7 @@
   --boder-color: #dddddd;
   --text-color: #000;
   --hover-color: #f89553;
-  --shadow-color: #777;
+  --shadow-color: rgba(141, 232, 190, 0.522);
 }
 .change-theme {
   color: var(--text-color);
@@ -25,7 +25,7 @@ body.dark-theme {
   --boder-color: #232e38;
   --text-color: #aaafb8;
   --hover-color: #4dd4ae;
-  --shadow-color: #313131;
+  --shadow-color: #31313121;
 }
 body,
 html {
@@ -54,6 +54,9 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+  box-shadow: 2px -1px 14px 2px rgba(0, 0, 0, 0.21);
+  -webkit-box-shadow: 2px -1px 14px 2px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: 2px -1px 14px 2px rgba(0, 0, 0, 0.21);
 }
 
 nav .logo {
@@ -80,6 +83,9 @@ nav .logo {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  -webkit-box-shadow: 0 12px 39px -4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 12px 39px -4px var(--shadow-color);
 }
 
 .center_container .code_preview {
@@ -138,7 +144,7 @@ nav .logo {
 /* ---------------FOOTER------------- */
 footer {
   padding: 1rem;
-  font-size: 60%;
+  font-size: 70%;
   text-align: center;
   background: #1e1e1e;
   border-radius: 8px;
@@ -155,7 +161,7 @@ footer a {
 @media screen and (max-width: 472px) {
   .center_container {
     width: 90%;
-    /* height: 80vh; */
+    margin: 1.5rem 0;
   }
 }
 @media screen and (min-width: 768px) {
@@ -169,8 +175,8 @@ footer a {
   footer {
     display: flex;
     justify-content: space-between;
-    font-size: 80%;
-    width: 95%;
+    font-size: 90%;
+    width: 80%;
     margin: 1rem;
   }
 }
