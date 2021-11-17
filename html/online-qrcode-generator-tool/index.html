@@ -1,65 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Qrcode Code Generator</title>
     <meta charset="UTF-8" />
-    <meta name="description" content="Free Online QR Code Generator to make your own QR Codes." />
-    <meta name="keywords" content="Qrcode Code Generator,bar code generator tool, bar code generator,v s sonu saini" />
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Favicon
-================================================== -->
-    <link href="../../favicon.svg" rel="shortcut icon" type="image/x-icon" />
-    <!-- main css -->
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/root.css" />
     <link rel="stylesheet" href="./css/style.css" />
-    <!-- icons link -->
+    <link rel="stylesheet" href="./css/slider.css" />
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="nav_bar">
-      <div class="logo">
-        <h1><span id="logo"></span> <span class="div">Generator</span></h1>
+    <div class="container">
+      <!-- ---------NAV BAR --------- -->
+      <nav>
+        <!-- --------LOGO--------- -->
+        <div class="logo">
+          <h1><span id="logo"></span> <span> Generator</span></h1>
+        </div>
+        <!-- -------MENU-LIST------ -->
+        <div class="menu_list">
+          <ul>
+            <li>
+              <a href="#" data-drawer-trigger aria-controls="drawer-name" aria-expanded="false" class="btn btn-primary"><i class="bx bx-menu-alt-right"></i></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!--NAV END -- -->
+
+      <!-- ---------------------center-div------------------- -->
+      <div class="center_container">
+        <div class="code_preview" id="qr_preview"><div id="code_preview"></div></div>
+        <div class="code_preview" id="bar_preview"><svg id="barcode"></svg></div>
+        <div id="display_value">Sonu SAini</div>
+        <div class="input_form"><input type="text" id="Qr_title" onchange="code_value()" /></div>
+        <div class="code_btn">
+          <a href="#" id="download"><i class="bx bx-cloud-download"></i>&nbsp;Download </a>
+          <a href="#" id="clear"><i class="bx bx-x-circle"></i>&nbsp;Clear</a>
+        </div>
       </div>
-      <div class="nav_menu_list">
-        <ul>
-          <li><i class="bx bx-moon change-theme" id="theme-button"></i></li>
-          <li class="add">
-            <select name="" id="barcode_data" onchange="change()">
-              <option value="s">Select Code</option>
-              <option value="qrcode">Qr Code</option>
-              <option value="barcodea">Bar Code</option>
-            </select>
-          </li>
-          <li class="add"><a href="#" onclick="toggle_btn()">history</a></li>
-        </ul>
-      </div>
+
+      <!-- -------FOOTER ---------- -->
+      <footer>
+        <div>Designed by<a href="https://sainisahab.com/" target="tab"> . SainiSahab</a></div>
+        <p>&#169; 2020 - 2021 All rights reserved.</p>
+      </footer>
     </div>
-    <div class="container" id="container">
-      <div class="bar_qr_code">
-        <div class="display_code">
-          <div id="qrcode"></div>
-          <div id="barcodea" style="display: none">
-            <svg id="barcode"></svg>
+
+    <!-- ------------------SIDE-BAR----------------------- -->
+    <section class="drawer" id="drawer-name" data-drawer-target>
+      <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
+      <div class="drawer__wrapper">
+        <div class="drawer__header">
+          <div class="drawer__title">Setting</div>
+          <button class="drawer__close" data-drawer-close aria-label="Close Drawer"><i class="bx bxs-chevron-right"></i></button>
+        </div>
+        <div class="drawer__content">
+          <div class="set_input">
+            <label for="selecter">Bar Code Type</label>
+            <select id="selecter" onchange="secter()" class="select">
+              <option value="" disabled selected>Choose...</option>
+              <option value="qr_preview">Qr Code</option>
+              <option value="bar_preview">Bar Code</option>
+            </select>
+          </div>
+          <div class="set_input">
+            <label for="theme-button">Dark Made</label>
+            <i class="bx bx-toggle-left change-theme" id="theme-button" style="font-size: 2rem"></i>
+          </div>
+
+          <div class="set_input">
+            <label for="HistoryButton">Show History</label>
+            <i class="bx bx-toggle-left change-theme" id="HistoryButton" style="font-size: 2rem"></i>
           </div>
         </div>
-        <div class="display_code_value" id="display_code_value">Sonu Saini</div>
-        <div class="input_code_value">
-          <label for="">make <span id="work"></span></label>
-          <br />
-          <input type="text" id="data" onchange="AddNote()" />
-        </div>
       </div>
-      <div class="history" id="history">
-        <ul id="history_list"></ul>
-      </div>
-    </div>
-    <footer>
-      <div>Designed by<a href="https://sainisahab.com/" target="tab"> . SainiSahab</a></div>
-      <p>&#169; 2020 - 2021 All rights reserved.</p>
-    </footer>
+    </section>
+
     <script src="./js/qrcode.min.js"></script>
     <script src="./js/barcode.js"></script>
     <script src="./js/main.js"></script>
-    <script></script>
+    <script src="./js/slider.js"></script>
+    <script src="https://sainisahab.com/html/fake-twitter-image-generator/js/html2canvas.min.js"></script>
   </body>
 </html>
