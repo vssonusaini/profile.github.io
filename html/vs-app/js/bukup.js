@@ -17,39 +17,8 @@ recognition.onresult = function (event) {
   transcript = transcript.toLowerCase();
 
   console.log(`My Word ${transcript}`);
-  document.querySelector(".robo_text").innerHTML += "</br/> " + transcript;
 
-  // -----------------------------------------------------------------------------------
-  var Robo_DB = JSON.parse(localStorage.getItem("Robo_DB"));
-  if (Robo_DB === null) {
-    Robo_DB = [];
-    Robo_DB = [
-      {
-        id: 0,
-        Note_title: "Sonu Saini",
-        date_D: "17-9",
-      },
-    ];
-    localStorage.setItem("Robo_DB", JSON.stringify(Robo_DB));
-  }
-
-  if (transcript.includes("input")) {
-    readOut("input voice");
-
-    document.getElementById("div").style.display = "block";
-    document.getElementById("input").value = transcript;
-    // let input_voice = event.results[current][0].transcript;
-    // var pushHistory_DB = { input_voice };
-    // Robo_DB.push(pushHistory_DB);
-    // localStorage.setItem("Robo_DB", JSON.stringify(Robo_DB));
-  }
-
-  // ------------------------------------------------------------------------------------
-
-  if (transcript.includes("mera phone number kya hai")) {
-    readOut("9812846715");
-  }
-  if (transcript.includes("pawan")) {
+  if (transcript.includes("hello pawan")) {
     readOut("Hello Sir");
   }
   if (transcript.includes("open youtub")) {
