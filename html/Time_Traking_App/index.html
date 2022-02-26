@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/root.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">
+          <h2>Time Traking App</h2>
+        </div>
+        <div class="menu_list">
+          <ul class="menu_bar">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Add User</a></li>
+            <li><a href="#">Setting</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <div class="right_side">
+          <div id="example-one" data-tabindex="1"></div>
+          <br />
+          <br />
+          <br />
+          <button class="btn">Out Time</button>
+          <button class="btn">In Time</button>
+        </div>
+        <div class="left_side">
+          <div class="active_user">
+            <div class="total_user box">
+              <span>0</span>
+              <span>Total User</span>
+            </div>
+            <div class="total_out box">
+              <span>0</span>
+              <span>Total Out</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="user_date">
+          <div class="table-responsive">
+            <table id="myTable" border="1">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Out Time</th>
+                  <th>In Time</th>
+                  <th is-type="date" data-format="YYYY/MM/DD">Start Date</th>
+                  <th>Total Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Sonu</td>
+                  <td>9958</td>
+                  <td>Curicó</td>
+                  <td>2005/02/11</td>
+                  <td>37%</td>
+                </tr>
+                <tr>
+                  <td>Monu</td>
+                  <td>8971</td>
+                  <td>Dhanbad</td>
+                  <td>1999/04/07</td>
+                  <td>97%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="lead"><button class="btn btn-danger" onclick="x.DownloadCSV('csv');">Export (CSV)</button> <button class="btn btn-danger" onclick="x.DownloadJSON('json');">Export (JSON)</button></p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="./js/list.js"></script>
+    <script src="./js/app.js"></script>
+    <script>
+      let x = new RdataTB("myTable");
+    </script>
+  </body>
+</html>
