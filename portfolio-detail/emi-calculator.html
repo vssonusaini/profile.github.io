@@ -4,49 +4,37 @@
     <div class="col-md-12 portfolio-content">
       <div class="col-md-12 features">
         <div class="namenprice">
-          <h1 class="blog-title pull-left" id="heading">SIP Calculator</h1>
+          <h1 class="blog-title pull-left">EMI Calculator</h1>
           <h2 class="price pull-right" id="r4"></h2>
         </div>
         <div class="col-md-12 top_20"></div>
         <!-- Details -->
 
         <div class="row">
-          <div class="col-md-8 top_10">
-            <div class="row">
-              <div class="col-md-4">
-                <input onclick="changeMode('sip')" id="radio-1" name="radio" type="radio" checked />
-                <label for="radio-1" class="radio-label">SIP</label>
-              </div>
-              <div class="col-md-4">
-                <input onclick="changeMode('lumpsum')" id="radio-2" name="radio" type="radio" />
-                <label for="radio-2" class="radio-label">Lumpsum</label>
-              </div>
-            </div>
-          </div>
           <div class="col-md-12 details top_30 bottom_10">
             <ul class="row">
-              <li class="col-md-4" style="font-size: 1rem"><span>Invested Amount:</span> <span id="r1"></span></li>
-              <li class="col-md-4" style="font-size: 1rem"><span>Est. Returns:</span> <span id="r2"></span></li>
-              <li class="col-md-4" style="font-size: 1rem"><span>Total Value:</span> <span id="r3"></span></li>
+              <li class="col-md-4" style="font-size: 1rem"><span>Monthly EMI:</span> <span id="r1"></span></li>
+              <li class="col-md-4" style="font-size: 1rem"><span>Principal Amount:</span> <span id="r2"></span></li>
+              <li class="col-md-4" style="font-size: 1rem"><span>Total Interest:</span> <span id="r3"></span></li>
             </ul>
           </div>
           <div class="col-md-8 top_30 bottom_30">
             <form class="site-form" method="post" autocomplete="off" name="google-sheet">
               <div class="row">
                 <div class="col-md-6">
-                  <label id="amount" for="inputAmount">Monthly Investment</label>
-                  <span>₹<input class="site-input" name="Amount" id="inputAmount" type="number" step="500" value="25000" min="500" max="200000" oninput="showValAmount(this.value)" /></span>
-                  <input class="slider" name="realAmount" id="myAmount" type="range" step="500" value="25000" min="500" max="200000" />
+                  <label for="inputAmount">Loan Amount</label>
+                  <span>₹<input class="site-input" name="Amount" id="inputAmount" type="number" step="50000" value="1000000" min="100000" max="10000000" oninput="showValAmount(this.value)" /></span>
+                  <input class="slider" name="realAmount" id="myAmount" type="range" step="50000" value="1000000" min="100000" max="10000000" />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputRoi">Expected Return Rate %</label>
-                  <span><input class="site-input" name="Retunrs" id="inputRoi" type="number" value="12" min="1" max="30" step="0.5" oninput="showValRoi(this.value)" /></span>
-                  <input class="slider" name="realRoi" id="myRoi" type="range" value="12" min="1" max="30" step="0.5" />
+                  <label for="inputRoi">Rate of Interest (P.A) %</label>
+                  <span><input class="site-input" name="Returns" id="inputRoi" type="number" value="8.5" min="1" max="30" step="0.05" oninput="showValRoi(this.value)" /></span>
+                  <input class="slider" name="realRoi" id="myRoi" type="range" value="8.5" min="1" max="30" step="0.05" />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputRoi">Time Period Year</label>
-                  <span><input class="site-input" name="Years" id="inputYears" type="number" value="10" min="1" max="30" step="1" oninput="showValYears(this.value)" /></span>
-                  <input class="slider" name="realYears" id="myYears" type="range" value="10" min="1" max="30" step="1" />
+                  <label for="inputRoi">Loan Tenure Year</label>
+                  <span><input class="site-input" name="Years" id="inputYears" type="number" value="10" min="1" step="1" max="30" oninput="showValYears(this.value)" /></span>
+                  <input class="slider" name="realYears" id="myYears" type="range" value="10" min="1" step="1" max="30" />
                 </div>
               </div>
             </form>
@@ -54,7 +42,6 @@
           <div class="col-md-4 top_45 bottom_30">
             <div class="chart">
               <canvas id="myChart" width="300" height="300"></canvas>
-              <div class="cta" id="cta"></div>
             </div>
           </div>
         </div>
@@ -62,13 +49,8 @@
 
       <!-- Description -->
       <div class="col-md-12 description">
-        <div class="section-title bottom_30">
-          <span></span>
-          <h2>What is a SIP Calculator?</h2>
-        </div>
-        <p>A SIP calculator is a simple tool that allows individuals to get an idea of the returns on their mutual fund investments made through SIP. SIP investments in mutual funds have become one of the most popular investment options for millennials lately.</p>
-        <p>These mutual fund sip calculators are designed to give potential investors an estimate on their mutual fund investments. However, the actual returns offered by a mutual fund scheme varies depending on various factors. The SIP calculator does not provide clarification for the exit load and expense ratio (if any).</p>
-        <p>This calculator will calculate the wealth gain and expected returns for your monthly SIP investment. Indeed, you get a rough estimate on the maturity amount for any of your monthly SIP, based on a projected annual return rate.</p>
+        <p>The credit market in India is steadily on the rise. It is currently the 4th largest credit industry in the world, recording a CAGR of over 11% year-on-year. A vast majority of these advances are short-term credits such as personal loans and credit cards. Combined, these two financial products account for 78% of all credit lending in India. Loan repayments include EMIs and borrower should consider the EMI amount to accurately plan their current and future finances.</p>
+        <p>There are several EMI calculators available online; one must choose an accurate EMI calculator and learn its usage to calculate the exact EMI amount they are liable to pay for a loan.</p>
       </div>
 
       <!-- Social -->
@@ -93,7 +75,6 @@
 
     <script>
       "use strict";
-
       var amountSlider = document.getElementById("myAmount");
       var amountOutput = document.getElementById("inputAmount");
       var roiSlider = document.getElementById("myRoi");
@@ -101,12 +82,9 @@
       var yearSlider = document.getElementById("myYears");
       var yearOutput = document.getElementById("inputYears");
 
-      amountOutput.innerHTML = amountSlider.value;
-      roiOutput.innerHTML = roiSlider.value;
-      yearOutput.innerHTML = yearSlider.value;
-
-      var heading = document.getElementById("heading");
-      var amountLabel = document.getElementById("amount");
+      amountOutput.value = amountSlider.value;
+      roiOutput.value = roiSlider.value;
+      yearOutput.value = yearSlider.value;
 
       amountSlider.oninput = function () {
         amountOutput.innerHTML = this.value;
@@ -151,26 +129,14 @@
       AttachInputListeners();
       var initialLoad = true;
       var chart;
-      var calculatorMode;
-      getParams(); //get cal mode
-      changeMode(calculatorMode); //set cal mode
-      // calculateIt();
-
-      function changeMode(mode) {
-        calculatorMode = mode;
-        heading.innerHTML = mode === "sip" ? "SIP Calculator" : "Lumpsum Calculator";
-        amountLabel.innerHTML = mode === "sip" ? "Monthly Investment" : "Total Investment";
-        if (calculatorMode === "lumpsum") {
-          document.getElementById("radio-2").checked = true;
-        }
-        calculateIt();
-      }
+      getParams();
+      calculateIt();
 
       function calculateIt() {
-        var investedAmount = document.getElementById("r1");
-        var wealthGained = document.getElementById("r2");
-        var totalValue = document.getElementById("r3");
-        var totalValuea = document.getElementById("r4");
+        var monthlyEMI = document.getElementById("r1");
+        var pricipalAmount = document.getElementById("r2");
+        var totalInterest = document.getElementById("r3");
+        var totalAmount = document.getElementById("r4");
 
         var A, R, N;
 
@@ -178,49 +144,38 @@
         R = Number(roiOutput.value);
         N = Number(yearOutput.value);
 
-        if (A >= 500 && R >= 1) {
-          var MonthlyROI = R / (100 * 12);
-          var months = N * 12;
-          var sip = Math.round(A * ((Math.pow(1 + MonthlyROI, months) - 1) / MonthlyROI) * (1 + MonthlyROI));
-          var lumpsum = Math.round(Math.pow(1 + R / 100, N) * A);
+        if (A >= 100000 && R >= 1) {
+          let n = N * 12;
+          let i = R / (100 * 12);
 
-          let investedAmountVal;
-          let wealthGainedVal;
-          let totalValueVal;
+          var monthlyEMIval = Math.round(A * i * (Math.pow(1 + i, n) / (Math.pow(1 + i, n) - 1)));
+          var totalInterestVal = monthlyEMIval * N * 12 - A;
+          var totalAmountVal = monthlyEMIval * N * 12;
 
-          if (calculatorMode === "sip") {
-            investedAmountVal = A * N * 12;
-            wealthGainedVal = sip - investedAmountVal;
-            totalValueVal = sip;
-          } else {
-            investedAmountVal = A;
-            wealthGainedVal = lumpsum - investedAmountVal;
-            totalValueVal = lumpsum;
-          }
-          investedAmount.innerHTML = "₹ " + investedAmountVal.toLocaleString();
-          wealthGained.innerHTML = "₹ " + wealthGainedVal.toLocaleString();
-          totalValue.innerHTML = "₹ " + totalValueVal.toLocaleString();
-          totalValuea.innerHTML = "₹ " + totalValueVal.toLocaleString();
+          monthlyEMI.innerHTML = "₹ " + monthlyEMIval.toLocaleString();
+          pricipalAmount.innerHTML = "₹ " + A.toLocaleString();
+          totalInterest.innerHTML = "₹ " + totalInterestVal.toLocaleString();
+          totalAmount.innerHTML = "Total Amount ₹ " + totalAmountVal.toLocaleString();
 
           if (!initialLoad) {
             chart.destroy();
           }
-          DrawChart(investedAmountVal, wealthGainedVal);
+          DrawChart(A, totalInterestVal);
           initialLoad = false;
         }
       }
 
-      function DrawChart(investedAmountVal, wealthGainedVal) {
+      function DrawChart(A, totalInterestVal) {
         var ctx = document.getElementById("myChart").getContext("2d");
 
         chart = new Chart(ctx, {
           type: "doughnut",
           data: {
-            labels: ["Invested Amount", "Est. Returns"],
+            labels: ["Principal Amount", "Interest Amount"],
             datasets: [
               {
                 backgroundColor: ["Orange", "#32CD32"],
-                data: [investedAmountVal, wealthGainedVal],
+                data: [A, totalInterestVal],
               },
             ],
           },
@@ -234,20 +189,53 @@
       function getParams() {
         let urlVal = window.location.href;
         let url = new URL(urlVal);
+        let type = url.searchParams.get("type");
+        let name = url.searchParams.get("name");
         let cta = url.searchParams.get("cta");
-        let mode = url.searchParams.get("mode");
         let logo = url.searchParams.get("logo");
-        if (mode === "lumpsum") {
-          calculatorMode = "lumpsum";
-        } else if (mode === "sip") {
-          calculatorMode = "sip";
+
+        let heading = document.getElementById("heading");
+
+        if (type === "home") {
+          amountOutput.value = "2500000";
+          roiOutput.value = "7.25";
+          yearOutput.value = "20";
+          if (name !== null) {
+            heading.innerHTML = name + " Home Loan EMI Calculator";
+          } else {
+            heading.innerHTML = "Home Loan EMI Calculator";
+          }
+        } else if (type === "car") {
+          amountOutput.value = "1000000";
+          roiOutput.value = "9.5";
+          yearOutput.value = "7";
+          if (name !== null) {
+            heading.innerHTML = name + " Car Loan EMI Calculator";
+          } else {
+            heading.innerHTML = "Car Loan EMI Calculator";
+          }
+        } else if (type === "personal") {
+          amountOutput.value = "500000";
+          roiOutput.value = "13.5";
+          yearOutput.value = "5";
+          if (name !== null) {
+            heading.innerHTML = name + " Personal Loan EMI Calculator";
+          } else {
+            heading.innerHTML = "Personal Loan EMI Calculator";
+          }
         } else {
-          calculatorMode = "sip"; //without param
+          if (name !== null) {
+            heading.innerHTML = name + " EMI Calculator";
+          } else {
+            heading.innerHTML = "EMI Calculator";
+          }
         }
+
         if (cta === "hide") {
           let ctaDiv = document.getElementById("cta");
           ctaDiv.style.display = "none";
         }
+
         if (logo === "true") {
           document.getElementById("logo").style.display = "block";
         }
@@ -257,11 +245,11 @@
         amountOutput.addEventListener("input", (e) => {
           let val = Number(e.target.value);
           if (val < 0) {
-            amountOutput.value = 500;
+            amountOutput.value = 100000;
             calculateIt();
           }
-          if (val > 200000) {
-            amountOutput.value = 200000;
+          if (val > 10000000) {
+            amountOutput.value = 10000000;
             calculateIt();
           }
         });

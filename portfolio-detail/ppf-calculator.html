@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div class="col-md-12 portfolio-content">
+      <div class="col-md-12 features">
+        <div class="namenprice">
+          <h1 class="blog-title pull-left">PPF Calculator</h1>
+          <h2 class="price pull-right" id="r4"></h2>
+        </div>
+        <div class="col-md-12 top_20"></div>
+        <!-- Details -->
+
+        <div class="row">
+          <div class="col-md-12 details top_30 bottom_10">
+            <ul class="row">
+              <li class="col-md-4" style="font-size: 1rem"><span>Invested Amount:</span> <span id="r1"></span></li>
+              <li class="col-md-4" style="font-size: 1rem"><span>Total Interest:</span> <span id="r2"></span></li>
+              <li class="col-md-4" style="font-size: 1rem"><span>Maturity Value:</span> <span id="r3"></span></li>
+            </ul>
+          </div>
+          <div class="col-md-8 top_30 bottom_30">
+            <form class="site-form" method="post" autocomplete="off" name="google-sheet">
+              <div class="row">
+                <div class="col-md-6">
+                  <label id="amount" for="inputInvestmentPerYear">Yearly Investment</label>
+                  <span>₹<input class="site-input" name="InvestmentPerYear" id="inputInvestmentPerYear" type="number" step="500" value="25000" min="500" max="150000" oninput="showInvestmentPerYearVal(this.value)" /></span>
+                  <input class="slider" name="realInvestmentPerYearAmount" id="myInvestmentPerYearAmount" type="range" step="500" value="25000" min="500" max="150000" />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputTimePeriod">Time Period Year</label>
+                  <span><input class="site-input" name="TimePeriod" id="inputTimePeriod" type="number" value="15" min="15" step="1" max="50" oninput="showTimePeriodVal(this.value)" /></span>
+                  <input class="slider" name="realTimePeriod" id="myTimePeriod" type="range" value="15" min="15" step="1" max="50" />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputRoi">Rate of Interest</label>
+                  <span><input class="site-input" style="width: 70px" name="Retunrs" id="inputRoi" type="number" value="7.1" disabled />%</span>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-4 top_45 bottom_30">
+            <div class="chart">
+              <canvas id="myChart" width="300" height="300"></canvas>
+              <div class="cta" id="cta"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="col-md-12 description">
+        <div class="section-title bottom_30">
+          <span></span>
+          <h2>What is PPF Calculator?</h2>
+        </div>
+        <p>If you are a student who might need funds later on for studies, a responsible parent who has concern for their child’s study, or even someone who wants to have a good retirement and planning to do so. For all of you, PPF is a very good choice. But it is not as simple as it seems to estimate the amount, returns, and interest. All these things are complicated but you should only focus on opening a PPF account, Professional Utilities will resolve the problem of calculating all the interest rates and return on your PPF account for you. If you don’t know how this works, we will explain it to you.</p>
+      </div>
+
+      <!-- Social -->
+      <div class="social-share col-md-12 bottom_60 top_45 text-center">
+        <ul>
+          <li>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
+    <script>
+      "use strict";
+
+      var totalInvestmentSlider = document.getElementById("myInvestmentPerYearAmount");
+      var amountTotalInvestmentOutput = document.getElementById("inputInvestmentPerYear");
+      var timePeriodSlider = document.getElementById("myTimePeriod");
+      var timePeriodOutput = document.getElementById("inputTimePeriod");
+      var roiInput = document.getElementById("inputRoi");
+
+      amountTotalInvestmentOutput.innerHTML = totalInvestmentSlider.value;
+      timePeriodOutput.innerHTML = timePeriodSlider.value;
+
+      totalInvestmentSlider.oninput = function () {
+        amountTotalInvestmentOutput.innerHTML = this.value;
+      };
+      timePeriodSlider.oninput = function () {
+        timePeriodOutput.innerHTML = this.value;
+      };
+
+      function showInvestmentPerYearVal(newVal) {
+        totalInvestmentSlider.value = newVal;
+        calculateIt();
+      }
+      function showTimePeriodVal(newVal) {
+        timePeriodSlider.value = newVal;
+        calculateIt();
+      }
+
+      totalInvestmentSlider.addEventListener("input", updateValueTotalInvestment);
+      timePeriodSlider.addEventListener("input", updateValueTimePeriod);
+
+      function updateValueTotalInvestment(e) {
+        amountTotalInvestmentOutput.value = e.srcElement.value;
+        calculateIt();
+      }
+      function updateValueTimePeriod(e) {
+        timePeriodOutput.value = e.srcElement.value;
+        calculateIt();
+      }
+
+      AttachInputListener();
+      var initialLoad = true;
+      var chart;
+      getParams();
+      calculateIt();
+
+      function calculateIt() {
+        var o_ia = document.getElementById("r1");
+        var o_ti = document.getElementById("r2");
+        var o_mv = document.getElementById("r3");
+
+        var YI = Number(amountTotalInvestmentOutput.value);
+        var TP = Number(timePeriodOutput.value);
+        var ROI = Number(roiInput.value);
+
+        if (YI >= 500 && TP >= 15) {
+          var investedAmount = Math.round(YI * TP);
+          var maturityValue = Math.round(((YI * (Math.pow(1 + ROI / 100, TP) - 1)) / (ROI / 100)) * (1 + ROI / 100));
+          var totalInterest = maturityValue - investedAmount;
+
+          o_ia.innerHTML = "₹ " + investedAmount.toLocaleString();
+          o_ti.innerHTML = "₹ " + totalInterest.toLocaleString();
+          o_mv.innerHTML = "₹ " + maturityValue.toLocaleString();
+
+          if (!initialLoad) {
+            chart.destroy();
+          }
+          DrawChart(investedAmount, totalInterest);
+          initialLoad = false;
+        }
+      }
+
+      function DrawChart(investedAmount, totalInterest) {
+        var ctx = document.getElementById("myChart").getContext("2d");
+
+        chart = new Chart(ctx, {
+          type: "doughnut",
+          data: {
+            labels: ["Total Investment", "Total Interest"],
+            datasets: [
+              {
+                backgroundColor: ["#FFA500", "#32CD32	"],
+                data: [investedAmount, totalInterest],
+              },
+            ],
+          },
+          options: {
+            segmentShowStroke: false,
+            responsive: true,
+          },
+        });
+      }
+
+      function getParams() {
+        let urlVal = window.location.href;
+        let url = new URL(urlVal);
+        let cta = url.searchParams.get("cta");
+        let name = url.searchParams.get("name");
+        if (cta === "hide") {
+          let ctaDiv = document.getElementById("cta");
+          ctaDiv.style.display = "none";
+        }
+        if (name !== null) {
+          let heading = document.getElementById("heading");
+          heading.innerHTML = name + " PPF Calculator";
+        }
+      }
+
+      function AttachInputListener() {
+        amountTotalInvestmentOutput.addEventListener("input", (e) => {
+          let val = e.target.value;
+          if (val < 0) {
+            amountTotalInvestmentOutput.value = 500;
+            calculateIt();
+          }
+          if (val > 150000) {
+            amountTotalInvestmentOutput.value = 150000;
+            calculateIt();
+          }
+        });
+
+        timePeriodOutput.addEventListener("input", (e) => {
+          let val = e.target.value;
+          if (!Number.isInteger(val)) {
+            val = Math.ceil(val);
+            timePeriodOutput.value = val;
+            calculateIt();
+          }
+          if (val < 15) {
+            timePeriodOutput.value = 15;
+            calculateIt();
+          }
+          if (val > 50) {
+            timePeriodOutput.value = 50;
+            calculateIt();
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
