@@ -25,6 +25,28 @@ document.getElementById("clear").addEventListener("click", () => {
   make_qrcode();
 });
 
+// ----------Setting
+const inputButton = document.getElementById("input-Button");
+
+const darkinput = "dark-theme";
+const iconinput = "bx-toggle-right";
+
+const selectedinput = localStorage.getItem("selected-input");
+const selectedinputIcon = localStorage.getItem("selected-input-icon");
+const getCurrentinput = () => (document.body.classList.contains(darkinput) ? "on" : "off");
+const getCurrentinputIcon = () => (inputButton.classList.contains(iconinput) ? "bx-toggle-right" : "bx-toggle-left");
+if (selectedTheme) {
+  document.body.classList[selectedTheme === "on" ? "add" : "remove"](darkinput);
+  inputButton.classList[selectedinputIcon === "bx-toggle-right" ? "add" : "remove"](iconinput);
+}
+
+inputButton.addEventListener("click", () => {
+  // document.body.classList.toggle(darkinput);
+  inputButton.classList.toggle(iconinput);
+  localStorage.setItem("selected-input", getCurrentinput());
+  localStorage.setItem("selected-input-icon", getCurrentinputIcon());
+});
+
 // ----------------------select Box-------------
 // -------------------------
 localStorage.setItem("select_value", "qr_preview");
@@ -106,7 +128,12 @@ var qrcode = new QRCode(document.getElementById("code_preview"), {
 function make_qrcode() {
   var qrcode_value = localStorage.getItem("Qr_title");
   document.getElementById("display_value").innerText = qrcode_value;
-  // document.getElementById("Qr_title").value = qrcode_value;
+  var input_check = localStorage.getItem("selected-input-icon");
+  if (input_check != "bx-toggle-right") {
+    document.getElementById("Qr_title").value = qrcode_value;
+  } else {
+    document.getElementById("Qr_title").value = " ";
+  }
   qrcode.makeCode(qrcode_value);
   JsBarcode("#barcode", qrcode_value, {
     width: 2,
