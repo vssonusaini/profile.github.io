@@ -1,0 +1,43 @@
+<div class="my_cart">
+  <div class="heading">
+    <h4>My Cart</h4>
+  </div>
+  <div class="my_cart_menu" id="my_cart_menu"></div>
+  <div class="my_cart_total">
+    <div class="heading">
+      <h4>Price Details</h4>
+    </div>
+    <div class="my_cart_price_details">
+      <div class="total"><span>Price</span><span>Rs.1234</span></div>
+      <div class="total"><span>Discount</span><span>-14</span></div>
+      <div class="total"><span>Delivery Charges</span><span>Free</span></div>
+      <div class="totals"><span>Total</span><span>1000</span></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function my_cart_menu() {
+    document.getElementById("my_cart_menu").innerHTML = "";
+
+    for (let i = 0; i < 6; i++) {
+      var Note_list = `      <div class="my_cart_list">
+      <span class="close"> X</span>
+      <div class="img">
+        <img src="https://staticfanpage.akamaized.net/wp-content/uploads/sites/22/2021/07/Chicken-samosa-16-1200x675.jpg" alt="" />
+      </div>
+      <div class="pro_details">
+        <div class="pro_heading">Applw</div>
+        <div class="pro_decs"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, ducimus</p></div>
+        <div class="pro_rates">
+          <span><s>1200</s></span>
+          <span>Rs. 430</span>
+          <!-- <span>60% OFF</span> -->
+        </div>
+      </div>
+    </div>`;
+      document.getElementById("my_cart_menu").innerHTML += Note_list;
+    }
+  }
+  my_cart_menu();
+</script>

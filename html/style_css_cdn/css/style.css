@@ -1,0 +1,236 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: white;
+  --body-color: rgb(238, 240, 242);
+  --text-color: #000;
+  --border-color: rgb(141, 232, 189);
+  --border-sd: rgba(141, 232, 190, 0.522);
+  --footer-color: #1e1e1e;
+  --hover: rgb(223, 41, 240);
+  --time: rgb(206, 203, 203);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(141, 232, 190, 0.372);
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(141, 232, 189);
+}
+body {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: Sarabun, sans-serif;
+  background-color: #ebf1fc;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pro_menu {
+  width: 22vw;
+  /* height: 30rem; */
+  border-radius: 0.5rem;
+  background-color: var(--main-color);
+}
+.heading {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.pro_list {
+  padding: 1rem 0;
+  height: 40rem;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 10rem);
+  grid-template-rows: repeat(10rem, 10rem);
+  justify-content: center;
+  align-items: center;
+}
+
+.products {
+  /* width: 10rem; */
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  margin: 0.4rem;
+  border-radius: 0.5rem;
+  height: 11rem;
+}
+.products div {
+  margin-bottom: 0.2rem;
+}
+.products .img {
+  width: 100%;
+  height: 6rem;
+}
+.products img {
+  width: 100%;
+  height: 100%;
+}
+.pro_details {
+  overflow: hidden;
+  margin: 0.4rem;
+}
+.pro_heading {
+  font-size: 1rem;
+  font-weight: bold;
+}
+.pro_decs {
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.view_products {
+  width: 50vw;
+  /* height: 30rem; */
+  border-radius: 0.5rem;
+  background-color: var(--main-color);
+}
+.view_Product_menu {
+  padding: 0.6rem;
+}
+
+.view_Product_list {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.view_Product_list .img {
+  margin: 0.4rem;
+  width: 30%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+}
+.view_Product_list .img img {
+  width: 100%;
+  height: 100%;
+}
+.view_product_details div {
+  margin-bottom: 0.3rem;
+}
+.view_product_details {
+  padding: 1rem;
+}
+
+.view_pro_heading {
+  font-size: 1.2rem;
+}
+
+.view_Product_list .btns {
+  width: 100%;
+  text-align: right;
+  /* margin: 1rem; */
+}
+.view_Product_list .btns input {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+  margin-right: 0.6rem;
+}
+.view_Product_list .btns button {
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
+}
+.view_Product_list .btns button:hover {
+  background-color: var(--border-color);
+}
+
+/* -------my_cart_menu----- */
+.my_cart_menu {
+  padding: 0.6rem;
+  height: 25rem;
+  overflow-y: scroll;
+}
+
+.my_cart {
+  width: 22vw;
+  /* height: 30rem; */
+  border-radius: 0.5rem;
+  background-color: var(--main-color);
+}
+
+.my_cart_list {
+  position: relative;
+  width: 100%;
+
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+
+  border-radius: 0.5rem;
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.my_cart_list .close {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  cursor: pointer;
+  border: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 1px;
+  border-bottom: 1px;
+  border-color: var(--border-color);
+  border-style: solid;
+  border-radius: 0 0 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my_cart_list .close:hover {
+  background-color: var(--border-color);
+}
+
+.my_cart_list .img {
+  width: 60%;
+}
+.my_cart_list .img img {
+  width: 100%;
+  height: 100%;
+}
+
+.my_cart_price_details {
+  padding: 1.5rem;
+}
+
+.my_cart_price_details .total,
+.my_cart_price_details .totals {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+.my_cart_price_details .totals {
+  font-size: 1.1rem;
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+}
