@@ -5,11 +5,10 @@
   <div class="pro_list" id="prosuct_list"></div>
 </div>
 
-<script src="./js/database.js"></script>
 <script>
   function Noteprinf() {
     document.getElementById("prosuct_list").innerHTML = "";
-
+    var product = JSON.parse(localStorage.getItem("product"));
     for (let i = 0; i < product.length; i++) {
       var Note_list =
         `     <div class="products" onclick="show_detalis(` +
