@@ -5,21 +5,34 @@
   <div class="pro_list" id="prosuct_list"></div>
 </div>
 
+<script src="../js/database.js"></script>
 <script>
   function Noteprinf() {
     document.getElementById("prosuct_list").innerHTML = "";
 
-    for (let i = 0; i < 12; i++) {
-      var Note_list = `     <div class="products">
+    for (let i = 0; i < product.length; i++) {
+      var Note_list =
+        `     <div class="products" onclick="show_detalis(` +
+        product[i].id +
+        `)">
     <div class="img">
-      <img src="https://staticfanpage.akamaized.net/wp-content/uploads/sites/22/2021/07/Chicken-samosa-16-1200x675.jpg" alt="" />
+      <img src="` +
+        product[i].image +
+        `" alt="" />
     </div>
     <div class="pro_details">
-      <div class="pro_heading">Applw</div>
-      <div class="pro_decs"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, ducimus</p></div>
+      <div class="pro_heading">` +
+        product[i].name +
+        `</div>
+      <div class="pro_decs"><p>` +
+        product[i].note +
+        `</p></div>
       <div class="pro_rates">
-        <span><s>1200</s></span>
-        <span>Rs. 430</span>
+      
+        <span>Rs. ` +
+        product[i].price +
+        `</span>
+        <span><s>Rs.1200</s></span>
         <!-- <span>60% OFF</span> -->
       </div>
     </div>

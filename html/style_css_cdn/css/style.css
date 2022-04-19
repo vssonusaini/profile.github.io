@@ -84,23 +84,28 @@ body {
 }
 
 .products {
+  cursor: pointer;
   /* width: 10rem; */
   border: 1px solid var(--border-color);
   overflow: hidden;
   margin: 0.4rem;
   border-radius: 0.5rem;
-  height: 11rem;
+  height: 15rem;
 }
 .products div {
   margin-bottom: 0.2rem;
 }
 .products .img {
   width: 100%;
-  height: 6rem;
+  height: 10rem;
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .products img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 80%;
 }
 .pro_details {
   overflow: hidden;
@@ -109,6 +114,7 @@ body {
 .pro_heading {
   font-size: 1rem;
   font-weight: bold;
+  white-space: nowrap;
 }
 .pro_decs {
   font-size: 0.8rem;
@@ -119,12 +125,13 @@ body {
 
 .view_products {
   width: 50vw;
-  /* height: 30rem; */
   border-radius: 0.5rem;
   background-color: var(--main-color);
 }
 .view_Product_menu {
   padding: 0.6rem;
+  height: 43rem;
+  overflow-y: auto;
 }
 
 .view_Product_list {
@@ -133,34 +140,46 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   margin-bottom: 0.6rem;
+  align-items: center;
 }
 
 .view_Product_list .img {
   margin: 0.4rem;
-  width: 30%;
+  width: 15rem;
+  height: 10rem;
   overflow: hidden;
   border-radius: 0.5rem;
   border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .view_Product_list .img img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 70%;
 }
 .view_product_details div {
   margin-bottom: 0.3rem;
 }
 .view_product_details {
+  width: 40rem;
   padding: 1rem;
 }
 
 .view_pro_heading {
   font-size: 1.2rem;
+  height: 3rem;
+  overflow-y: auto;
+}
+
+.view_pro_desc {
+  height: 5rem;
+  overflow-y: auto;
 }
 
 .view_Product_list .btns {
   width: 100%;
   text-align: right;
-  /* margin: 1rem; */
 }
 .view_Product_list .btns input {
   padding: 0.4rem 0.6rem;
@@ -178,6 +197,7 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   transition: background-color 0.3s;
+  margin-right: 1rem;
 }
 .view_Product_list .btns button:hover {
   background-color: var(--border-color);
@@ -280,4 +300,46 @@ body {
     display: flex;
     width: 100%;
   }
+}
+
+/* -----Admin----- */
+.add_product {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.6rem 0.1rem;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input input,
+textarea {
+  font-family: Sarabun, sans-serif;
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+  transition: background-color 0.3s;
+  margin-right: 0.6rem;
+}
+
+.input button {
+  font-family: Sarabun, sans-serif;
+  width: 46%;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  outline: none;
+  border: 1px solid var(--border-color);
+  border-radius: 0.4rem;
+  transition: background-color 0.3s;
+  margin-right: 0.6rem;
 }

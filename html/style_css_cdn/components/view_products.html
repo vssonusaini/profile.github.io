@@ -2,32 +2,43 @@
   <div class="heading">
     <h4>View Products</h4>
   </div>
-  <div class="view_Product_menu" id="view_Product_list"></div>
+  <div class="view_Product_menu" id="view_Product_lista"></div>
 </div>
 <script>
-  function view_product_details() {
-    document.getElementById("view_Product_list").innerHTML = "";
-
-    for (let i = 0; i < 3; i++) {
-      var Note_list = `      <div class="view_Product_list">
-      <div class="img">
-        <img src="https://staticfanpage.akamaized.net/wp-content/uploads/sites/22/2021/07/Chicken-samosa-16-1200x675.jpg" alt="" />
-      </div>
-      <div class="view_product_details">
-        <div class="view_pro_heading">Apple</div>
-        <div class="view_pro_desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, repudiandae.</div>
-        <div class="view_pro_rate">
+  function show_detalis(a) {
+    document.getElementById("view_Product_lista").innerHTML = "";
+    var product = JSON.parse(localStorage.getItem("product"));
+    for (var i = 0; i < product.length; i++) {
+      if (a == product[i].id) {
+        var Note_list =
+          `<div class="view_Product_list">
+        <div class="img">
+          <img src="` +
+          product[i].image +
+          `" alt="" />
+        </div>
+        <div class="view_product_details">
+          <div class="view_pro_heading">` +
+          product[i].name +
+          `</div>
+          <div class="view_pro_desc">` +
+          product[i].note +
+          `</div>
+          <div class="view_pro_rate">
+           
+            <span>` +
+          product[i].price +
+          `</span>
           <span><s>1200</s></span>
-          <span>Rs. 460</span>
+          </div>
+          <div class="btns">
+            <input type="number" placeholder="Order Count" />
+            <button>Add To Cart</button>
+          </div>
         </div>
-        <div class="btns">
-          <input type="number" placeholder="Order Count" />
-          <button>Add To Cart</button>
-        </div>
-      </div>
-    </div>`;
-      document.getElementById("view_Product_list").innerHTML += Note_list;
+      </div>`;
+        document.getElementById("view_Product_lista").innerHTML += Note_list;
+      }
     }
   }
-  view_product_details();
 </script>

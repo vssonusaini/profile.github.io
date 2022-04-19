@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin</title>
+    <link rel="stylesheet" href="./css/root.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div include-html="./components/nav_bar.html" id="nav_bar"></div>
+    <div class="container">
+      <div class="pro_menu">
+        <div class="heading">
+          <h4>Product List</h4>
+        </div>
+        <div class="add_product">
+          <div class="input">
+            <input type="File" id="img" />
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Title" />
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Description" />
+          </div>
+          <div class="input">
+            <input type="number" placeholder="Sale Price" />
+          </div>
+          <div class="input">
+            <input type="number" placeholder="Off Price" />
+          </div>
+        </div>
+      </div>
+
+      <div class="view_products">
+        <div class="heading">
+          <h4>View Products</h4>
+        </div>
+        <div class="view_Product_menu" id="view_Product_list"></div>
+      </div>
+
+      <div class="pro_menu">
+        <div class="heading">
+          <h4>Product List</h4>
+        </div>
+        <div class="add_product">
+          <div class="input">
+            <input type="File" id="productAddImageInput" />
+          </div>
+          <div class="input">
+            <input type="text" placeholder="Title" id="Product_Name" />
+            <input type="text" placeholder="Title" id="product_in" style="display: none" />
+          </div>
+
+          <div class="input">
+            <input type="number" placeholder="Sale Price" id="Amount" />
+          </div>
+          <div class="input">
+            <textarea placeholder="Description" id="discretion" cols="30" rows="10"></textarea>
+          </div>
+
+          <div class="input">
+            <button onclick="Addproduct()">Add</button>
+
+            <button onclick="SaveUpdateproduct()">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://sainisahab.com/cdn/include-html.min.js"></script>
+    <script src="./js/database.js"></script>
+    <script>
+      //
+
+      var idupproduct = JSON.parse(localStorage.getItem("idupproduct"));
+      if (idupproduct === null) {
+        idupproduct = [];
+        var idupproduct = 8;
+        localStorage.setItem("idupproduct", JSON.stringify(idupproduct));
+      }
+
+      document.querySelector("#productAddImageInput").addEventListener("change", function () {
+        var img = document.getElementById("productAddImageInput");
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+          console.log(reader.result);
+          localStorage.setItem("img", reader.result);
+        });
+        reader.readAsDataURL(img.files[0]);
+      });
+
+      function Addproduct() {
+        var id = idupproduct;
+        var name = document.getElementById("Product_Name").value;
+        var note = document.getElementById("discretion").value;
+        var price = document.getElementById("Amount").value;
+        var image2 = document.getElementById("productAddImageInput");
+        var image = localStorage.getItem("img");
+        if (name != "" && price != "" && note != "" && image != "") {
+          var pushFood = { id, name, price, note, image };
+          product.push(pushFood);
+          localStorage.setItem("product", JSON.stringify(product));
+          idupproduct++;
+          localStorage.setItem("idupproduct", JSON.stringify(idupproduct));
+          // ManagementFood();
+          console.log(product);
+
+          var name = (document.getElementById("Product_Name").value = "");
+          var note = (document.getElementById("discretion").value = "");
+          var price = (document.getElementById("Amount").value = "");
+          var image2 = (document.getElementById("productAddImageInput").value = "");
+        } else {
+          alert("Please enter full information");
+        }
+        Adminproduct();
+      }
+
+      function Adminproduct() {
+        document.getElementById("view_Product_list").innerHTML = " ";
+        var product = JSON.parse(localStorage.getItem("product"));
+        for (let i = 0; i < product.length; i++) {
+          var prinf =
+            `<div class="view_Product_list">
+                <div class="img">
+                  <img src="` +
+            product[i].image +
+            `" alt="" />
+                </div>
+                <div class="view_product_details">
+                  <div class="view_pro_heading">` +
+            product[i].name +
+            `</div>
+                  <div class="view_pro_desc">` +
+            product[i].note +
+            `</div>
+                  <div class="view_pro_rate">
+                  
+                    <span>Rs. ` +
+            product[i].price +
+            `</span>
+            <span><s>Rs. 1200</s>  </span>
+                  </div>
+                  <div class="btns">
+                  
+                    <button onclick="UpdateFood(` +
+            product[i].id +
+            `)"  >Edit</button>
+                    <button  onclick="DeleteFood(` +
+            product[i].id +
+            `)" >Delete</button>
+                  </div>
+                </div>
+              </div>`;
+          document.getElementById("view_Product_list").innerHTML += prinf;
+        }
+      }
+
+      Adminproduct();
+
+      function DeleteFood(id) {
+        for (var i = 0; i < product.length; i++) {
+          if (id == product[i].id) {
+            product.splice(i, 1);
+
+            localStorage.setItem("product", JSON.stringify(product));
+            Adminproduct();
+          }
+        }
+      }
+
+      function UpdateFood(id) {
+        for (var i = 0; i < product.length; i++) {
+          if (id == product[i].id) {
+            document.getElementById("product_in").value = product[i].id;
+            document.getElementById("Product_Name").value = product[i].name;
+            document.getElementById("discretion").value = product[i].note;
+            document.getElementById("Amount").value = product[i].price;
+
+            localStorage.setItem("img", product[i].image);
+            break;
+          }
+        }
+      }
+
+      function SaveUpdateproduct() {
+        var idchange = document.getElementById("product_in").value;
+
+        for (var i = 0; i < product.length; i++) {
+          if (idchange == product[i].id) {
+            product[i].image = localStorage.getItem("img");
+            product[i].name = document.getElementById("Product_Name").value;
+            product[i].price = document.getElementById("Amount").value;
+            product[i].note = document.getElementById("discretion").value;
+            var imageChange = document.getElementById("productAddImageInput").value;
+            localStorage.setItem("product", JSON.stringify(product));
+            Adminproduct();
+          }
+        }
+
+        document.getElementById("Product_Name").value = "";
+        document.getElementById("Amount").value = "";
+        document.getElementById("discretion").value = "";
+      }
+    </script>
+  </body>
+</html>
