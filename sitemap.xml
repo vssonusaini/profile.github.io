@@ -12,10 +12,33 @@
   <lastmod>2022-02-26T18:40:33+00:00</lastmod>
   <priority>1.00</priority>
 </url>
+
 <url>
-  <loc>https://sainisahab.com/html/cv/</loc>
+  <loc>https://sainisahab.com/#resume</loc>
   <lastmod>2022-02-26T18:40:33+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>1.00</priority>
+</url>
+
+<url>
+  <loc>https://sainisahab.com/#portfolio</loc>
+  <lastmod>2022-02-26T18:40:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+
+<url>
+  <loc>https://sainisahab.com/#blog</loc>
+  <lastmod>2022-02-26T18:40:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sainisahab.com/#gallery</loc>
+  <lastmod>2022-02-26T18:40:33+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://sainisahab.com/#contact</loc>
+  <lastmod>2022-02-26T18:40:33+00:00</lastmod>
+  <priority>1.00</priority>
 </url>
 <url>
   <loc>https://sainisahab.com/html/online-qrcode-generator-tool/</loc>
