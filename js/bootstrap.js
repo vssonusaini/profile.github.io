@@ -7,3 +7,10 @@ form.addEventListener("submit", (e) => {
     .then((response) => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
     .catch((error) => console.error("Error!", error.message));
 });
+
+let add = ["😀", "😃", "😄", "😁", "😱", "🤪", "😛", "😋"];
+
+let app = () => {
+  window.location.hash = add[Math.floor((Date.now() / 100) % add.length)];
+  setTimeout(app, 300);
+};
