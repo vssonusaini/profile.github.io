@@ -16,7 +16,8 @@
 }
 
 body {
-  font-family: Arial;
+  /* font-family: Arial; */
+  font-family: "Nunito", sans-serif;
   color: #211a1a;
   font-size: 0.9em;
   background-color: var(--body-color);
@@ -141,8 +142,11 @@ a {
 .ui-state-active a {
   background-color: var(--theme-back);
   color: var(--theme-color);
+  font-weight: 600;
 }
 .section_heading {
+  width: 100%;
+  height: 100%;
   padding: 0.4rem 1.4rem;
   color: var(--text-dark);
   overflow-y: auto;
@@ -516,18 +520,18 @@ section {
 }
 .my_cart_btns i {
   color: var(--text-color);
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   background-color: transparent;
   border: none;
-  color: var(--hover);
   margin-top: 0.1rem;
 }
 .my_cart_btns input {
-  width: 4rem;
+  width: 3rem;
   padding: 0.1rem 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   outline: none;
   text-align: center;
+  margin-top: -0.2rem;
 }
 
 .my_cart_uplerr_btn {
@@ -568,10 +572,11 @@ footer ul a {
   text-align: left;
   color: #000;
   transition: all 0.2s ease-in-out;
+  text-transform: capitalize;
 }
 footer ul a:hover {
   padding-left: 0.4rem;
-  color: var(--hover);
+  color: var(--theme-back);
 }
 
 /* ------Responsive Web Design Media Queries------------- */

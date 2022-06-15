@@ -386,12 +386,45 @@ function print_product_menu() {
 }
 // Print Product
 
+// --footer-
+
+function Footer() {
+  var echo_database = JSON.parse(localStorage.getItem("echo_database"));
+  var footer_sort = echo_database.site_settings.footer;
+  document.querySelector("footer").innerHTML = "";
+  var footer_html =
+    `<div class="footer_grid">
+  <aside>
+    <div class="logo">
+      <span>` +
+    footer_sort.logo +
+    `</span>
+    </div>
+    <p>` +
+    footer_sort.footer_desc +
+    `</p>
+  </aside>
+  <div>
+    <ul id="footer_links">
+   
+    </ul>
+  </div>
+</div>`;
+
+  document.querySelector("footer").innerHTML = footer_html;
+  for (var i = 0; i < footer_sort.links.length; i++) {
+    console.log("a");
+    var footer_links = '<li><a href="' + footer_sort.links[i].link_href + '">' + footer_sort.links[i].link_name + "</a></li>";
+    document.getElementById("footer_links").innerHTML += footer_links;
+  }
+}
 // call all function
 function call_all_function() {
   checkLogin();
   categories();
   print_product_menu();
   my_cart_items_list();
+  Footer();
 }
 
 call_all_function();

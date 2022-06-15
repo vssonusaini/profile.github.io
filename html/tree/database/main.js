@@ -130,7 +130,7 @@ if (echo_database === null) {
       ],
 
       footer: {
-        logo: "sonu",
+        logo: "echo",
         footer_desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at amet.",
         links: [
           {
