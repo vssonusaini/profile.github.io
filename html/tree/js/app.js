@@ -391,7 +391,7 @@ function print_product_menu() {
 function Footer() {
   var echo_database = JSON.parse(localStorage.getItem("echo_database"));
   var footer_sort = echo_database.site_settings.footer;
-  document.querySelector("footer").innerHTML = "";
+  document.getElementById("footer").innerHTML = "";
   var footer_html =
     `<div class="footer_grid">
   <aside>
@@ -411,7 +411,7 @@ function Footer() {
   </div>
 </div>`;
 
-  document.querySelector("footer").innerHTML = footer_html;
+  document.getElementById("footer").innerHTML = footer_html;
   for (var i = 0; i < footer_sort.links.length; i++) {
     console.log("a");
     var footer_links = '<li><a href="' + footer_sort.links[i].link_href + '">' + footer_sort.links[i].link_name + "</a></li>";
