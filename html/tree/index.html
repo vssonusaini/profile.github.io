@@ -4,8 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Echo App</title>
+    <!-- ----css------ -->
     <link rel="stylesheet" href="./css/style.css" />
+
+    <!-- -----animate--css--- -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- -----icons---------- -->
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" rel="stylesheet" />
@@ -14,26 +18,170 @@
     <div class="wapper">
       <header>
         <nav class="nav_bar">
-          <!-- ------logo---- -->
           <div class="logo">
-            <span>echo</span>
+            <h1>echo</h1>
           </div>
-
-          <!-- -----menu list---- -->
-          <div class="nav_menu">
+          <div class="bav_menu">
             <ul>
               <li>
-                <a href="#" href="#" data-drawer-trigger aria-controls="my_cart" aria-expanded="false"><i class="bx bx-cart-alt"></i></a>
+                <a href="#" data-drawer-trigger aria-controls="my_cart" aria-expanded="false"><i class="bx bx-cart-alt"></i></a>
               </li>
               <li>
-                <a href="#" href="#" data-drawer-trigger aria-controls="login" aria-expanded="false"><i class="bx bx-user"></i></a>
+                <a href="#" id="user_toggle"><i class="bx bx-user"></i><span id="user_name">Sonu</span></a>
+              </li>
+              <li>
+                <a href="#" id="user_login_singup_toggle">Login <i class="bx bx-log-in-circle"></i></a>
               </li>
             </ul>
           </div>
         </nav>
-        <div class="hero"></div>
-      </header>
+        <div class="hero">
+          <div class="user_info" id="user_details" style="display: none">
+            <ul>
+              <li id="admin_btn"><a>dashbord</a></li>
+              <li><a href="#profile">profile</a></li>
+              <li><a href="#Purchase">Purchase </a></li>
+              <li><a href="#Password">Password</a></li>
+              <li><a onclick="Logout()">logout</a></li>
+            </ul>
+            <section>
+              <div id="profile" class="section_heading">
+                <div class="animate__animated animate__fadeInLeft">
+                  <div class="heading">
+                    <h1>Personal Information</h1>
+                  </div>
+                  <div class="user_avatar">
+                    <p>Avatar</p>
+                    <label for="avatar">Upload Your Avatar Image (80 X 80)</label>
+                    <input type="file" id="avatar" hidden />
+                  </div>
+                  <div class="input_gorup">
+                    <div class="user_input">
+                      <label for="nser_name">Name</label>
+                      <input type="text" id="nser_name" />
+                    </div>
+                    <div class="user_input">
+                      <label for="nser_name">Contact</label>
+                      <input type="text" id="nser_name" />
+                    </div>
+                  </div>
+                  <div class="user_input">
+                    <label for="user_bio">Bio</label>
+                    <textarea id="uaer_bio" cols="30" rows="10"></textarea>
+                  </div>
+                  <div class="uaer_btn">
+                    <button>Sava Change</button>
+                  </div>
+                </div>
+              </div>
+              <div id="Purchase" class="section_heading">
+                <div class="animate__animated animate__fadeInLeft">
+                  <div class="heading">
+                    <h1>My Purchase List <span> (10)</span></h1>
+                  </div>
+                  <div class="user_purchase_list">
+                    <div class="user_purchase_items">
+                      <div class="img">
+                        <img src="https://pixer-react-shop.vercel.app/_next/image?url=https%3A%2F%2Fpixarlaravel.s3.ap-southeast-1.amazonaws.com%2F518%2Fconversions%2Fimage05-thumbnail.jpg&w=1920&q=100" alt="" />
+                      </div>
+                      <div class="desc">
+                        <span>Purchased on Mar 3, 2022 </span>
+                        <span>StoryHub WordPress Blog Theme </span>
+                        <span><a href="#">Preview</a></span>
+                      </div>
+                      <div class="btn">
+                        <!-- <a>Viwe</a> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="Password" class="section_heading">
+                <div class="animate__animated animate__fadeInLeft">
+                  <div class="heading">
+                    <h1>Change Password</h1>
+                  </div>
 
+                  <div class="input_gorup">
+                    <div class="user_input">
+                      <label for="nser_name">Current Password </label>
+                      <input type="text" id="nser_name" />
+                    </div>
+                    <div class="user_input">
+                      <label for="nser_name">New Password </label>
+                      <input type="text" id="nser_name" />
+                    </div>
+                  </div>
+                  <div class="input_gorup">
+                    <div class="user_input">
+                      <label for="nser_name">Confirm Password </label>
+                      <input type="text" id="nser_name" />
+                    </div>
+                  </div>
+                  <div class="uaer_btn">
+                    <button>Sava Change</button>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="user_login_singup" id="user_login_singup" style="display: none">
+            <div class="login_singup">
+              <ul>
+                <li><a href="#Login">Login</a></li>
+                <li><a href="#Sing_Up">Sing Up</a></li>
+              </ul>
+              <section>
+                <div id="Login" class="section_heading">
+                  <div class="animate__animated animate__fadeInLeft">
+                    <div class="heading">
+                      <h1>Login</h1>
+                    </div>
+
+                    <div class="user_input">
+                      <label for="nser_name"><i class="bx bx-user"></i> Uear ID</label>
+                      <input type="text" id="login_user_name" />
+                    </div>
+                    <div class="user_input">
+                      <label for="nser_name"> <i class="bx bx-lock-alt"></i> Password</label>
+                      <input type="text" id="login_user_password" />
+                    </div>
+                    <div class="uaer_status" id="statusLogin"></div>
+
+                    <div class="uaer_btn">
+                      <button onclick="Login()">Login <i class="bx bx-log-in-circle"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div id="Sing_Up" class="section_heading">
+                  <div class="animate__animated animate__fadeInLeft">
+                    <div class="heading">
+                      <h1>Sing Up</h1>
+                    </div>
+
+                    <div class="user_input">
+                      <label for="nser_name"><i class="bx bx-user"></i> Uear ID</label>
+                      <input type="text" id="sing_nser_name" />
+                    </div>
+                    <div class="user_input">
+                      <label for="nser_name"><i class="bx bx-lock-alt"></i> Password</label>
+                      <input type="text" id="sing_user_password" />
+                    </div>
+                    <div class="user_input">
+                      <label for="nser_name"><i class="bx bx-lock-alt"></i> Confirm Password</label>
+                      <input type="text" id="sing_user_password_con" />
+                    </div>
+                    <div class="uaer_status" id="sing_up_status"></div>
+                    <div class="uaer_btn">
+                      <button onclick="singup()">Sing Up <i class="bx bx-log-in"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </header>
       <div class="main-container">
         <aside>
           <div class="categories_menu">
@@ -52,6 +200,7 @@
           <div class="product_list" id="produt_list"></div>
         </section>
       </div>
+
       <footer></footer>
     </div>
     <!-- ------------------SIDE-BAR----------------------- -->
@@ -63,38 +212,7 @@
           <button class="drawer__close" data-drawer-close aria-label="Close Drawer"><i class="bx bxs-chevron-right"></i></button>
         </div>
         <div class="drawer__content">
-          <div id="products_detail">
-            <div class="products_detail">
-              <div class="product_detail_img_side">
-                <div class="product_detail_img">
-                  <img src="https://rukminim2.flixcart.com/image/416/416/ko0d6kw0/mobile/6/h/y/iphone-12-mjnm3hn-a-apple-original-imag2k2v6ehvnzfd.jpeg?q=70" alt="" />
-                </div>
-                <div class="product_detail_btns">
-                  <button>Add To Cart</button>
-                  <button>BUy Now</button>
-                </div>
-              </div>
-              <div class="product_detail_dec">
-                <div class="product_detail_heading">
-                  <h2>APPLE iPhone 12 (Purple, 64 GB)</h2>
-                </div>
-                <div class="product_detail_reviews">
-                  <span>199 Ratings & 34 Reviews</span>
-                </div>
-                <div class="product_detail_rate">
-                  <span>Rs. 59.999</span>
-                  <span><s>Rs. 1200</s></span>
-                </div>
-
-                <div class="product_detail_decs">
-                  <div class="product_detail_desc_heading">Description</div>
-                  <div class="product_detail_decs_p">
-                    <p>Protection case made of PC back + soft TPU frame + metal plate for magnetic car mount + rotatable metal ring,making it multifunctional,more touch-sensitive,scratch-resistant and anti-fingerprints than other materials,stops any dust from entering and scratching the body of phone.Screen and Camera Protection.Phone case is 1mm higher than the screen and build-in full coverage camera protection,which protect the screen and the camera from scratches and dust.Anti drop and anti slip design:The four corners are reinforced, which can effectively alleviate the collision force</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="products_detail"></div>
           <div class="product_list" id="product_details_inside">
             <h1>ss</h1>
           </div>
@@ -102,7 +220,6 @@
       </div>
     </section>
 
-    <!-- ----my--cart--- -->
     <section class="drawer" id="my_cart" data-drawer-target>
       <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
       <div class="drawer__wrapper my_cart_60">
@@ -111,33 +228,13 @@
           <button class="drawer__close" data-drawer-close aria-label="Close Drawer"><i class="bx bxs-chevron-right"></i></button>
         </div>
         <div class="drawer__content">
-          <div class="my_cart" id="my_cart_items">
-            <div class="my_cart_btns">
-              <a href="#"><i class="bx bx-minus-circle"></i></a>
-              <input type="text" disabled value="89" />
-              <a href="#"><i class="bx bx-plus-circle"></i></a>
-              <a href="#"><i class="bx bx-message-square-x"></i></a>
-            </div>
-            <div class="products my_cart_item">
-              <div class="img">
-                <img src="https://rukminim2.flixcart.com/image/416/416/kvba7bk0/computer/b/g/m/ga401ihr-hz070ts-gaming-laptop-asus-original-imag88s2xhgmuuzk.jpeg?q=70" alt="" />
-              </div>
-              <div class="pro_details">
-                <div class="pro_heading">Apple</div>
-                <div class="pro_decs"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, quo.</p></div>
-                <div class="pro_rates">
-                  <span>Rs. !33</span>
-                  <span><s>Rs.1200</s></span>
-                  <!-- <span>60% OFF</span> -->
-                </div>
-              </div>
-            </div>
-            `
-          </div>
+          <div class="my_cart" id="my_cart_items"></div>
         </div>
       </div>
     </section>
-    <script src="./server/database.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script src="./database/main.js"></script>
+    <script src="./js/app.js"></script>
   </body>
 </html>

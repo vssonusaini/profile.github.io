@@ -66,18 +66,44 @@ if (echo_database === null) {
     categories: [
       {
         categorie: "all",
+        active: "ui-state-active",
       },
       {
         categorie: "phones",
+        active: "",
       },
       {
         categorie: "laptop",
+        active: "",
       },
       {
         categorie: "headset",
+        active: "",
       },
     ],
-
+    account: [
+      {
+        id: 1,
+        user_name: "admin",
+        user_password: "admin@123",
+        user_password_confirm: "admin@123",
+        user_lable: "0",
+      },
+      {
+        id: 2,
+        user_name: "sonu",
+        user_password: "admin@123",
+        user_password_confirm: "admin@123",
+        user_lable: "1",
+      },
+    ],
+    echo_status: {
+      login_user_name: "",
+      login_label: "-1",
+      upid: "1",
+      select_categories: "all",
+      product_list_categories: "all",
+    },
     site_settings: {
       hero: {
         logo: "echo",
@@ -128,16 +154,4 @@ if (echo_database === null) {
     },
   };
   localStorage.setItem("echo_database", JSON.stringify(echo_database));
-}
-
-var settings = JSON.parse(localStorage.getItem("echo_settings"));
-if (settings === null) {
-  settings = [];
-  settings = [
-    {
-      select_categories: "all",
-      product_detiels_categories: "phones",
-    },
-  ];
-  localStorage.setItem("echo_settings", JSON.stringify(settings));
 }
