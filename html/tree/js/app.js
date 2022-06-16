@@ -3,6 +3,7 @@ document.documentElement.style.setProperty("--animate-duration", ".2s");
 $(function () {
   $("#user_details").tabs();
   $("#user_login_singup").tabs();
+  $("#root_tabs").tabs();
 
   // run the currently selected effect
   function user_details() {
@@ -418,6 +419,56 @@ function Footer() {
     document.getElementById("footer_links").innerHTML += footer_links;
   }
 }
+
+// ---root
+// Print Product
+function add_items_list() {
+  document.getElementById("add_product_list").innerHTML = "";
+  var echo_database = JSON.parse(localStorage.getItem("echo_database"));
+
+  for (let i = 0; i < echo_database.product.length; i++) {
+    var add_items_html =
+      `
+    <div class="add_product_item">
+    <div class="item_img">
+      <img src="` +
+      echo_database.product[i].image +
+      `" alt="" />
+    </div>
+    <div class="item_details">
+      <div class="item_heading">` +
+      echo_database.product[i].name +
+      `</div>
+      <div class="item_desc"><p>` +
+      echo_database.product[i].note +
+      `</p></div>
+      <div class="item_action">
+        <div class="item_price"><span>Price </span> ` +
+      echo_database.product[i].price +
+      `</div>
+        <div class="item_categorie">Categorie :  ` +
+      echo_database.product[i].categories +
+      `</div>
+      </div>
+    </div>
+    <div class="item_active">
+  <div>
+  <input type="checkbox" id="items_` +
+      echo_database.product[i].id +
+      `" />
+  <label for="items_` +
+      echo_database.product[i].id +
+      `">Active</label>
+  </div>
+  <a href="#">edit </a>
+  <a href="#">delete </a>
+    </div>
+  </div>`;
+
+    document.getElementById("add_product_list").innerHTML += add_items_html;
+  }
+}
+
 // call all function
 function call_all_function() {
   checkLogin();
@@ -425,11 +476,12 @@ function call_all_function() {
   print_product_menu();
   my_cart_items_list();
   Footer();
+
+  // -root
+  add_items_list();
 }
 
 call_all_function();
-
-// ---root
 //  Slider
 var drawer = function () {
   if (!Element.prototype.closest) {
@@ -453,7 +505,7 @@ var drawer = function () {
   //
   var settings = {
     speedOpen: 10,
-    speedClose: 35,
+    speedClose: 200,
     activeClass: "is-active",
     visibleClass: "is-visible",
     selectorTarget: "[data-drawer-target]",

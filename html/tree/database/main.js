@@ -135,7 +135,7 @@ if (echo_database === null) {
         links: [
           {
             link_name: "Help center",
-            link_href: "https://github.com/vssonusaini",
+            link_href: "/sonusaini",
           },
           {
             link_name: "Track Your Order",
