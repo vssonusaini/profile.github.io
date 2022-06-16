@@ -503,6 +503,7 @@ section {
 .my_cart_60 {
   width: 40%;
 }
+
 .my_cart_item {
   display: grid;
   grid-template-columns: 30% auto;
@@ -702,6 +703,14 @@ footer ul a:hover {
 }
 /* ------Responsive Web Design Media Queries------------- */
 @media screen and (max-width: 700px) {
+  /* ---root */
+  .my_cart_60 {
+    width: 100%;
+  }
+  .products_detils_60 {
+    width: 100%;
+    max-width: 100%;
+  }
   body {
     padding: 0;
   }
@@ -718,5 +727,37 @@ footer ul a:hover {
     flex-direction: column;
     height: 100%;
     overflow-y: scroll;
+  }
+  .main-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .product_list {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .products_detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  .product_detail_dec {
+    padding: 0.2rem;
+    width: 100%;
+    margin-left: 0rem;
+  }
+  .footer_grid {
+    display: flex;
+    flex-direction: column;
+  }
+  footer ul {
+    margin-top: 1rem;
+    text-align: right;
+    padding: 0 1rem;
   }
 }
