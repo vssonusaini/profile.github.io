@@ -328,3 +328,12 @@ var drawer = function () {
 };
 
 drawer();
+
+const swDev = () => {
+  let swUrl = "../sw.js";
+  // console.log(swUrl);
+  navigator.serviceWorker.register(swUrl).then((response) => {
+    // console.log("Response", response);
+  });
+};
+swDev();
