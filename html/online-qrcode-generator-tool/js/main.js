@@ -330,9 +330,10 @@ var drawer = function () {
 drawer();
 
 const swDev = () => {
-  let swUrl = "https://sainisahab.com/html/online-qrcode-generator-tool/sw.js";
+  let Url = document.URL + "sw.js";
+  console.log(Url);
   // console.log(swUrl);
-  navigator.serviceWorker.register(swUrl).then((response) => {
+  navigator.serviceWorker.register(Url).then((response) => {
     // console.log("Response", response);
   });
 };

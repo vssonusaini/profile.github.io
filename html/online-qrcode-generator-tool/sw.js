@@ -1,37 +1,37 @@
-console.log("Index Service Worker Run");
+cache_file = ["/index.html"];
 
-let cacheVer = "qrcode_generator_0.1v";
-let root = "https://sainisahab.com/html/fake-twitter-image-generator";
-cache_file = [
-  `${root}https://sainisahab.com/html/fake-twitter-image-generator/index.html`, 
-  `${root}/js/qrcode.min.js`,
-  `${root}/js/html2canvas.min.js`, 
-  `${root}/js/barcode.js`, 
-  `${root}/js/main.js`, 
-  `${root}/css/style.css`, 
-  `${root}/css/root.css`, 
-  `${root}/sw.js`
-];
-
-this.addEventListener("install", (event) => {
+self.addEventListener("install", function (event) {
   event.waitUntil(
-    caches.open(cacheVer).then((cache) => {
-      cache.addAll(cache_file);
+    caches.open("v1").then(function (cache) {
+      return cache.addAll(cache_file);
     })
   );
 });
 
-this.addEventListener("fetch", (event) => {
-  // chack online
-  if (!navigator.onLine) {
-    event.respondWith(
-      caches.match(event.request).then((result) => {
-        if (result) {
-          return result;
-        }
-        let requestUrl = event.request.clone();
-        return fetch(requestUrl);
-      })
-    );
-  }
+self.addEventListener("fetch", function (event) {
+  event.respondWith(
+    caches.match(event.request).then(function (response) {
+      // caches.match() always resolves
+      // but in case of success response will have value
+      if (response !== undefined) {
+        return response;
+      } else {
+        return fetch(event.request)
+          .then(function (response) {
+            // response may be used only once
+            // we need to save clone to put one copy in cache
+            // and serve second one
+            let responseClone = response.clone();
+
+            caches.open("v1").then(function (cache) {
+              cache.put(event.request, responseClone);
+            });
+            return response;
+          })
+          .catch(function () {
+            return caches.match("/sw-test/gallery/myLittleVader.jpg");
+          });
+      }
+    })
+  );
 });
