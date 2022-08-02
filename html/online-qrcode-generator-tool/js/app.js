@@ -20,7 +20,7 @@ const app = () => {
   };
 
   const generate = () => {
-    console.log("Generate function coll");
+    // console.log("Generate function coll");
 
     var qr = {
       text: inputVal.value,
@@ -72,19 +72,3 @@ if ("serviceWorker" in navigator) {
     .then((reg) => console.log("service worker registered"))
     .catch((err) => console.log("service worker not registered"));
 }
-
-const swDev = () => {
-  let Url = document.URL + "sw.js";
-  console.log(Url);
-  // console.log(swUrl);
-  navigator.serviceWorker.register(Url).then((response) => {
-    // console.log("Response", response);
-  });
-  // if ("serviceWorker" in navigator) {
-  //   navigator.serviceWorker
-  //     .register("/sw.js")
-  //     .then((reg) => console.log("service worker registered"))
-  //     .catch((err) => console.log("service worker not registered", err));
-  // }
-};
-// swDev();
