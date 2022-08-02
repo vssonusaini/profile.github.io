@@ -65,7 +65,6 @@ const app = () => {
 document.addEventListener("DOMContentLoaded", app);
 
 let Url = document.URL + "sw.js";
-console.log(Url);
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register(Url)
