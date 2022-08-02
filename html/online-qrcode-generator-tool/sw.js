@@ -1,6 +1,6 @@
 const CACHE_NAME = "v0.4";
 cache_file = ["/index.html"];
-e;
+
 self.addEventListener("install", function (evnt) {
   evnt.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
