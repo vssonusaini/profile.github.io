@@ -1,7 +1,7 @@
 {
   "name": "QR Generator",
   "short_name": "QRGenerator",
-  "start_url": "/index.html",
+  "start_url": "/html/online-qrcode-generator-tool/",
   "display": "standalone",
   "background_color": "#FFE9D2",
   "theme_color": "#FFE1C4",
