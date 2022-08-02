@@ -1,5 +1,5 @@
-const CACHE_NAME = "V5";
-const STATIC_CACHE_URLS = ["/"];
+const CACHE_NAME = "0.2v";
+const STATIC_CACHE_URLS = ["/", "./index.html", "./js/app.js", "./js/ui.js", "./css/styles.css"];
 
 // install event
 self.addEventListener("install", (evt) => {
