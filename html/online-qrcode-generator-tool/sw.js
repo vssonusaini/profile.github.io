@@ -1,10 +1,11 @@
 const CACHE_NAME = "v0.4";
 cache_file = ["/index.html"];
-
-self.addEventListener("install", function (event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(function (cache) {
-      return cache.addAll(cache_file);
+e;
+self.addEventListener("install", function (evnt) {
+  evnt.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("caching shell assets");
+      cache.addAll(cache_file);
     })
   );
 });
