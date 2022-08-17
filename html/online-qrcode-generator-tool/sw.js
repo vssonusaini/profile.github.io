@@ -1,12 +1,12 @@
-const staticCacheName = "site-static-v1";
-const dynamicCacheName = "site-dynamic-v1";
-const assets = ["/", "/index.html", "/js/app.js", "/js/ui.js", "/css/styles.css", "/pages/fallback.html"];
+const staticCacheName = "site-static-v0.12";
+const dynamicCacheName = "site-dynamic-v0.12";
+const assets = ["/"];
 
 // cache size limit function
 const limitCacheSize = (name, size) => {
   caches.open(name).then((cache) => {
     cache.keys().then((keys) => {
-      if (keys.length > size) {
+      if (keys.length > size) {0
         cache.delete(keys[0]).then(limitCacheSize(name, size));
       }
     });
@@ -18,7 +18,7 @@ self.addEventListener("install", (evt) => {
   //console.log('service worker installed');
   evt.waitUntil(
     caches.open(staticCacheName).then((cache) => {
-      console.log("caching shell assets");
+      console.log("caching assets");
       cache.addAll(assets);
     })
   );
