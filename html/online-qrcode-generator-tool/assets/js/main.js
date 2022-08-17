@@ -1,1 +1,1 @@
-navigator.serviceWorker.register("/sw.js");
+navigator.serviceWorker.register("/html/online-qrcode-generator-tool/sw.js");
