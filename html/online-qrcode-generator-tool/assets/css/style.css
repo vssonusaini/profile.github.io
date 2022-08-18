@@ -25,9 +25,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(-45deg, #8652ee, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+
+  background-size: 100%;
   background-repeat: no-repeat;
-  animation: gradient 15s ease infinite;
+  background-size: cover;
+  background-position: center;
+
+  /* animation: gradient 15s ease infinite; */
+}
+.background-image {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100vh;
+  /* -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); */
 }
 
 @keyframes gradient {
@@ -49,6 +64,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
 .wapper {
@@ -206,9 +223,47 @@ footer p {
 .setting_main {
   width: 100%;
   height: 100%;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
+}
+.theme_block {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+.grid {
+  width: 100%;
+  /* height: 100%; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.grid_items {
+  width: 100%;
+  height: 6rem;
+  background-color: orange;
+  border-radius: var(--border-radius);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
+
+.grid_items label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0.4rem;
+}
+.grid_items input {
+  display: block;
+  width: 1rem;
+  height: 1rem;
 }
 /* root  */
 button {
@@ -276,7 +331,17 @@ button {
 }
 
 /* * -------------------MEDIA----------------- */
-@media screen and (max-width: 472px) {
+@media screen and (max-width: 1024px) {
+  .wapper {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wapper {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 624px) {
   :root {
     --border-radius: 0.4rem;
     --gap: 0.4rem;
@@ -309,8 +374,4 @@ button {
     justify-content: center;
     padding: 0.6rem;
   }
-}
-@media screen and (min-width: 768px) {
-}
-@media screen and (max-width: 1024px) {
 }

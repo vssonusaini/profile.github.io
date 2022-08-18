@@ -1,12 +1,13 @@
-const staticCacheName = "site-static-v0.14";
-const dynamicCacheName = "site-dynamic-v0.14";
+const staticCacheName = "site-static-v0.2";
+const dynamicCacheName = "site-dynamic-v0.2";
 const assets = ["/"];
 
 // cache size limit function
 const limitCacheSize = (name, size) => {
   caches.open(name).then((cache) => {
     cache.keys().then((keys) => {
-      if (keys.length > size) {0
+      if (keys.length > size) {
+        0;
         cache.delete(keys[0]).then(limitCacheSize(name, size));
       }
     });
