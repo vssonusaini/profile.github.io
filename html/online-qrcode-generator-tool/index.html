@@ -24,14 +24,14 @@
     <meta name="theme-color" content="#1e63f9" />
   </head>
   <body>
-    <div class="background-image"></div>
+    <div id="background-image"></div>
     <div class="container">
       <div class="wapper">
         <!-- nav bar area start -->
         <nav class="nav_bar">
           <!-- -->
           <!-- nav logo -->
-          <a href="#">
+          <a href="/">
             <div class="logo">
               <?xml version="1.0" standalone="no"?>
               <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="423.000000pt" height="423.000000pt" viewBox="0 0 423.000000 423.000000" preserveAspectRatio="xMidYMid meet">
@@ -215,6 +215,12 @@
               <!-- <div class="loader"></div> -->
               <div class="theme_block">
                 <div class="grid" id="theme_list-block"></div>
+                <div class="theme_setting">
+                  <div class="theme_range-block">
+                    <span>Blur: <span id="blurVal"></span>px</span>
+                    <input type="range" step="0.1" min="0" max="10" value="0" id="blurTheme" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

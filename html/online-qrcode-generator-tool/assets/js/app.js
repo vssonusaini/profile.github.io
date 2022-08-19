@@ -8,10 +8,11 @@ let year = (document.getElementById("year").innerHTML = new Date().getFullYear()
 let clearBtn = document.getElementById("clearBtn");
 let makeBtn = document.getElementById("makeBtn");
 let autoClaerBtn = document.getElementById("autoClaerBtn");
+let rangeBtn = document.getElementById("blurTheme");
 
 let theme_list = document.getElementById("theme_list-block");
 
-let wallpaper = ["", "https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/952/536/1006/winter-4k-pc-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/297/288/1009/5bd320d590bcf-wallpaper-preview.jpg"];
+let wallpaper = ["", "https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/952/536/1006/winter-4k-pc-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/297/288/1009/5bd320d590bcf-wallpaper-preview.jpg", "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/4k/original/05.jpg?3"];
 
 // loacl host
 var setting = JSON.parse(localStorage.getItem("setting"));
@@ -21,6 +22,7 @@ if (setting === null) {
     theme: {
       id: "",
       src: "",
+      blur: "",
     },
     autoClear: false,
     qrSet: {
@@ -92,6 +94,10 @@ const onLoad = () => {
   //   THEME Function start
   document.body.style.backgroundImage = `url(` + host_setting.theme.src + `)`;
   document.getElementById(`list_` + host_setting.theme.id + ``).setAttribute("checked", "");
+
+  document.getElementById("background-image").setAttribute("style", `backdrop-filter: blur(${host_setting.theme.blur}px)`);
+  rangeBtn.value = host_setting.theme.blur;
+  document.getElementById("blurVal").innerHTML = host_setting.theme.blur;
 };
 
 // set theme function
@@ -115,6 +121,13 @@ clearBtn.addEventListener("click", () => {
   let host_setting = JSON.parse(localStorage.getItem("setting"));
   host_setting.qrSet.text = "";
   inputVal.value = "";
+  localStorage.setItem("setting", JSON.stringify(host_setting));
+  onLoad();
+});
+
+rangeBtn.addEventListener("change", () => {
+  let host_setting = JSON.parse(localStorage.getItem("setting"));
+  host_setting.theme.blur = rangeBtn.value;
   localStorage.setItem("setting", JSON.stringify(host_setting));
   onLoad();
 });
