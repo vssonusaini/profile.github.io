@@ -12,7 +12,7 @@ let rangeBtn = document.getElementById("blurTheme");
 
 let theme_list = document.getElementById("theme_list-block");
 
-let wallpaper = ["", "https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/952/536/1006/winter-4k-pc-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/297/288/1009/5bd320d590bcf-wallpaper-preview.jpg", "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/4k/original/05.jpg?3"];
+let wallpaper = ["back", "https://c4.wallpaperflare.com/wallpaper/586/603/742/minimalism-4k-for-mac-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/952/536/1006/winter-4k-pc-desktop-wallpaper-preview.jpg", "https://c4.wallpaperflare.com/wallpaper/297/288/1009/5bd320d590bcf-wallpaper-preview.jpg", "https://assets.hongkiat.com/uploads/minimalist-dekstop-wallpapers/4k/original/05.jpg?3"];
 
 // loacl host
 var setting = JSON.parse(localStorage.getItem("setting"));
@@ -20,7 +20,7 @@ if (setting === null) {
   setting = [];
   var setting = {
     theme: {
-      id: "",
+      id: "0",
       src: "",
       blur: "",
     },

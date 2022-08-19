@@ -1,5 +1,4 @@
-const staticCacheName = "site-static-v0.3";
-const dynamicCacheName = "site-dynamic-v0.3";
+const staticCacheName = "site-static-v0.12";
 const assets = ["/"];
 
 // cache size limit function
@@ -25,15 +24,23 @@ self.addEventListener("install", (evt) => {
   );
 });
 
-// activate event
+//Gera o CACHE dos arquivos estáticos
 self.addEventListener("activate", (evt) => {
-  //console.log('service worker activated');
+  console.log("[ServiceWorker] Ativando...");
+
   evt.waitUntil(
-    caches.keys().then((keys) => {
-      //console.log(keys);
-      return Promise.all(keys.filter((key) => key !== staticCacheName && key !== dynamicCacheName).map((key) => caches.delete(key)));
+    caches.keys().then((keylist) => {
+      return Promise.all(
+        keylist.map((key) => {
+          //console.log('[ServiceWorker] Removendo cache antigo...');
+          if (key !== staticCacheName) {
+            return caches.delete(key);
+          }
+        })
+      );
     })
   );
+  self.clients.claim();
 });
 
 // fetch event
@@ -46,10 +53,10 @@ self.addEventListener("fetch", (evt) => {
         return (
           cacheRes ||
           fetch(evt.request).then((fetchRes) => {
-            return caches.open(dynamicCacheName).then((cache) => {
+            return caches.open(staticCacheName).then((cache) => {
               cache.put(evt.request.url, fetchRes.clone());
               // check cached items size
-              limitCacheSize(dynamicCacheName, 15);
+              // limitCacheSize(staticCacheName, 15);
               return fetchRes;
             });
           })
@@ -61,4 +68,10 @@ self.addEventListener("fetch", (evt) => {
         }
       })
   );
+});
+
+self.addEventListener("message", function (event) {
+  if (event.data.action === "skipWaiting") {
+    self.skipWaiting();
+  }
 });

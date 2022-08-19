@@ -277,6 +277,29 @@ footer p {
   /* align-items: center; */
 }
 /* root  */
+#notification {
+  background-color: var(--main-color);
+
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 1rem;
+  display: none;
+}
+#notification a {
+  color: var(--theme-bg-color);
+  cursor: pointer;
+  margin: 0 0.4rem;
+}
+#notification a:hover {
+  text-decoration: underline;
+  color: #23d5ab;
+}
+
 button {
   display: inline-block;
   text-transform: capitalize;
