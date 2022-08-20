@@ -21,7 +21,7 @@ if ("serviceWorker" in navigator) {
             // There is a new service worker available, show the notification
             if (navigator.serviceWorker.controller) {
               let notification = document.getElementById("notification");
-              notification.style.display = "flex";
+              notification.style.display = "block";
             }
 
             break;
