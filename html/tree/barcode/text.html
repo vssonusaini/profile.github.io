@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @media print {
+        @page {
+          size: 30mm 20mm;
+          margin: 0;
+          padding: 0;
+        }
+        html,
+        body {
+          /* position: relative; */
+          width: 100%;
+          height: 100px;
+          max-width: 100%;
+          max-height:10%;
+          margin: 0;
+          padding: 0;
+        }
+        svg {
+          width: 150px;
+          height: 60px;
+          /* width: 100%;
+          height: 100%;
+          max-width: 100%;
+          max-height: 100%; */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+    <svg id="code128"></svg>
+
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.3.16/barcodes/JsBarcode.code128.min.js"></script>
+    <script>
+      JsBarcode("#code128", "AD243", {
+        format: "CODE128",
+        displayValue: true,
+      });
+      window.print();
+    </script>
+  </body>
+</html>

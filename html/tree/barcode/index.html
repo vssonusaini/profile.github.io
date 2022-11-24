@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bar Code Lable</title>
+
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="lable_setting">
+        <div class="input">
+          <label for="lable_height">Height</label>
+          <input type="text" placeholder="Lable height" id="lable_height" />
+        </div>
+        <div class="input">
+          <label for="lable_width">Width</label>
+          <input type="text" placeholder="Lable width" id="lable_width" />
+        </div>
+        <div class="input">
+          <button type="button">Submet</button>
+          <button type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="lable_type_div">
+        <div class="input">
+          <label for="lable_type">Select Cart Type</label>
+          <select id="lable_type">
+            <option value="1">Single</option>
+            <option value="2">Duble</option>
+            <option value="3">Terpale</option>
+          </select>
+        </div>
+        <div class="input">
+          <label for="cart_number">Enter cart number</label>
+          <input type="text" placeholder="enter cart number" id="cart_number" />
+        </div>
+
+        <div class="input">
+          <button id="make_lable">Submit</button>
+          <button>Reset</button>
+        </div>
+      </div>
+
+      <div class="lable_diplay" id="lable_inter"></div>
+    </div>
+
+    <!-- main script -->
+    <script src="./assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/jsbarcode/3.3.16/barcodes/JsBarcode.code128.min.js"></script>
+    <script>
+      let lable_type = document.getElementById("lable_type");
+      let cart_number = document.getElementById("cart_number");
+      let make_lable = document.getElementById("make_lable");
+
+      make_lable.addEventListener("click", () => {
+        let lable_qty = 6;
+
+        if (lable_type.value == 3) {
+          lable_qty = 6;
+        }
+
+        for (var i = 1; i <= 6; i++) {
+          const svg = document.createElement("svg");
+          svg.setAttribute("id", `code128_${i}`);
+          document.getElementById("lable_inter").appendChild(svg);
+
+          JsBarcode(`#code128_${i}`, "AD243", {
+            format: "CODE128",
+            displayValue: true,
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
