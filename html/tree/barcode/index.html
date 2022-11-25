@@ -24,6 +24,15 @@
             <label for="cart_id">Enter Cart Id</label>
             <input type="number" placeholder="Enter Cart Id" id="cart_id" />
           </div>
+
+          <div class="input">
+            <label for="cart_position">Cart Position</label>
+            <select id="cart_position">
+              <option value="R">Right</option>
+              <option value="L">Left</option>
+            </select>
+          </div>
+
           <div class="input">
             <label for="margin">Margin</label>
             <input type="number" placeholder="Enter Cart Id" id="margin" />
@@ -91,18 +100,19 @@
           barcode_db.push(push_lable);
           localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
 
+          let cart_position = document.getElementById("cart_position").value;
           for (var i = 1; i <= 6; i++) {
             if (lable_cart_type == 1) {
               console.log("single");
-              var lableVal = `S${cart_id}R-0${i}`;
+              var lableVal = `S${cart_id}${cart_position}-0${i}`;
             }
             if (lable_cart_type == 2) {
               console.log("double");
-              var lableVal = `D${cart_id}R-0${i}`;
+              var lableVal = `D${cart_id}${cart_position}-0${i}`;
             }
             if (lable_cart_type == 3) {
               console.log("triple");
-              var lableVal = `T${cart_id}R-0${i}`;
+              var lableVal = `T${cart_id}${cart_position}-0${i}`;
             }
             var svg_lable = `<svg class="barcode" jsbarcode-format="code128" jsbarcode-value="${lableVal}" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>`;
             var dt = new Date();
