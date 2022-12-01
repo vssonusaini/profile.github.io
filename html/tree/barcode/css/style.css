@@ -27,10 +27,6 @@ body {
   font-size: 14px;
   background-color: whitesmoke;
   padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
 }
 
 /* root css */
@@ -93,21 +89,19 @@ button {
 /* footer */
 
 footer {
-  margin-top: var(--gap);
-  width: 80%;
-  margin: 0 auto;
-  height: 4rem;
-  background: #1e1e1e;
+  /* background: #1e1e1e; */
   border-radius: var(--border-radius);
   color: #9c9c9c;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
+  width: 90%;
+  margin: o auto;
+  position: fixed;
+  left: auto;
+  bottom: 1rem;
 }
 
 footer a {
-  color: #fff;
+  color: #000;
+  font-weight: bold;
 }
 footer p {
   margin-top: 0.2rem;
