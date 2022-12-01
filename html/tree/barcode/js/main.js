@@ -121,6 +121,9 @@ const Setup = () => {
   JsBarcode(".barcode").init();
 };
 
+document.getElementById("PrintBTN").addEventListener("click", () => {
+  window.print();
+});
 document.getElementById("MakeBTN").addEventListener("click", GetUserValue);
 document.getElementById("ResetBTN").addEventListener("click", () => {
   // get date in database
@@ -130,6 +133,10 @@ document.getElementById("ResetBTN").addEventListener("click", () => {
   get_DB.input.lable_count = "";
   // Update data in database
   localStorage.setItem("barcode_db", JSON.stringify(get_DB));
+
+  let cart_type = (document.getElementById("cart_type").value = "");
+  let cart_id = (document.getElementById("cart_id").value = "");
+  let lable_count = (document.getElementById("lable_count").value = "");
   allFunctions();
   autoFill();
 });
