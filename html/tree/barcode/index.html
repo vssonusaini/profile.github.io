@@ -4,131 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Barcode Labels</title>
+
+    <!-- css  -->
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <div class="container">
-      <div class="input_container">
-        <!-- Bar code Lable Size -->
-        <div class="input_group">
-          <div class="input">
-            <label for="cart_type">Select Cart Type </label>
-            <select id="cart_type">
-              <option value="1">single</option>
-              <option value="2">double</option>
-              <option value="3">triple</option>
-            </select>
-          </div>
-          <div class="input">
-            <label for="cart_id">Enter Cart Id</label>
-            <input type="number" placeholder="Enter Cart Id" id="cart_id" />
-          </div>
-
-          <div class="input">
-            <label for="cart_position">Cart Position</label>
-            <select id="cart_position">
-              <option value="R">Right</option>
-              <option value="L">Left</option>
-            </select>
-          </div>
-
-          <div class="input">
-            <label for="margin">Margin</label>
-            <input type="number" placeholder="Enter Cart Id" id="margin" />
-          </div>
-
-          <div class="input">
-            <button type="button" id="make_lable">Submit</button>
-            <button type="button">Reset</button>
+    <div class="conatiner">
+      <div class="main_user_block">
+        <div class="barcode_lable_setting">
+          <div class="input_form">
+            <!-- Font Famliy Block -->
+            <div class="input">
+              <label for="font-famliy">Font Famliy</label>
+              <select id="fantasy" name="font-famliy">
+                <option value="monospace" selected="selected">Monospace</option>
+                <option value="sans-serif">Sans-serif</option>
+                <option value="serif">Serif</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="cursive">Cursive</option>
+              </select>
+            </div>
           </div>
         </div>
+
+        <!-- User Input Block -->
+        <div class="user_input">
+          <div class="input_form">
+            <!-- Select Cart Type Block -->
+            <div class="input">
+              <label for="cart_type">Select Cart Type </label>
+              <select id="cart_type">
+                <option value="1">Single</option>
+                <option value="2">Double</option>
+                <option value="3">Triple</option>
+              </select>
+            </div>
+
+            <!-- Enter Cart Id Block -->
+            <div class="input">
+              <label for="cart_id">Enter Cart Id </label>
+              <input type="number" id="cart_id" />
+            </div>
+
+            <!-- Numbar of Label Block -->
+            <div class="input">
+              <label for="lable_count">Numbar of Label </label>
+              <input type="number" id="lable_count" />
+            </div>
+
+            <!-- Button Block -->
+            <div class="input">
+              <button id="MakeBTN" type="button">Submit</button>
+              <button id="ResetBTN" type="button">Reset</button>
+              <button id="SettingBTN" type="button">Setting</button>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div id="status_bar"></div>
       </div>
-      <div class="barcode_lable_display">
-        <div class="barcode_lable" id="barcode_lable"></div>
+
+      <div class="barcode_lable_perviwe">
+        <div id="barcode_lable_perviwe"></div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsbarcode/3.11.5/barcodes/JsBarcode.code128.min.js"></script>
-    <script>
-      // Define
 
-      let lable_diplay = document.getElementById("barcode_lable");
-      let MakeBtn = document.getElementById("make_lable");
-
-      // bar code lable db
-      var barcode_db = JSON.parse(localStorage.getItem("barcode_db"));
-      if (barcode_db === null) {
-        barcode_db = [];
-        barcode_db = [];
-        localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
-      }
-
-      //  print bar code labals
-      const print_barcode_lable = () => {
-        lable_diplay.innerHTML = "";
-        var barcode_db = JSON.parse(localStorage.getItem("barcode_db"));
-        for (let i = 0; i < barcode_db.length; i++) {
-          var barcode_lables = barcode_db[i].svg_lable;
-          lable_diplay.innerHTML += barcode_lables;
-        }
-      };
-
-      //   make bar code lable
-      MakeBtn.addEventListener("click", () => {
-        barcode_db = [];
-        localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
-        let cart_id = document.getElementById("cart_id").value;
-        let lable_cart_type = document.getElementById("cart_type").value;
-
-        if (lable_cart_type == 1) {
-          console.log("single");
-          var cartID = `S-${cart_id}`;
-        }
-        if (lable_cart_type == 2) {
-          console.log("double");
-          var cartID = `D-${cart_id}`;
-        }
-        if (lable_cart_type == 3) {
-          console.log("triple");
-          var cartID = `T-${cart_id}`;
-        }
-
-        if (cart_id != "") {
-          var svg_lable = `<svg class="barcode" jsbarcode-format="code128" jsbarcode-value="${cartID}" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>`;
-          var dt = new Date();
-          var push_lable = { dt, svg_lable };
-          barcode_db.push(push_lable);
-          localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
-
-          let cart_position = document.getElementById("cart_position").value;
-          for (var i = 1; i <= 6; i++) {
-            if (lable_cart_type == 1) {
-              console.log("single");
-              var lableVal = `S${cart_id}${cart_position}-0${i}`;
-            }
-            if (lable_cart_type == 2) {
-              console.log("double");
-              var lableVal = `D${cart_id}${cart_position}-0${i}`;
-            }
-            if (lable_cart_type == 3) {
-              console.log("triple");
-              var lableVal = `T${cart_id}${cart_position}-0${i}`;
-            }
-            var svg_lable = `<svg class="barcode" jsbarcode-format="code128" jsbarcode-value="${lableVal}" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>`;
-            var dt = new Date();
-            var push_lable = { dt, svg_lable };
-            barcode_db.push(push_lable);
-            localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
-          }
-          location.reload();
-        } else {
-          alert("Plasea cart id");
-        }
-      });
-
-      print_barcode_lable();
-
-      JsBarcode(".barcode").init();
-    </script>
+    <footer>
+      <div>Designed by<a href="https://sainisahab.com/" target="tab"> . SainiSahab</a></div>
+      <p>&#169; 2022 - <span id="year"></span> All rights reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="./js/main.js"></script>
   </body>
 </html>
