@@ -1,6 +1,6 @@
 
-<?xml version="1.0" standalone="no"?>
-    <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="423.000000pt" height="423.000000pt" viewBox="0 0 423.000000 423.000000" preserveAspectRatio="xMidYMid meet">
+<!-- <?xml version="1.0" standalone="no"?> -->
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="423.000000pt" height="423.000000pt" viewBox="0 0 423.000000 423.000000" preserveAspectRatio="xMidYMid meet">
       <g transform="translate(0.000000,423.000000) scale(0.100000,-0.100000)" stroke="none" fill="#fff" >
         <path fill="#ec9e0d" 
           d="M1890 4219 c-83 -9 -207 -31 -282 -50 -34 -9 -43 -21 -139 -182 -57
@@ -154,4 +154,6 @@
       0 -36 -13 -65 -28z"
         />
       </g>
+
+
 </svg>
