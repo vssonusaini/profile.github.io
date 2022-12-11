@@ -1,9 +1,13 @@
 {
-  "lang": "en",
-  "dir": "ltr",
   "name": "BRcode Generator",
   "short_name": "BRCode",
-  "description": "BRcode label Generator",
+  "start_url": "/html/barcode/",
+  "description": "BRCode",
+  "background_color": "#1e63f9",
+  "theme_color": "#1e63f9",
+  "orientation": "any",
+  "display": "standalone",
+  "categories": ["books", "education", "medical"],
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
@@ -45,12 +49,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "scope": "/",
-  "id": "superracer",
-  "start_url": "/index.html",
-  "display": "fullscreen",
-  "orientation": "landscape",
-  "theme_color": "aliceblue",
-  "background_color": "red"
+  ]
 }
