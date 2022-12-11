@@ -5,7 +5,7 @@ document.getElementById("reload").addEventListener("click", function () {
 });
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("/sw.js").then((reg) => {
+  navigator.serviceWorker.register("https://sainisahab.com/html/barcode/sw.js").then((reg) => {
     reg.addEventListener("updatefound", () => {
       newWorker = reg.installing;
 
