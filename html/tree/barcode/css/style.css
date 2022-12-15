@@ -106,8 +106,15 @@ footer a {
 footer p {
   margin-top: 0.2rem;
 }
+
+.ads {
+  margin-top: 2rem;
+}
 /* print css */
 @media print {
+  .ads {
+    display: none;
+  }
   .main_user_block {
     display: none;
   }
