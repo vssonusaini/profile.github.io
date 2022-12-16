@@ -3,6 +3,34 @@ import { w2popup, w2grid, w2alert } from "../../libraries/wui/w2ui-1.5.min.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const $ = (id) => document.getElementById(id);
+  // print css
+  const print_css = () => {
+    var css_print = document.createElement("style");
+    css_print.innerHTML = `
+    @media print {
+      .form_input {display: none;}
+      .data_table {display: none;}
+      footer { display: none;}
+      .js-snackbar-container { display: none;}
+    .adsbygoogle { display: none;}
+      svg {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        height: ${localStorage.getItem("barcode_height")}vh;
+        margin: 0;
+        padding: 0;
+      }
+  }
+  
+    `;
+    document.head.appendChild(css_print);
+    $("barcode_height").value = localStorage.getItem("barcode_height");
+  };
+
+  $("barcode_height").addEventListener("change", () => {
+    localStorage.setItem("barcode_height", $("barcode_height").value);
+  });
 
   const AppName = "BRcode";
   const version = "v1";
@@ -28,7 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     jsbarcode-format="code128" 
     jsbarcode-value="${value}"
     jsbarcode-textmargin="0" 
-    jsbarcode-fontoptions="bold"></svg>`;
+    jsbarcode-fontoptions="bold"
+    jsbarcode-height="100"></svg>`;
   };
 
   // Get input in form and add data in database ============
@@ -201,11 +230,11 @@ document.addEventListener("DOMContentLoaded", () => {
       width: 580,
       height: 350,
       title: "Setting",
-      text: ``,
+      text: `<input type="text" placeholder="Barcode Height" />`,
       showMax: true,
     });
   };
-
+  print_css();
   printTable();
   makelabel();
 
