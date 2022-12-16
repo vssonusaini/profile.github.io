@@ -136,6 +136,9 @@ footer {
   display: flex;
   align-items: center;
 }
+footer div.a {
+  display: flex;
+}
 footer svg {
   width: 3rem;
   height: 100%;
