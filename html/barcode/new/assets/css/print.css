@@ -8,11 +8,34 @@
 footer {
   display: none;
 }
+@page {
+  /* size: 20mm 30mm; */
+  margin: 0;
+  padding: 0;
+}
+header, footer, aside, form{
+  display: none;
+}
+
+@page:first {
+  margin: 0cm;
+}
+@page:last {
+  margin: 0cm;
+}
+@page:left {
+  margin: 0cm 0cm 0cm 0cm;
+}
+@page:right {
+  margin: 0cm 0cm 0cm 0cm;
+}
+
 svg {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   display: block;
   width: 100%;
-  height: 90vh;
-  margin: 0;
-  padding: 0;
+  height: 80vh;
+ 
 }

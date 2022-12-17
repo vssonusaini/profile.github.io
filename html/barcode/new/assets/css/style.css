@@ -135,12 +135,13 @@ footer {
   bottom: 1rem;
   display: flex;
   align-items: center;
+  font-size:12px;
 }
 footer div.a {
   display: flex;
 }
 footer svg {
-  width: 3rem;
+  width: 2.5rem;
   height: 100%;
   margin-right: 1rem;
 }
