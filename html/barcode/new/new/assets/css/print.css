@@ -1,0 +1,56 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.form_input-block {
+  display: none;
+}
+/* barcode css */
+.barcode_preview {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#barcode_preview {
+  padding: 0;
+  margin: 0;
+}
+
+.data_table {
+  display: none;
+}
+#notification {
+  display: none;
+}
+footer {
+  display: none;
+  padding: 0;
+}
+
+@page {
+  size: 40cm 28cm;
+}
+
+body {
+  zoom: 100%;
+  transform: scale(1);
+}
+
+svg {
+  width: 100%;
+  height: 80vmin;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
