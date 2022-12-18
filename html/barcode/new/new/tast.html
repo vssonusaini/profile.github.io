@@ -1,63 +1,12 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>SVG Based Bar Code (Code-128 ) Generator</title>
-    <link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css" />
-    <style type="text/css">
-      * {
-        padding: 0;
-        margin: 0;
-      }
-      svg {
-        border: 1px #eee solid;
-        display: inline-block;
-        float: left;
-      }
-      body {
-        background: #fafafa;
-      }
-      h1 {
-        text-align: center;
-        margin: 150px auto 30px auto;
-      }
-    </style>
-
-    <script src="https://www.cssscript.com/demo/svg-bar-code-generator/barcode.min.js"></script>
-  </head>
-  <body>
-    <script>
-      "use strict";
-
-      var barcodes = [
-        BARCode("128 Barcode", {
-          dim: [80, 352] /* vertical */,
-          pad: [16, 20] /* padding */,
-          pal: ["#037", "#cef"] /* palette */,
-        }),
-
-        BARCode("RC123456789US") /* simple */,
-
-        BARCode("autowidth", {
-          dim: [0, 80] /* depends on the length of generated barcode. */,
-          pal: ["#037", "#eef"],
-        }),
-
-        BARCode("demo", {
-          dim: [0, 80],
-          pal: ["#17e"] /* transparent background */,
-        }),
-
-        BARCode("padding", {
-          dim: [0, 80],
-          pad: [16, 30] /* padding */,
-          pal: ["#037", "#cef"],
-        }),
-      ];
-
-      document.body.appendChild(barcodes[2]);
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
 </html>
