@@ -4,36 +4,42 @@
   font-weight: 400;
   src: local("Sarabun Italic"), local("Sarabun-Italic"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVhJx26TKEr37c9aBB5k3wM.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
   font-weight: 300;
   src: local("Sarabun Light"), local("Sarabun-Light"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YL5rilUs7g.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
   font-weight: 400;
   src: local("Sarabun Regular"), local("Sarabun-Regular"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVjJx26TKEr37c9aBtJmg.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
   font-weight: 500;
   src: local("Sarabun Medium"), local("Sarabun-Medium"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YOZqilUs7g.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
   font-weight: 600;
   src: local("Sarabun SemiBold"), local("Sarabun-SemiBold"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YMptilUs7g.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
   font-weight: 700;
   src: local("Sarabun Bold"), local("Sarabun-Bold"), url(https://fonts.gstatic.com/s/sarabun/v6/DtVmJx26TKEr37c9YK5silUs7g.ttf) format("truetype");
 }
+
 @font-face {
   font-family: Sarabun;
   font-style: normal;
@@ -117,6 +123,7 @@ video {
   font-size: 100%;
   background: 0 0;
 }
+
 article,
 aside,
 details,
@@ -130,13 +137,16 @@ nav,
 section {
   display: block;
 }
+
 nav ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:after,
 blockquote:before,
 q:after,
@@ -144,6 +154,7 @@ q:before {
   content: "";
   content: none;
 }
+
 a {
   margin: 0;
   padding: 0;
@@ -152,34 +163,41 @@ a {
   background: 0 0;
   text-decoration: none !important;
 }
+
 a:focus,
 button:focus {
   border: 0;
   outline: 0;
 }
+
 ins {
   background-color: #ff9;
   color: #000;
   text-decoration: none;
 }
+
 mark {
   background-color: #ff9;
   color: #000;
   font-style: italic;
   font-weight: 700;
 }
+
 del {
   text-decoration: line-through;
 }
+
 abbr[title],
 dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 .uneditable-input:focus,
 input[type="color"]:focus,
 input[type="date"]:focus,
@@ -225,4 +243,113 @@ textarea:focus {
 ::selection {
   background-color: var(--theme-bg-color);
   color: var(--theme-tx-color);
+}
+
+
+/* -----slider------------------ */
+.drawer {
+  display: none;
+}
+
+.drawer__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity 0.3s;
+  will-change: opacity;
+  background-color: #000;
+
+  backdrop-filter: blur(40px);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.drawer__header {
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--boder-color);
+}
+
+.drawer__close {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: var(--main-color);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 25px;
+  width: 25px;
+  flex-shrink: 0;
+  border-radius: 3px;
+  margin-left: 1rem;
+}
+
+.drawer__close i {
+  color: var(--text-color);
+}
+
+.drawer__close:hover>i {
+  color: var(--theme-color);
+}
+
+.drawer__wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+
+  z-index: 9999;
+  overflow: auto;
+  transition: transform 0.3s;
+  will-change: transform;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  -webkit-transform: translate3d(103%, 0, 0);
+  transform: translate3d(103%, 0, 0);
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.drawer__content {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  flex-grow: 1;
+  padding: 1.5rem;
+}
+
+.drawer--left .drawer__wrapper {
+  left: 0;
+  right: auto;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+
+.drawer.is-active {
+  display: block;
+}
+
+.drawer.is-visible .drawer__wrapper {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.drawer.is-visible .drawer__overlay {
+  opacity: 0.5;
 }

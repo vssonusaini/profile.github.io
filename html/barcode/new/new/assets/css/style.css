@@ -113,6 +113,11 @@ footer svg {
   margin-right: 1rem;
 }
 
+
+.my_cart_60 {
+  width: 40%;
+}
+
 /* notification */
 #notification {
   position: fixed;

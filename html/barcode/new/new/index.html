@@ -9,6 +9,7 @@
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://sainisahab.com/" />
     <link rel="shortcut icon" href="./favicon.svg" type="image/x-icon" />
+
     <!-- css fils -->
     <link rel="stylesheet" href="./libraries/wui/w2ui-1.5.min.css" />
     <link rel="stylesheet" href="./assets/css/reset.css" />
@@ -55,7 +56,7 @@
           <button type="button" class="btn" id="MakeBTN">Make</button>
           <button type="button" class="btn" id="PrintBTN">Print</button>
           <button type="button" class="btn" id="RsetBTN">Reset</button>
-          <button class="btn" type="button" onclick="popup()">Setting</button>
+          <button class="btn" type="button" data-drawer-trigger aria-controls="my_cart" aria-expanded="false">Setting</button>
         </div>
       </div>
 
@@ -242,11 +243,26 @@
           <p>&#169; 2022 - <span id="year"></span> All rights reserved.</p>
         </div>
       </footer>
+
       <!-- <div id="notification">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, recusandae.</p>
       </div> -->
+  
+      <section class="drawer" id="my_cart" data-drawer-target>
+        <div class="drawer__overlay" data-drawer-close tabindex="-1"></div>
+        <div class="drawer__wrapper my_cart_60">
+          <div class="drawer__header">
+            <div class="drawer__title"><span id="my_cart_items_count_a"></span> My Cart</div>
+            <button class="drawer__close" data-drawer-close aria-label="Close Drawer"><i class="bx bxs-chevron-right"></i></button>
+          </div>
+          <div class="drawer__content">
+            <div class="my_cart" id="my_cart_items"></div>
+          </div>
+        </div>
+      </section>
     </div>
     <script src="./libraries/JsBarcode.code128.min.js"></script>
     <script type="module" src="./assets/js/app.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
