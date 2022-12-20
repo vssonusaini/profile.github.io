@@ -5,7 +5,7 @@ import { w2popup, w2grid, w2alert } from "../../libraries/wui/w2ui-1.5.min.js";
 const $ = (id) => document.getElementById(id);
 
 const AppName = "BRcode";
-const version = "v201222";
+const version = "v08201222";
 
 // ------------ barcode label html
 const barcode_lable = (value) => {
@@ -28,6 +28,9 @@ if (database === null) {
       update_count: "",
     },
     dataTable_DB: [],
+    setting: {
+      background: "",
+    },
   };
   localStorage.setItem(dbname, JSON.stringify(database));
 }
@@ -185,6 +188,10 @@ const printTableDB = () => {
   grid.render("#main");
 };
 
+const setting = () => {
+  $("background_select").value = database.setting.background;
+  document.body.setAttribute("style", `background: url(./assets/background/${database.setting.background})`);
+};
 // Event Listener;
 $("year").innerHTML = new Date().getFullYear();
 $("MakeBTN").addEventListener("click", setData);
@@ -207,7 +214,13 @@ $("RsetBTN").addEventListener("click", () => {
   $("cart_number").value = null;
 });
 
+$("background_select").addEventListener("change", () => {
+  database.setting.background = $("background_select").value;
+  localStorage.setItem(dbname, JSON.stringify(database));
+  setting();
+});
 // Define function
+setting();
 makeLabels();
 printTableDB();
 JsBarcode(".barcode").init();

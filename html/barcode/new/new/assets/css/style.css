@@ -26,6 +26,10 @@ html {
 
 body {
   padding: 1rem;
+  /* background: url("../background/"); */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .container {
@@ -118,15 +122,26 @@ footer svg {
   width: 40%;
 }
 
-/* notification */
-#notification {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  /* padding: 0.7rem 1rem 1rem 1rem; */
+.drawer__content .input {
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+}
+.drawer__content .input label {
+  text-transform: capitalize;
+  margin-right: 1rem;
+}
+
+.drawer__content .input input,
+.drawer__content .input select,
+.drawer__content .input button {
   display: block;
-  box-sizing: border-box;
-  background-color: var(--theme-bg-color);
-  color: var(--theme-tx-color);
+  height: 1.8rem;
+  width: 100%;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border: 1px solid var(--body-color);
+  outline: none;
   border-radius: var(--border-radius);
 }
