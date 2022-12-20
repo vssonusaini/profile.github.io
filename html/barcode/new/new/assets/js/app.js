@@ -5,7 +5,7 @@ import { w2popup, w2grid, w2alert } from "../../libraries/wui/w2ui-1.5.min.js";
 const $ = (id) => document.getElementById(id);
 
 const AppName = "BRcode";
-const version = "v2";
+const version = "v201222";
 
 // ------------ barcode label html
 const barcode_lable = (value) => {
