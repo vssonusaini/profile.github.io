@@ -121,7 +121,7 @@ footer svg {
 footer p:nth-child(2) {
   margin-top: 0.2rem;
 }
-footer span {
+footer #Version {
   font-size: 12px;
 }
 .my_cart_60 {
