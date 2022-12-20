@@ -110,6 +110,7 @@ footer {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
+  font-size: 14px;
 }
 
 footer svg {
@@ -117,7 +118,12 @@ footer svg {
   font-size: 1rem;
   margin-right: 1rem;
 }
-
+footer p:nth-child(2) {
+  margin-top: 0.2rem;
+}
+footer span {
+  font-size: 12px;
+}
 .my_cart_60 {
   width: 40%;
 }

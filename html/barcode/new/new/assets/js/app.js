@@ -7,6 +7,7 @@ const $ = (id) => document.getElementById(id);
 const AppName = "BRcode";
 const version = "v08201222";
 
+$("Version").innerHTML = version;
 // ------------ barcode label html
 const barcode_lable = (value) => {
   return `<svg class="barcode" 
