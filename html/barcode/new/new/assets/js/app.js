@@ -45,11 +45,16 @@ const setData = async () => {
     database.input.number_of = cart_number;
 
     // data and time
-    var dt = new Date();
-    var id = dt.getMilliseconds();
-    var time = dt.getHours() + ":" + dt.getMinutes();
-    var date = dt.getMonth() + 1 + "/" + dt.getDate() + "/" + dt.getFullYear();
-    var currentDate = time + " - " + date;
+    var date = new Date();
+    var id = date.getMilliseconds();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var currentDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+    var currentTime = hours + ":" + minutes + " " + ampm;
 
     if (cart_type == 1) {
       cart_type = "Single";
@@ -67,12 +72,21 @@ const setData = async () => {
     }
 
     database.input.number_of = labels;
-    database.dataTable_DB.push({ id, cart_type, cart_id, labels, currentDate });
+    database.dataTable_DB.push({ id, cart_type, cart_id, labels, currentTime, currentDate });
 
+    notify({
+      message: `Cart Created Successfully ${cart_type}-${cart_id}-${labels}`,
+      color: "success",
+      timeout: 3000,
+    });
     // update db
     localStorage.setItem(dbname, JSON.stringify(database));
   } else {
-    alert("Please Enter A Valid Format");
+    notify({
+      message: "Please Enter A Valid Format",
+      color: "danger",
+      timeout: 3000,
+    });
   }
 
   // Call Function
@@ -123,6 +137,7 @@ const printTableDB = () => {
     grid: {
       name: "grid",
       show: {
+        selectColumn: true,
         footer: true,
         toolbar: true,
         toolbarDelete: true,
@@ -146,7 +161,8 @@ const printTableDB = () => {
         { field: "cart_type", text: "Cart Type", size: "140px", sortable: true, searchable: "text", resizable: true },
         { field: "cart_id", text: "Cart ID", size: "140px", sortable: true, searchable: "text", resizable: true },
         { field: "labels", text: "Number Of Label", size: "100%", resizable: true, sortable: true },
-        { field: "currentDate", text: "Label Date - Time", size: "200px", resizable: true, sortable: true },
+        { field: "currentTime", text: "Time", size: "200px", resizable: true, sortable: true },
+        { field: "currentDate", text: "Date", size: "200px", resizable: true, sortable: true },
       ],
     },
   };
@@ -161,6 +177,7 @@ const printTableDB = () => {
       cart_type: database.dataTable_DB[i].cart_type,
       cart_id: database.dataTable_DB[i].cart_id,
       labels: database.dataTable_DB[i].labels,
+      currentTime: database.dataTable_DB[i].currentTime,
       currentDate: database.dataTable_DB[i].currentDate,
     });
   }
@@ -171,8 +188,20 @@ const printTableDB = () => {
 // Event Listener;
 $("year").innerHTML = new Date().getFullYear();
 $("MakeBTN").addEventListener("click", setData);
-$("PrintBTN").addEventListener("click", () => window.print());
+$("PrintBTN").addEventListener("click", () => {
+  window.print();
+  notify({
+    message: "Printed Successfully",
+    color: "success",
+    timeout: 3000,
+  });
+});
 $("RsetBTN").addEventListener("click", () => {
+  notify({
+    message: "Reset Successfully",
+    color: "success",
+    timeout: 3000,
+  });
   $("cart_type").value = "";
   $("cart_id").value = null;
   $("cart_number").value = null;

@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form onsubmit="return validacija()">
+      <table>
+        <tr>
+          <td>Username:</td>
+          <td><input type="text" id="user" name="user" list="list" /></td>
+          <datalist id="list">
+            <option value="Tilen"></option>
+            <option value="Marko"></option>
+            <option value="Teja"></option>
+            <option value="Tisa"></option>
+            <option value="Rok"></option>
+            <option value="Luka"></option>
+            <option value="Mojca"></option>
+          </datalist>
+        </tr>
+      </table>
+    </form>
+    <script>
+      function validacija() {
+        let user = document.getElementById("user");
+        let listOptions = document.querySelectorAll("#list option");
+
+        if (user.value.length <= 20 && user.value.length >= 3) {
+        } else {
+          alert("Username has to be between 3-20 characters.");
+        }
+
+        for (let i = 0; i < listOptions.length; i++) {
+          if (listOptions[i].value === user.value) {
+            alert("The name already exist");
+          }
+        }
+        return false;
+      }
+    </script>
+  </body>
 </html>

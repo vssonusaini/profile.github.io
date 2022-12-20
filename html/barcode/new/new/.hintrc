@@ -15,7 +15,10 @@
       {
         "ignore": [
           "zoom",
-          "user-select"
+          "user-select",
+          "-webkit-overflow-scrolling",
+          "backdrop-filter",
+          "accent-color"
         ]
       }
     ],
