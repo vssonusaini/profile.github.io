@@ -1,145 +1,127 @@
 "use strict";
 
-var barcode_db = JSON.parse(localStorage.getItem("barcode_db"));
-if (barcode_db === null) {
-  barcode_db = {
+import { w2popup, w2grid, w2alert } from "../../libraries/wui/w2ui-1.5.min.js";
+
+const $ = (id) => document.getElementById(id);
+
+const AppName = "BRcode";
+const version = "v08201222";
+
+$("Version").innerHTML = version;
+// ------------ barcode label html
+const barcode_lable = (value) => {
+  return `<svg class="barcode" 
+    jsbarcode-format="code128" 
+    jsbarcode-value="${value}"
+    jsbarcode-textmargin="0" 
+    jsbarcode-fontoptions="bold"></svg>`;
+};
+
+// ------------ database
+const dbname = AppName + "-" + version;
+var database = JSON.parse(localStorage.getItem(dbname));
+if (database === null) {
+  database = {
     input: {
       cart_type: "1",
       cart_id: "01",
-      lable_count: "",
+      number_of: "",
+      update_count: "",
     },
-    dataTable_DB: [{ Milliseconds: 1, selectCart: "Single", cart_id: "1", lable_count: "", currentDate: "12/11/2022 - 15:32", action: "" }],
+    dataTable_DB: [],
+    setting: {
+      background: "",
+    },
   };
-  localStorage.setItem("barcode_db", JSON.stringify(barcode_db));
+  localStorage.setItem(dbname, JSON.stringify(database));
 }
 
-// -----------------barcode lable function---------------------
-const barcode_lable = (value) => {
-  return `<svg class="barcode" 
-  jsbarcode-format="code128" 
-  jsbarcode-value="${value}"
-  jsbarcode-textmargin="0" 
-  jsbarcode-fontoptions="bold"></svg>`;
-};
+// --------------- Set Value In Database
+const setData = async () => {
+  let labels;
+  let cart_type = $("cart_type").value;
+  let cart_id = $("cart_id").value;
+  let cart_number = $("cart_number").value;
 
-// ----------------Get User Value------------
-const GetUserValue = () => {
-  // define
-  let cart_type = document.getElementById("cart_type").value;
-  let cart_id = document.getElementById("cart_id").value;
-  let lable_count = document.getElementById("lable_count").value;
+  if (cart_type != "" && cart_id != "" && cart_number < 13) {
+    database.input.cart_type = cart_type;
+    database.input.cart_id = cart_id;
+    database.input.number_of = cart_number;
 
-  //   add dataTable
-  var dt = new Date();
-  var Milliseconds = dt.getMilliseconds();
-  var time = dt.getHours() + ":" + dt.getMinutes();
-  var date = dt.getMonth() + 1 + "/" + dt.getDate() + "/" + dt.getFullYear();
-  var currentDate = date + " - " + time;
+    // data and time
+    var date = new Date();
+    var id = date.getMilliseconds();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? "pm" : "am";
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    var currentDate = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+    var currentTime = hours + ":" + minutes + " " + ampm;
 
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
-
-  console.log(get_DB);
-
-  if (cart_id != "") {
-    get_DB.input.cart_type = cart_type;
-    get_DB.input.cart_id = cart_id;
-    get_DB.input.lable_count = lable_count;
-
-    var cart = ["", "Single", "Double", "Triple"];
-    var selectCart = cart[cart_type];
-    var action = "";
-    var lable_count_update;
-
-    if (lable_count == "") {
-      console.log("ok");
-      if (cart_type == 1) {
-        console.log("ok");
-        // Single Cart
-        lable_count_update = 12;
-      } else if (cart_type == 2) {
-        // Double Cart
-        lable_count_update = 9;
-      } else if (lable_count == 3) {
-        // Triple Cart
-        lable_count_update = 6;
-      }
-    } else {
-      lable_count_update = lable_count;
+    if (cart_type == 1) {
+      cart_type = "Single";
+      labels = 12;
+    } else if (cart_type == 2) {
+      cart_type = "Double";
+      labels = 9;
+    } else if (cart_type == 3) {
+      cart_type = "Triple";
+      labels = 6;
     }
-    // get date in database
-    var pushData = { Milliseconds, selectCart, cart_id, currentDate, lable_count_update, action };
-    get_DB.dataTable_DB.push(pushData);
+
+    if (cart_number != "") {
+      labels = cart_number;
+    }
+
+    database.input.number_of = labels;
+    database.dataTable_DB.push({ id, cart_type, cart_id, labels, currentTime, currentDate });
+
+    notify({
+      message: `Cart Created Successfully ${cart_type}-${cart_id}-${labels}`,
+      color: "success",
+      timeout: 3000,
+    });
+    // update db
+    localStorage.setItem(dbname, JSON.stringify(database));
   } else {
-    alert("Pleas enterValue");
+    notify({
+      message: "Please Enter A Valid Format",
+      color: "danger",
+      timeout: 3000,
+    });
   }
 
-  // Update data in database
-  localStorage.setItem("barcode_db", JSON.stringify(get_DB));
-
-  // call function
-  Setup();
-  autoFill();
-  printDateTable();
+  // Call Function
+  makeLabels();
+  printTableDB();
 };
 
-const autoFill = () => {
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
+const makeLabels = () => {
+  let i, getDB, barcode_preview, set_label_value, cart_position, cart_position_no;
+  cart_position = "R";
+  cart_position_no = 0;
+  barcode_preview = $("barcode_preview");
+  getDB = JSON.parse(localStorage.getItem(dbname));
 
-  // status bar
-  document.getElementById("status_bar").innerHTML = `<p>
-  Cart Type: ${get_DB.input.cart_type} 
-  Cart Id: ${get_DB.input.cart_id} 
-  Barcode Lables: ${get_DB.input.lable_count} 
-  </p>`;
-  // auto fill data in database
-  let cart_type = (document.getElementById("cart_type").value = get_DB.input.cart_type);
-  let cart_id = (document.getElementById("cart_id").value = get_DB.input.cart_id);
-  let lable_count = (document.getElementById("lable_count").value = get_DB.input.lable_count);
-};
-
-const Setup = () => {
-  // define
-  var i;
-  var count = 2;
-  var SetValue;
-  var cart_position_no = 0;
-  var cart_position = "R";
-
-  // input & Output Elements
-  let diplay = document.getElementById("barcode_lable_perviwe");
-
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
-  let lable_count = document.getElementById("lable_count").value;
-  //count if condition
-  if (get_DB.input.cart_type == 1) {
-    // Single Cart
-    count = 12;
-    SetValue = `S${get_DB.input.cart_id}`;
-  } else if (get_DB.input.cart_type == 2) {
-    // Double Cart
-    SetValue = `D${get_DB.input.cart_id}`;
-    count = 9;
-  } else if (get_DB.input.cart_type == 3) {
-    // Triple Cart
-    SetValue = `T${get_DB.input.cart_id}`;
-    count = 6;
-  } else {
-    console.log("ok");
+  if (getDB.input.cart_type == 1) {
+    set_label_value = "S";
+  } else if (getDB.input.cart_type == 2) {
+    set_label_value = "D";
+  } else if (getDB.input.cart_type == 3) {
+    set_label_value = "T";
   }
 
-  if (get_DB.input.lable_count != "") {
-    count = get_DB.input.lable_count;
-  }
-  // print lable
-  diplay.innerHTML = "";
+  //   Print labels
+  barcode_preview.innerHTML = null;
 
-  diplay.innerHTML += barcode_lable(`${SetValue[0]}-${get_DB.input.cart_id}`);
-  for (i = 1; i <= count; i++) {
+  // cart id print
+  barcode_preview.innerHTML = barcode_lable(`${set_label_value}-${getDB.input.cart_id}`);
+  for (i = 0; i < getDB.input.number_of; i++) {
     cart_position_no++;
 
-    if (get_DB.input.cart_type == 1) {
+    if (database.input.cart_type == 1) {
       // Single Cart
       if (cart_position_no > 6) {
         cart_position_no = 0;
@@ -148,92 +130,98 @@ const Setup = () => {
       }
     }
 
-    diplay.innerHTML += barcode_lable(`${SetValue}${cart_position}-0${cart_position_no}`);
+    barcode_preview.innerHTML += barcode_lable(`${set_label_value}${getDB.input.cart_id}${cart_position}-0${cart_position_no}`);
   }
 
   JsBarcode(".barcode").init();
 };
 
-const printDateTable = () => {
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
+const printTableDB = () => {
+  let config = {
+    grid: {
+      name: "grid",
+      show: {
+        selectColumn: true,
+        footer: true,
+        toolbar: true,
+        toolbarDelete: true,
+      },
+      onDelete: function (z) {
+        if (z.detail.force) {
+          setTimeout(() => {
+            database.dataTable_DB = [];
+            localStorage.setItem(dbname, JSON.stringify(database));
+            for (var x = 0; x < z.owner.records.length; x++) {
+              database.dataTable_DB.push(z.owner.records[x]);
+              localStorage.setItem(dbname, JSON.stringify(database));
+            }
+          }, 1000);
+        }
+        // console.log("delete has default behavior", z);
+        console.log("delete has default behavior", z.detail.force);
+      },
+      columns: [
+        { field: "personid", text: "ID", size: "50px", sortable: true, searchable: "int", resizable: true },
+        { field: "cart_type", text: "Cart Type", size: "140px", sortable: true, searchable: "text", resizable: true },
+        { field: "cart_id", text: "Cart ID", size: "140px", sortable: true, searchable: "text", resizable: true },
+        { field: "labels", text: "Number Of Label", size: "100%", resizable: true, sortable: true },
+        { field: "currentTime", text: "Time", size: "200px", resizable: true, sortable: true },
+        { field: "currentDate", text: "Date", size: "200px", resizable: true, sortable: true },
+      ],
+    },
+  };
 
-  console.log(get_DB.dataTable_DB);
+  // initialization
+  let grid = new w2grid(config.grid);
 
-  let dataTable_div = document.getElementById("dataTable");
-  dataTable_div.innerHTML = "";
-  for (var i = 0; i < get_DB.dataTable_DB.length; i++) {
-    var html = `<tr>
-      <td>${get_DB.dataTable_DB[i].selectCart}</td>
-      <td>${get_DB.dataTable_DB[i].cart_id}</td>
-      <td>${get_DB.dataTable_DB[i].lable_count_update}</td>
-      <td>${get_DB.dataTable_DB[i].currentDate}</td>
-      <td> <div class="input_form">
-      <div class="input">
-        <button type="button" onclick="DeleteNote(${get_DB.dataTable_DB[i].Milliseconds})">Delete</button>
-      </div>
-    </div></td>
-    </tr>`;
-
-    dataTable_div.innerHTML += html;
+  for (let i = 0; i < database.dataTable_DB.length; i++) {
+    grid.records.push({
+      recid: i + 1,
+      personid: i + 1,
+      cart_type: database.dataTable_DB[i].cart_type,
+      cart_id: database.dataTable_DB[i].cart_id,
+      labels: database.dataTable_DB[i].labels,
+      currentTime: database.dataTable_DB[i].currentTime,
+      currentDate: database.dataTable_DB[i].currentDate,
+    });
   }
+
+  grid.render("#main");
 };
 
-function DeleteNote(id) {
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
-  for (var i = 0; i < get_DB.dataTable_DB.length; i++) {
-    if (id == get_DB.dataTable_DB[i].Milliseconds) {
-      get_DB.dataTable_DB.splice(i, 1);
-
-      // Update data in database
-      localStorage.setItem("barcode_db", JSON.stringify(get_DB));
-      printDateTable();
-    }
-  }
-}
-
-document.getElementById("PrintBTN").addEventListener("click", () => {
+const setting = () => {
+  $("background_select").value = database.setting.background;
+  document.body.setAttribute("style", `background: url(./assets/background/${database.setting.background})`);
+};
+// Event Listener;
+$("year").innerHTML = new Date().getFullYear();
+$("MakeBTN").addEventListener("click", setData);
+$("PrintBTN").addEventListener("click", () => {
   window.print();
-});
-document.getElementById("ResetTBTN").addEventListener("click", () => {
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
-
-  get_DB.dataTable_DB = [];
-  printDateTable();
-  // Update data in database
-  localStorage.setItem("barcode_db", JSON.stringify(get_DB));
-});
-document.getElementById("MakeBTN").addEventListener("click", GetUserValue);
-document.getElementById("ResetBTN").addEventListener("click", () => {
-  // get date in database
-  let get_DB = JSON.parse(localStorage.getItem("barcode_db"));
-  get_DB.input.cart_type = "";
-  get_DB.input.cart_id = "";
-  get_DB.input.lable_count = "";
-  // Update data in database
-  localStorage.setItem("barcode_db", JSON.stringify(get_DB));
-
-  let cart_type = (document.getElementById("cart_type").value = "");
-  let cart_id = (document.getElementById("cart_id").value = "");
-  let lable_count = (document.getElementById("lable_count").value = "");
-  allFunctions();
-  autoFill();
-});
-
-const allFunctions = () => {
-  Setup();
-  autoFill();
-  printDateTable();
-};
-
-allFunctions();
-JsBarcode(".barcode").init();
-let year = (document.getElementById("year").innerHTML = new Date().getFullYear());
-
-$(document).ready(function () {
-  $("#table_id").DataTable({
-    scrollY: 400,
+  notify({
+    message: "Printed Successfully",
+    color: "success",
+    timeout: 3000,
   });
 });
+$("RsetBTN").addEventListener("click", () => {
+  notify({
+    message: "Reset Successfully",
+    color: "success",
+    timeout: 3000,
+  });
+  $("cart_type").value = "";
+  $("cart_id").value = null;
+  $("cart_number").value = null;
+});
+
+$("background_select").addEventListener("change", () => {
+  database.setting.background = $("background_select").value;
+  localStorage.setItem(dbname, JSON.stringify(database));
+  setting();
+});
+// Define function
+setting();
+makeLabels();
+printTableDB();
+JsBarcode(".barcode").init();
