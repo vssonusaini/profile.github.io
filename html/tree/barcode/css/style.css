@@ -142,4 +142,10 @@ footer p {
     max-height: 100%;
     /* padding: 0 4rem; */
   }
+  ins {
+    display: none;
+  }
+  iframe{
+  display: none;
+  }
 }
