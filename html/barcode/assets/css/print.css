@@ -37,7 +37,9 @@ footer {
   display: none;
   padding: 0;
 }
-
+.footer_banar{
+  display: none;
+}
 @page {
   size: 40cm 28cm;
 }

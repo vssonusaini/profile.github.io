@@ -151,3 +151,16 @@ footer #Version {
   outline: none;
   border-radius: var(--border-radius);
 }
+
+
+.footer_banar{
+  position: fixed;
+  bottom: 0;
+  right: 2rem;
+  width: 30rem;
+  padding: 1rem;
+}
+
+.footer_banar img{
+  width: 100%;
+}
