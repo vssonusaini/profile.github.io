@@ -76,6 +76,22 @@ body {
   color: var(--theme-tx-color);
 }
 
+.btn {
+  background-position: center;
+  -webkit-transition: background 0.1s;
+  transition: background 0.1s;
+}
+
+.btn:hover {
+  background: var(--main-color) radial-gradient(circle, transparent 1%, var(--main-color) 1%) center/15000%;
+}
+
+.btn:active {
+  background-size: 100%;
+  -webkit-transition: background 0s;
+  transition: background 0s;
+}
+
 .data_table {
   background-color: white;
   margin-top: 1rem;
@@ -152,8 +168,7 @@ footer #Version {
   border-radius: var(--border-radius);
 }
 
-
-.footer_banar{
+.footer_banar {
   position: fixed;
   bottom: 0;
   right: 2rem;
@@ -161,6 +176,6 @@ footer #Version {
   padding: 1rem;
 }
 
-.footer_banar img{
+.footer_banar img {
   width: 100%;
 }
