@@ -50,20 +50,20 @@ self.addEventListener("fetch", (fetchEvent) => {
 //   });
 
 //   // A new ServiceWorker is now active
-//   self.addEventListener("activate", function (event) {
-//     console.log("Activate Service Worker");
-//     event.waitUntil(
-//       caches.keys().then(function (cacheNames) {
-//         return Promise.all(
-//           cacheNames.map(function (cacheName) {
-//             if (currentCacheNames.indexOf(cacheName) === -1) {
-//               return caches.delete(cacheName);
-//             }
-//           })
-//         );
-//       })
-//     );
-//   });
+  self.addEventListener("activate", function (event) {
+    console.log("Activate Service Worker");
+    event.waitUntil(
+      caches.keys().then(function (cacheNames) {
+        return Promise.all(
+          cacheNames.map(function (cacheName) {
+            if (currentCacheNames.indexOf(cacheName) === -1) {
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    );
+  });
 
 //   // Save thing to cache in process of use
 //   self.addEventListener("fetch", function (event) {
