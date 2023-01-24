@@ -202,7 +202,21 @@ const printTableDB = () => {
 
 const setting = () => {
   document.getElementById("background_select").value = database.siteSetting.background;
-  document.body.setAttribute("style", `background: url(./assets/background/${database.siteSetting.background})`);
+
+  var a = `
+  <style>
+  body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.159));
+    background-image:  url(./assets/background/${database.siteSetting.background});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: 100%;
+    
+  }
+</style>`;
+  document.getElementById("back").innerHTML = a;
+  // document.body.setAttribute("style", `background: url(./assets/background/${database.siteSetting.background})`);
 };
 
 document.getElementById("background_select").addEventListener("change", () => {
@@ -218,7 +232,6 @@ window.oneprint = (id) => {
 const printDiv = (divName) => {
   var printContents = document.getElementById(divName).innerHTML;
   var originalContents = document.body.innerHTML;
-
   document.body.innerHTML = printContents;
 
   window.print();

@@ -27,11 +27,6 @@ html {
 body {
   padding: 1rem;
   background-color: var(--body-color);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: 100%;
-  background-image: linear-gradient(black, white);
 }
 
 .container {
