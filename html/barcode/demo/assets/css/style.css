@@ -1,0 +1,252 @@
+:root {
+  /* main colors */
+  --main-color: #fff;
+  /* --body-color: rgb(231, 230, 230); */
+  --body-color: rgb(213, 213, 213);
+
+  /* theme colors */
+  --theme-bg-color: #000000;
+  --theme-tx-color: #ffffff;
+  --text-color: #000;
+
+  /* setting */
+  --border-radius: 0.4rem;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color);
+  font-family: Sarabun, sans-serif;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+  padding: 1rem;
+  background-color: var(--body-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: 100%;
+  background-image: linear-gradient(black, white);
+}
+
+.container {
+  width: 100%;
+}
+
+.toolbar {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--main-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.form-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-block .input {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-block .input input,
+.form-block .input select,
+.form-block .input button {
+  display: block;
+  height: 1.8rem;
+  width: 12rem;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border: 1px solid var(--body-color);
+  outline: none;
+  border-radius: var(--border-radius);
+}
+.form-block .action {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-block .action button {
+  width: 4rem;
+  margin-right: 0.6rem;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-tx-color);
+}
+
+.nav_menu ul {
+  list-style: none;
+  display: flex;
+}
+.nav_menu ul a {
+  margin-right: 1rem;
+  font-weight: 600;
+  color: var(--theme-bg-color);
+}
+
+.nav_menu ul a:hover {
+  color: var(--theme-bg-color);
+  border-bottom: 1px solid var(--theme-bg-color);
+  padding: 0.2rem 0;
+}
+
+/* barcode css */
+.barcode_preview {
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  /* border: 1px solid var(--theme-bg-color); */
+  border-radius: var(--border-radius);
+}
+
+#barcode_preview {
+  width: 100%;
+  overflow-y: hidden;
+  white-space: nowrap;
+  display: flex;
+}
+
+.barcodeSvg {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.svgprintBTN {
+  position: absolute;
+  top: -11rem;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  transition: top ease-in-out 0.1s;
+  background-color: #fafafacf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barcodeSvg:hover > .svgprintBTN {
+  top: 0;
+}
+
+.svgprintBTN button {
+  display: block;
+  height: 1.8rem;
+  width: 12rem;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  width: 4rem;
+  margin-right: 0.6rem;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-tx-color);
+}
+
+.data_table {
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  /* border: 1px solid var(--theme-bg-color); */
+  border-radius: var(--border-radius);
+}
+
+.advertisement {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  /* border: 1px solid var(--theme-bg-color); */
+  border-radius: var(--border-radius);
+}
+.festivals_adds {
+  width: 100%;
+  height: 100%;
+}
+
+.festivals_adds img,
+.festivals_adds svg {
+  width: 100%;
+}
+/* footer css block */
+.brand {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0rem;
+  left: 0rem;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.298);
+  padding: 0.8rem;
+  backdrop-filter: blur(20px);
+}
+
+.brand svg {
+  width: 3.5rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.brand a {
+  color: var(--theme-bg-color);
+  font-weight: 300;
+}
+
+.brand a:hover {
+  border-bottom: 1px solid var(--theme-bg-color);
+}
+.brand p:nth-child(2) {
+  margin-top: 0.2rem;
+}
+
+.brand #Version {
+  font-size: 12px;
+}
+footer {
+  width: 100%;
+}
+
+.my_cart_60 {
+  width: 40%;
+}
+
+.drawer__content .input {
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+}
+.drawer__content .input label {
+  text-transform: capitalize;
+  margin-right: 1rem;
+}
+
+.drawer__content .input input,
+.drawer__content .input select,
+.drawer__content .input button {
+  display: block;
+  height: 1.8rem;
+  width: 100%;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border: 1px solid var(--body-color);
+  outline: none;
+  border-radius: var(--border-radius);
+}

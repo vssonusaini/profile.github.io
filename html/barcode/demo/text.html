@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const o = { template: "/mnt/pinboard/webapp/pws/build/plugins/swTemplates/cache.js", precacheChunks: ["gestalt", "www/_client-authdesktop", "www/index-authdesktop", "www/pin/[id]-authdesktop", "www/[username]-authdesktop", "www/search/[scope]-authdesktop", "vendor-react", "locale-en_GB-inlined-js"], precache: ["https://s.pinimg.com/webapp/runtime.en_GB-e2cb79583f3a0591.mjs", "https://s.pinimg.com/webapp/75061.en_GB-d1c7c0401b9d76c5.mjs", "https://s.pinimg.com/webapp/46409.en_GB-aa08fc1003baec89.mjs", "https://s.pinimg.com/webapp/65799-f04aa23ae2b98ab4.css", "https://s.pinimg.com/webapp/www/_client-authdesktop-bc73089ddd0716ca.css", "https://s.pinimg.com/webapp/www/_client-authdesktop.en_GB-113c0bf718e65835.mjs", "https://s.pinimg.com/webapp/33361.en_GB-2e78fdfd12bcd6dd.mjs", "https://s.pinimg.com/webapp/60144.en_GB-43b78ef1d892ae0a.mjs", "https://s.pinimg.com/webapp/6256.en_GB-53efd227b06e5977.mjs", "https://s.pinimg.com/webapp/27954.en_GB-4ac0903a44c0b34f.mjs", "https://s.pinimg.com/webapp/www/pin/[id]-authdesktop-62bbd4d7c8e22f17.css", "https://s.pinimg.com/webapp/www/pin/[id]-authdesktop.en_GB-b456910cef99ce06.mjs", "https://s.pinimg.com/webapp/www/search/[scope]-authdesktop.en_GB-0581bd40db6be0b9.mjs"] },
+        e = "_/_/push/web_push_content/",
+        t = { title: "Fresh Pins!", body: "You’ve got new Pins waiting for you on Pinterest.", icon: "https://s.pinimg.com/images/favicon_red_192.png", tag: "pinterest-push-notification-tag" },
+        i = 3e5,
+        n = { notificationClicked: "_/_/push/web_push_click/" },
+        s = { "workbox-background-sync.dev.js": "workbox-background-sync.dev-8c39bfbcb7040071.js", "workbox-background-sync.prod.js": "workbox-background-sync.prod-aeeeb9f6e71a4466.js", "workbox-broadcast-update.dev.js": "workbox-broadcast-update.dev-c95fa9c729352783.js", "workbox-broadcast-update.prod.js": "workbox-broadcast-update.prod-273e9a2db93eb170.js", "workbox-cacheable-response.dev.js": "workbox-cacheable-response.dev-2057323d989d6dd7.js", "workbox-cacheable-response.prod.js": "workbox-cacheable-response.prod-3191432257faf0dd.js", "workbox-core.dev.js": "workbox-core.dev-3da4da5695f0cfd7.js", "workbox-core.prod.js": "workbox-core.prod-da0b69af4d8ad8a3.js", "workbox-expiration.dev.js": "workbox-expiration.dev-acef46169a4e15c3.js", "workbox-expiration.prod.js": "workbox-expiration.prod-f4ab4cb0f017dbbf.js", "workbox-navigation-preload.dev.js": "workbox-navigation-preload.dev-c8a11e6e2583821b.js", "workbox-navigation-preload.prod.js": "workbox-navigation-preload.prod-b2b65e261f507da8.js", "workbox-offline-ga.dev.js": "workbox-offline-ga.dev-37caafebbdb30600.js", "workbox-offline-ga.prod.js": "workbox-offline-ga.prod-097b2a2393c2e966.js", "workbox-precaching.dev.js": "workbox-precaching.dev-2bec96729a2a7e7f.js", "workbox-range-requests.dev.js": "workbox-range-requests.dev-109463eccbc7ad5a.js", "workbox-precaching.prod.js": "workbox-precaching.prod-c9d8c403a8a2d2df.js", "workbox-range-requests.prod.js": "workbox-range-requests.prod-e42043fd925cbbb1.js", "workbox-recipes.dev.js": "workbox-recipes.dev-b4cb75691067a8f9.js", "workbox-recipes.prod.js": "workbox-recipes.prod-18b1b24e19f68d40.js", "workbox-routing.dev.js": "workbox-routing.dev-8dac6e1c6ccb3a08.js", "workbox-routing.prod.js": "workbox-routing.prod-1f85f744c0ecb34d.js", "workbox-strategies.dev.js": "workbox-strategies.dev-3af0cb45dea8ded8.js", "workbox-streams.dev.js": "workbox-streams.dev-50d1f0105e3e7869.js", "workbox-strategies.prod.js": "workbox-strategies.prod-fa8ffe3cde8c6c73.js", "workbox-streams.prod.js": "workbox-streams.prod-3e4cd0db222cdf79.js", "workbox-sw.js": "workbox-sw-49788b12e8ffa47d.js", "workbox-window.dev.es5.mjs": "workbox-window.dev.es5-fc7f2a6e78efe56c.mjs", "workbox-window.dev.mjs": "workbox-window.dev-7123c78880d56812.mjs", "workbox-window.dev.umd.js": "workbox-window.dev.umd-d6a0499ae27be24b.js", "workbox-window.prod.es5.mjs": "workbox-window.prod.es5-25c9e0dcbb8b4027.mjs", "workbox-window.prod.mjs": "workbox-window.prod-2121bdc7264f383b.mjs", "workbox-window.prod.umd.js": "workbox-window.prod.umd-c27c61c9643ce944.js" };
+      importScripts("https://s.pinimg.com/webapp/workbox-sw-49788b12e8ffa47d.js"),
+        workbox.setConfig({
+          debug: !1,
+          modulePathPrefix: "https://s.pinimg.com/webapp/",
+          modulePathCb: function (o, e) {
+            return ["https://s.pinimg.com/webapp/", s[`${o}.${e ? "dev" : "prod"}.js`]].join("");
+          },
+        }),
+        o ||
+          self.addEventListener("install", (o) => {
+            o.waitUntil(self.skipWaiting());
+          });
+      const a = {
+        groups: {},
+        group: (o) => {
+          a.groups[o] = [];
+        },
+        groupEnd: (o) => {
+          const e = a.groups[o];
+          e &&
+            e.length > 0 &&
+            (console.groupCollapsed(o),
+            e.forEach((o) => {
+              console[o.fn].call(console, o.message);
+            }),
+            console.groupEnd()),
+            delete a.groups[o];
+        },
+        log: function (o, e) {},
+        warn: function (o, e) {},
+        error: function (o, e) {},
+      };
+      let r = [];
+      function c(o) {
+        return (o && o.tag) || (o = t), a.group(o.tag), a.log("Show notification.", o.tag), f("", "_/_/push/web_push_log/call_google_show_notification_api/"), self.registration.showNotification(o.title, o).then(w);
+      }
+      function d(o) {
+        if (!o) throw (a.warn("No subscription found."), new Error("No subscription found."));
+        a.log("Fetching remote notification data."), f("", "_/_/push/web_push_log/fetch_remote_notification_data/");
+        const t = { endpoint: o.endpoint },
+          i = u(e, t);
+        return fetch(i, { credentials: "include" });
+      }
+      function p(o) {
+        if (200 !== o.status) throw new Error("Notification data fetch failed.");
+        return f("", "_/_/push/web_push_log/convert_response_to_json/"), o.json();
+      }
+      function w() {
+        f("", "_/_/push/web_push_log/call_show_notification_success/"),
+          setTimeout(() => {
+            self.registration.getNotifications().then((o) => {
+              o.forEach((o) => {
+                o.close(), a.log("Dismissing notification.", o.tag), a.groupEnd(o.tag);
+              });
+            });
+          }, i || 5e3);
+      }
+      function b(o) {
+        return clients.openWindow ? clients.openWindow(o) : Promise.resolve();
+      }
+      function f(o, e) {
+        return (
+          a.log(`Send log event to ${e}.`, o.tag),
+          self.registration.pushManager.getSubscription().then((t) => {
+            const i = { endpoint: t.endpoint, tag: o.tag };
+            return fetch(u(e, i), { credentials: "include" });
+          })
+        );
+      }
+      function u(o, e) {
+        const t = o.includes("?") ? "&" : "?";
+        return (
+          o +
+          t +
+          Object.keys(e)
+            .map((o) => `${o}=${e[o]}`)
+            .join("&")
+        );
+      }
+      workbox.core.clientsClaim(),
+        workbox.core.skipWaiting(),
+        o.precache.unshift({ url: "offline.html/", revision: "b0863991de3cd648563754e264898cd6" }),
+        workbox.precaching.precacheAndRoute(o.precache.map((o) => ("string" == typeof o ? { url: o, revision: null } : o))),
+        workbox.precaching.cleanupOutdatedCaches(),
+        self.addEventListener("fetch", (o) => {
+          ("navigate" === o.request.mode || ("GET" === o.request.method && o.request.headers.get("accept").includes("text/html"))) && o.respondWith(fetch(o.request).catch((o) => caches.match("offline.html/")));
+        }),
+        self.addEventListener("activate", () => {
+          r = o.precache.map((o) => (o.url ? "" : o.substr(o.lastIndexOf("/") + 1)));
+        }),
+        self.addEventListener("message", (o) => {
+          "getCacheHitData" === o.data.name && o.ports[0].postMessage(r);
+        }),
+        self.addEventListener("push", function (o) {
+          a.log("Push notification received"),
+            f("", "_/_/push/web_push_log/push_notification_received/"),
+            n.notificationReceived &&
+              o.waitUntil(
+                (function (o) {
+                  return f(o, n.notificationReceived);
+                })(o)
+              );
+          o.data && o.data.title ? o.waitUntil(c(o.data)) : e ? o.waitUntil(self.registration.pushManager.getSubscription().then(d).then(p).then(c).catch(c)) : (a.warn("No notification.data and no fallbackURL."), o.waitUntil(c()));
+        }),
+        self.addEventListener("notificationclick", function (o) {
+          a.log("Push notification clicked.", o.notification.tag),
+            f("", "_/_/push/web_push_log/push_notification_clicked/"),
+            n.notificationClicked &&
+              o.waitUntil(
+                (function (o) {
+                  return f(o.notification, n.notificationClicked);
+                })(o)
+              );
+          if (o.notification.data && o.notification.data.url) {
+            const { url: e } = o.notification.data;
+            o.waitUntil(b(e));
+          } else if (-1 !== o.notification.tag.indexOf(":")) {
+            const e = o.notification.tag.split(":")[2] || "/";
+            o.waitUntil(b(e));
+          } else a.warn('Cannot route click with no data.url property. Using "/".', o.notification.tag), o.waitUntil(b("/"));
+          o.notification.close(), a.groupEnd(o.notification.tag);
+        });
+      //# sourceMappingURL=https://sm.pinimg.com/webapp/sw-www-authdesktop-en_GB-inlined.mjs.map
+    </script>
+  </body>
+</html>
