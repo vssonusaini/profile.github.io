@@ -20,13 +20,11 @@
 (function () {
   "use strict";
 
-  var cacheNameStatic = "cloudinary-pwa-react-v4";
+  var cacheNameStatic = "BRCode-v432";
 
   var currentCacheNames = [cacheNameStatic];
 
   var cachedUrls = [
-    // 3rd party CDN
-    "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css",
     // Local assets
     "/",
   ];
