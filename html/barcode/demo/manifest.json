@@ -2,7 +2,7 @@
   "name": "BRcode Generator",
   "short_name": "BRCode",
   "scope": "/html/barcode/demo/",
-  "start_url": "/?launch=pwa",
+  "start_url": "/html/barcode/demo/?launch=pwa",
   "description": "BRCode",
   "background_color": "#1e63f9",
   "theme_color": "#1e63f9",
