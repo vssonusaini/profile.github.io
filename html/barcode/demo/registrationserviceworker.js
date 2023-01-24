@@ -1,7 +1,7 @@
 let newWorker;
 
 if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("./html/barcode/demo/ServiceWorker.js").then((reg) => {
+  navigator.serviceWorker.register("./ServiceWorker.js").then((reg) => {
     reg.addEventListener("updatefound", () => {
       newWorker = reg.installing;
 
