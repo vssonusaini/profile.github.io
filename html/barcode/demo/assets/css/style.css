@@ -78,7 +78,6 @@ body {
   margin-right: 0.6rem;
   background-color: var(--theme-bg-color);
   color: var(--theme-tx-color);
-  font-size: 0.9rem;
 }
 
 .btn {
