@@ -1,8 +1,8 @@
 :root {
   /* main colors */
   --main-color: #fff;
-  /* --body-color: rgb(231, 230, 230); */
-  --body-color: rgb(213, 213, 213);
+  --body-color: #f5f0f0;
+  /* --body-color: rgb(213, 213, 213); */
 
   /* theme colors */
   --theme-bg-color: #000000;
@@ -78,7 +78,25 @@ body {
   margin-right: 0.6rem;
   background-color: var(--theme-bg-color);
   color: var(--theme-tx-color);
+  font-size: 0.9rem;
 }
+
+.btn {
+  background-position: center;
+  -webkit-transition: background 0.1s;
+  transition: background 0.1s;
+}
+
+.btn:hover {
+  background: var(--main-color) radial-gradient(circle, transparent 1%, var(--main-color) 1%) center/15000%;
+}
+
+.btn:active {
+  background-size: 100%;
+  -webkit-transition: background 0s;
+  transition: background 0s;
+}
+
 
 .nav_menu ul {
   list-style: none;
