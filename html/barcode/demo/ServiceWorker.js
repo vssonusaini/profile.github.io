@@ -1,4 +1,4 @@
-const staticDevCoffee = "dev-coffee-site-v1";
+const staticDevCoffee = "Barcode-v32132";
 const assets = ["/"];
 
 self.addEventListener("install", (installEvent) => {
