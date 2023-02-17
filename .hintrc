@@ -37,6 +37,14 @@
       {
         "list": "off"
       }
-    ]
+    ],
+    "axe/time-and-media": [
+      "default",
+      {
+        "meta-refresh": "off"
+      }
+    ],
+    "manifest-file-extension": "off",
+    "highest-available-document-mode": "off"
   }
 }
