@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- main css -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <div class="logo">V S Sonu</div>
+        <div class="nav_menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <div class="tables">
+          <div class="status_bar">
+            <div class="status">
+              <span>20</span>
+              <span>Total SKU</span>
+            </div>
+            <div class="status">
+              <span>20</span>
+              <span>Total Qty</span>
+            </div>
+            <div class="status">
+              <span>20</span>
+              <span>Total Complite</span>
+            </div>
+          </div>
+          <div class="btn">
+            <button>Download</button>
+            <form enctype="multipart/form-data">
+              <input id="upload" type="file" name="files[]" />
+            </form>
+          </div>
+          <div id="grid" style="margin-top: 1rem; width: 100%; height: 80vh"></div>
+        </div>
+
+        <div class="qrcode">
+          <div id="qr"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
+    <script src="./assets/js/main.js" type="module"></script>
+    <script>
+    //   localStorage.setItem("import_excel", null);
+      var ExcelToJSON = function () {
+        this.parseExcel = function (file) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, {
+              type: "binary",
+            });
+            workbook.SheetNames.forEach(function (sheetName) {
+              // Here is your object
+              var XL_row_object = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+              var json_object = JSON.stringify(XL_row_object);
+              var productList = JSON.parse(json_object);
+
+              console.log(productList);
+
+              localStorage.setItem("import_excel", JSON.stringify(productList));
+            });
+          };
+          reader.onerror = function (ex) {
+            console.log(ex);
+          };
+          reader.readAsBinaryString(file);
+        };
+      };
+
+      function handleFileSelect(evt) {
+        var files = evt.target.files; // FileList object
+        var xl2json = new ExcelToJSON();
+        xl2json.parseExcel(files[0]);
+      }
+    </script>
+  </body>
+</html>
