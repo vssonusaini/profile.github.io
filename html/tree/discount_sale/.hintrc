@@ -10,6 +10,14 @@
       }
     ],
     "button-type": "off",
-    "no-inline-styles": "off"
+    "no-inline-styles": "off",
+    "axe/time-and-media": [
+      "default",
+      {
+        "meta-refresh": "off"
+      }
+    ],
+    "disown-opener": "off",
+    "highest-available-document-mode": "off"
   }
 }
