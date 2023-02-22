@@ -1,4 +1,3 @@
-//   localStorage.setItem("import_excel", null);
 var ExcelToJSON = function () {
   this.parseExcel = function (file) {
     var reader = new FileReader();
