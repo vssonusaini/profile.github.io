@@ -1,0 +1,59 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/text-alternatives": [
+      "default",
+      {
+        "frame-title": "off",
+        "document-title": "off"
+      }
+    ],
+    "no-inline-styles": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+      }
+    ],
+    "button-type": "off",
+    "meta-viewport": "off",
+    "axe/keyboard": [
+      "off",
+      {
+        "nested-interactive": "off"
+      }
+    ],
+    "css-prefix-order": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off",
+        "select-name": "off"
+      }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
+      }
+    ],
+    "axe/time-and-media": [
+      "default",
+      {
+        "meta-refresh": "off"
+      }
+    ],
+    "manifest-file-extension": "off",
+    "highest-available-document-mode": "off",
+    "compat-api/html": [
+      "default",
+      {
+        "ignore": [
+          "meta[name=theme-color]"
+        ]
+      }
+    ]
+  }
+}

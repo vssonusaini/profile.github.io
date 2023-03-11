@@ -34,7 +34,9 @@ recognition.onend = function () {
   console.log("vr Deactive");
 };
 
-recognition.continuous = true;
+// recognition.start();
+
+// recognition.continuous = true;
 startBtn.addEventListener("click", () => {
   recognition.start();
 });

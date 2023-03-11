@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discount Sale</title>
+
+    <!-- main style sheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="nav_bar">
+        <div class="logo">V S Sonu</div>
+        <div class="nav_menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="https://sainisahab.com/#contact" target="_blank">Contact us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section>
+        <div class="aside">
+          <div class="table">
+            <div id="grid"></div>
+          </div>
+        </div>
+        <div class="main_conatiner">
+          <div class="grid">
+            <div class="status_bar" id="status">
+              <div class="status">
+                <span>0</span>
+                <span>Total Qty</span>
+              </div>
+              <div class="status">
+                <span>0</span>
+                <span>Total Qty</span>
+              </div>
+              <div class="status">
+                <span>0</span>
+                <span>Total Qty</span>
+              </div>
+            </div>
+            <div class="qrcode-block">
+              <div class="input_form">
+                <div class="input-block">
+                  <button id="UploadBTN">Upload</button>
+                  <button>Download</button>
+                  <form enctype="multipart/form-data">
+                    <input id="upload" type="file" name="files[]" />
+                  </form>
+                </div>
+                <br />
+
+                <table>
+                  <tr>
+                    <td><label for="">SKU Code</label></td>
+                    <td><label for="">Total Qty</label></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" id="matchSKU" /></td>
+                    <td><input type="text" id="matchQty" /></td>
+                  </tr>
+                </table>
+                <br />
+                <table>
+                  <tr>
+                    <td>Enter SKU</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><input type="text" id="inputSKU" /></td>
+                    <td><button id="submitBTN">Submet</button></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="qrcode">
+                <div id="qr"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ads">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3966268377883628" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display: block" data-ad-format="autorelaxed" data-ad-client="ca-pub-3966268377883628" data-ad-slot="6599167949"></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@gh-pages/qrcode.min.js"></script>
+    <script src="./assets/js/upload.js"></script>
+    <script src="./assets/js/main.js" type="module"></script>
+  </body>
+</html>

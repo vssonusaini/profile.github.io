@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8" />
     <!-- Simple Page Needs
 ================================================== -->
     <title>qrcode javascript library | qrcode javascript library CDN</title>
-    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="30" />
     <meta name="description" content="QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM. QRCode.js has no dependencies." />
     <meta name="keywords" content="v s sonu saini , qrcode javascript library, qrcode javascript library cdn " />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,7 +21,7 @@
     <link rel="stylesheet" href="../../css/reset.css" />
     <link rel="stylesheet" href="../../cubeportfolio/css/cubeportfolio.min.css" />
     <link rel="stylesheet" href="../../css/style.css" />
-    <link rel="stylesheet" href="../../css/colors/yellow.css" />
+    <link rel="stylesheet" href="../../css/colors/green.css" />
 
     <!-- Google Web fonts
 ================================================== -->
@@ -31,6 +32,14 @@
     <!-- <link rel="stylesheet" href="../icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css"/> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../icon-fonts/web-design/flaticon.css" />
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3966268377883628" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/railscasts.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <!-- and it's easy to individually load additional languages -->
   </head>
 
   <body>
@@ -60,14 +69,8 @@
                     </ul>
                   </div>
                   <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
-                    <button class="pull-right site-btn icon hidden-xs">Hire Me <i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                    <a href="mailto:vssonusaini464@gmail.com" class="pull-right site-btn icon hidden-xs">Hire Me <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
                     <div class="hamburger pull-right hidden-lg hidden-md"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    <div class="hidden-md social-icons pull-right">
-                      <a class="fb" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                      <a class="tw" href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                      <a class="ins" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                      <a class="dr" href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                    </div>
                   </div>
                 </div>
               </nav>
@@ -87,21 +90,21 @@
                   </div>
                   <div class="post-content">
                     <h1 class="blog-title bottom_30 top_0">QRCode.js</h1>
-                    <p>QRCode.js is javascript library for making QRCode. QRCode.js supports Cross-browser with HTML5 Canvas and table tag in DOM. QRCode.js has no dependencies.</p>
+                    <p>QRCode.js is javascript library for making QRCode. QRC ode.js supports Cross-browser with HTML5 Canvas and table tag in DOM. QRCode.js has no dependencies.</p>
                     <div class="section-title bottom_15 top_60">
                       <span></span>
                       <h3>JS CDN</h3>
                     </div>
                     <div class="code">
                       <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
-<code style="font-family: monospace;">&lt;script src="https://sainisahab.com/html/online-qrcode-generator-tool/assets/js/qr_lab.js"&gt;&lt;script&gt;</code></pre>
+<code style="font-family: monospace;">&lt;script src="https://sainisahab.com/Qrcode/js/qrcode.min.js"&gt;&lt;script&gt;</code></pre>
                     </div>
                     <div class="section-title bottom_15 top_60">
                       <span></span>
                       <h3>Basic Usages</h3>
                     </div>
                     <div class="code">
-                      <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
+                      <pre class="language-html">
 <code style="font-family: monospace;">&lt;div id="qrcode"&gt;&lt;/div&gt;
 
 &lt;script type="text/javascript"&gt;
@@ -111,23 +114,22 @@
 
                     <blockquote style="font-size: 0.8rem">or with some options</blockquote>
                     <div class="code">
-                      <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
-var qrcode = new QRCode("test", {
-          text: "http://jindo.dev.naver.com/collie",
-          width: 128,
-          height: 128,
-          colorDark : "#000000",
-          colorLight : "#ffffff",
-          correctLevel : QRCode.CorrectLevel.H
-      });</pre
-                      >
+                      <pre><code  style="font-family: monospace;" class="language-js">var qrcode = new QRCode("test", {
+        text: "http://jindo.dev.naver.com/collie",
+        width: 128,
+        height: 128,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+});
+</code></pre>
                     </div>
                     <blockquote style="font-size: 0.8rem">and you can use some methods</blockquote>
                     <div class="code">
-                      <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
-qrcode.clear(); // clear the code.
-qrcode.makeCode("http://naver.com"); // make another code.</pre
-                      >
+                      <pre>
+<code  style="font-family: monospace;" class="language-js">qrcode.clear(); // clear the code.
+qrcode.makeCode("http://naver.com"); // make another code.
+</code></pre>
                     </div>
                     <div class="section-title bottom_15 top_60">
                       <span></span>
@@ -135,25 +137,25 @@ qrcode.makeCode("http://naver.com"); // make another code.</pre
                     </div>
                     <div class="code">
                       <blockquote style="font-size: 0.8rem">HTML</blockquote>
-                      <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
-&lt;div id="qrcode"&gt;&lt;/div&gt;
-&lt;input type="text " id="Value" onchange="app()"&gt;</pre
-                      >
+                      <pre>
+<code style="font-family: monospace;" class="language-html" >&lt;div id="qrcode"&gt;&lt;/div&gt;
+&lt;input type="text " id="Value" onchange="app()"&gt;</code>
+                      </pre>
                     </div>
                     <br />
                     <div class="code">
                       <blockquote style="font-size: 0.8rem">Javascript</blockquote>
-                      <pre style="display: block; font-family: monospace; white-space: pre; padding: 1rem; background-color: rgba(255, 228, 196, 0.652); width: 100%; box-shadow: 0px 0px 48px 0px rgb(4 6 4 / 3%)">
-&lt;script&gt;  
-          var qr = document.getElementById('Value');
-          var qrcode = new QRCode(document.getElementById("qrcode"));
+                      <pre>
+<code  style="font-family: monospace;" class="language-html" >&lt;script&gt;  
+    var qr = document.getElementById('Value');
+    var qrcode = new QRCode(document.getElementById("qrcode"));
           
-          function app(){
-                    var value = qr.value;
-                    qrcode.makeCode(value);
-          }
- &lt;script&gt;</pre
-                      >
+    function app(){
+            ar value = qr.value;
+            qrcode.makeCode(value);
+    }
+&lt;/script&gt;
+</code></pre>
                     </div>
                     <div class="section-title bottom_15 top_60">
                       <span></span>
@@ -196,11 +198,7 @@ qrcode.makeCode("http://naver.com"); // make another code.</pre
                       <h3>Categories</h3>
                     </div>
                     <ul class="category-list">
-                      <li><a href="#">Web App</a><span>0</span></li>
-                      <li><a href="#">Development</a><span>0</span></li>
-                      <li><a href="#">Photography</a><span>0</span></li>
                       <li><a href="#">JavaScript</a><span>2</span></li>
-                      <li><a href="#">Computers Accessories</a><span>1</span></li>
                     </ul>
                   </div>
                   <!-- Popular Post -->
@@ -219,13 +217,6 @@ qrcode.makeCode("http://naver.com"); // make another code.</pre
                             <p class="little-text">The window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests that the browser calls a specified function to update an animation before the next repaint.</p>
                           </a>
                         </li>
-                        <!-- a post -->
-                        <li>
-                          <a href="../bast-laptop/">
-                            <div class="info">Lenovo IdeaPad Slim 3 2021 11th <span>8 Aug 21</span></div>
-                            <p class="little-text">Lenovo IdeaPad Slim 3 2021 11th Gen Intel Core i5 15.6" (39.62cm)..</p>
-                          </a>
-                        </li>
                       </ul>
                     </ul>
                   </div>
@@ -237,10 +228,15 @@ qrcode.makeCode("http://naver.com"); // make another code.</pre
                     </div>
 
                     <div>
-                      <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B089MTJVLD&asins=B089MTJVLD&linkId=fbb181d06033613a179410a503e6ceb6&show_border=true&link_opens_in_new_window=true"></iframe>
+                      <!-- <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B089MTJVLD&asins=B089MTJVLD&linkId=fbb181d06033613a179410a503e6ceb6&show_border=true&link_opens_in_new_window=true"></iframe>
                       <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B08YYQW827&asins=B08YYQW827&linkId=908f2ab070d2a53ddc00c08004a343a3&show_border=true&link_opens_in_new_window=true"></iframe>
                       <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B07XY9BZPM&asins=B07XY9BZPM&linkId=d4045beecb95812fd2841063e5660e2a&show_border=true&link_opens_in_new_window=true"></iframe>
-                      <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B07ZD5SBFB&asins=B07ZD5SBFB&linkId=6b1333094f96a4753f0247241bf8513f&show_border=true&link_opens_in_new_window=true"></iframe>
+                      <iframe style="width: 120px; height: 240px" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="//ws-in.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=IN&source=ss&ref=as_ss_li_til&ad_type=product_link&tracking_id=sonu101299-21&language=en_IN&marketplace=amazon&region=IN&placement=B07ZD5SBFB&asins=B07ZD5SBFB&linkId=6b1333094f96a4753f0247241bf8513f&show_border=true&link_opens_in_new_window=true"></iframe> -->
+                      <!-- /blog-posts/qrcode_javascript_library/ -->
+                      <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-3966268377883628" data-ad-slot="6906203984" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                      <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                      </script>
                     </div>
                   </div>
                 </div>

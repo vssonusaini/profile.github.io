@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>V S Sonu Saini</title>
     <meta charset="UTF-8" />
     <meta name="description" content="Resume &amp; My Profile Hi! I am Sonu Saini, a web designer/developer focused on crafting great web experiences. " />
     <meta name="keywords" content="v s sonu saini, v s sonu saini profile, sonu saini ,Web Developer" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-site-verification" content="6tli03ruPAmgmkGSXFtv3E_usQGzoxoVDN3yobcletk" />
     <meta name="msvalidate.01" content="EA747F89402F7D3014CF02BF9C186249" />
-    <!-- Favicon -->
-    <link href="./favicon.svg" rel="shortcut icon" type="image/x-icon" />
-    <!-- CSS -->
+    <!-- Simple Page Needs
+================================================== -->
+    <title>V S Sonu Saini</title>
+    <!-- Favicon
+================================================== -->
+    <link href="favicon.svg" rel="shortcut icon" type="image/x-icon" />
+
+    <!-- CSS
+================================================== -->
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="cubeportfolio/css/cubeportfolio.min.css" />
     <link rel="stylesheet" href="css/owl.theme.css" />
     <link rel="stylesheet" href="css/owl.carousel.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/colors/yellow.css" />
+    <link rel="stylesheet" href="./css/colors/green.css" id="color" />
 
-    <!-- Google Web fonts -->
+    <!-- Google Web fonts
+================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900" rel="stylesheet" />
-    <!-- Font Icons -->
-    <script crossorigin="anonymous" src="https://kit.fontawesome.com/c8e4d183c2.js"></script>
+
+    <!-- Font Icons
+================================================== -->
+    <link rel="stylesheet" href="icon-fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="icon-fonts/web-design/flaticon.css" />
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KPG24S041"></script>
     <script>
@@ -35,6 +44,9 @@
 
       gtag("config", "G-5KPG24S041");
     </script>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
     <!-- Preloading -->
@@ -45,12 +57,18 @@
     <!-- Wrapper -->
     <div class="wrapper top_60 container">
       <div class="row">
-        <!-- Profile Section -->
+        <!-- Profile Section
+================================================== -->
         <div class="col-lg-3 col-md-4">
           <div class="profile">
-            <div class="profile-name" id="profile-name">
-              <span class="name">V S Sonu Saini</span><br />
-              <span class="job">Web Developer</span>
+            <div class="profile-name">
+              <div style="display: flex">
+                <img src="images/back-logo.png" style="width: 35px; height: 35px; color: #000" alt="" />
+                <div style="margin-left: 1rem">
+                  <span class="name">V S Sonu Saini</span><br />
+                  <span class="job">Web Developer </span>
+                </div>
+              </div>
             </div>
             <figure class="profile-image">
               <img src="images/profile.jpg" alt="vssonusaini-profile" />
@@ -60,23 +78,26 @@
               <li>
                 <p><span>Name:</span> Sonu Saini</p>
               </li>
-
+              <li>
+                <p><span>Birthday:</span> 06 December 2000</p>
+              </li>
               <li>
                 <p><span>Job:</span> Freelancer</p>
               </li>
               <li>
-                <p><span>Email:</span> vssonusaini464@gmail..</p>
+                <p><span>Email:</span> vssonusaini464</p>
               </li>
             </ul>
             <div class="col-md-12">
-              <a style="width: 10rem" href="/html/cv/" class="site-btn icon">Download Cv <i class="fa fa-download" aria-hidden="true"></i></a>
+              <button class="site-btn icon">Download Cv <i class="fa fa-download" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>
 
         <!-- Page Tab Container Div -->
         <div id="ajax-tab-container" class="col-lg-9 col-md-8 tab-container">
-          <!-- Header -->
+          <!-- Header
+================================================== -->
           <div class="row">
             <header class="col-md-12">
               <nav>
@@ -87,45 +108,43 @@
                       <li class="tab">
                         <a class="home-btn" href="#home"><i class="fa fa-home" aria-hidden="true"></i></a>
                       </li>
-                      <li class="tab"><a class="menu_links" href="#resume">RESUME</a></li>
-                      <li class="tab"><a class="menu_links" href="#portfolio">PORTFOLIO</a></li>
-                      <li class="tab"><a class="menu_links" href="#blog">BLOG</a></li>
-                      <li class="tab"><a class="menu_links" href="#gallery">GALLERY</a></li>
-                      <li class="tab"><a class="menu_links" href="#contact">CONTACT</a></li>
+                      <li class="tab"><a href="#resume">RESUME</a></li>
+                      <li class="tab"><a href="#portfolio">PORTFOLIO</a></li>
+                      <li class="tab"><a href="#blog">BLOG</a></li>
+                      <li class="tab"><a href="#gallery">GALLERY</a></li>
+                      <li class="tab"><a href="#contact">CONTACT</a></li>
                     </ul>
                   </div>
                   <div class="col-md-4 col-sm-4 col-xs-8 dynamic">
                     <a href="mailto:vssonusaini464@gmail.com" class="pull-right site-btn icon hidden-xs">Hire Me <i class="fa fa-paper-plane" aria-hidden="true"></i></a>
                     <div class="hamburger pull-right hidden-lg hidden-md"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                    <div class="hidden-md social-icons pull-right">
+                    <!-- <div class="hidden-md social-icons pull-right">
                       <a class="fb" target="_black" href="https://www.facebook.com/vssonu.saini/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                       <a class="tw" target="_black" href="https://twitter.com/SonuSai30702453"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                       <a class="ins" target="_black" href="https://www.instagram.com/v_s_sonu_saini/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                       <a class="dr" target="_black" href="https://www.youtube.com/channel/UC12rrSy4UU6SEy90dWWrWkg"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </nav>
             </header>
 
-            <!-- Page Content -->
+            <!-- Page Content
+    ================================================== -->
             <div class="col-md-12">
               <div id="content" class="panel-container">
-                <!-- Home Page -->
+                <!-- Home Page
+            ================================================== -->
                 <div id="home">
                   <!-- Text Section -->
                   <div class="row">
                     <section class="about-me line col-md-12 padding_30 padbot_45">
                       <div class="section-title">
                         <span></span>
-                        <h1>About Me</h1>
+                        <h2>About Me</h2>
                       </div>
-                      <p class="top_30">
-                        Hi! I am Sonu Saini, a web designer/developer focused on crafting great web experiences. Designing and Coding have been my passion since the days I started working with computers but I found myself into web design/development since 2018. I enjoy creating beautifully designed, intuitive and functional websites.
-                        <br />
-                        <br />
-                        For over past 1 years, I have worked for some of the best digital agencies and wonderful clients to create some award winning works. And, I can make this happen for your business as well.
-                      </p>
+                      <p class="top_30">Hi! I am Sonu Saini, a web designer/developer focused on crafting great web experiences. Designing and Coding have been my passion since the days I started working with computers but I found myself into web design/development since 2018. I enjoy creating beautifully designed, intuitive and functional websites.</p>
+                      <p class="top_30">For over past 1 years, I have worked for some of the best digital agencies and wonderful clients to create some award winning works. And, I can make this happen for your business as well.</p>
                     </section>
                   </div>
                   <!-- My Services Section -->
@@ -143,7 +162,7 @@
                               <i class="flaticon-html"></i>
                             </div>
                             <span class="title">Web Development</span>
-                            <p class="little-text">I have been working on web design for 6 years.</p>
+                            <p class="little-text">I have been working on web design for 10 years.</p>
                           </div>
                         </div>
                         <!-- a service -->
@@ -163,7 +182,7 @@
                               <i class="flaticon-vector"></i>
                             </div>
                             <span class="title">Illustrator</span>
-                            <p class="little-text">I have been working on illustration design for 4 years.</p>
+                            <p class="little-text">I have been working on illustration design for 6 years.</p>
                           </div>
                         </div>
                         <!-- a service -->
@@ -196,13 +215,13 @@
                         <li>
                           <h3>Sketch</h3>
                           <div class="progress">
-                            <div class="percentage" style="width: 90%"></div>
+                            <div class="percentage" style="width: 60%"></div>
                           </div>
                         </li>
                         <li>
                           <h3>Adobe Xd</h3>
                           <div class="progress">
-                            <div class="percentage" style="width: 60%"></div>
+                            <div class="percentage" style="width: 30%"></div>
                           </div>
                         </li>
                       </ul>
@@ -216,19 +235,19 @@
                         <li>
                           <h3>Javascript</h3>
                           <div class="progress">
-                            <div class="percentage" style="width: 90%"></div>
+                            <div class="percentage" style="width: 80%"></div>
                           </div>
                         </li>
                         <li>
                           <h3>HTML5</h3>
                           <div class="progress">
-                            <div class="percentage" style="width: 85%"></div>
+                            <div class="percentage" style="width: 60%"></div>
                           </div>
                         </li>
                         <li>
                           <h3>CSS3</h3>
                           <div class="progress">
-                            <div class="percentage" style="width: 98%"></div>
+                            <div class="percentage" style="width: 30%"></div>
                           </div>
                         </li>
                       </ul>
@@ -236,7 +255,8 @@
                   </div>
                 </div>
 
-                <!-- Resume Page -->
+                <!-- Resume Page
+            ================================================== -->
                 <div id="resume">
                   <!-- Resume Section -->
                   <div class="row">
@@ -246,26 +266,32 @@
                         <h2>Resume</h2>
                       </div>
                       <div class="row">
+                        <!-- Working History -->
+                        <div class="working-history col-md-6 padding_15 padbot_30">
+                          <ul class="timeline col-md-12 top_30">
+                            <li>
+                              <i class="fa fa-suitcase" aria-hidden="true"></i>
+                              <h2 class="timeline-title">Working History</h2>
+                            </li>
+                            <!-- a work -->
+                            <li>
+                              <h3 class="line-title">Team Leader - bigbasket.com</h3>
+                              <span>2023 - Present</span>
+                            </li>
+                          </ul>
+                        </div>
                         <!-- Education History -->
                         <div class="education-history col-md-6 padding_15 padbot_30">
                           <ul class="timeline col-md-12 top_30">
                             <li>
                               <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                              <h2 class="timeline-title">Education</h2>
+                              <h2 class="timeline-title">Education History</h2>
                             </li>
                             <!-- a work -->
                             <li>
-                              <h3 class="line-title">Web Application Developer</h3>
-                              <span>Indian Institute of Hardware and Technology - 2019</span>
-                              <!-- <p class="little-text">Expenses as material breeding insisted building to in. Continual so distrusts pronounce by unwilling listening. Thing do taste on we manor.</p> -->
+                              <h3 class="line-title">Web Application Developer - IIHT</h3>
+                              <span>2018 - 2021</span>
                             </li>
-                            <!-- a work -->
-                            <li>
-                              <h3 class="line-title">Digital Marketing</h3>
-                              <span>Google Digital Garage - 2018</span>
-                              <!-- <p class="little-text">So insisted received is occasion advanced honoured. Among ready to which up. Attacks smiling and may out assured moments man nothing outward.</p> -->
-                            </li>
-                            <!-- a work -->
                           </ul>
                         </div>
                       </div>
@@ -281,29 +307,29 @@
                       <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-01.jpg" alt="client-01" />
+                            <img src="images/client-06.png" alt="" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-02.jpg" alt="client-02" />
+                            <img src="images/client-02.jpg" alt="" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-03.jpg" alt="client-03" />
+                            <img src="images/client-03.jpg" alt="" />
                           </div>
                         </div>
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                           <div class="client">
-                            <img src="images/client-04.jpg" alt="client-04" />
+                            <img src="images/client-04.jpg" alt="" />
                           </div>
                         </div>
                       </div>
                     </section>
                   </div>
                   <!-- Testimonials -->
-                  <div class="row">
+                  <div class="row" style="display: none">
                     <section class="testimonials bottom_30">
                       <div class="section-title top_60 bottom_30">
                         <span></span>
@@ -315,7 +341,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="testimonial-1" />
+                                <img src="images/testimonial-1.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -331,7 +357,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="testimonial-2" />
+                                <img src="images/testimonial-2.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -339,7 +365,7 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Our logo and business card design look great. Thanks Sonu</p>
+                            <p>Our logo and business card design look great. Thanks Henry</p>
                           </div>
                         </div>
                         <!-- a item -->
@@ -347,7 +373,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="testimonial-3" />
+                                <img src="images/testimonial-3.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -355,7 +381,7 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Sonu is a very creative and talented designer. I do not hesitate to work again.</p>
+                            <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
                           </div>
                         </div>
                         <!-- a item -->
@@ -363,7 +389,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="testimonial" />
+                                <img src="images/testimonial-1.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -379,7 +405,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="testimonial" />
+                                <img src="images/testimonial-2.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -387,7 +413,7 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Our logo and business card design look great. Thanks Sonu</p>
+                            <p>Our logo and business card design look great. Thanks Henry</p>
                           </div>
                         </div>
                         <!-- a item -->
@@ -395,7 +421,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="testimonial" />
+                                <img src="images/testimonial-3.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -403,7 +429,7 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Sonu is a very creative and talented designer. I do not hesitate to work again.</p>
+                            <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
                           </div>
                         </div>
                         <!-- a item -->
@@ -411,7 +437,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-1.jpg" alt="testimonial" />
+                                <img src="images/testimonial-1.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Jack Garratt</span>
@@ -427,7 +453,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-2.jpg" alt="testimonial" />
+                                <img src="images/testimonial-2.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">April M. Griffin</span>
@@ -435,7 +461,7 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Our logo and business card design look great. Thanks Sonu</p>
+                            <p>Our logo and business card design look great. Thanks Henry</p>
                           </div>
                         </div>
                         <!-- a item -->
@@ -443,7 +469,7 @@
                           <div class="comment">
                             <div class="top-section">
                               <figure>
-                                <img src="images/testimonial-3.jpg" alt="testimonial" />
+                                <img src="images/testimonial-3.jpg" alt="" />
                               </figure>
                               <div class="name-info">
                                 <span class="name">Larry M. Johnson</span>
@@ -451,14 +477,15 @@
                               </div>
                             </div>
                             <hr />
-                            <p>Sonu is a very creative and talented designer. I do not hesitate to work again.</p>
+                            <p>Henry is a very creative and talented designer. I do not hesitate to work again.</p>
                           </div>
                         </div>
                       </div>
                     </section>
                   </div>
                 </div>
-                <!-- Portfolio Page -->
+                <!-- Portfolio Page
+            ================================================== -->
                 <div id="portfolio" class="row bottom_45">
                   <section class="col-md-12">
                     <div class="col-md-12 content-header bottom_15">
@@ -474,109 +501,16 @@
                       </div>
                     </div>
                     <div id="grid-container" class="top_60">
-                      <!-- a work -->
                       <div class="cbp-item web_tools">
-                        <a href="portfolio-detail/sip_calculator.html" class="estate cbp-singlePage">
+                        <a href="portfolio-detail/qrcode-details.html" class="cbp-singlePage">
                           <figure>
                             <div class="icon">
                               <i class="fa fa-clone" aria-hidden="true"></i>
                             </div>
-                            <img src="images/sip_calculator.jpg" alt="sip_calculator" />
+                            <img src="images/portfolio-content/qrcode/home-Capture.PNG" alt="" />
                             <figcaption>
-                              <span class="title">SIP Calculator</span><br />
-                              <span class="info">A SIP calculator is a simple tool that allows individuals to get an idea of the returns on their mutual fund investments made through SIP.</span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-                      <!-- Qrcode App -->
-                      <div class="cbp-item Web_Apps">
-                        <a href="./html/online-qrcode-generator-tool/" target="_tap">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="images/works/Qrcodeapp.jpg" alt="qrcode_image" />
-                            <figcaption>
-                              <span class="title">Qr Code Generator </span><br />
+                              <span class="title">Qr Code Generator</span><br />
                               <span class="info">Make Qr Code Online App</span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-                      <!-- a work -->
-                      <div class="cbp-item web_tools">
-                        <a href="portfolio-detail/ppf-calculator.html" class="estate cbp-singlePage">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="images/sip_calculator.jpg" alt="sip_calculator" />
-                            <figcaption>
-                              <span class="title">PPF Calculator </span><br />
-                              <span class="info">If you are a student who might need funds later on for studies, a responsible parent who has concern for their child’s study, </span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-                      <!-- a ims -->
-                      <div class="cbp-item Web_Apps">
-                        <a href="./html/Invantiry-ms/" target="_tap">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="images/works/ims_png.jpg" alt="ims_png" />
-                            <figcaption>
-                              <span class="title">Store Management System</span><br />
-                              <span class="info">Store Management Systems</span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-
-                      <!-- a video work -->
-                      <div class="cbp-item web_tools">
-                        <a href="./html/box-shadow-css-generator/" target="_tap">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="images/works/Box.jpg" alt="tool Img" />
-                            <figcaption>
-                              <span class="title">Box Shadow Css Generator</span><br />
-                              <span class="info">A box-shadow CSS generator that helps you quickly generate box-shadow CSS declarations for your website.</span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-
-                      <!-- =====Note Pade -->
-                      <div class="cbp-item web_tools">
-                        <a href="./html/./online-note-pad/" target="_tap">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="./images/works/Notepad.jpg" alt="tool Img" />
-                            <figcaption>
-                              <span class="title">Notepad</span><br />
-                              <span class="info">Notepad online for text editing. Free notepad app, no login required..</span>
-                            </figcaption>
-                          </figure>
-                        </a>
-                      </div>
-                      <!-- a work -->
-                      <div class="cbp-item web_tools">
-                        <a href="portfolio-detail/emi-calculator.html" class="estate cbp-singlePage">
-                          <figure>
-                            <div class="icon">
-                              <i class="fa fa-clone" aria-hidden="true"></i>
-                            </div>
-                            <img src="images/sip_calculator.jpg" alt="sip_calculator" />
-                            <figcaption>
-                              <span class="title">EMI Calculator </span><br />
-                              <span class="info">The credit market in India is steadily on the rise. It is currently the 4th largest credit industry in the world, recording a CAGR of over 11% year-on-year </span>
                             </figcaption>
                           </figure>
                         </a>
@@ -584,16 +518,17 @@
                     </div>
                     <!-- load more button -->
                     <!-- <div id="js-loadMore-agency" class="cbp-l-loadMore-button top_30">
-                        <a href="load-more/portfolio.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
-                          <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
-                          <span class="cbp-l-loadMore-loadingText">Loading...</span>
-                          <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
-                        </a>
-                      </div> -->
+                      <a href="load-more/portfolio.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
+                        <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
+                        <span class="cbp-l-loadMore-loadingText">Loading...</span>
+                        <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
+                      </a>
+                    </div> -->
                   </section>
                 </div>
 
-                <!-- Blog Page -->
+                <!-- Blog Page
+            ================================================== -->
                 <div id="blog">
                   <div class="row">
                     <section class="blog col-md-12 bottom_30">
@@ -606,39 +541,9 @@
                       <div id="grid-blog" class="row">
                         <!-- a blog -->
                         <div class="cbp-item">
-                          <a href="blog-posts/bast-laptop/" class="blog-box">
+                          <a href="blog-posts/qrcode_javascript_library/" class="blog-box">
                             <div class="blog-img">
-                              <img src="images/blogs/Lenovo_ideapad_slim_blog.jpg" alt="Lenovo_ideapad_slim_blog" />
-                            </div>
-                            <div class="blog-box-info">
-                              <span class="category">Computers Accessories</span>
-                              <h2 class="title">Lenovo IdeaPad Slim 3 2021 11th Gen Intel Core i5 15.6</h2>
-                              <p class="little-text">11th Gen Intel Core i5-1135G7 Storage: 8GB RAM DDR4, Upgradable up to 12GB..</p>
-                              <span class="date">8 Aug 21</span>
-                            </div>
-                          </a>
-                        </div>
-                        <!-- a blog -->
-
-                        <!-- a blog -->
-                        <div class="cbp-item">
-                          <a href="./blog-posts/requestAnimationFrame/" class="blog-box">
-                            <div class="blog-img">
-                              <img src="images/blogs/js.jpg" alt="Javascript" />
-                            </div>
-                            <div class="blog-box-info">
-                              <span class="category" id="title-o">Javascript</span>
-                              <h2 class="title" id="heading-o">Window.requestAnimationFrame()</h2>
-                              <p class="little-text" id="pra-o">The window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests ..</p>
-                              <span class="date" id="date-o">19 Mar 21</span>
-                            </div>
-                          </a>
-                        </div>
-
-                        <div class="cbp-item">
-                          <a href="./blog-posts/qrcode_javascript_library/" class="blog-box">
-                            <div class="blog-img">
-                              <img src="images/works/Qrcodeapp.jpg" alt="Javascript" />
+                              <img src="images/blogs/Qrcodeapp.jpg" alt="Javascript" />
                             </div>
                             <div class="blog-box-info">
                               <span class="category">Javascript</span>
@@ -650,20 +555,35 @@
                         </div>
 
                         <!-- a blog -->
+                        <div class="cbp-item">
+                          <a href="./blog-posts/requestAnimationFrame/" class="blog-box">
+                            <div class="blog-img">
+                              <img src="images/blogs/requestAnimationFrame.jpg" alt="Javascript" />
+                            </div>
+                            <div class="blog-box-info">
+                              <span class="category" id="title-o">Javascript</span>
+                              <h2 class="title" id="heading-o">Window.requestAnimationFrame()</h2>
+                              <p class="little-text" id="pra-o">The window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests ..</p>
+                              <span class="date" id="date-o">19 Mar 21</span>
+                            </div>
+                          </a>
+                        </div>
                       </div>
+
                       <!-- load more button -->
-                      <div id="load-posts" class="cbp-l-loadMore-button top_60">
+                      <!-- <div id="load-posts" class="cbp-l-loadMore-button top_60">
                         <a href="load-more/blog-posts.html" class="cbp-l-loadMore-link site-btn" rel="nofollow">
                           <span class="cbp-l-loadMore-defaultText">Load More (<span class="cbp-l-loadMore-loadItems">3</span>)</span>
                           <span class="cbp-l-loadMore-loadingText">Loading...</span>
                           <span class="cbp-l-loadMore-noMoreLoading">No More Works</span>
                         </a>
-                      </div>
+                      </div> -->
                     </section>
                   </div>
                 </div>
+                <!-- Gallery
+            ================================================== -->
 
-                <!-- ---Gallery ---- -->
                 <div id="gallery">
                   <div class="row">
                     <section class="gallery line graybg col-md-12 padding_50 padbot_50">
@@ -767,7 +687,8 @@
                   </div>
                 </div>
                 <!-- ---gelley end-- -->
-                <!-- Contact Page -->
+                <!-- Contact Page
+            ================================================== -->
                 <div id="contact">
                   <div class="row">
                     <!-- Contact Form -->
@@ -784,12 +705,12 @@
                           <div class="col-md-6">
                             <input class="site-input" placeholder="Phone Number" value="" name="Phone" />
                           </div>
-                          <div class="col-md-6">
+                          <div class="col-md-12">
                             <input class="site-input" placeholder="E-mail" value="" name="Email" />
                           </div>
 
                           <div class="col-md-12">
-                            <textarea class="site-area" placeholder="Message" value="" name="Message"></textarea>
+                            <textarea class="site-area" placeholder="Message" value="" name="Message" style="resize: vertical"></textarea>
                           </div>
                           <div class="col-md-12 top_15 bottom_30">
                             <input type="submit" name="submit" class="site-btn" value="Submit" />
@@ -809,14 +730,14 @@
                         <li><span>Job:</span> Freelancer</li>
                         <li><span>E-mail:</span> vssonusaini464@gmail.com</li>
                         <li><span>linkedin:</span> vs-sonu-saini</li>
-                        <li>
+                        <!-- <li>
                           <div class="social-icons top_15">
                             <a class="fb" target="_black" href="https://www.facebook.com/vssonu.saini/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                             <a class="tw" target="_black" href="https://twitter.com/SonuSai30702453"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a class="ins" target="_black" href="https://www.instagram.com/v_s_sonu_saini/"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                             <a class="dr" target="_black" href="https://www.youtube.com/channel/UC12rrSy4UU6SEy90dWWrWkg"><i class="fab fa-youtube" aria-hidden="true"></i></a>
                           </div>
-                        </li>
+                        </li> -->
                       </ul>
                     </section>
                     <!-- Contact Map -->
@@ -835,11 +756,12 @@
             <!-- col-md-12 end -->
           </div>
           <!-- row end -->
-          <!-- Footer -->
+          <!-- Footer
+================================================== -->
           <footer>
             <div class="footer col-md-12 top_30 bottom_30">
-              <div class="name col-md-4 hidden-md hidden-sm hidden-xs">V S Sonu Saini</div>
-              <div class="copyright col-lg-8 col-md-12">© 2017 All rights reserved. Designed by <a href="#">Me</a></div>
+              <div class="name col-md-4 hidden-md hidden-sm hidden-xs">V S Sonu Saini.</div>
+              <div class="copyright col-lg-8 col-md-12">© 2018 - 2020 All rights reserved. Designed by <a href="#">Me</a></div>
             </div>
           </footer>
         </div>
@@ -849,14 +771,16 @@
     </div>
     <!-- Wrapper - End -->
 
-    <!-- Javascripts -->
+    <!-- Javascripts
+================================================== -->
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="./js/bootstrap.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/jquery.easytabs.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+
     <script type="application/ld+json">
       { "@context": "http://schema.org", "@id": "https://sainisahab.com/#website", "@type": "WebSite", "url": "https://sainisahab.com/", "name": "sainisahab", "potentialAction": { "@type": "SearchAction", "target": "https://sainisahab.com/html/{search_term_string}?src=mc_google", "query-input": "required name=search_term_string" } }
     </script>
@@ -880,9 +804,5 @@
     <script type="application/ld+json">
       { "@context": "http://schema.org", "@id": "https://sainisahab.com/#website", "@type": "WebSite", "url": "https://sainisahab.com/", "name": "sainisahab", "potentialAction": { "@type": "SearchAction", "target": "https://sainisahab.com/html/{search_term_string}?src=mc_google", "query-input": "required name=search_term_string" } }
     </script>
-<!-- 
-    <script>
-      app();
-    </script> -->
   </body>
 </html>
