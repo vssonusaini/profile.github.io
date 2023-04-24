@@ -203,6 +203,9 @@ body {
   justify-content: center;
 }
 
+.ads {
+  width: 100%;
+}
 /* footer css block */
 .brand {
   width: 100%;
