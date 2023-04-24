@@ -225,7 +225,6 @@ textarea:focus {
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
-  cursor: pointer;
 }
 
 ::-webkit-scrollbar-track {
@@ -244,4 +243,8 @@ textarea:focus {
 ::selection {
   background-color: var(--theme-bg-color);
   color: var(--theme-tx-color);
+}
+
+.install-app-btn-container {
+  display: none;
 }

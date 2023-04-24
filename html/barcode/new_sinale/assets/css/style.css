@@ -1,7 +1,8 @@
 :root {
   /* main colors */
   --main-color: #fff;
-  --body-color: #d1dfef;
+  --body-color: #f5f0f0;
+  /* --body-color: rgb(213, 213, 213); */
 
   /* theme colors */
   --theme-bg-color: #000000;
@@ -10,7 +11,6 @@
 
   /* setting */
   --border-radius: 0.4rem;
-  --gap: 0.4rem;
 }
 
 body,
@@ -22,10 +22,10 @@ html {
   color: var(--text-color);
   font-family: Sarabun, sans-serif;
   -webkit-font-smoothing: subpixel-antialiased;
-  zoom: 100%;
 }
 
 body {
+  padding: 1rem;
   background-color: var(--body-color);
 }
 
@@ -33,48 +33,32 @@ body {
   width: 100%;
 }
 
-.nav-bar {
-  width: 100%;
-  height: 3rem;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--main-color);
-}
-
-.nav-menu ul {
-  display: flex;
-  list-style: none;
-}
-
-.nav-menu ul a {
-  text-decoration: none;
-  margin-left: 1rem;
-  color: var(--theme-bg-color);
-}
-
-/* toolbar */
-.form_input-block {
-  /* margin-top: var(--gap); */
+.toolbar {
   width: 100%;
   height: 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--main-color);
   padding: 1rem;
   border-radius: var(--border-radius);
 }
 
-.form_input-block .input {
+.form-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-block .input {
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.form_input-block .input input,
-.form_input-block .input select,
-.form_input-block .input button {
+.form-block .input input,
+.form-block .input select,
+.form-block .input button {
   display: block;
   height: 1.8rem;
   width: 12rem;
@@ -84,12 +68,12 @@ body {
   outline: none;
   border-radius: var(--border-radius);
 }
-.form_input-block .action {
+.form-block .action {
   display: flex;
   flex-direction: row;
 }
 
-.form_input-block .action button {
+.form-block .action button {
   width: 4rem;
   margin-right: 0.6rem;
   background-color: var(--theme-bg-color);
@@ -112,87 +96,177 @@ body {
   transition: background 0s;
 }
 
-/* barcode_block */
-.barcode_block {
-  width: 100%;
-  height: auto;
-  background-color: var(--main-color);
-  padding: 0 1rem 1rem 1rem;
+.nav_menu ul {
+  list-style: none;
+  display: flex;
+}
+.nav_menu ul a {
+  margin-right: 1rem;
+  font-weight: 600;
+  color: var(--theme-bg-color);
 }
 
-#barcode {
-  display: flex;
+.nav_menu ul a:hover {
+  color: var(--theme-bg-color);
+  border-bottom: 1px solid var(--theme-bg-color);
+  padding: 0.2rem 0;
+}
+
+/* barcode css */
+.barcode_preview {
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  /* border: 1px solid var(--theme-bg-color); */
+  border-radius: var(--border-radius);
+}
+
+#barcode_preview {
   width: 100%;
   overflow-y: hidden;
   white-space: nowrap;
-  padding-bottom: 1rem;
+  display: flex;
 }
 
-.barcode_display {
+.barcodeSvg {
   position: relative;
+  width: auto;
+  height: auto;
 }
 
-.printBTN {
+.svgprintBTN {
+  position: absolute;
+  top: -11rem;
   width: 100%;
   height: 100%;
-  position: absolute;
-  top: -20rem;
-  left: 0;
-  background-color: #0000004f;
+  z-index: 999;
+  transition: top ease-in-out 0.1s;
+  background-color: #fafafacf;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: top 0.1s ease-in-out;
-  border-radius: 0 0rem 1rem 1rem;
 }
 
-.barcode_display:hover > .printBTN {
+.barcodeSvg:hover > .svgprintBTN {
   top: 0;
 }
-.printBTN button {
-  text-transform: capitalize;
-  border: 0;
-  outline: 0;
-  padding: 0.6rem 2rem;
+
+.svgprintBTN button {
+  display: block;
+  height: 1.8rem;
+  width: 12rem;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  width: 4rem;
+  margin-right: 0.6rem;
   background-color: var(--theme-bg-color);
   color: var(--theme-tx-color);
-  border-radius: 0.4rem;
 }
 
-.printBTN button:hover {
-  background-color: var(--theme-tx-color);
-  color: var(--theme-bg-color);
-}
-/* display-block */
-.display-block {
-  width: 100%;
-  height: auto;
-  display: grid;
-  grid-template-columns: 60% 40%;
-  padding: 1rem;
-  background-color: var(--main-color);
-}
-
-.single_barcode {
+.section {
   width: 100%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 60% auto;
+  gap: 1rem;
+}
+
+.data_table {
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  border-radius: var(--border-radius);
+}
+
+.advertisement {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.single_barcode {
+  padding: 1rem;
+}
+.advertisement .form-block {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  padding-left: 1rem;
 }
 
-.single_barcode-block {
-  width: 60%;
-  padding: 1rem;
+/* footer css block */
+.brand {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0rem;
+  left: 0rem;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.298);
+  padding: 0.8rem;
+  backdrop-filter: blur(20px);
 }
 
-.single_barcode-block svg {
+.brand svg {
+  width: 3.5rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.brand a {
+  color: var(--theme-bg-color);
+  font-weight: 300;
+}
+
+.brand a:hover {
+  border-bottom: 1px solid var(--theme-bg-color);
+}
+.brand p:nth-child(2) {
+  margin-top: 0.2rem;
+}
+
+.brand #Version {
+  font-size: 12px;
+}
+footer {
   width: 100%;
 }
 
-.ads {
+.my_cart_60 {
+  width: 40%;
+}
+
+.drawer__content .input {
+  margin-right: 1rem;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: center;
+}
+.drawer__content .input label {
+  text-transform: capitalize;
+  margin-right: 1rem;
+}
+
+.drawer__content .input input,
+.drawer__content .input select,
+.drawer__content .input button {
+  display: block;
+  height: 1.8rem;
   width: 100%;
-  height: 100%;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border: 1px solid var(--body-color);
+  outline: none;
+  border-radius: var(--border-radius);
 }
