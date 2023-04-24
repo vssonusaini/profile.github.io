@@ -51,9 +51,13 @@ footer {
   size: 40cm 28cm;
 }
 
-.advertisement {
+.advertisement,
+.singbarcode-block,
+.ads,
+.adsbygoogle {
   display: none;
 }
+
 body {
   zoom: 100%;
   transform: scale(1);

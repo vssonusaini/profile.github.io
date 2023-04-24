@@ -192,7 +192,12 @@ body {
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
+}
+
+.singbarcode-block{
+  padding: 1rem 0;
 }
 .single_barcode {
   padding: 1rem;

@@ -87,18 +87,20 @@
         <!-- Advertisement block
 ======================================================================-->
         <div class="advertisement">
-          <div class="single_barcode" id="svg_single_barcode">
-            <svg class="barcode" jsbarcode-format="code128" jsbarcode-value="enter" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
-          </div>
-          <div class="form-block">
-            <!-- Select Cart id -->
-            <div class="input">
-              <input type="text" autocomplete="off" id="single_barcode_text" placeholder="Enter text" />
+          <div class="singbarcode-block">
+            <div class="single_barcode" id="svg_single_barcode">
+              <svg class="barcode" jsbarcode-format="code128" jsbarcode-value="enter" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
             </div>
+            <div class="form-block">
+              <!-- Select Cart id -->
+              <div class="input">
+                <input type="text" autocomplete="off" id="single_barcode_text" placeholder="Enter text" />
+              </div>
 
-            <!-- Select Cart Buttons -->
-            <div class="input action">
-              <button type="button" class="btn" onclick="oneprint('single_barcode')">Print</button>
+              <!-- Select Cart Buttons -->
+              <div class="input action">
+                <button type="button" class="btn" onclick="oneprint('single_barcode')">Print</button>
+              </div>
             </div>
           </div>
           <div class="ads">
