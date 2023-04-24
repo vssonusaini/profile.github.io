@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- main css sheets -->
+    <link rel="stylesheet" href="https://sainisahab.com/html//barcode/libraries/wui/w2ui-1.5.min.css" />
+    <link rel="stylesheet" href="./assets/css/root.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/print.css" media="print" />
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3966268377883628" crossorigin="anonymous"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- nav bar -->
+      <div class="nav-bar">
+        <div class="logo">Sonu Saini</div>
+        <div class="nav-menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Setting</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sections">
+        <div class="toolbar">
+          <!-- form-block -->
+          <div class="form_input-block">
+            <!-- Select Cart Type -->
+            <div class="input">
+              <select id="cart_type" class="uneditable-input">
+                <option value="" hidden>Select Cart Type</option>
+                <option value="1">Single</option>
+                <option value="2">Double</option>
+                <option value="3">Triple</option>
+              </select>
+            </div>
+
+            <!-- Select Cart id -->
+            <div class="input">
+              <input type="number" autocomplete="off" id="cart_id" placeholder="Enter Cart ID" />
+            </div>
+
+            <!-- Select Cart Number -->
+            <div class="input">
+              <input type="number" autocomplete="off" id="cart_number" placeholder="Number Of Label" />
+            </div>
+
+            <!-- Select Cart Buttons -->
+            <div class="input action">
+              <button type="button" class="btn" id="MakeBTN">Make</button>
+              <button type="button" class="btn" id="PrintBTN">Print</button>
+              <button type="button" class="btn" id="RsetBTN">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- barcode_block -->
+        <div class="barcode_block">
+          <div id="barcode">
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+            <div class="barcode_display">
+              <svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              <div class="printBTN"><button>Print</button></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="display-block">
+          <!-- table block -->
+          <div id="main" style="width: 100%; height: 60vh"></div>
+
+          <!-- single_barcode -->
+          <div class="single_barcode">
+            <div class="single_barcode-block"><svg class="barcode" jsbarcode-format="CODE128" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg></div>
+            <div class="action-block">
+              <div class="form_input-block">
+                <!-- Select Cart id -->
+                <div class="input">
+                  <input type="text" autocomplete="off" id="cart_id" placeholder="Enter text" />
+                </div>
+
+                <!-- Select Cart Number -->
+                <div class="input">
+                  <input type="number" autocomplete="off" id="cart_number" placeholder="Number Of Label" />
+                </div>
+
+                <!-- Select Cart Buttons -->
+                <div class="input action">
+                  <button type="button" class="btn" id="MakeBTN">Make</button>
+                  <button type="button" class="btn" id="PrintBTN">Print</button>
+                </div>
+              </div>
+            </div>
+            <div class="ads">
+              <!-- https://sainisahab.com/html/barcode/demo/ -->
+              <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-3966268377883628" data-ad-slot="8346366403" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main script -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script type="module" src="./assets/js/demo.js"></script>
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>

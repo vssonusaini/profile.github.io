@@ -1,0 +1,27 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "highest-available-document-mode": "off",
+    "detect-css-reflows/composite": "off",
+    "detect-css-reflows/layout": "off",
+    "detect-css-reflows/paint": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ],
+    "button-type": "off",
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "zoom"
+        ]
+      }
+    ],
+    "no-inline-styles": "off"
+  }
+}
