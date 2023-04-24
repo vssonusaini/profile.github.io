@@ -51,6 +51,9 @@ footer {
   size: 40cm 28cm;
 }
 
+.advertisement {
+  display: none;
+}
 body {
   zoom: 100%;
   transform: scale(1);
