@@ -3,7 +3,7 @@
 import { w2popup, w2grid, w2alert } from "../libraries/master/min.js";
 
 const AppName = "BRcode";
-const version = "v3213234";
+const version = "v010523015";
 
 const cType = document.getElementById("cType");
 const cartId = document.getElementById("cartId");
