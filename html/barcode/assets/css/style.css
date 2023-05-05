@@ -1,7 +1,8 @@
 :root {
   /* main colors */
   --main-color: #fff;
-  --body-color: rgb(231, 230, 230);
+  --body-color: #f5f0f0;
+  /* --body-color: rgb(213, 213, 213); */
 
   /* theme colors */
   --theme-bg-color: #000000;
@@ -20,41 +21,44 @@ html {
   font-weight: 400;
   color: var(--text-color);
   font-family: Sarabun, sans-serif;
-  background-color: var(--body-color);
   -webkit-font-smoothing: subpixel-antialiased;
 }
 
 body {
   padding: 1rem;
-  /* background: url("../background/"); */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-color: var(--body-color);
 }
 
 .container {
   width: 100%;
 }
 
-.form_input-block {
+.toolbar {
   width: 100%;
   height: 4rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: var(--main-color);
   padding: 1rem;
   border-radius: var(--border-radius);
 }
 
-.form_input-block .input {
+.form-block {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.form-block .input {
   margin-right: 1rem;
   display: flex;
   flex-direction: column;
 }
 
-.form_input-block .input input,
-.form_input-block .input select,
-.form_input-block .input button {
+.form-block .input input,
+.form-block .input select,
+.form-block .input button {
   display: block;
   height: 1.8rem;
   width: 12rem;
@@ -64,12 +68,12 @@ body {
   outline: none;
   border-radius: var(--border-radius);
 }
-.form_input-block .action {
+.form-block .action {
   display: flex;
   flex-direction: row;
 }
 
-.form_input-block .action button {
+.form-block .action button {
   width: 4rem;
   margin-right: 0.6rem;
   background-color: var(--theme-bg-color);
@@ -92,13 +96,20 @@ body {
   transition: background 0s;
 }
 
-.data_table {
-  background-color: white;
-  margin-top: 1rem;
-  margin: 4px, 4px;
-  padding: 0.4rem;
-  /* border: 1px solid var(--theme-bg-color); */
-  border-radius: var(--border-radius);
+.nav_menu ul {
+  list-style: none;
+  display: flex;
+}
+.nav_menu ul a {
+  margin-right: 1rem;
+  font-weight: 600;
+  color: var(--theme-bg-color);
+}
+
+.nav_menu ul a:hover {
+  color: var(--theme-bg-color);
+  border-bottom: 1px solid var(--theme-bg-color);
+  padding: 0.2rem 0;
 }
 
 /* barcode css */
@@ -115,31 +126,131 @@ body {
   width: 100%;
   overflow-y: hidden;
   white-space: nowrap;
+  display: flex;
 }
 
-/* footer css block */
-footer {
+.barcodeSvg {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+.svgprintBTN {
+  position: absolute;
+  top: -11rem;
   width: 100%;
-  height: 4rem;
+  height: 100%;
+  z-index: 999;
+  transition: top ease-in-out 0.1s;
+  background-color: #fafafacf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barcodeSvg:hover > .svgprintBTN {
+  top: 0;
+}
+
+.svgprintBTN button {
+  display: block;
+  height: 1.8rem;
+  width: 12rem;
+  padding: 0.2rem 0.4rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  width: 4rem;
+  margin-right: 0.6rem;
+  background-color: var(--theme-bg-color);
+  color: var(--theme-tx-color);
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 60% auto;
+  gap: 1rem;
+}
+
+.data_table {
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  border-radius: var(--border-radius);
+}
+
+.advertisement {
+  width: 100%;
+  height: auto;
+  background-color: white;
+  margin-top: 1rem;
+  margin: 4px, 4px;
+  padding: 0.4rem;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.singbarcode-block{
+  padding: 1rem 0;
+}
+.single_barcode {
+  padding: 1rem;
+}
+.advertisement .form-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ads {
+  width: 100%;
+}
+/* footer css block */
+.brand {
+  width: 100%;
+  height: 5rem;
   display: flex;
   align-items: center;
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
+  bottom: 0rem;
+  left: 0rem;
   font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.298);
+  padding: 0.8rem;
+  backdrop-filter: blur(20px);
 }
 
-footer svg {
+.brand svg {
   width: 3.5rem;
   font-size: 1rem;
   margin-right: 1rem;
 }
-footer p:nth-child(2) {
+
+.brand a {
+  color: var(--theme-bg-color);
+  font-weight: 300;
+}
+
+.brand a:hover {
+  border-bottom: 1px solid var(--theme-bg-color);
+}
+.brand p:nth-child(2) {
   margin-top: 0.2rem;
 }
-footer #Version {
+
+.brand #Version {
   font-size: 12px;
 }
+footer {
+  width: 100%;
+}
+
 .my_cart_60 {
   width: 40%;
 }
@@ -166,16 +277,4 @@ footer #Version {
   border: 1px solid var(--body-color);
   outline: none;
   border-radius: var(--border-radius);
-}
-
-.footer_banar {
-  position: fixed;
-  bottom: 0;
-  right: 2rem;
-  width: 30rem;
-  padding: 1rem;
-}
-
-.footer_banar img {
-  width: 100%;
 }

@@ -8,7 +8,7 @@ body {
   margin: 0;
 }
 
-.form_input-block {
+.toolbar {
   display: none;
 }
 /* barcode css */
@@ -23,25 +23,39 @@ body {
 #barcode_preview {
   padding: 0;
   margin: 0;
+  display: block;
 }
-.notify-container {
+.barcodeSvg {
+  background-color: transparent;
+}
+.svgprintBTN {
   display: none;
 }
 .data_table {
   display: none;
 }
-#notification {
+.brand {
+  display: none;
+}
+.notify-container {
   display: none;
 }
 footer {
   display: none;
   padding: 0;
 }
-.footer_banar{
+.footer_banar {
   display: none;
 }
 @page {
   size: 40cm 28cm;
+}
+
+.advertisement,
+.singbarcode-block,
+.ads,
+.adsbygoogle {
+  display: none;
 }
 
 body {
