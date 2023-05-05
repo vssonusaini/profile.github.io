@@ -196,7 +196,7 @@ body {
   flex-direction: column;
 }
 
-.singbarcode-block{
+.singbarcode-block {
   padding: 1rem 0;
 }
 .single_barcode {
@@ -209,6 +209,7 @@ body {
 }
 
 .ads {
+  display: block;
   width: 100%;
 }
 /* footer css block */
