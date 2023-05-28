@@ -27,6 +27,7 @@ html {
 body {
   padding: 1rem;
   background-color: var(--body-color);
+  zoom: 70%;
 }
 
 .container {
