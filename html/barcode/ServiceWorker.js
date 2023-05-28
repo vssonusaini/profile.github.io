@@ -20,7 +20,7 @@
 (function () {
   "use strict";
 
-  var cacheNameStatic = "cloudinary-pwa-react-v4";
+  var cacheNameStatic = "cloudinary-pwa-react-v10";
 
   var currentCacheNames = [cacheNameStatic];
 
