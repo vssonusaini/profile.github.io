@@ -1,4 +1,4 @@
-const staticCacheName = "site-static-v0.10";
+const staticCacheName = "site-static-v0.122";
 const assets = ["/"];
 
 // cache size limit function
