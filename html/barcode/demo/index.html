@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barcode</title>
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/vitmalina/w2ui/master/dist/w2ui.min.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/print.css" media="print" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-bar print">
+        <div class="logo">VS Portal</div>
+        <div class="navmenu">
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="https://sainisahab.com/">Support</a></li>
+            <li><a href="#">|</a></li>
+            <li><a href="#">Sign in</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="body-section">
+        <div class="side-bar print">
+          <ul>
+            <li><a href="#" id="CTPO">Cart Position</a></li>
+            <li><a href="#" id="BR">Barcode</a></li>
+            <li><a href="#" id="QR">Qr Code</a></li>
+          </ul>
+        </div>
+
+        <div class="section-body">
+          <div id="section-title" class="section-title print">Barcode</div>
+          <!-- ---------Cart Position----------- -->
+          <div id="CartPosition-block">
+            <div class="input-block print">
+              <!-- Select Cart Type -->
+              <div class="input">
+                <select id="cType" class="uneditable-input">
+                  <option value="" hidden>Select Cart Type</option>
+                  <option value="1">Single</option>
+                  <option value="2">Double</option>
+                  <option value="3">Triple</option>
+                </select>
+              </div>
+
+              <!-- Select Cart id -->
+              <div class="input">
+                <input type="text" autocomplete="off" id="cartId" placeholder="Enter Cart ID" />
+              </div>
+
+              <!-- Select Cart Number -->
+              <div class="input">
+                <input type="text" autocomplete="off" id="nmLabels" placeholder="Number Of Label" />
+              </div>
+
+              <!-- Select Cart Buttons -->
+              <div class="input action">
+                <button type="button" class="btn" id="MakeBTN">Make</button>
+                <button type="button" class="btn" id="PrintBTN">Print</button>
+                <button type="button" class="btn" id="RsetBTN">Reset</button>
+              </div>
+            </div>
+
+            <div class="barcode-perviwe">
+              <div id="barcode">
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+                <svg class="barcode" jsbarcode-format="auto" jsbarcode-value="123456789012" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold"></svg>
+              </div>
+            </div>
+
+            <div class="table print">
+              <div id="main" style="width: 100%; height: 550px"></div>
+            </div>
+          </div>
+          <!-- ----------Barcode------------ -->
+          <div id="barcode-block">
+            <div class="input-block print">
+              <!-- Select Cart Type -->
+              <div class="input">
+                <select id="barcodeformte" class="uneditable-input">
+                  <option value="" hidden>Select Format......</option>
+                  <option value="1">CODE128</option>
+                  <option value="2">CODE39</option>
+                  <option value="3">EAN / UPC</option>
+                  <option value="3">EAN-13</option>
+                  <option value="3">EAN-8</option>
+                  <option value="3">ITF-14</option>
+                </select>
+              </div>
+
+              <!-- Select Cart id -->
+              <div class="input">
+                <input type="text" autocomplete="off" id="barcodevalue" placeholder="Enter...." />
+              </div>
+
+              <!-- Select Cart Number -->
+              <div class="input">
+                <input type="text" autocomplete="off" id="barcodenmLabels" placeholder="Number Of Label" />
+              </div>
+
+              <!-- Select Cart Buttons -->
+              <div class="input action">
+                <button type="button" class="btn" id="barcodeMakeBTN">Make</button>
+                <button type="button" class="btn" id="PrintBTN">Print</button>
+                <button type="button" class="btn" id="barcodeRsetBTN">Reset</button>
+              </div>
+            </div>
+            <div class="barcode-editer print">
+              <svg id="singbarcode"></svg>
+            </div>
+            <div class="barcode-perviwe" >
+              <div id="barcode_1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/main.js" type="module"></script>
+  </body>
+</html>
