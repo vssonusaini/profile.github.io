@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+.helo {
+  display: none;
+}
+
+#upload {
+  display: none;
+}
+@page {
+  size: 40cm 28cm;
+}
+
+body {
+  zoom: 100%;
+  transform: scale(1);
+}
+
+svg {
+  width: 100%;
+  height: 80vmin;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: block;
+}
