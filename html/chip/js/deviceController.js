@@ -69,7 +69,7 @@ async function fetchDevices(token) {
     });
   } catch (error) {
     console.error('Failed to fetch devices:', error.message);
-    window.location.href = '/auth';
+    window.location.href = '/html/chip/auth';
   }
 }
 
