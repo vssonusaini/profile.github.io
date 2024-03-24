@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetalFab-Chip</title>
+
+    <link rel="stylesheet" href="../css/root.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="auth">
+        <div class="auth_logo"><img src="https://petalfab.com/assets//img//petalfab_logo.png" alt="Logo" /></div>
+        <div class="auth_title">PetalFab-Chip</div>
+
+        <div id="auth" class="auth">
+          <ul>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#signup">Signup</a></li>
+          </ul>
+          <div id="login">
+            <div class="login_section" id="login_section">
+              <h3>Login</h3>
+              <form class="from" id="loginForm">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+                <button type="submit">Login</button>
+              </form>
+              <div class="login_status" id="login_status"></div>
+              <!-- <div class="link">You do not have an account, Sign up here</div> -->
+            </div>
+          </div>
+          <div id="signup">
+            <div class="signup_section" id="signup_section">
+              <h3>Signup</h3>
+              <form class="from" id="signupForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required />
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+                <button type="submit">Signup</button>
+              </form>
+              <div class="signup_status" id="signup_status"></div>
+              <!-- <div class="link">You already have an account, Log In here</div> -->
+            </div>
+          </div>
+        </div>
+        <footer>
+          <p>© 2018 - 2020 All rights reserved.</p>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="../js/authController.js"></script>
+    <!-- <script src="../js/deviceController.js"></script> -->
+    <script src="../js/root.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
