@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
   const password = formData.get('password');
   try {
     const token = await loginUser(email, password);
-    window.location.href = '/';
+    window.location.href = '/html/chip/';
     fetchDevices(token);
     // document.getElementById('loginForm').style.display = 'none';
     // document.getElementById('signupForm').style.display = 'none';
