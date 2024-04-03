@@ -114,3 +114,9 @@ async function deleteDevice(deviceId, token) {
 
 const a = localStorage.getItem('token');
 fetchDevices(a);
+
+document.getElementById('logOut').addEventListener('click', () => {
+  localStorage.setItem('token', null);
+  window.location.href = '/html/chip/';
+  location.reload();
+});
