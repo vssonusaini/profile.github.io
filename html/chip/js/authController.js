@@ -32,7 +32,7 @@ document.getElementById('signupForm').addEventListener('submit', async function 
 });
 
 async function loginUser(email, password) {
-  const response = await fetch('https://finalnode-production.up.railway.app/api/login', {
+  const response = await fetch('http://89.116.34.219:8000/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ async function loginUser(email, password) {
 }
 
 async function signupUser(username, email, password) {
-  const response = await fetch('https://finalnode-production.up.railway.app/api/signup', {
+  const response = await fetch('http://89.116.34.219:8000/api/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -55,7 +55,8 @@ async function signupUser(username, email, password) {
   console.log(await response.text());
 }
 
-// document.getElementById('logOut').addEventListener('click', () => {
-//   localStorage.setItem('token', null);
-//   location.reload();
-// });
+document.getElementById('logOut').addEventListener('click', () => {
+  localStorage.setItem('token', null);
+  window.location.href = '/html/chip/';
+  location.reload();
+});

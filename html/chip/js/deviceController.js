@@ -14,7 +14,7 @@
 //   }
 // });
 
-const url = 'https://finalnode-production.up.railway.app/api/devices';
+const url = 'http://89.116.34.219:8000/api/devices';
 
 async function addDevice(deviceName, relayCount, token) {
   const response = await fetch(url, {

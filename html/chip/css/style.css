@@ -322,3 +322,15 @@ a {
   background-color: var(--theme-back);
   color: var(--theme-color);
 }
+
+#tabs-3 button {
+  margin-top: 0.6rem;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius);
+  background-color: var(--theme-back);
+  color: var(--theme-color);
+}
