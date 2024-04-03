@@ -55,8 +55,8 @@ async function signupUser(username, email, password) {
   console.log(await response.text());
 }
 
-// document.getElementById('logOut').addEventListener('click', () => {
-//   localStorage.setItem('token', null);
-//   window.location.href = '/html/chip/';
-//   location.reload();
-// });
+document.getElementById('logOut').addEventListener('click', () => {
+  localStorage.setItem('token', null);
+  window.location.href = '/html/chip/';
+  location.reload();
+});
