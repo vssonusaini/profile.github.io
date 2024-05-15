@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MQTT Control</title>
+  </head>
+  <body onload="init()">
+    <h1>MQTT Control</h1>
+    <div id="messages"></div>
+
+    <button onclick="off()">On</button>
+    <button onclick="on()">On</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.2/mqttws31.min.js"></script>
+    <script type="text/javascript" language="javascript">
+      var wsbroker = 'broker.hivemq.com'; //mqtt websocket enabled broker
+      var wsport = 8000; // port for above
+      var toggleValue = '1';
+
+      var client = new Paho.MQTT.Client(wsbroker, wsport, 'myclientid_' + parseInt(Math.random() * 100, 10));
+
+      client.onConnectionLost = function (responseObject) {
+        console.log('connection lost: ' + responseObject.errorMessage);
+      };
+
+      client.onMessageArrived = function (message) {
+        // console.log(message.destinationName, ' -- ', message.payloadString);
+        var get = JSON.parse(message.payloadString);
+        console.log(get.value);
+
+        if (get.value == '5') {
+          //use the below if you want to publish to a topic on connect
+          message = new Paho.MQTT.Message(`{"device_id": "Device0001", "type": "pump", "value":"1"}`);
+          message.destinationName = 'JPLearning_CommandRequestsonusaini';
+          client.send(message);
+        }
+      };
+
+      var options = {
+        timeout: 3,
+        onSuccess: function () {
+          console.log('mqtt connected');
+          // Connection succeeded; subscribe to our topic, you can add multile lines of these
+          client.subscribe('JPLearning_SensorDatasonusaini', { qos: 1 });
+
+          //   //use the below if you want to publish to a topic on connect
+          //   message = new Paho.MQTT.Message('{"device_id": "Device00001", "type": "pump", "value":"1"}');
+          //   message.destinationName = 'JPLearning_CommandRequestsonusaini';
+          //   client.send(message);
+        },
+        onFailure: function (message) {
+          console.log('Connection failed: ' + message.errorMessage);
+        },
+      };
+
+      const off = () => {
+        //use the below if you want to publish to a topic on connect
+        message = new Paho.MQTT.Message(`{"device_id": "Device0001", "type": "pump", "value":"1"}`);
+        message.destinationName = 'JPLearning_CommandRequestsonusaini';
+        client.send(message);
+      };
+      const on = () => {
+        //use the below if you want to publish to a topic on connect
+        message = new Paho.MQTT.Message(`{"device_id": "Device0001", "type": "pump", "value":"0"}`);
+        message.destinationName = 'JPLearning_CommandRequestsonusaini';
+        client.send(message);
+      };
+      function init() {
+        client.connect(options);
+      }
+    </script>
+  </body>
+</html>
