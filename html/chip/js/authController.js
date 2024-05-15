@@ -32,7 +32,7 @@ document.getElementById('signupForm').addEventListener('submit', async function 
 });
 
 async function loginUser(email, password) {
-  const response = await fetch('http://89.116.34.219:8000/api/login', {
+  const response = await fetch('https://finalnode-production.up.railway.app/api/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ async function loginUser(email, password) {
 }
 
 async function signupUser(username, email, password) {
-  const response = await fetch('http://89.116.34.219:8000/api/signup', {
+  const response = await fetch('https://finalnode-production.up.railway.app/api/signup', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -14,7 +14,7 @@
 //   }
 // });
 
-const url = 'http://89.116.34.219:8000/api/devices';
+const url = 'https://finalnode-production.up.railway.app/api/devices';
 
 async function addDevice(deviceName, relayCount, token) {
   const response = await fetch(url, {
@@ -114,3 +114,9 @@ async function deleteDevice(deviceId, token) {
 
 const a = localStorage.getItem('token');
 fetchDevices(a);
+
+document.getElementById('logOut').addEventListener('click', () => {
+  localStorage.setItem('token', null);
+  window.location.href = '/html/chip/';
+  location.reload();
+});
