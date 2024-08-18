@@ -11,7 +11,7 @@ form.addEventListener("submit", (e) => {
         document.getElementById("from_btn").innerText = "Done";
         alert("Thanks for Contacting us..! We Will Contact You Soon...");
 
-        form["Name"].value !== "" ;form["Phone"].value !== ""; form["Email"].value !== "" ;form["Message"].value !== "";
+        form["Name"].value = "" ;form["Phone"].value = ""; form["Email"].value = "" ;form["Message"].value = "";
         document.getElementById("from_btn").innerText = "Submit";
       })
       .catch((error) => console.error("Error!", error.message));
