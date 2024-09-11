@@ -99,6 +99,9 @@ const setData = e => {
     } else if (cType.value == 3) {
       cTypePush = 'Triple';
       labels = 6;
+    } else if (cType.value == 4) {
+      cTypePush = 'Pallets';
+      labels = 6;
     }
 
     if (nmLabels.value != '') {
@@ -154,6 +157,8 @@ const makeLabels = () => {
     set_label_value = 'D';
   } else if (getDB.formInput.cartType == 3) {
     set_label_value = 'T';
+  } else if (getDB.formInput.cartType == 4) {
+    set_label_value = 'P';
   }
 
   //   Print labels
