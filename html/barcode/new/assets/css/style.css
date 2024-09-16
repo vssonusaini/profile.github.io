@@ -1,0 +1,258 @@
+:root {
+ --main-color: #fff;
+ --body-color: #e4e6ed;
+ --border-color: #f7f2f2;
+
+ --theme-bg-color: #000;
+ --theme-tx-color: #ffff;
+}
+
+/* root class */
+
+.print {
+ display: block;
+}
+
+.btn {
+ width: 5rem;
+ height: 2rem;
+}
+
+body,
+html {
+ width: 100%;
+ font-size: 14px;
+ font-weight: 400;
+ color: var(--text-color);
+ font-family: Sarabun, sans-serif;
+ -webkit-font-smoothing: subpixel-antialiased;
+}
+
+body {
+ background-color: var(--body-color);
+ zoom: 100%;
+}
+
+.container {
+ width: 100%;
+ height: 100vh;
+ margin: 0;
+ overflow: hidden;
+}
+
+.nav-bar {
+ width: 100%;
+ height: 3rem;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 1rem;
+ background-color: var(--main-color);
+ border-bottom: 1px solid var(--border-color);
+}
+
+.nav-bar .navmenu ul {
+ list-style: none;
+ display: flex;
+}
+
+.nav-bar .navmenu ul a {
+ text-decoration: none;
+ margin-left: 1rem;
+ color: var(--theme-bg-color);
+}
+
+/* barcode section */
+.body_setions {
+ width: 100%;
+ height: 90vh;
+ padding: 1rem;
+ /* background-color: #8da2ef; */
+ overflow: auto;
+ padding-bottom: 4rem;
+}
+
+.section_heading {
+ width: 100%;
+ display: flex;
+ align-items: center;
+}
+
+.section_heading marquee {
+ margin-left: 1rem;
+}
+
+/* form section */
+.input-block {
+ margin: 1rem 0;
+ display: flex;
+ align-items: center;
+}
+.input-block .input select,
+.input-block .input input {
+ border: 1px solid var(--border-color);
+}
+.input-block .input select,
+.input-block .input input,
+.input-block .input button {
+ width: 14rem;
+ height: 2rem;
+ padding: 0.6rem 0.6rem;
+ margin-right: 1rem;
+}
+
+.input-block .input select {
+ padding: 0 0.4rem;
+}
+
+.input-block .input button {
+ padding: 0;
+ width: 4rem;
+ margin-right: 0.4rem;
+ background-color: var(--theme-bg-color);
+ color: var(--theme-tx-color);
+}
+
+/* barcode display section */
+.barcode-perviwe {
+ background-color: white;
+ margin-top: 1rem;
+ margin: 4px, 4px;
+ padding: 0.4rem;
+ /* border: 1px solid var(--theme-bg-color); */
+ border-radius: var(--border-radius);
+}
+
+#barcode {
+ width: 100%;
+ overflow-y: hidden;
+ white-space: nowrap;
+ display: flex;
+}
+#barcode_1 {
+ width: 100%;
+ overflow-y: hidden;
+ white-space: nowrap;
+ display: none;
+}
+
+.barcodeSvg {
+ position: relative;
+ width: auto;
+ height: auto;
+}
+
+.svgprintBTN {
+ position: absolute;
+ top: -11rem;
+ width: 100%;
+ height: 100%;
+ z-index: 999;
+ transition: top ease-in-out 0.1s;
+ background-color: #fafafacf;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.barcodeSvg:hover > .svgprintBTN {
+ top: 0;
+}
+
+.svgprintBTN button {
+ display: block;
+ height: 1.8rem;
+ width: 12rem;
+ padding: 0.2rem 0.4rem;
+ border: none;
+ outline: none;
+ border-radius: var(--border-radius);
+ width: 4rem;
+ margin-right: 0.6rem;
+ background-color: var(--theme-bg-color);
+ color: var(--theme-tx-color);
+}
+
+.table_single_section {
+ width: 100%;
+ height: 100%;
+ display: grid;
+ grid-template-columns: 60% auto;
+ gap: 1rem;
+}
+
+.table {
+ background-color: white;
+ margin-top: 1rem;
+ margin: 4px, 4px;
+ padding: 0.4rem;
+ border-radius: var(--border-radius);
+}
+
+.singbarcode-block {
+ width: 100%;
+ height: auto;
+ background-color: white;
+ margin-top: 1rem;
+ margin: 4px, 4px;
+ padding: 0.4rem;
+ border-radius: var(--border-radius);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ flex-direction: column;
+}
+
+.barcode_block {
+ width: 100%;
+ height: auto;
+ background-color: white;
+ margin-top: 1rem;
+ margin: 4px, 4px;
+ padding: 0.4rem;
+ border-radius: var(--border-radius);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ flex-direction: column;
+}
+.single_barcode {
+ padding: 1rem;
+}
+
+/* brand start */
+.brand {
+ width: 100%;
+ height: 5rem;
+ display: flex;
+ align-items: center;
+ position: fixed;
+ bottom: 0rem;
+ left: 0rem;
+ font-size: 14px;
+ background-color: rgba(255, 255, 255, 0.298);
+ padding: 0.8rem;
+ backdrop-filter: blur(20px);
+}
+
+.brand svg {
+ width: 3.5rem;
+ font-size: 1rem;
+ margin-right: 1rem;
+}
+
+.brand a {
+ color: var(--theme-bg-color);
+ font-weight: 300;
+}
+
+.brand a:hover {
+ border-bottom: 1px solid var(--theme-bg-color);
+}
+.brand p:nth-child(2) {
+ margin-top: 0.2rem;
+}
+
+.brand #Version {
+ font-size: 12px;
+}

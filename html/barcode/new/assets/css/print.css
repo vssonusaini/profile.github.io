@@ -1,0 +1,72 @@
+.print {
+ display: none;
+}
+.container {
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ overflow: none;
+}
+.nav-bar {
+ display: none;
+}
+.body_setions {
+ width: 100%;
+ height: 100%;
+ display: block;
+}
+.section_heading {
+ display: none;
+}
+.barcode-perviwe {
+ width: 100%;
+ border: none;
+ padding: 0.6rem;
+}
+
+#barcode {
+ display: block;
+}
+
+.brand {
+ display: none;
+}
+.barcode-perviwe {
+ width: 100%;
+ border: none;
+ padding: 0.6rem;
+}
+
+#barcode {
+ display: block;
+}
+
+#barcode_1 {
+ display: block;
+}
+.barcodeSvg {
+ background-color: transparent;
+}
+.svgprintBTN {
+ display: none;
+}
+.table{
+    display: none;
+}
+.single_barcode{
+    display: none;
+}
+@page {
+ size: 40cm 28cm;
+}
+
+body {
+ zoom: 100%;
+ transform: scale(1);
+}
+
+svg {
+ display: block;
+ width: 100%;
+ height: 60rem;
+}
