@@ -76,6 +76,13 @@ const setData = (e) => {
   } else if (cType.value == 4) {
    cTypePush = "Pallets";
    labels = 6;
+  }else if (cType.value == 5) {
+   cTypePush = "Van";
+   labels = 8;
+  }
+  else if (cType.value == 6) {
+   cTypePush = "Bike";
+   labels = 32;
   }
 
   if (nmLabels.value != "") {
@@ -134,6 +141,10 @@ const makeLabels = () => {
   set_label_value = "T";
  } else if (getDB.formInput.cartType == 4) {
   set_label_value = "P";
+ }else if (getDB.formInput.cartType == 5) {
+  set_label_value = "V";
+ }else if (getDB.formInput.cartType == 6) {
+  set_label_value = "B";
  }
 
  //   Print labels
@@ -159,6 +170,22 @@ const makeLabels = () => {
   if (database.formInput.cartType == 2) {
     // Single Cart
     if (cart_position_no > 4) {
+     cart_position_no = 0;
+     cart_position_no++;
+     cart_position = "L";
+    }
+   }
+  if (database.formInput.cartType == 5) {
+    // Single Cart
+    if (cart_position_no > 4) {
+     cart_position_no = 0;
+     cart_position_no++;
+     cart_position = "L";
+    }
+   }
+  if (database.formInput.cartType == 6) {
+    // Single Cart
+    if (cart_position_no > 16) {
      cart_position_no = 0;
      cart_position_no++;
      cart_position = "L";
