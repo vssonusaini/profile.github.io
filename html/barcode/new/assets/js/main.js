@@ -99,21 +99,21 @@ const setData = (e) => {
 
   database.userdata.push(puchData);
 
-  // notify({
-  //   message: `Cart Created Successfully ${cTypePush}-${cartId.value}-${labels}`,
-  //   color: 'success',
-  //   timeout: 3000,
-  // });
+  notify({
+    message: `Cart Created Successfully ${cTypePush}-${cartId.value}-${labels}`,
+    color: 'success',
+    timeout: 3000,
+  });
   // update db
   localStorage.setItem(dbname, JSON.stringify(database));
 
   console.log(puchData);
  } else {
-  // notify({
-  //   message: 'Please Enter A Valid Format',
-  //   color: 'danger',
-  //   timeout: 3000,
-  // });
+  notify({
+    message: 'Please Enter A Valid Format',
+    color: 'danger',
+    timeout: 3000,
+  });
  }
 
  makeLabels();
