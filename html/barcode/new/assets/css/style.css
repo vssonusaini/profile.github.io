@@ -220,6 +220,17 @@ body {
  padding: 1rem;
 }
 
+.drawer__content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drawer__content img{
+    width: 60%;
+}
+
 /* brand start */
 .brand {
  width: 100%;
