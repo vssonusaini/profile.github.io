@@ -18,6 +18,10 @@
  height: 2rem;
 }
 
+body{
+    zoom: 85% !important;
+}
+
 body,
 html {
  width: 100%;

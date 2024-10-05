@@ -61,7 +61,7 @@
 }
 
 body {
- zoom: 100%;
+ zoom: 100% !important;
  transform: scale(1);
 }
 
