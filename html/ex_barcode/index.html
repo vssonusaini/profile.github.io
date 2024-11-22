@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <link rel="stylesheet" href="./print.css" media="print" />
     <style>
-        .main_box {
-            width: 100%;
-            height: 100Vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+      .main_box {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-        .main_div {
-            width: 100%;
-        }
+      .main_div {
+        width: 100%;
+      }
 
-        .display_name {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            font-size: 2rem;
-        }
+      .display_name {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 2rem;
+      }
     </style>
-</head>
+  </head>
 
-
-
-<body>
-
-
+  <body>
     <!-- <div class="main_box">
         <div class="main_div">
             <svg class="barcode" jsbarcode-format="code128" jsbarcode-value="sonu" jsbarcode-textmargin="0"
@@ -47,69 +42,68 @@
     </div> -->
 
     <form class="helo" enctype="multipart/form-data">
-        <input id="upload" type="file" name="files[]" />
+      <input id="upload" type="file" name="files[]" />
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
     <script>
-        var ExcelToJSON = function () {
-            this.parseExcel = function (file) {
-                var reader = new FileReader();
+      var ExcelToJSON = function () {
+        this.parseExcel = function (file) {
+          var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    var data = e.target.result;
-                    var workbook = XLSX.read(data, {
-                        type: "binary",
-                    });
-                    workbook.SheetNames.forEach(function (sheetName) {
-                        localStorage.removeItem("import_excel");
+          reader.onload = function (e) {
+            var data = e.target.result;
+            var workbook = XLSX.read(data, {
+              type: "binary",
+            });
+            workbook.SheetNames.forEach(function (sheetName) {
+              localStorage.removeItem("import_excel");
 
-                        var XL_row_object = XLSX.utils.sheet_to_row_object_array(
-                            workbook.Sheets[sheetName]
-                        );
-                        var json_object = JSON.stringify(XL_row_object);
-                        console.log(JSON.parse(json_object));
-                        var productList = JSON.parse(json_object);
-                        localStorage.setItem("import_excel", JSON.stringify(productList));
-                        location.reload();
-                    });
-                };
+              var XL_row_object = XLSX.utils.sheet_to_row_object_array(
+                workbook.Sheets[sheetName]
+              );
+              var json_object = JSON.stringify(XL_row_object);
+              console.log(JSON.parse(json_object));
+              var productList = JSON.parse(json_object);
+              localStorage.setItem("import_excel", JSON.stringify(productList));
+              location.reload();
+            });
+          };
 
-                reader.onerror = function (ex) {
-                    console.log(ex);
-                };
+          reader.onerror = function (ex) {
+            console.log(ex);
+          };
 
-                reader.readAsBinaryString(file);
-            };
+          reader.readAsBinaryString(file);
         };
+      };
 
-        function handleFileSelect(evt) {
-            var files = evt.target.files;
-            var xl2json = new ExcelToJSON();
-            xl2json.parseExcel(files[0]);
-        }
+      function handleFileSelect(evt) {
+        var files = evt.target.files;
+        var xl2json = new ExcelToJSON();
+        xl2json.parseExcel(files[0]);
+      }
 
-        document
-            .getElementById("upload")
-            .addEventListener("change", handleFileSelect, false);
+      document
+        .getElementById("upload")
+        .addEventListener("change", handleFileSelect, false);
     </script>
 
     <div id="barcode_lables"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
     <script>
-        const make_barcode = () => {
-            const bar = document.getElementById("barcode_lables");
-            var database = JSON.parse(localStorage.getItem("import_excel"));
+      const make_barcode = () => {
+        const bar = document.getElementById("barcode_lables");
+        var database = JSON.parse(localStorage.getItem("import_excel"));
 
-            for (var i = 0; i < database.length; i++) {
-                bar.innerHTML += `<svg class="barcode" jsbarcode-fontSize="50" jsbarcode-format="code128" jsbarcode-value="${database[i].barcode}" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold" ></svg>`;
-            }
-        };
-        make_barcode();
-        JsBarcode(".barcode").init();
+        for (var i = 0; i < database.length; i++) {
+          bar.innerHTML += `<svg class="barcode" jsbarcode-fontSize="50" jsbarcode-format="code128" jsbarcode-value="${database[i].barcode}" jsbarcode-textmargin="0" jsbarcode-fontoptions="bold" ></svg>`;
+        }
+      };
+      make_barcode();
+      JsBarcode(".barcode").init();
     </script>
-</body>
-
+  </body>
 </html>
