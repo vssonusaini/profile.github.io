@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rack</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Row Name" id="rowName" />
+    <input type="text" placeholder="Row Start" id="rowStart" />
+    <input type="text" placeholder="Row End" id="rowEnd" />
+
+    <br />
+
+    <input type="text" placeholder="Self Count" id="selfCount" />
+    <input type="text" placeholder="Self Bin Count" id="rowCountEnd" />
+
+    <br />
+    <button id="generateRack">Generate Rack</button>
+    <button id="make">Dowload</button>
+    <a href="https://sainisahab.com/html/ex_barcode/">print barcode</a>
+    <br />
+    <ul id="rackDisplay"></ul>
+
+    <script>
+      const rowName = document.getElementById("rowName");
+      const rowCountStart = document.getElementById("rowStart");
+      const rowCountEnd = document.getElementById("rowEnd");
+
+      const selfCount = document.getElementById("selfCount");
+      const selfBinCount = document.getElementById("rowCountEnd");
+      const generateRackBTN = document.getElementById("generateRack");
+
+      const rackLocation = [];
+      const add_zero = (your_number, length) => {
+        var num = "" + your_number;
+        while (num.length < length) {
+          num = "0" + num;
+        }
+        return num;
+      };
+
+      const selfCountStart = 1;
+      const selfCountEnd = 4;
+      const binCount = 6;
+
+      const generateRack = () => {
+        for (let i = rowCountStart.value; i <= rowCountEnd.value; i++) {
+          for (let j = 1; j <= selfCount.value; j++) {
+            for (let k = 1; k <= 2; k++) {
+              for (let l = 1; l <= selfBinCount.value; l++) {
+                // Format the string as per the given pattern
+                rackLocation.push(
+                  `${rowName.value}-${add_zero(i, 2)}-${String.fromCharCode(
+                    64 + j
+                  )}-${k}-${l}`
+                );
+                document.getElementById("rackDisplay").innerHTML += `<option>${
+                  rowName.value
+                }-${add_zero(i, 2)}-${String.fromCharCode(
+                  64 + j
+                )}-${k}-${l}</option>`;
+                console.log(
+                  `A-${add_zero(i, 2)}-${String.fromCharCode(64 + j)}-${k}-${l}`
+                );
+              }
+            }
+          }
+        }
+      };
+
+      generateRackBTN.addEventListener("click", generateRack);
+
+      function DownloadJSON2CSV(objArray) {
+        var array =
+          typeof objArray != "object" ? JSON.parse(objArray) : objArray;
+
+        var str = "";
+
+        for (var i = 0; i < array.length; i++) {
+          var line = new Array();
+
+          for (var index in array[i]) {
+            line.push(array[i][index]);
+          }
+
+          str += line.join("");
+          str += "\r\n";
+        }
+        window.open("data:text/csv;charset=utf-8," + encodeURIComponent(str));
+      }
+
+      const dowloadBtn = () => {
+        DownloadJSON2CSV(rackLocation);
+      };
+
+      document.getElementById("make").addEventListener("click", dowloadBtn);
+    </script>
+  </body>
+</html>
