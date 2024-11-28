@@ -13,7 +13,9 @@
     <br />
 
     <input type="text" placeholder="Self Count" id="selfCount" />
-    <input type="text" placeholder="Self Bin Count" id="rowCountEnd" />
+    <input type="text" placeholder="Self Bin Count" id="selfBinCount">
+    <input type="text" placeholder="Self Bin Sub Count" id="rowCountEnd" />
+
 
     <br />
     <button id="generateRack">Generate Rack</button>
@@ -28,7 +30,8 @@
       const rowCountEnd = document.getElementById("rowEnd");
 
       const selfCount = document.getElementById("selfCount");
-      const selfBinCount = document.getElementById("rowCountEnd");
+      const selfBinCount = document.getElementById("selfBinCount");
+      const rowsubCountEnd = document.getElementById('rowCountEnd')
       const generateRackBTN = document.getElementById("generateRack");
 
       const rackLocation = [];
@@ -47,8 +50,8 @@
       const generateRack = () => {
         for (let i = rowCountStart.value; i <= rowCountEnd.value; i++) {
           for (let j = 1; j <= selfCount.value; j++) {
-            for (let k = 1; k <= 2; k++) {
-              for (let l = 1; l <= selfBinCount.value; l++) {
+            for (let k = 1; k <= selfBinCount.value; k++) {
+              for (let l = 1; l <= rowsubCountEnd.value; l++) {
                 // Format the string as per the given pattern
                 rackLocation.push(
                   `${rowName.value}-${add_zero(i, 2)}-${String.fromCharCode(
