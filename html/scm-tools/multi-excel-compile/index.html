@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compile CSV Files</title>
+</head>
+
+<body>
+    <h1>Compile Multiple CSV Files</h1>
+
+    <!-- File upload input -->
+    <input type="file" id="fileInput" multiple accept=".csv">
+
+    <!-- Input for start row -->
+    <label for="startRow">Start Row (for compiling): </label>
+    <input type="number" id="startRow" value="1">
+
+    <!-- Compile and download button -->
+    <button onclick="compileCSV()">Generate and Download</button>
+
+    <!-- Status message -->
+    <p id="status"></p>
+
+    <!-- Include the JavaScript file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+    <script>
+        function compileCSV() {
+            const files = document.getElementById('fileInput').files;
+            const startRow = parseInt(document.getElementById('startRow').value);
+            const statusElement = document.getElementById('status');
+
+            if (files.length === 0) {
+                statusElement.textContent = 'Please upload at least one CSV file.';
+                return;
+            }
+
+            const compiledData = [];
+
+            // Read each file and extract data
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+
+                reader.onload = (e) => {
+                    const data = e.target.result;
+                    const lines = data.split('\n'); // Split the file into lines
+                    const header = lines[0].split(','); // Assuming the first line is the header
+
+                    // Start appending data from the specified row
+                    if (compiledData.length === 0) {
+                        compiledData.push(header); // Add header only once
+                    }
+
+                    // Append rows starting from the start row
+                    for (let i = startRow - 1; i < lines.length; i++) {
+                        const row = lines[i].split(',');
+                        if (row.length > 1) { // Avoid empty lines
+                            compiledData.push(row);
+                        }
+                    }
+
+                    statusElement.textContent = `Processed ${compiledData.length - 1} rows. Click "Generate and Download" to get the compiled file.`;
+                };
+
+                reader.readAsText(file);
+            });
+
+            // Generate and download the compiled CSV file when all files are processed
+            setTimeout(() => {
+                if (compiledData.length > 0) {
+                    const csvContent = compiledData.map(row => row.join(',')).join('\n');
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'compiled_data.csv';
+                    link.click();
+                    statusElement.textContent = 'Download generated file!';
+                } else {
+                    statusElement.textContent = 'No data compiled. Please check the files and try again.';
+                }
+            }, 2000); // Delay to ensure all files are processed
+        }
+
+    </script>
+</body>
+
+</html>
