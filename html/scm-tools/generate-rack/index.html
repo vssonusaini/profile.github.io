@@ -2,253 +2,163 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rack</title>
-    <link rel="stylesheet" href="https://sainisahab.com/html/barcode/new/assets/css/main.css">
-    <style>
-        :root {
-            --background: #ffffff;
-            --foreground: #000000;
-            --card: #ffffff;
-            --card-foreground: #000000;
-            --border: #e5e7eb;
-            --primary: #000000;
-            --primary-foreground: #ffffff;
-            --muted: #f3f4f6;
-            --muted-foreground: #6b7280;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content=" Welcome to inventory rack labels generator (SCM Tool), your
+  one-stop solution for efficient and dynamic inventory organization!
+  We specialize in transforming your inventory management into a
+  seamless experience by helping you generate and organize racks,
+  aisles, shelves, and bins with precision." />
+  <meta name="keywords"
+    content="v s sonu saini, rack generator, inventory rack labels generator SCM Tool,inventory rack labels generator ,inventory rack ,SCM Tool" />
 
-        .dark {
-            --background: #09090b;
-            --foreground: #ffffff;
-            --card: #09090b;
-            --card-foreground: #ffffff;
-            --border: #27272a;
-            --primary: #ffffff;
-            --primary-foreground: #09090b;
-            --muted: #27272a;
-            --muted-foreground: #a1a1aa;
-        }
+  <title>Rack Generator - V S Sonu Saini</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <!-- <link rel="stylesheet" href="https://sainisahab.com/html/barcode/new/assets/css/reset.css"> -->
+  <link rel="stylesheet" href="./css/style.css" />
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            min-height: 100vh;
-            padding: 1rem;
-        }
-
-        select,
-        input,
-        button {
-            padding: 0.5rem;
-            border: 1px solid var(--border);
-            border-radius: 0.375rem;
-            background-color: var(--background);
-            color: var(--foreground);
-            margin: 0.4rem;
-        
-        }
-
-        .button {
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--border);
-            border-radius: 0.375rem;
-            cursor: pointer;
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-        }
-
-        p {
-            margin: 0.6rem 0;
-        }
-
-        .layout {
-            width: 100%;
-            display: flex;
-        }
-
-        .main {
-            width: 50%;
-            border-right: 1px solid var(--border);
-        }
-
-        .about_ads {
-            padding: 1rem;
-             width: 50%;
-        
-        }
-
-
-        ul {
-            margin-left: 1.4rem;
-        }
-    </style>
+  <!-- -----icons---------- -->
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
 <body>
-    <div class="layout">
-        <div class="main">
-            <h1 style="font-size: 1.8rem;text-transform: capitalize;margin-bottom: 1rem;">inventory rack labels generator</h1>
+  <header>
+    <div class="header-content">
+      <div class="logo"><i class="bx bxs-coffee-bean"></i>VS Portal</div>
+      <nav class="nav-links">
+        <!-- <a href="#" class="toggle">Documentation</a> -->
+        <a href="https://sainisahab.com/#contact" target="_blank">Support</a>
+        <!-- <a href="#">|</a>
+        <a href="#" class="toggle">Setting</a>
+        <a href="#" class="toggle">Sign in</a> -->
+        <a href="#" id="theme-toggle"><i id="theme-icon" class="bx bx-sun"></i></a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- <div class="sidebar"></div> -->
+
+  <div class="container">
+    <main class="main-container">
+      <h3>Rack Generator</h3>
+
+      <div class="tool">
+        <aside class="tool-block">
+          <div class="row">
             <input type="text" placeholder="Aisle" id="rowName" />
             <input type="number" placeholder="Ract Start" id="rowStart" />
             <input type="number" placeholder="Ract End" id="rowEnd" />
+          </div>
 
-            <br />
-
+          <div class="row">
             <input type="number" placeholder="Shelf Count" id="selfCount" />
-            <input type="number" placeholder="Bin Count" id="selfBinCount">
+            <input type="number" placeholder="Bin Count" id="selfBinCount" />
             <input type="number" placeholder="Bin Sub Count" id="rowCountEnd" />
+          </div>
 
-
-            <br />
+          <div class="row">
             <button class="button" id="generateRack">Generate Rack</button>
             <button class="button" id="make">Dowload</button>
-            <a href="https://sainisahab.com/html/ex_barcode/">Print Barcode Click This link</a>
-            <br />
-            <ul id="rackDisplay"></ul>
-        </div>
-        <div class="about_ads">
-            <div class="aboutUS">
-                <h4>About Us</h4>
-                <p>Welcome to <b>inventory rack labels generator (SCM Tool)</b>, your one-stop solution for efficient and dynamic inventory
-                    organization! We
-                    specialize in transforming your inventory management into a seamless experience by helping you
-                    generate and organize racks, aisles, shelves, and bins with precision.</p>
+          </div>
+        </aside>
+        <aside class="purview">
+          <ul id="rackDisplay"></ul>
+        </aside>
+      </div>
 
-                <p>Our platform takes user input like "Aisle N, Rack 1, Shelf A, Bin 1" to create an intuitive structure
-                    for managing storage spaces. Whether you're dealing with a large warehouse, a retail outlet, or a
-                    small stockroom, <b>inventory rack labels generator (SCM Tool)</b> empowers you to streamline your inventory layout
-                    effortlessly.</p>
-                <h4>Why Choose Us ?</h4>
-                <ul>
-                    <li>
-                        <p><b>Customized Solutions:</b> We adapt to your unique inventory requirements by creating
-                            detailed and
-                            systematic layouts.</p>
-                    </li>
-                    <li>
-                        <p><b>User-Friendly Interface:</b> Our tool is designed for simplicity, so anyone can generate
-                            an organized rack system with ease.</p>
-                    </li>
-                    <li>
-                        <p>
-                            <b>Efficiency Boost:</b> Reduce the time spent searching for items and improve overall
-                            inventory
-                            management.
-                        </p>
-                    </li>
-                    <li>
-                        <p><b>Scalable Design:</b> From a single rack to a massive warehouse, our system grows with your
-                            needs.
-                        </p>
-                    </li>
-                </ul>
-
-                <p><b>inventory rack labels generator (SCM Tool)</b>, we believe that proper organization is the key to productivity. Let us help
-                    you
-                    create a smarter, more structured way to manage your inventory.</p>
-                <p>Start generating your racks today and experience the difference in inventory efficiency!</p>
-            </div>
-                <div class="footer-bottom">
-                <p>&copy; 2024 Generate-Rack | Designed with ❤️ by <a href="https://sainisahab.com/#contact">Sonu Saini</a></p>
-              </div>
-            <br>
-            <div class="ads">
-                <script async
-                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3966268377883628"
-                    crossorigin="anonymous"></script>
-                <!-- https://sainisahab.com/html/scm-tools/generate-rack/ -->
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3966268377883628"
-                    data-ad-slot="4700592139" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+      <div class="content">
+        <div class="content-heading">
+          <h4>About US</h4>
         </div>
+        <p>
+          Welcome to <b>inventory rack labels generator (SCM Tool)</b>, your
+          one-stop solution for efficient and dynamic inventory organization!
+          We specialize in transforming your inventory management into a
+          seamless experience by helping you generate and organize racks,
+          aisles, shelves, and bins with precision.
+        </p>
+
+        <p>
+          Our platform takes user input like "Aisle N, Rack 1, Shelf A, Bin 1"
+          to create an intuitive structure for managing storage spaces.
+          Whether you're dealing with a large warehouse, a retail outlet, or a
+          small stockroom,
+          <b>inventory rack labels generator (SCM Tool)</b> empowers you to
+          streamline your inventory layout effortlessly.
+        </p>
+
+        <div class="content-heading">
+          <h4>Why Choose Us ?</h4>
+        </div>
+
+        <ul>
+          <li>
+            <p>
+              <b>Customized Solutions:</b> We adapt to your unique inventory
+              requirements by creating detailed and systematic layouts.
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>User-Friendly Interface:</b> Our tool is designed for
+              simplicity, so anyone can generate an organized rack system with
+              ease.
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Efficiency Boost:</b> Reduce the time spent searching for
+              items and improve overall inventory management.
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Scalable Design:</b> From a single rack to a massive
+              warehouse, our system grows with your needs.
+            </p>
+          </li>
+        </ul>
+
+        <p>
+          <b>inventory rack labels generator (SCM Tool)</b>, we believe that
+          proper organization is the key to productivity. Let us help you
+          create a smarter, more structured way to manage your inventory.
+        </p>
+        <p>
+          Start generating your racks today and experience the difference in
+          inventory efficiency!
+        </p>
+      </div>
+      <div class="ads-block">
+        <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3966268377883628"
+          crossorigin="anonymous"></script>
+        <!-- https://sainisahab.com/html/scm-tools/generate-rack/ -->
+        <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-3966268377883628"
+          data-ad-slot="4700592139" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>
+        &copy; 2024 Generate-Rack | Designed with ❤️ by
+        <a href="https://sainisahab.com/">Sonu Saini</a>
+      </p>
+      <div>
+        <nav class="nav-links">
+          <a href="#"> Privacy Policy </a>
+          <a href="#"> Terms of Service </a>
+        </nav>
+      </div>
     </div>
+  </footer>
 
-    <script>
-        const rowName = document.getElementById("rowName");
-        const rowCountStart = document.getElementById("rowStart");
-        const rowCountEnd = document.getElementById("rowEnd");
-
-        const selfCount = document.getElementById("selfCount");
-        const selfBinCount = document.getElementById("selfBinCount");
-        const rowsubCountEnd = document.getElementById('rowCountEnd')
-        const generateRackBTN = document.getElementById("generateRack");
-
-        const rackLocation = [];
-        const add_zero = (your_number, length) => {
-            var num = "" + your_number;
-            while (num.length < length) {
-                num = "0" + num;
-            }
-            return num;
-        };
-
-        const selfCountStart = 1;
-        const selfCountEnd = 4;
-        const binCount = 6;
-
-        const generateRack = () => {
-            for (let i = rowCountStart.value; i <= rowCountEnd.value; i++) {
-                for (let j = 1; j <= selfCount.value; j++) {
-                    for (let k = 1; k <= selfBinCount.value; k++) {
-                        for (let l = 1; l <= rowsubCountEnd.value; l++) {
-                            // Format the string as per the given pattern
-                            rackLocation.push(
-                                `${rowName.value}-${add_zero(i, 2)}-${String.fromCharCode(
-                                    64 + j
-                                )}-${k}-${l}`
-                            );
-                            document.getElementById("rackDisplay").innerHTML += `<option>${rowName.value
-                                }-${add_zero(i, 2)}-${String.fromCharCode(
-                                    64 + j
-                                )}-${k}-${l}</option>`;
-                            console.log(
-                                `A-${add_zero(i, 2)}-${String.fromCharCode(64 + j)}-${k}-${l}`
-                            );
-                        }
-                    }
-                }
-            }
-        };
-
-        generateRackBTN.addEventListener("click", generateRack);
-
-        function DownloadJSON2CSV(objArray) {
-            var array =
-                typeof objArray != "object" ? JSON.parse(objArray) : objArray;
-
-            var str = "";
-
-            for (var i = 0; i < array.length; i++) {
-                var line = new Array();
-
-                for (var index in array[i]) {
-                    line.push(array[i][index]);
-                }
-
-                str += line.join("");
-                str += "\r\n";
-            }
-            window.open("data:text/csv;charset=utf-8," + encodeURIComponent(str));
-        }
-
-        const dowloadBtn = () => {
-            DownloadJSON2CSV(rackLocation);
-        };
-
-        document.getElementById("make").addEventListener("click", dowloadBtn);
-    </script>
+  <script src="./js/main.js"></script>
 </body>
 
 </html>
