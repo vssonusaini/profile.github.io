@@ -46,7 +46,8 @@ if (checkLogin == -1) {
   document.getElementById("username").innerHTML = account[checkLogin].username;
   document.getElementById("menu_account_login").style.display = "block";
   document.getElementById("menu_login_button").style.display = "none";
-  document.getElementById("hello_user").innerHTML = "Hello " + account[checkLogin].username + " !";
+  document.getElementById("hello_user").innerHTML =
+    "Hello " + account[checkLogin].username + " !";
 } else if (account[checkLogin].level == 1) {
   // ------------normal User---------
   document.getElementById("statusLogin").innerHTML = "Logged in successfully";
@@ -54,37 +55,46 @@ if (checkLogin == -1) {
   document.getElementById("menu_account_login").style.display = "block";
   document.getElementById("admin").style.display = "block";
   document.getElementById("menu_login_button").style.display = "none";
-  document.getElementById("hello_user").innerHTML = "Hello  " + account[checkLogin].username + " !";
+  document.getElementById("hello_user").innerHTML =
+    "Hello  " + account[checkLogin].username + " !";
 }
 
 // ------login------
 function Login() {
   for (i = 0; i < account.length; i++) {
-    if (document.getElementById("usernameLogin").value == account[i].username && document.getElementById("passwordLogin").value == account[i].password) {
+    if (
+      document.getElementById("usernameLogin").value == account[i].username &&
+      document.getElementById("passwordLogin").value == account[i].password
+    ) {
       checkLogin = account[i].id;
       localStorage.setItem("checkLogin", JSON.stringify(checkLogin));
 
       if (account[i].level == 0) {
-        document.getElementById("statusLogin").innerHTML = "Logged in successfully";
+        document.getElementById("statusLogin").innerHTML =
+          "Logged in successfully";
         document.getElementById("username").innerHTML = account[i].username;
         document.getElementById("menu_account_login").style.display = "block";
         document.getElementById("menu_login_button").style.display = "none";
-        document.getElementById("hello_user").innerHTML = "Hello " + account[i].username + " !";
+        document.getElementById("hello_user").innerHTML =
+          "Hello " + account[i].username + " !";
 
         location.reload();
       } else if (account[i].level == 1) {
-        document.getElementById("statusLogin").innerHTML = "Logged in successfully";
+        document.getElementById("statusLogin").innerHTML =
+          "Logged in successfully";
         document.getElementById("username").innerHTML = account[i].username;
         document.getElementById("menu_account_login").style.display = "block";
         document.getElementById("menu_login_button").style.display = "none";
-        document.getElementById("hello_user").innerHTML = "Hello " + account[i].username + " !";
+        document.getElementById("hello_user").innerHTML =
+          "Hello " + account[i].username + " !";
 
         location.reload();
       }
     }
   }
   if (checkLogin == -1) {
-    document.getElementById("statusLogin").innerHTML = "sai mật khẩu hoặc tài khoản";
+    document.getElementById("statusLogin").innerHTML =
+      "sai mật khẩu hoặc tài khoản";
   }
 }
 
