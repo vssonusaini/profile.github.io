@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #reminderList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #reminderList li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Reminder App</h1>
+        <form id="reminderForm">
+            <input type="text" id="title" placeholder="Reminder Title" required>
+            <input type="datetime-local" id="datetime" required>
+            <button type="submit">Add Reminder</button>
+        </form>
+
+        <h3>Upload Excel File</h3>
+        <input type="file" id="fileUpload" accept=".xlsx, .xls">
+        <button id="uploadButton">Upload Reminders</button>
+
+        <h2>Upcoming Reminders</h2>
+        <ul id="reminderList"></ul>
+
+        <h2>History</h2>
+        <ul id="historyList"></ul>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <script>
+        // Select elements
+        const reminderForm = document.getElementById('reminderForm');
+        const reminderList = document.getElementById('reminderList');
+        const fileUpload = document.getElementById('fileUpload');
+        const uploadButton = document.getElementById('uploadButton');
+        const historyList = document.getElementById('historyList');
+
+        const WEB_APP_URL = 'https://script.google.com/a/macros/bigbasket.com/s/AKfycbzYotsPcVGR9986OwpG3WCnJinQ99UEGRM4evM5iAmanyP-VHDSKqT4eQZ7Q8cEeuxunQ/exec'; // Replace with your web app URL
+
+        // Function to log history in Google Sheets
+        function logToGoogleSheet(action, timestamp) {
+            fetch(WEB_APP_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action, timestamp }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    if (data.status === 'success') {
+                        console.log('History logged successfully:', data.message);
+                    } else {
+                        console.error('Error logging history:', data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Network error:', error);
+                });
+        }
+
+
+        // Load reminders and history from localStorage
+        let reminders = JSON.parse(localStorage.getItem('reminders')) || [];
+        let history = JSON.parse(localStorage.getItem('history')) || [];
+
+        // Function to save reminders to localStorage
+        function saveReminders() {
+            localStorage.setItem('reminders', JSON.stringify(reminders));
+        }
+
+        // Function to save history to localStorage
+        function saveHistory() {
+            localStorage.setItem('history', JSON.stringify(history));
+        }
+
+        // Function to render reminders
+        function renderReminders() {
+            reminderList.innerHTML = '';
+            reminders.forEach((reminder, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${reminder.title} - ${new Date(reminder.datetime).toLocaleString()} (${reminder.completed ? 'Completed' : 'Incomplete'})`;
+                reminderList.appendChild(li);
+
+                // Add "Complete" button
+                const completeBtn = document.createElement('button');
+                completeBtn.textContent = 'Complete';
+                completeBtn.style.marginLeft = '10px';
+                completeBtn.disabled = reminder.completed; // Disable if already completed
+                completeBtn.addEventListener('click', () => {
+                    reminder.completed = true;
+                    addToHistory(`Completed reminder: ${reminder.title}`);
+                    saveReminders();
+                    renderReminders();
+                });
+                li.appendChild(completeBtn);
+
+                // Add "Delete" button
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.style.marginLeft = '10px';
+                deleteBtn.addEventListener('click', () => {
+                    addToHistory(`Deleted reminder: ${reminder.title}`);
+                    reminders.splice(index, 1);
+                    saveReminders();
+                    renderReminders();
+                });
+                li.appendChild(deleteBtn);
+            });
+        }
+
+        // Function to render history
+        function renderHistory() {
+            historyList.innerHTML = '';
+            history.forEach((entry) => {
+                const li = document.createElement('li');
+                li.textContent = `${entry.action} - ${new Date(entry.timestamp).toLocaleString()}`;
+                historyList.appendChild(li);
+            });
+        }
+
+        // Call logToGoogleSheet wherever history is updated
+        function addToHistory(action) {
+            const timestamp = new Date().toISOString();
+            const entry = { action, timestamp };
+            history.push(entry);
+            saveHistory();
+            renderHistory();
+
+            // Log to Google Sheet
+            logToGoogleSheet(action, timestamp);
+        }
+
+        // Function to schedule notifications
+        function scheduleNotification(reminder) {
+            const timeUntilReminder = new Date(reminder.datetime) - new Date();
+
+            if (timeUntilReminder > 0) {
+                setTimeout(() => {
+                    if (!reminder.completed) {
+                        alert(`Reminder: ${reminder.title}`);
+                    }
+                }, timeUntilReminder);
+            }
+        }
+
+        // Schedule notifications for all reminders
+        function scheduleAllNotifications() {
+            reminders.forEach((reminder) => {
+                scheduleNotification(reminder);
+            });
+        }
+
+        // Periodic check for incomplete reminders
+        function checkIncompleteReminders() {
+            reminders.forEach((reminder) => {
+                if (!reminder.completed && new Date(reminder.datetime) <= new Date()) {
+                    alert(`Pending Reminder: ${reminder.title}`);
+                }
+            });
+        }
+
+        // Trigger periodic alerts every 5 minutes
+        setInterval(checkIncompleteReminders, 5 * 60 * 1000);
+
+        // Handle form submission
+        reminderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const datetime = document.getElementById('datetime').value;
+
+            if (title && datetime) {
+                const reminder = { title, datetime, completed: false };
+                reminders.push(reminder);
+                addToHistory(`Added reminder: ${title}`);
+                saveReminders();
+                renderReminders();
+                scheduleNotification(reminder);
+
+                // Clear form
+                reminderForm.reset();
+            }
+        });
+
+        // Handle Excel File Upload
+        uploadButton.addEventListener('click', () => {
+            const file = fileUpload.files[0];
+            if (!file) {
+                alert('Please upload an Excel file.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const data = new Uint8Array(e.target.result);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+                rows.forEach((row, index) => {
+                    if (index > 0 && row[0] && row[1]) {
+                        // Skip header row and ensure valid data
+                        const title = row[0];
+                        const datetime = row[1];
+                        const reminder = { title, datetime, completed: false };
+                        reminders.push(reminder);
+                        addToHistory(`Added reminder from Excel: ${title}`);
+                        scheduleNotification(reminder);
+                    }
+                });
+
+                saveReminders();
+                renderReminders();
+                alert('Reminders uploaded successfully!');
+            };
+
+            reader.readAsArrayBuffer(file);
+        });
+
+        // Initial render and schedule notifications
+        renderReminders();
+        renderHistory();
+        scheduleAllNotifications();
+
+    </script>
+</body>
+
+</html>
