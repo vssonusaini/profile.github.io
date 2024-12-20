@@ -1,290 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reminder App</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1,
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        input,
-        button {
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        #reminderList {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        #reminderList li {
-            padding: 10px;
-            margin: 5px 0;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .completed {
+            text-decoration: line-through;
+            color: gray;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Reminder App</h1>
-        <form id="reminderForm">
-            <input type="text" id="title" placeholder="Reminder Title" required>
-            <input type="datetime-local" id="datetime" required>
-            <button type="submit">Add Reminder</button>
-        </form>
+    <h1>Reminders</h1>
+    <input type="text" id="reminderText" placeholder="Enter reminder">
+    <input type="datetime-local" id="reminderTime">
+    <button onclick="addReminder()">Add Reminder</button>
+    <br>
+    <h2>Upload Reminders from Excel</h2>
+    <input type="file" id="excelFileInput" accept=".xlsx, .xls">
 
-        <h3>Upload Excel File</h3>
-        <input type="file" id="fileUpload" accept=".xlsx, .xls">
-        <button id="uploadButton">Upload Reminders</button>
+    <ul id="reminderList"></ul>
 
-        <h2>Upcoming Reminders</h2>
-        <ul id="reminderList"></ul>
+    <h2>History</h2>
+    <ul id="historyList"></ul>
+    <button onclick="downloadExcel()">Download History (Excel)</button>
 
-        <h2>History</h2>
-        <ul id="historyList"></ul>
-
-    </div>
+    <!-- <script src="https://cdn.sheetjs.com/xlsx-0.18.10/package/xlsx.full.min.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
     <script>
-        // Select elements
-        const reminderForm = document.getElementById('reminderForm');
         const reminderList = document.getElementById('reminderList');
-        const fileUpload = document.getElementById('fileUpload');
-        const uploadButton = document.getElementById('uploadButton');
+        const reminderText = document.getElementById('reminderText');
+        const reminderTime = document.getElementById('reminderTime');
         const historyList = document.getElementById('historyList');
 
-        const WEB_APP_URL = 'https://script.google.com/a/macros/bigbasket.com/s/AKfycbzYotsPcVGR9986OwpG3WCnJinQ99UEGRM4evM5iAmanyP-VHDSKqT4eQZ7Q8cEeuxunQ/exec'; // Replace with your web app URL
-
-        // Function to log history in Google Sheets
-        function logToGoogleSheet(action, timestamp) {
-            fetch(WEB_APP_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ action, timestamp }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    if (data.status === 'success') {
-                        console.log('History logged successfully:', data.message);
-                    } else {
-                        console.error('Error logging history:', data.message);
-                    }
-                })
-                .catch((error) => {
-                    console.error('Network error:', error);
-                });
-        }
-
-
-        // Load reminders and history from localStorage
         let reminders = JSON.parse(localStorage.getItem('reminders')) || [];
         let history = JSON.parse(localStorage.getItem('history')) || [];
 
-        // Function to save reminders to localStorage
-        function saveReminders() {
+        displayReminders();
+        displayHistory();
+
+        function addReminder() {
+            const text = reminderText.value;
+            const time = new Date(reminderTime.value);
+
+            if (text.trim() === "" || isNaN(time)) {
+                alert("Please enter a reminder and a valid time.");
+                return;
+            }
+
+            reminders.push({ text, time: time.getTime(), completed: false, notificationShown: false });
+            logHistory("Reminder Created", text); // Log the creation action
             localStorage.setItem('reminders', JSON.stringify(reminders));
+            displayReminders();
+            scheduleNotification(text, time.getTime(), reminders.length - 1);
+
+            reminderText.value = "";
+            reminderTime.value = "";
         }
 
-        // Function to save history to localStorage
-        function saveHistory() {
-            localStorage.setItem('history', JSON.stringify(history));
-        }
-
-        // Function to render reminders
-        function renderReminders() {
+        function displayReminders() {
             reminderList.innerHTML = '';
             reminders.forEach((reminder, index) => {
                 const li = document.createElement('li');
-                li.textContent = `${reminder.title} - ${new Date(reminder.datetime).toLocaleString()} (${reminder.completed ? 'Completed' : 'Incomplete'})`;
+                li.className = reminder.completed ? 'completed' : '';
+
+                const reminderDate = new Date(reminder.time);
+                li.textContent = `${reminder.text} - ${reminderDate.toLocaleString()}`;
+
+                const completeButton = document.createElement('button');
+                completeButton.textContent = reminder.completed ? 'Undo' : 'Complete';
+                completeButton.onclick = () => toggleComplete(index);
+                li.appendChild(completeButton);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = () => deleteReminder(index);
+                li.appendChild(deleteButton);
+
                 reminderList.appendChild(li);
-
-                // Add "Complete" button
-                const completeBtn = document.createElement('button');
-                completeBtn.textContent = 'Complete';
-                completeBtn.style.marginLeft = '10px';
-                completeBtn.disabled = reminder.completed; // Disable if already completed
-                completeBtn.addEventListener('click', () => {
-                    reminder.completed = true;
-                    addToHistory(`Completed reminder: ${reminder.title}`);
-                    saveReminders();
-                    renderReminders();
-                });
-                li.appendChild(completeBtn);
-
-                // Add "Delete" button
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = 'Delete';
-                deleteBtn.style.marginLeft = '10px';
-                deleteBtn.addEventListener('click', () => {
-                    addToHistory(`Deleted reminder: ${reminder.title}`);
-                    reminders.splice(index, 1);
-                    saveReminders();
-                    renderReminders();
-                });
-                li.appendChild(deleteBtn);
             });
         }
 
-        // Function to render history
-        function renderHistory() {
+        function toggleComplete(index) {
+            const action = reminders[index].completed ? "Marked Incomplete" : "Marked Complete";
+            logHistory(action, reminders[index].text); // Log completion/incompletion
+            reminders[index].completed = !reminders[index].completed;
+            reminders[index].notificationShown = true; //prevent repeated notification
+            localStorage.setItem('reminders', JSON.stringify(reminders));
+            displayReminders();
+        }
+
+        function deleteReminder(index) {
+            logHistory("Reminder Deleted", reminders[index].text);
+            reminders.splice(index, 1);
+            localStorage.setItem('reminders', JSON.stringify(reminders));
+            displayReminders();
+        }
+
+        function scheduleNotification(text, time, index) {
+            const now = new Date().getTime();
+            let timeDiff = time - now;
+
+            if (timeDiff > 0) {
+                setTimeout(() => {
+                    showNotification(text, index); // Pass the index to showNotification
+                    reminders[index].notificationShown = true;
+                    localStorage.setItem('reminders', JSON.stringify(reminders));
+                    checkAndReschedule(text, time, index); // Start checking for completion
+                }, timeDiff);
+            }
+        }
+
+        function showNotification(text, index) {
+            if (Notification.permission === "granted") {
+                const notification = new Notification("Reminder:", { body: text });
+                notification.onclick = () => {
+                    window.focus();
+                    localStorage.setItem('lastClickedNotificationIndex', index);
+                };
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        const notification = new Notification("Reminder:", { body: text });
+                        notification.onclick = () => {
+                            window.focus();
+                            localStorage.setItem('lastClickedNotificationIndex', index);
+                        };
+                    }
+                });
+            } else {
+                alert("Reminder: " + text);
+            }
+        }
+
+        function checkAndReschedule(text, time, index) {
+            const checkInterval = 5 * 60 * 1000; // 5 minutes in milliseconds
+            let intervalId = setInterval(() => {
+                console.log("text")
+                if (reminders[index].completed) {
+                    clearInterval(intervalId); // Stop checking if completed
+                    return;
+                }
+                if (reminders[index].notificationShown) {
+                    showNotification(text);
+                    reminders[index].notificationShown = false;
+                    localStorage.setItem('reminders', JSON.stringify(reminders));
+                }
+
+                // const now = new Date().getTime();
+                // const timeDiff = now - time;
+                // if (timeDiff > 10 * 60 * 1000) { //Stop after 10 minutes
+                //     clearInterval(intervalId);
+                //     return;
+                // }
+            }, checkInterval);
+        }
+
+        function logHistory(action, reminderText) {
+            const now = new Date();
+            history.push({
+                action: action,
+                reminder: reminderText,
+                timestamp: now.getTime(),
+                date: now.toLocaleDateString(),
+                time: now.toLocaleTimeString()
+            });
+            localStorage.setItem('history', JSON.stringify(history));
+            displayHistory();
+        }
+
+        function displayHistory() {
             historyList.innerHTML = '';
-            history.forEach((entry) => {
+            history.forEach(entry => {
                 const li = document.createElement('li');
-                li.textContent = `${entry.action} - ${new Date(entry.timestamp).toLocaleString()}`;
+                const date = new Date(entry.timestamp);
+                const formattedDate = formatDate(date);
+                li.textContent = `${formattedDate} - ${entry.action}: ${entry.reminder}`;
                 historyList.appendChild(li);
             });
         }
 
-        // Call logToGoogleSheet wherever history is updated
-        function addToHistory(action) {
-            const timestamp = new Date().toISOString();
-            const entry = { action, timestamp };
-            history.push(entry);
-            saveHistory();
-            renderHistory();
-
-            // Log to Google Sheet
-            logToGoogleSheet(action, timestamp);
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            const year = String(date.getFullYear()).slice(-2); // Get last two digits of year
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `${day}-${month}-${year} ${hours}:${minutes}`;
         }
 
-        // Function to schedule notifications
-        function scheduleNotification(reminder) {
-            const timeUntilReminder = new Date(reminder.datetime) - new Date();
-
-            if (timeUntilReminder > 0) {
-                setTimeout(() => {
-                    if (!reminder.completed) {
-                        alert(`Reminder: ${reminder.title}`);
-                    }
-                }, timeUntilReminder);
-            }
-        }
-
-        // Schedule notifications for all reminders
-        function scheduleAllNotifications() {
-            reminders.forEach((reminder) => {
-                scheduleNotification(reminder);
+        function downloadExcel() {
+            const formattedHistory = history.map(entry => {
+                const date = new Date(entry.timestamp);
+                const formattedDate = formatDate(date);
+                return {
+                    ...entry,
+                    timestamp: formattedDate // Replace timestamp with formatted date
+                };
             });
+
+            const worksheet = XLSX.utils.json_to_sheet(formattedHistory);
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "History");
+            XLSX.writeFile(workbook, "reminder_history.xlsx");
         }
 
-        // Periodic check for incomplete reminders
-        function checkIncompleteReminders() {
-            reminders.forEach((reminder) => {
-                if (!reminder.completed && new Date(reminder.datetime) <= new Date()) {
-                    alert(`Pending Reminder: ${reminder.title}`);
+        // Add an event listener to handle actions after the window is focused
+        window.addEventListener('focus', () => {
+            const lastClickedIndex = localStorage.getItem('lastClickedNotificationIndex');
+            if (lastClickedIndex !== null) {
+                const index = parseInt(lastClickedIndex);
+                localStorage.removeItem('lastClickedNotificationIndex'); // Clear the stored index
+
+                // Now you can perform the action based on the index:
+                const confirmComplete = confirm(`Do you want to mark "${reminders[index].text}" as complete?`);
+                if (confirmComplete) {
+                    toggleComplete(index);
                 }
-            });
-        }
-
-        // Trigger periodic alerts every 5 minutes
-        setInterval(checkIncompleteReminders, 5 * 60 * 1000);
-
-        // Handle form submission
-        reminderForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const title = document.getElementById('title').value;
-            const datetime = document.getElementById('datetime').value;
-
-            if (title && datetime) {
-                const reminder = { title, datetime, completed: false };
-                reminders.push(reminder);
-                addToHistory(`Added reminder: ${title}`);
-                saveReminders();
-                renderReminders();
-                scheduleNotification(reminder);
-
-                // Clear form
-                reminderForm.reset();
             }
         });
 
-        // Handle Excel File Upload
-        uploadButton.addEventListener('click', () => {
-            const file = fileUpload.files[0];
-            if (!file) {
-                alert('Please upload an Excel file.');
-                return;
+        //Request notification permissions on page load
+        window.addEventListener('load', (event) => {
+            if (Notification.permission !== "granted" && Notification.permission !== "denied") {
+                Notification.requestPermission();
             }
+            reminders.forEach((reminder, index) => {
+                if (!reminder.completed && !reminder.notificationShown) {
+                    scheduleNotification(reminder.text, reminder.time, index);
+                }
+            })
+        });
 
+        // ... (Existing variables and functions: registerServiceWorker, urlBase64ToUint8Array, formatDate, displayReminders, toggleComplete, deleteReminder, logHistory, displayHistory, scheduleNotification, sendPushNotification)
+
+        document.getElementById('excelFileInput').addEventListener('change', handleFileSelect, false);
+
+        function handleFileSelect(evt) {
+            const file = evt.target.files[0];
             const reader = new FileReader();
+
             reader.onload = (e) => {
                 const data = new Uint8Array(e.target.result);
                 const workbook = XLSX.read(data, { type: 'array' });
-                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-                const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
 
-                rows.forEach((row, index) => {
-                    if (index > 0 && row[0] && row[1]) {
-                        // Skip header row and ensure valid data
-                        const title = row[0];
-                        const datetime = row[1];
-                        const reminder = { title, datetime, completed: false };
-                        reminders.push(reminder);
-                        addToHistory(`Added reminder from Excel: ${title}`);
-                        scheduleNotification(reminder);
+                const sheetName = workbook.SheetNames[0]; // Get the first sheet name
+                const worksheet = workbook.Sheets[sheetName];
+                const excelData = XLSX.utils.sheet_to_json(worksheet);
+
+                excelData.forEach(item => {
+                    // Assuming your Excel has columns named "text" and "time"
+                    const text = item.text;
+                    let time = item.time;
+                    if (typeof time === 'number') {
+                        time = new Date((time - (25569)) * 86400 * 1000);
+                    }
+                    if (text && time) {
+                        if (!(time instanceof Date)) {
+                            time = new Date(time);
+                        }
+                        if (!isNaN(time)) {
+                            reminders.push({ text, time: time.getTime(), completed: false, notificationShown: false });
+                            logHistory("Reminder Imported from Excel", text);
+                            localStorage.setItem('reminders', JSON.stringify(reminders));
+                            displayReminders();
+                            scheduleNotification(text, time.getTime(), reminders.length - 1);
+                        }
+                        else {
+                            logHistory("Error in import from Excel", `Time is not valid : ${item.time}`);
+                            localStorage.setItem('reminders', JSON.stringify(reminders));
+                            displayReminders();
+                        }
+                    }
+                    else {
+                        logHistory("Error in import from Excel", `Text or Time is not valid : ${item.text} - ${item.time}`);
+                        localStorage.setItem('reminders', JSON.stringify(reminders));
+                        displayReminders();
                     }
                 });
-
-                saveReminders();
-                renderReminders();
-                alert('Reminders uploaded successfully!');
             };
 
             reader.readAsArrayBuffer(file);
-        });
+        }
 
-        // Initial render and schedule notifications
-        renderReminders();
-        renderHistory();
-        scheduleAllNotifications();
-
+        // ... (Rest of your script.js code)
     </script>
 </body>
 
