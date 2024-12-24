@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToolVerse - Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/">ToolVerse</a>
+            <ul>
+                <li><a href="/categories">Categories</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </nav>
+        <input type="text" placeholder="Search Tools...">
+    </header>
+    <main>
+        <section class="contact-content">
+            <h1>Contact Us</h1>
+            <p>Have questions, feedback, or suggestions? We'd love to hear from you! Please use the form below or reach
+                out to us directly.</p>
+            <form action="/submit-contact" method="post">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-details">
+                <h2>Contact Details</h2>
+                <p>Email: <a href="mailto:info@toolverse.com">info@toolverse.com</a></p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2023 ToolVerse. All Rights Reserved.</p>
+        <ul>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
