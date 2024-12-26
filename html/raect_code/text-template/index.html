@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dynamic Tools</title>
+    <meta name="description" content="A collection of useful web tools."> <!-- Base description -->
+    <!-- Google Ads Script Placeholder -->
+    <!-- <script async src="..."></script> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="/">My Dynamic Tools</a></h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Main content will be loaded here -->
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 My Tools Website. All rights reserved.</p>
+            <div class="cookie-consent" id="cookie-consent">
+                <p>We use cookies to enhance your experience. <a href="#">Learn more</a></p>
+                <button id="acceptCookies">Accept</button>
+            </div>
+        </div>
+    </footer>
+    <div id="popup-container" class="popup-container"></div> <!-- Popup Container -->
+    <div id="toast-container" class="toast-container"></div> <!-- Toast Container -->
+    <script src="lib/cookies.js" type="module"></script>
+    <script src="components/popup.js" type="module"></script>
+    <script src="components/toast.js" type="module"></script>
+    <script src="tools.js" type="module"></script>
+    <script src="script.js" type="module"></script>
+
+</body>
+
+</html>
