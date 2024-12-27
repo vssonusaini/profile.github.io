@@ -1,0 +1,111 @@
+/* Global styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .app-container{
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+  }
+  .app-header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .app-header nav a{
+      color: #fff;
+      text-decoration: none;
+      margin-right: 15px;
+  }
+  .app-header .user-info{
+      display: flex;
+      align-items: center;
+  }
+  .app-header .user-info span{
+      margin-right: 10px;
+  }
+  .app-content {
+      flex: 1;
+      padding: 20px;
+      margin-bottom: auto;
+  }
+  .app-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  /* Form Styles */
+  form {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .form-group{
+      margin-bottom: 15px;
+  }
+  form input,
+  form select {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      width: 100%;
+      box-sizing: border-box;
+  }
+  
+  .submit-btn {
+      background-color: #5cb85c;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+  }
+  .submit-btn:hover {
+      background-color: #4cae4c;
+  }
+  /* Table Styles */
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  table, th, td {
+      border: 1px solid #ddd;
+  }
+  th, td {
+      padding: 10px;
+      text-align: left;
+  }
+  th {
+      background-color: #f2f2f2;
+  }
+  
+  /* Loading Message */
+  .loading {
+      text-align: center;
+      margin-top: 20px;
+      font-style: italic;
+  }
+  
+  /* Error Message */
+  .error {
+      color: #d9534f;
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+  }
