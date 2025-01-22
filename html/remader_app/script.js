@@ -122,8 +122,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                      <span class="${isCompleted}">${task.text}</span>
                      <span class="scheduled-time">Scheduled For: ${new Date(task.dateTime).toLocaleString()}</span>
                     <div class="task-history">${history}</div>
+                   <div class="actionBTN">
                     <button onclick="completeTask(${task.id})">Complete</button>
                     <button onclick="deleteTask(${task.id})">Delete</button>
+                   </div>
                  `;
                 taskList.appendChild(li);
             });
