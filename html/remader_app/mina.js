@@ -392,6 +392,7 @@ requestNotificationPermission(); // Call this before attempting to show a notifi
 //To test if it's working, try this on a button click or after the permission is granted.
 document.getElementById('notificationButton').addEventListener('click', function(){
     showNotification("Reminder Test","This is a test notification");
+   console.log("Click...");
 })
 
   async function submitSuggestion() {
