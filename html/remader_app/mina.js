@@ -361,20 +361,38 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   };
 
-  function requestNotificationPermission() {
-    if ("Notification" in window) {
-      if (
-        Notification.permission !== "granted" &&
-        Notification.permission !== "denied"
-      ) {
-        Notification.requestPermission().then((permission) => {
-          if (permission === "granted") {
-            console.log("Notifications enabled");
-          }
-        });
-      }
+ function requestNotificationPermission() {
+    if (!("Notification" in window)) {
+        console.log("This browser does not support notifications.");
+        return;
     }
-  }
+
+    if (Notification.permission === "granted") {
+        console.log("Notification permission already granted.");
+        return; //Permission is already granted; no need to ask again
+    }
+
+    Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+            console.log("Notification permission granted.");
+           // you can call the function to create the notification from here
+
+        } else {
+            console.log("Notification permission denied.");
+        }
+    });
+}
+function showNotification(title, body) {
+    if (Notification.permission === "granted") {
+        new Notification(title, { body: body });
+    }
+}
+
+requestNotificationPermission(); // Call this before attempting to show a notification
+//To test if it's working, try this on a button click or after the permission is granted.
+document.getElementById('notificationButton').addEventListener('click', function(){
+    showNotification("Reminder Test","This is a test notification");
+})
 
   async function submitSuggestion() {
     try {
