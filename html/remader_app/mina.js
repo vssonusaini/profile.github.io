@@ -494,7 +494,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     if ("serviceWorker" in navigator) {
       try {
         const registration = await navigator.serviceWorker.register(
-          "./service-worker.js"
+          "https://sainisahab.com/html/remader_app/service-worker.js"
         );
         console.log("Service worker registered:", registration);
       } catch (error) {
