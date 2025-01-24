@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Sheets API Client</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea, select { width: 100%; padding: 8px; border: 1px solid #ccc; box-sizing: border-box; margin-bottom: 5px; }
+        button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .result { margin-top: 20px; border: 1px solid #ddd; padding: 10px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+
+    <h2>Google Sheets API Client</h2>
+
+    <div class="form-group">
+        <label for="action">Action:</label>
+        <select id="action">
+            <option value="read">Read Data</option>
+            <option value="create">Create Record</option>
+            <option value="update">Update Record</option>
+            <option value="delete">Delete Record</option>
+        </select>
+    </div>
+
+    <div id="id-group" class="form-group" style="display: none;">
+        <label for="id">Record ID:</label>
+        <input type="text" id="id" placeholder="Enter ID">
+    </div>
+
+    <div id="data-group"></div>
+
+    <button onclick="submitForm()">Submit</button>
+
+    <div class="result"></div>
+    
+    <script>
+        const apiURL = 'https://script.google.com/macros/s/AKfycbyBOGABcdCs02yCcjdhCkajZ1SZLvUR3R5ENnUIVX4mLNVXU-B6Wz7yysy4asdQzOssoA/exec'; // Replace this with your actual Web App URL
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
