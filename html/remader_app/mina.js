@@ -33,6 +33,9 @@ document.addEventListener("DOMContentLoaded", async function () {
   renderTasks();
   console.log("Tasks rendered to UI");
 
+    // Register Service Worker
+    await registerServiceWorker();
+
   scheduleAllReminders();
   console.log("All reminders scheduled");
 
@@ -47,7 +50,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   console.log("Event listener added to suggestion buttons");
 
   // Request notification permission on load
-  requestNotificationPermission();
+  //requestNotificationPermission();  // moved to button
+
   console.log("Notification permission requested");
 
   const MAX_TASKS = config.maxTasks;
@@ -58,8 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   // Error message container
   const errorContainer = document.getElementById("error-message");
-  // Register Service Worker
-  registerServiceWorker();
+
 
   const editModal = document.getElementById("editModal");
   const closeBtn = document.querySelector(".close-btn");
@@ -387,10 +390,11 @@ function showNotification(title, body) {
         new Notification(title, { body: body });
     }
 }
-
-requestNotificationPermission(); // Call this before attempting to show a notification
+// moved to button
+//requestNotificationPermission(); // Call this before attempting to show a notification
 //To test if it's working, try this on a button click or after the permission is granted.
 document.getElementById('notificationButton').addEventListener('click', function(){
+    requestNotificationPermission();
     showNotification("Reminder Test","This is a test notification");
    console.log("Click...");
 })
