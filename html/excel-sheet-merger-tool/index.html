@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Merger Tool</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Excel Merger Tool</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#how-to-use">How To Use</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <section class="tool-section">
+                <div class="tool-content">
+                    <input type="file" id="fileInput" multiple accept=".csv, .xls, .xlsx">
+                    <div id="file-count"></div>
+                    <div id="loading-message"></div>
+                    <button id="downloadButton" disabled>Download Merged Excel</button>
+                    <div id="error-message" class="error-message"></div>
+                    <div id="success-message" class="success-message"></div>
+                </div>
+            </section>
+            <aside id="how-to-use" class="instructions">
+                <h2>How To Use</h2>
+                <p>1. Select your Excel files using the "Choose Files" button.</p>
+                <p>2. The tool will automatically merge all data from the files (and all their sheets). Data is merged
+                    up to the last row of the first column of every sheet.</p>
+                <p>3. The tool adds a new column with the name of each sheet for every merged row.</p>
+                <p>4. Click "Download Merged Excel" to save the new file.</p>
+                <p>The download will happen automatically and the file will be saved to your browser's default download
+                    location.</p>
+                <p>All processing is done securely in your browser.</p>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Disclaimer: This is a client-side tool and all data processing happens locally. No data is sent to any
+                external server or third-party services.</p>
+            <p>Contact: <a href="https://sainisahab.com/#contact">sainisahab</a></p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
