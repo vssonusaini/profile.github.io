@@ -3,70 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Reminder App</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Task Manager</h1>
+        <button id="openAddTaskBtn">Add Task</button>
 
- <div class="container">
-
- <header>
-            <h1>Task Reminder</h1>
-        </header>
-
- <main>
-  <div class="actions">
-  <button id="openAddTaskBtn">Add New Task</button>
-  <button id="viewSuggestionBtn">View Suggestions</button>
-    <button id="notificationButton">Test Notification</button>
- </div>
- <ul id="taskList"></ul>
-
- </main>
-
-  <div id="addModal" class="modal">
+        <ul id="taskList">
+            <!-- Tasks will be rendered here -->
+        </ul>
+        <button id="notificationButton" style="display: none;">Test Notification</button>
+         <div id="error-message" class="error-message"></div>
+    </div>
+    <div id="addModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeAddModal()">×</span>
-            <h2>Add New Task</h2>
-            <input type="text" id="addTaskTitle" placeholder="Task Title">
-            <textarea id="addTaskDescription" placeholder="Task Description"></textarea>
-            <input type="datetime-local" id="addTaskDateTime">
-            <button id="addTaskModalBtn">Add Task</button>
+          <span class="close-btn" onclick="closeAddModal()">×</span>
+          <h2>Add New Task</h2>
+          <input type="text" id="addTaskTitle" placeholder="Task Title" />
+          <textarea id="addTaskDescription" placeholder="Task Description"></textarea>
+          <input type="datetime-local" id="addTaskDateTime" />
+          <button id="addTaskModalBtn">Add Task</button>
+        </div>
+      </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">×</span>
+            <h2>Edit Task</h2>
+            <input type="hidden" id="editTaskId">
+            <input type="text" id="editTaskTitle" placeholder="Task Title">
+            <textarea id="editTaskDescription" placeholder="Task Description"></textarea>
+            <input type="datetime-local" id="editTaskDateTime">
+            <button id="saveTaskBtn">Save Changes</button>
         </div>
     </div>
 
- <div id="editModal" class="modal">
-    <div class="modal-content">
-        <span class="close-btn">×</span>
-        <h2>Edit Task</h2>
-         <input type="hidden" id="editTaskId">
-        <input type="text" id="editTaskTitle" placeholder="Task Title">
-        <textarea id="editTaskDescription" placeholder="Task Description"></textarea>
-        <input type="datetime-local" id="editTaskDateTime">
-        <button id="saveTaskBtn">Save</button>
-    </div>
-</div>
-
-   <div id="historyModal" class="modal">
+    <div id="historyModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeHistoryModal()">×</span>
             <h2>Task History</h2>
-            <div id="taskHistoryContent"></div>
+            <div id="taskHistoryContent">
+                 <!-- history will be appended here-->
+            </div>
         </div>
     </div>
- <div class="suggestion-section">
-     <h2>Suggestions</h2>
- <input type="text" id="suggestionInput" placeholder="Enter Your Suggestion here"/>
- <button id="submitSuggestionBtn">Submit</button>
- </div>
 
-    <div id="cookieConsent" class="cookie-consent">
-        <p>This website uses cookies to enhance your experience. By continuing to use this site, you agree to our use of cookies.</p>
+
+     <div id="cookieConsent" class="cookie-consent">
+        <p>This website uses cookies. By continuing to use this site, you agree to our use of cookies.</p>
         <button id="acceptCookies">Accept</button>
     </div>
 
-     <div id="error-message" class="error-message"></div>
- </div>
- <script type="module" src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
+
 </body>
 </html>
