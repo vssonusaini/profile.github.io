@@ -1,88 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Manager</title>
+    <title>Task Reminder App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <nav>
-        <h1>Task Manager</h1>
-        <div class="links">
-            <button id="openAddTaskBtn">Add New Task</button>
-            <button id="notificationButton">Star</button>
-        </div>
-    </nav>
-    <div class="container">
-        <div id="error-message" style="display:none; color:red; margin-top:10px; font-size: 14px;"></div>
 
-        <ul id="taskList">
-            <!-- Tasks will be rendered here -->
-        </ul>
-        <div class="suggestion-area" style="display: none;">
-            <h2>Suggestion Box</h2>
-            <input type="text" id="suggestionInput" placeholder="Enter your suggestion">
-            <button id="submitSuggestionBtn">Submit</button>
-            <button id="viewSuggestionBtn">View All Suggestion</button>
-        </div>
+ <div class="container">
 
+ <header>
+            <h1>Task Reminder</h1>
+        </header>
 
-        <div id="cookieConsent" class="cookie-consent" style="display: none;">
-            <p>This website uses cookies to provide better user experience. Do you accept?</p>
-            <button id="acceptCookies">Accept Cookies</button>
-        </div>
-    </div>
+ <main>
+  <div class="actions">
+  <button id="openAddTaskBtn">Add New Task</button>
+  <button id="viewSuggestionBtn">View Suggestions</button>
+    <button id="notificationButton">Test Notification</button>
+ </div>
+ <ul id="taskList"></ul>
 
-    <footer>
-        <p>&copy; 2021 Task Manager</p>
-    </footer>
-    <!-- Modal Edit Form -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-btn">×</span>
-            <h2>Edit Task</h2>
-            <br>
-            <div class="edit-form">
-                <input type="hidden" id="editTaskId">
-                <input type="text" id="editTaskTitle" placeholder="Enter Task Title...">
-                <input type="datetime-local" id="editTaskDateTime" placeholder="Set Date & Time">
-                <textarea type="text" rows="4" cols="50" id="editTaskDescription" placeholder="Enter Task Description..."></textarea>
-               
-                <button id="saveTaskBtn">Save</button>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Add Task Form -->
-    <div id="addModal" class="modal" style="display: none;">
+ </main>
+
+  <div id="addModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeAddModal()">×</span>
             <h2>Add New Task</h2>
-            <br>
-            <div class="add-form">
-                <input type="text" id="addTaskTitle" placeholder="Enter Task Title...">
-                <input type="datetime-local" id="addTaskDateTime" placeholder="Set Date & Time">
-                <textarea type="text" rows="4" cols="50" id="addTaskDescription" placeholder="Enter Task Description..."></textarea>
-            
-                <button id="addTaskModalBtn">Add Task</button>
-            </div>
+            <input type="text" id="addTaskTitle" placeholder="Task Title">
+            <textarea id="addTaskDescription" placeholder="Task Description"></textarea>
+            <input type="datetime-local" id="addTaskDateTime">
+            <button id="addTaskModalBtn">Add Task</button>
         </div>
     </div>
-    <!-- Modal History Form -->
-    <div id="historyModal" class="modal" style="display: none;">
+
+ <div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">×</span>
+        <h2>Edit Task</h2>
+         <input type="hidden" id="editTaskId">
+        <input type="text" id="editTaskTitle" placeholder="Task Title">
+        <textarea id="editTaskDescription" placeholder="Task Description"></textarea>
+        <input type="datetime-local" id="editTaskDateTime">
+        <button id="saveTaskBtn">Save</button>
+    </div>
+</div>
+
+   <div id="historyModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeHistoryModal()">×</span>
             <h2>Task History</h2>
-            <br>
-            <div id="taskHistoryContent">
-
-            </div>
+            <div id="taskHistoryContent"></div>
         </div>
     </div>
+ <div class="suggestion-section">
+     <h2>Suggestions</h2>
+ <input type="text" id="suggestionInput" placeholder="Enter Your Suggestion here"/>
+ <button id="submitSuggestionBtn">Submit</button>
+ </div>
 
-    <script src="./mina.js" type="module"></script>
+    <div id="cookieConsent" class="cookie-consent">
+        <p>This website uses cookies to enhance your experience. By continuing to use this site, you agree to our use of cookies.</p>
+        <button id="acceptCookies">Accept</button>
+    </div>
+
+     <div id="error-message" class="error-message"></div>
+ </div>
+ <script type="module" src="script.js"></script>
 </body>
-
 </html>
