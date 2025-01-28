@@ -1,63 +1,44 @@
-self.addEventListener("notificationclick", function (event) {
-  event.notification.close(); // Close the notification
-  if (event.action === "complete") {
-    // Handle "Complete" button action
-    event.waitUntil(
-      clients.matchAll({ type: "window" }).then(function (clientList) {
-        for (const client of clientList) {
-          client.postMessage({
-            type: "completeTask",
-            taskId: event.notification.data.taskId,
-          });
-        }
-      })
-    );
-  } else if (event.action === "deny") {
-    event.waitUntil(
-      clients.matchAll({ type: "window" }).then(function (clientList) {
-        for (const client of clientList) {
-          client.postMessage({
-            type: "denyTask",
-            taskId: event.notification.data.taskId,
-          });
-        }
-      })
-    );
-  } else {
-    event.waitUntil(
-      clients
-        .matchAll({
-          type: "window",
-        })
-        .then(function (clientList) {
-          if (clientList.length > 0) {
-            return clients.openWindow(event.notification.data.url);
-          } else {
-            return clients.openWindow(event.notification.data.url);
-          }
-        })
-    );
-  }
+self.addEventListener('message', function(event) {
+    if (event.data && event.data.type === "showNotification") {
+      const task = event.data.task;
+      const count = event.data.count;
+      const taskId = event.data.taskId;
+
+        const title = `Reminder for task: ${task.title}`;
+        const body = `Task description: ${task.description}\nRescheduled count ${count}\nClick to complete or press Deny to delete this task`;
+        
+       const options = {
+            body: body,
+            icon: 'https://sainisahab.com/html/remader_app/icons/icon-192x192.png',
+            badge: 'https://sainisahab.com/html/remader_app/icons/icon-192x192.png',
+            tag: `task-${taskId}`,
+            data: { taskId: taskId },
+           actions: [
+                { action: 'complete', title: 'Complete Task' },
+                { action: 'deny', title: 'Deny Task' }
+            ]
+          };
+        self.registration.showNotification(title, options);
+    }
 });
 
-self.addEventListener("message", function (event) {
-  if (event.data && event.data.type === "showNotification") {
-    const { task, count, taskId } = event.data;
-    let message = task.title;
-    if (count > 0) {
-      message = `${task.title} (rescheduled ${count} times)`;
+self.addEventListener('notificationclick', function(event) {
+  event.notification.close();
+    const taskId = event.notification.data.taskId;
+    if (event.action === 'complete') {
+        event.waitUntil(clients.matchAll({ type: 'window' }).then(function(clientList) {
+                for (const client of clientList) {
+                    client.postMessage({type: "completeTask", taskId: taskId});
+                  }
+            })
+        );
     }
-    self.registration.showNotification("Task Reminder", {
-      body: message,
-      icon: "https://sainisahab.com/images/back-logo.png", // Path to your icon
-      data: {
-        taskId: taskId,
-        url: location.origin,
-      },
-      actions: [
-        { action: "complete", title: "Complete" },
-        { action: "deny", title: "Deny" },
-      ],
-    });
-  }
+    else if (event.action === 'deny'){
+      event.waitUntil(clients.matchAll({ type: 'window' }).then(function(clientList) {
+        for (const client of clientList) {
+            client.postMessage({type: "denyTask", taskId: taskId});
+        }
+    })
+);
+    }
 });
