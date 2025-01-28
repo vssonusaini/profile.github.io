@@ -1,161 +1,143 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
+/* General Styles */
 body {
-  font-family: sans-serif;
-  background-color: #f4f4f4;
-  display: grid;
-  grid-template-rows: 3rem auto 3rem;
-  min-height: 100vh;
-  gap: 1rem;
-}
-
-nav {
-  width: 100%;
-  height: 3rem;
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 1rem;
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
 }
 
 .container {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 95%;
-  width: 95%;
-  height: 100%;
-  margin: 0 auto;
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
 }
 
-#openAddTaskBtn {
-  padding: 8px 12px;
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 15px;
+button {
+    background-color: #5cb85c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
 }
-#openAddTaskBtn:hover {
-  background-color: #4cae4c;
-}
-
-.input-area {
-  display: none;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.input-area input[type="text"],
-.input-area input[type="datetime-local"] ,
-textarea{
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.input-area button {
-  padding: 8px 12px;
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.input-area button:hover {
-  background-color: #4cae4c;
+button:hover {
+    background-color: #4cae4c;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    list-style: none;
+    padding: 0;
 }
 
 li {
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  border: 1px solid #ddd;
-  margin: 0.6rem;
-  border-radius: 0.6rem;
+    background: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
-
-li:last-child {
-  border-bottom: none;
-}
-
-li.completed {
-  text-decoration: line-through;
-  color: #aaa;
-}
-
-.scheduled-time {
-  font-style: italic;
-  color: gray;
-}
-
 .actionBTN {
-  display: flex;
-  gap: 5px;
+    display: flex;
+    gap:5px;
 }
 
-.actionBTN button {
-  padding: 6px 10px;
-  background-color: #428bca;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.actionBTN button:hover {
-  background-color: #3071a9;
+li span {
+   display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+
 }
 
-.task-history {
-  margin-top: 5px;
-  font-size: 0.8rem;
-  color: #777;
+li p {
+   margin-bottom: 10px;
+}
+.scheduled-time {
+  display:block;
+  color:gray;
+}
+li.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+
+}
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
 }
 
-.suggestion-area {
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.suggestion-area input {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position:relative;
+
 }
 
-.suggestion-area button {
-  padding: 8px 12px;
-  background-color: #428bca;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.suggestion-area button:hover {
-  background-color: #3071a9;
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+     position:absolute;
+    top:5px;
+    right:10px
 }
 
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.modal-content input[type="text"],
+.modal-content textarea,
+.modal-content input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.modal-content textarea {
+  height: 100px;
+}
+
+/* Cookie Consent Styles */
 .cookie-consent {
   position: fixed;
   bottom: 0;
@@ -164,110 +146,19 @@ li.completed {
   background-color: #eee;
   padding: 15px;
   text-align: center;
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
-  display: none;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+  display:none; /*hidden by default*/
+}
+.cookie-consent p {
+ margin-bottom: 10px;
 }
 
-.cookie-consent button {
-  padding: 8px 12px;
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.cookie-consent button:hover {
-  background-color: #4cae4c;
-}
-
-/* Modal Styling */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000; /* make sure modal is on top */
-}
-
-.modal-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 90%;
-  position: relative; /* Needed for close button to be positioned */
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-.edit-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.edit-form input[type="text"],
-.edit-form input[type="datetime-local"] {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.edit-form button {
-  padding: 8px 12px;
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.edit-form button:hover {
-  background-color: #4cae4c;
-}
-.add-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.add-form input[type="text"],
-.add-form input[type="datetime-local"] {
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-.add-form button {
-  padding: 8px 12px;
-  background-color: #5cb85c;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.add-form button:hover {
-  background-color: #4cae4c;
-}
-#taskHistoryContent {
-  padding: 10px;
-}
-
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem;
+/* Error Message styles */
+.error-message {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    display: none;
 }
