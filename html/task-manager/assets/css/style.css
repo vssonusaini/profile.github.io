@@ -1,0 +1,502 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* styles.css */
+:root {
+  --bg-color: black;
+  --text-color: white;
+  --card-color: #333;
+  --input-color: #444;
+  --accent-color: #2980b9;
+  /* Add an accent color */
+}
+
+[data-theme="light"] {
+  --bg-color: #f9f9f9;
+  --text-color: #222;
+  --card-color: #fff;
+  --input-color: #eee;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, var(--bg-color), #222);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  width: 100%;
+  /* max-width: 800px; */
+  margin-bottom: 5rem;
+}
+
+.card {
+  background-color: var(--card-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.clock {
+  font-size: 1.2em;
+  margin-right: 10px;
+  min-width: 150px;
+  text-align: right;
+}
+
+.toggle-button,
+.theme-button,
+.manage-sounds-button,
+.add-sound-button {
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 5px;
+}
+
+.toggle-button:hover,
+.theme-button:hover,
+.manage-sounds-button:hover,
+.add-sound-button:hover {
+  background-color: #666;
+}
+
+.progress-bar-container {
+  background-color: var(--input-color);
+  height: 8px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  background-color: green;
+  height: 100%;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.8em;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.notification-settings {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.notification-settings label {
+  font-weight: bold;
+}
+
+/* Style the Select and Manage Sounds button in the same line */
+.notification-settings {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  /* Adjust the spacing as needed */
+  margin-bottom: 15px;
+}
+
+#notificationSound {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #777;
+  /* Add a border for better visibility */
+  background-color: var(--input-color);
+  color: var(--text-color);
+}
+
+/* General Styling for Buttons */
+.manage-sounds-button,
+.add-task-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--accent-color);
+  /* Use the accent color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manage-sounds-button:hover,
+.add-task-button:hover {
+  background-color: darken(var(--accent-color), 10%);
+  /* Darken the accent color on hover */
+}
+
+/* Popup Styles */
+.sound-manager-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.sound-manager-content {
+  background-color: var(--card-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.sound-list {
+  margin-top: 10px;
+}
+
+.sound-list .sound-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #555;
+}
+
+.sound-list .sound-item:last-child {
+  border-bottom: none;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.task-input-area {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.task-input-area input,
+.task-input-area select {
+  padding: 10px;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.task-input-area input::placeholder {
+  color: #888;
+}
+
+.task-input-area button {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.task-input-area button:hover {
+  background-color: #3498db;
+}
+
+.task-area {
+  display: grid;
+  grid-template-columns: 70% auto;
+}
+
+.google-ads {
+  text-align: center;
+  background-color: var(--input-color);
+  margin-left: 1rem;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.todo-list,
+.completed-list {
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 4fr));
+  grid-gap: 20px;
+}
+
+.todo-list li,
+.completed-list li {
+  /* background-color: rgba(255, 255, 255, 0.05); */
+  border-radius: 4px;
+  margin-bottom: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  transition: background-color 0.3s, color 0.3s;
+  animation: fadeInLeft;
+  /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.2s;
+  /* don't forget to set a duration! */
+  border: 1px solid;
+}
+
+.completed-list li {
+  color: #888;
+  text-decoration: line-through;
+}
+
+.task-details {
+  flex-grow: 1;
+  font-size: 0.8rem;
+}
+
+.task-title {
+  font-size: 1rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+
+.task-actions {
+  /* display: flex; */
+  height: 100%;
+  align-items: center;
+}
+
+.task-actions button {
+  background-color: var(--input-color);
+  color: var(--text-color);
+  border: none;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 5px;
+}
+
+.task-actions button:hover {
+  background-color: #666;
+}
+
+.empty-state {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  .header h1 {
+    font-size: 1.5em;
+  }
+
+  .clock {
+    font-size: 1em;
+    text-align: left;
+  }
+
+  .task-input-area {
+    flex-direction: column;
+  }
+}
+
+.right-side {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0rem;
+  left: 0rem;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.298);
+  padding: 0.8rem;
+  backdrop-filter: blur(20px);
+}
+
+.brand svg {
+  width: 3.5rem;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
+.brand a {
+  color: var(--theme-bg-color);
+  font-weight: 300;
+}
+
+.brand a:hover {
+  border-bottom: 1px solid var(--theme-bg-color);
+}
+
+.brand p:nth-child(2) {
+  margin-top: 0.2rem;
+}
+
+.brand #Version {
+  font-size: 12px;
+}
+
+/* Styles for the animation container */
+#animationContainer {
+  width: 100%;
+  height: 100vh;
+  /* Use viewport height to fill the screen */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  overflow: hidden;
+  /* Prevent scrollbars during loading */
+  position: fixed;
+  /* Cover the entire viewport */
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  /* Ensure it's on top of other content */
+}
+
+.loader-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 1rem;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 1rem;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://sainisahab.com/images/back-logo.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(0.8);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: logoAnimation 2.5s ease-in-out forwards;
+  border-radius: 10px;
+}
+
+.loader-container::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 3px solid transparent;
+  border-top-color: #4285f4;
+  /* Gmail blue */
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logoAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05) rotate(10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.logo {
+  transition: box-shadow 0.3s ease;
+}
+
+.logo:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.name-text {
+  margin-top: 20px;
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+}
