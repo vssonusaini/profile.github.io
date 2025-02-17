@@ -1,320 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Reminder</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-section {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .input-section input[type="text"] {
+            /* Apply only to text input */
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .input-section input[type="datetime-local"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .input-section button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .input-section button:hover {
+            background-color: #3e8e41;
+        }
+
+        #taskList {
+            list-style: none;
+            padding: 0;
+        }
+
+        #taskList li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #taskList li:last-child {
+            border-bottom: none;
+        }
+
+        #taskList li button {
+            /* Shared styles for all task list buttons */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+            /* Add some space between buttons */
+        }
+
+
+        #taskList li .deleteBtn {
+            background-color: #f44336;
+        }
+
+        #taskList li .deleteBtn:hover {
+            background-color: #da190b;
+        }
+
+        #taskList li .completeBtn {
+            background-color: #2196F3;
+            /* A nice blue */
+        }
+
+        #taskList li .completeBtn:hover {
+            background-color: #0b7dda;
+        }
+
+        #taskList li.completed span {
+            text-decoration: line-through;
+            color: #888;
+            /* Dim the color of completed tasks */
+        }
+
+        .task-details {
+            /* Style for the task details (date/time) */
+            font-size: 0.8em;
+            color: #777;
+            margin-top: 5px;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans">
 
-    <div class="container mx-auto p-4">
-        <h1 class="text-2xl font-bold mb-4">Task Reminder</h1>
+<body>
+    <div class="container">
+        <h1>Task Reminder</h1>
 
-        <!-- Add Task Form -->
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="taskTitle">Task Title:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="taskTitle" type="text" placeholder="Enter task title">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="taskDateTime">Date & Time:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="taskDateTime" type="datetime-local">
-            </div>
-            <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="uncompletedAfter">Uncompleted After:</label>
-                <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="uncompletedAfter">
-                    <option value="none">None</option>
-                    <option value="1">1 Day</option>
-                    <option value="2">2 Days</option>
-                    <option value="3">3 Days</option>
-                    <option value="4">4 Days</option>
-                    <option value="5">5 Days</option>
-                    <option value="6">6 Days</option>
-                    <option value="7">7 Days</option>
-                    <option value="8">8 Days</option>
-                    <option value="9">9 Days</option>
-                    <option value="10">10 Days</option>
-                </select>
-            </div>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="addTaskButton">Add Task</button>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <input type="datetime-local" id="taskDateTime">
+            <button id="addTaskBtn">Add Task</button>
         </div>
 
-        <!-- Task List -->
-        <h2 class="text-xl font-bold mb-2">Task List</h2>
-        <div id="taskList">
-            <!-- Tasks will be displayed here -->
-        </div>
+        <ul id="taskList">
+            <!-- Tasks will be added here -->
+        </ul>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const taskInput = document.getElementById('taskInput');
+            const taskDateTime = document.getElementById('taskDateTime');
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskList = document.getElementById('taskList');
 
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-    // --- Permissions ---
-    requestPermissions();
+            // Request notification permission on page load
+            requestNotificationPermission();
 
-    // --- Task Management ---
-    const taskTitleInput = document.getElementById('taskTitle');
-    const taskDateTimeInput = document.getElementById('taskDateTime');
-    const uncompletedAfterSelect = document.getElementById('uncompletedAfter');
-    const addTaskButton = document.getElementById('addTaskButton');
-    const taskListDiv = document.getElementById('taskList');
+            // Load tasks from local storage on page load
+            loadTasks();
 
-    let tasks = loadTasks(); // Load tasks from localStorage
+            addTaskBtn.addEventListener('click', function () {
+                const taskText = taskInput.value.trim();
+                const dateTimeValue = taskDateTime.value;
 
-    displayTasks();  // Display tasks on page load
-
-    addTaskButton.addEventListener('click', () => {
-        const title = taskTitleInput.value;
-        const dateTime = taskDateTimeInput.value;
-        const uncompletedAfter = uncompletedAfterSelect.value;
-
-        if (title && dateTime) {
-            addTask(title, dateTime, uncompletedAfter);
-            taskTitleInput.value = '';
-            taskDateTimeInput.value = '';
-            uncompletedAfterSelect.value = 'none';  // Reset to default
-        } else {
-            alert('Please enter both title and date/time.');
-        }
-    });
-
-    // --- Functions ---
-
-    function requestPermissions() {
-        if (!("Notification" in window)) {
-            alert("This browser does not support notifications.");
-            return;
-        }
-
-        Notification.requestPermission().then(permission => {
-            if (permission === "granted") {
-                console.log("Notification permission granted.");
-            } else if (permission === "denied") {
-                console.log("Notification permission denied.");
-            } else {
-                console.log("Notification permission: default");
-            }
-        });
-    }
-
-
-    function addTask(title, dateTime, uncompletedAfter) {
-        const task = {
-            id: generateId(),  // Generate a unique ID for the task
-            title: title,
-            dateTime: dateTime,
-            uncompletedAfter: uncompletedAfter,
-            rescheduleCount: 0,
-            rescheduleDateTime: null,
-            completed: false
-        };
-
-        tasks.push(task);
-        saveTasks();
-        displayTasks();
-        scheduleNotification(task); // Schedule the initial notification
-    }
-
-    function generateId() {
-        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    }
-
-    function loadTasks() {
-        const storedTasks = localStorage.getItem('tasks');
-        return storedTasks ? JSON.parse(storedTasks) : [];
-    }
-
-    function saveTasks() {
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-
-    function displayTasks() {
-        taskListDiv.innerHTML = '';  // Clear the existing list
-
-        tasks.forEach(task => {
-            const taskDiv = document.createElement('div');
-            taskDiv.classList.add('bg-white', 'shadow-md', 'rounded', 'p-4', 'mb-2');
-
-            const uncompletedDays = calculateUncompletedDays(task.dateTime, task.uncompletedAfter);
-
-            taskDiv.innerHTML = `
-                <h3 class="text-lg font-semibold">${task.title}</h3>
-                <p>Date & Time: ${formatDateTime(task.dateTime)}</p>
-                <p>Reschedule Count: ${task.rescheduleCount}</p>
-                <p>Reschedule Date & Time: ${task.rescheduleDateTime ? formatDateTime(task.rescheduleDateTime) : 'N/A'}</p>
-                <p>Uncompleted Days: ${uncompletedDays !== null ? uncompletedDays : 'N/A'}</p>
-                <button class="edit-button bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" data-id="${task.id}">Edit</button>
-                <button class="delete-button bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2" data-id="${task.id}">Delete</button>
-                <button class="complete-button bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" data-id="${task.id}" ${task.completed ? 'disabled' : ''}>${task.completed ? 'Completed' : 'Complete'}</button>
-            `;
-
-            taskListDiv.appendChild(taskDiv);
-        });
-
-        // Add event listeners to the buttons *after* they are added to the DOM
-        attachButtonListeners();
-    }
-
-
-    function attachButtonListeners() {
-        document.querySelectorAll('.edit-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const taskId = button.dataset.id;
-                editTask(taskId);
-            });
-        });
-
-        document.querySelectorAll('.delete-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const taskId = button.dataset.id;
-                deleteTask(taskId);
-            });
-        });
-
-        document.querySelectorAll('.complete-button').forEach(button => {
-            button.addEventListener('click', () => {
-                const taskId = button.dataset.id;
-                completeTask(taskId);
-            });
-        });
-    }
-
-
-    function editTask(taskId) {
-        const taskIndex = tasks.findIndex(task => task.id === taskId);
-
-        if (taskIndex === -1) {
-            console.error('Task not found');
-            return;
-        }
-
-        const task = tasks[taskIndex];
-
-        // Populate the form with the task details
-        taskTitleInput.value = task.title;
-        taskDateTimeInput.value = task.dateTime;
-        uncompletedAfterSelect.value = task.uncompletedAfter;
-
-        // Change the "Add Task" button to an "Update Task" button
-        addTaskButton.textContent = 'Update Task';
-        addTaskButton.removeEventListener('click', addTaskButton.onclick); // Remove the old listener
-
-        // Add a click listener to update the task
-        addTaskButton.addEventListener('click', function updateTaskHandler() {
-            const newTitle = taskTitleInput.value;
-            const newDateTime = taskDateTimeInput.value;
-            const newUncompletedAfter = uncompletedAfterSelect.value;
-
-            if (newTitle && newDateTime) {
-                // Update the task
-                tasks[taskIndex].title = newTitle;
-                tasks[taskIndex].dateTime = newDateTime;
-                tasks[taskIndex].uncompletedAfter = newUncompletedAfter;
-
-                saveTasks();
-                displayTasks();
-
-                // Revert the button back to "Add Task"
-                addTaskButton.textContent = 'Add Task';
-                addTaskButton.removeEventListener('click', updateTaskHandler); // Remove the update listener
-                addTaskButton.addEventListener('click', () => { // Re-add the original add task listener
-                    const title = taskTitleInput.value;
-                    const dateTime = taskDateTimeInput.value;
-                    const uncompletedAfter = uncompletedAfterSelect.value;
-
-                    if (title && dateTime) {
-                        addTask(title, dateTime, uncompletedAfter);
-                        taskTitleInput.value = '';
-                        taskDateTimeInput.value = '';
-                        uncompletedAfterSelect.value = 'none';  // Reset to default
-                    } else {
-                        alert('Please enter both title and date/time.');
-                    }
-                });
-
-                // Clear the form
-                taskTitleInput.value = '';
-                taskDateTimeInput.value = '';
-                uncompletedAfterSelect.value = 'none';
-            } else {
-                alert('Please enter both title and date/time.');
-            }
-        });
-    }
-
-
-    function deleteTask(taskId) {
-        tasks = tasks.filter(task => task.id !== taskId);
-        saveTasks();
-        displayTasks();
-    }
-
-    function completeTask(taskId) {
-        const taskIndex = tasks.findIndex(task => task.id === taskId);
-        if (taskIndex !== -1) {
-            tasks[taskIndex].completed = true;
-            saveTasks();
-            displayTasks();
-        }
-    }
-
-    function calculateUncompletedDays(dateTime, uncompletedAfter) {
-        if (uncompletedAfter === 'none') {
-            return null;  // Or some other indicator that it's not applicable
-        }
-
-        const taskDueDate = new Date(dateTime);
-        const now = new Date();
-        const diffInMs = now.getTime() - taskDueDate.getTime();
-        const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
-
-        if (diffInDays > parseInt(uncompletedAfter)) {
-            return diffInDays;
-        } else {
-            return 0; // Or some other indicator that it's not uncompleted yet
-        }
-    }
-
-
-    function formatDateTime(dateTimeString) {
-        const date = new Date(dateTimeString);
-        return date.toLocaleString(); // You can customize the format as needed
-    }
-
-    function scheduleNotification(task) {
-        const taskDateTime = new Date(task.dateTime).getTime();
-        const now = Date.now();
-        const delay = taskDateTime - now;
-
-        if (delay > 0) {
-            setTimeout(() => {
-                showNotification(task.title);
-            }, delay);
-        }
-    }
-
-
-    function showNotification(title) {
-        if (Notification.permission === "granted") {
-            new Notification("Task Reminder", {
-                body: title,
-                icon: 'icon.png' // Replace with your icon path
-            });
-        } else if (Notification.permission !== "denied") {
-            Notification.requestPermission().then(permission => {
-                if (permission === "granted") {
-                    new Notification("Task Reminder", {
-                        body: title,
-                        icon: 'icon.png'  // Replace with your icon path
-                    });
+                if (taskText !== '') {
+                    addTask(taskText, dateTimeValue, false); // Add task with date/time and initial completion status
+                    taskInput.value = '';
+                    taskDateTime.value = ''; // Clear date/time input
+                    taskInput.focus();
                 }
             });
-        }
-    }
 
+            function addTask(taskText, dateTimeValue, isCompleted) {
+                const listItem = document.createElement('li');
+                const formattedDateTime = formatDateTime(dateTimeValue);  // Format the date/time for display
 
-});
-   </script>
+                listItem.innerHTML = `
+            <span>${taskText}</span>
+            <div class="task-details">Scheduled: ${formattedDateTime}</div>
+            <button class="completeBtn">${isCompleted ? 'Undo' : 'Complete'}</button>
+            <button class="deleteBtn">Delete</button>
+        `;
+
+                if (isCompleted) {
+                    listItem.classList.add('completed');
+                }
+
+                taskList.appendChild(listItem);
+
+                const deleteBtn = listItem.querySelector('.deleteBtn');
+                deleteBtn.addEventListener('click', function () {
+                    listItem.remove();
+                    updateLocalStorage();
+                });
+
+                const completeBtn = listItem.querySelector('.completeBtn');
+                completeBtn.addEventListener('click', function () {
+                    listItem.classList.toggle('completed');
+                    const isCurrentlyCompleted = listItem.classList.contains('completed');
+
+                    if (isCurrentlyCompleted) {
+                        completeBtn.textContent = 'Undo';
+                    } else {
+                        completeBtn.textContent = 'Complete';
+                    }
+
+                    updateLocalStorage();
+                });
+
+                // Schedule notification
+                if (dateTimeValue) {
+                    scheduleNotification(taskText, dateTimeValue);
+                }
+            }
+
+            function loadTasks() {
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.forEach(task => {
+                    addTask(task.text, task.dateTime, task.completed); // Load task with date/time and completion status
+                });
+
+                // Reschedule notifications on page load
+                tasks.forEach(task => {
+                    if (task.dateTime && new Date(task.dateTime) > new Date()) {  // Only reschedule if the date/time is in the future
+                        scheduleNotification(task.text, task.dateTime);
+                    }
+                });
+            }
+
+            function updateLocalStorage() {
+                const tasks = [];
+                const listItems = taskList.querySelectorAll('li');
+                listItems.forEach(item => {
+                    tasks.push({
+                        text: item.querySelector('span').textContent,
+                        dateTime: item.querySelector('.task-details').textContent.replace('Scheduled: ', ''),  //Extract stored date-time for localstore,
+                        completed: item.classList.contains('completed')
+                    });
+                });
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            }
+
+            function requestNotificationPermission() {
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notifications.");
+                    return;
+                }
+
+                Notification.requestPermission().then(permission => {
+                    if (permission === "granted") {
+                        console.log("Notification permission granted.");
+                    } else if (permission === "denied") {
+                        console.log("Notification permission denied.");
+                    } else if (permission === "default") {
+                        console.log("Notification permission dismissed.");
+                    }
+                });
+            }
+
+            function scheduleNotification(taskText, dateTimeValue) {
+                const scheduledTime = new Date(dateTimeValue).getTime();
+                const now = Date.now();
+                const delay = scheduledTime - now;
+
+                if (delay > 0) {
+                    setTimeout(() => {
+                        showNotification(taskText);
+                    }, delay);
+                }
+            }
+
+            function showNotification(taskText) {
+                if (Notification.permission === "granted") {
+                    const notification = new Notification("Task Reminder", {
+                        body: taskText,
+                        icon: 'https://sainisahab.com/images/back-logo.png', // Replace with your icon path, optional
+                    });
+
+                    notification.onclick = function () {
+                        // Optional: Handle click on notification (e.g., focus the tab)
+                        window.focus();
+                    };
+                }
+            }
+
+            function formatDateTime(dateTimeValue) {
+                if (!dateTimeValue) return "No schedule"; //Return default value if no date-time provided
+
+                const date = new Date(dateTimeValue);
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: true // Use 12-hour time
+                };
+                return date.toLocaleString(undefined, options);
+            }
+        });
+    </script>
 </body>
+
 </html>
