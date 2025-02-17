@@ -253,6 +253,7 @@ h1 {
 }
 
 .google-ads {
+  display: block;
   text-align: center;
   background-color: var(--input-color);
   margin-left: 1rem;
