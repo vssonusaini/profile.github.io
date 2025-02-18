@@ -5,13 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
       {
         id: "sound-1739819190402",
         name: "sci-fi-reject",
-        src: "/assets/sound/mixkit-bell-notification-933.wav",
-      },
-      {
-        id: "sound-1739819225007",
-        name: "happy-bells",
-        src: "/assets/sound/mixkit-happy-bells-notification-937.wav",
-      },
+        src: "https://sainisahab.com/html/task-manager/assets/sound/mixkit-bell-notification-933.wav",
+      }
+   
     ];
     localStorage.setItem("sounds", JSON.stringify(defaultSound));
   }
