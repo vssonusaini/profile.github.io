@@ -1,13 +1,127 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Function to request notification permission
+  function requestNotificationPermission() {
+    if ("Notification" in window) {
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          console.log("Notification permission granted.");
+        } else if (permission === "denied") {
+          console.log("Notification permission denied.");
+        } else {
+          console.log("Notification permission ignored.");
+        }
+      });
+    } else {
+      console.log("This browser does not support notifications.");
+    }
+  }
+
+  const downloadExcelBtn = document.getElementById("downloadExcelBtn");
+
+  downloadExcelBtn.addEventListener("click", function () {
+    downloadExcelReport();
+  });
+
+  function downloadExcelReport() {
+    // 1. Prepare data for Excel
+    const data = tasks.map((task) => ({
+      ID: task.id,
+      Title: task.title,
+      ScheduledTime: new Date(task.scheduledTime).toLocaleString(),
+      Completed: task.completed ? "Yes" : "No",
+      CompletedTime:
+        task.completed && task.completedTime
+          ? new Date(task.completedTime).toLocaleString()
+          : "",
+      RescheduledTime: task.rescheduledTime
+        ? new Date(task.rescheduledTime).toLocaleString()
+        : "",
+      RescheduleCount: task.rescheduleCount || 0,
+      AutoUncompleteDays: task.autoUncompleteDays,
+    }));
+
+    // 2. Create a worksheet
+    const ws = XLSX.utils.json_to_sheet(data);
+
+    // 3. Create a workbook and add the worksheet
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Tasks");
+
+    // 4. Generate the Excel file and trigger the download
+    XLSX.writeFile(wb, "tasks_report.xlsx");
+  }
+
+  // Excel Upload code
+  const uploadExcelBtn = document.getElementById("uploadExcelBtn");
+  const excelFileInput = document.getElementById("excelFileInput");
+
+  uploadExcelBtn.addEventListener("click", function () {
+    excelFileInput.click(); // Trigger file input
+  });
+
+  excelFileInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (file) {
+      importTasksFromExcel(file);
+    }
+  });
+
+  function importTasksFromExcel(file) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const data = new Uint8Array(e.target.result);
+      const workbook = XLSX.read(data, { type: "array" });
+
+      // Assuming the first sheet contains the task data
+      const sheetName = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[sheetName];
+
+      // Convert the sheet to JSON
+      const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+      // Process the JSON data and add tasks
+      jsonData.forEach((row) => {
+        // Map Excel columns to task properties
+        const newTask = {
+          id: nextTaskId++,
+          title: row["Title"], // Adjust column names to match your Excel file
+          scheduledTime: new Date(row["ScheduledTime"]).toISOString(),
+          autoUncompleteDays: row["AutoUncompleteDays"] || "none", // Default value
+          completed: row["Completed"] === "Yes",
+          completedTime: row["CompletedTime"]
+            ? new Date(row["CompletedTime"]).toISOString()
+            : null,
+          rescheduledTime: row["RescheduledTime"]
+            ? new Date(row["RescheduledTime"]).toISOString()
+            : null,
+          rescheduleCount: row["RescheduleCount"] || 0,
+          autoReschedule: true, // Default value
+        };
+
+        tasks.push(newTask);
+      });
+
+      saveTasks();
+      renderTasks();
+    };
+
+    reader.readAsArrayBuffer(file);
+  }
+
   var soundsdb = JSON.parse(localStorage.getItem("sounds"));
   if (soundsdb === null) {
     const defaultSound = [
       {
         id: "sound-1739819190402",
         name: "sci-fi-reject",
-        src: "https://sainisahab.com/html/task-manager/assets/sound/mixkit-bell-notification-933.wav",
-      }
-   
+        src: "./assets/sound/mixkit-bell-notification-933.wav",
+      },
+      {
+        id: "sound-1739819225007",
+        name: "happy-bells",
+        src: "./assets/sound/mixkit-happy-bells-notification-937.wav",
+      },
     ];
     localStorage.setItem("sounds", JSON.stringify(defaultSound));
   }
@@ -108,11 +222,35 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function showNotification(title, body) {
+  // Function to get a random emoji
+  function getRandomEmoji() {
+    const emojis = ["🎉", "🔔", "✅", "⏰", "🗓️", "📌"]; // Add your favorite emojis here
+    const randomIndex = Math.floor(Math.random() * emojis.length);
+    return emojis[randomIndex];
+  }
+
+  // Function to convert an emoji to a data URL for use as an icon
+  async function emojiToDataURL(emoji) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 32; // Adjust size as needed
+    canvas.height = 32;
+    const ctx = canvas.getContext("2d");
+    ctx.font = "24px sans-serif"; // Adjust font size as needed
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(emoji, canvas.width / 2, canvas.height / 2);
+    return canvas.toDataURL();
+  }
+
+  async function showNotification(title, body) {
     if (Notification.permission === "granted") {
+      const randomEmoji = getRandomEmoji();
+      const notificationBody = `${randomEmoji} ${body}`; // Add emoji to the notification
+      const iconDataURL = await emojiToDataURL(randomEmoji); // Convert emoji to icon
+
       new Notification(title, {
-        body: body,
-        icon: "icon.png",
+        body: notificationBody,
+        icon: iconDataURL, // Use the emoji as the icon
       });
       playNotificationSound(); // Play the sound *after* the notification
     } else if (Notification.permission !== "denied") {
@@ -154,36 +292,78 @@ document.addEventListener("DOMContentLoaded", function () {
   function createTaskListItem(task) {
     const li = document.createElement("li");
     li.innerHTML = `
-            <div class="task-details">
-                <span class="task-title">${task.title}</span><br><br>
-                Scheduled: ${new Date(task.scheduledTime).toLocaleString()}<br>
-                ${
-                  task.rescheduledTime
-                    ? `Rescheduled: ${new Date(
-                        task.rescheduledTime
-                      ).toLocaleString()}`
-                    : ""
-                } -
-                Reschedule Count: ${task.rescheduleCount || 0}
-            </div>
-            <div class="task-actions">
-                <button class="edit-btn" data-id="${
-                  task.id
-                }"><i class="fas fa-edit"></i></button>
-                <button class="delete-btn" data-id="${
-                  task.id
-                }"><i class="fas fa-trash"></i></button>
-                ${
-                  task.completed
-                    ? `<button class="undo-btn" data-id="${task.id}">Undo</button>`
-                    : `<button class="complete-btn" data-id="${task.id}">Complete</button>`
-                }
-            </div>
-        `;
+          <div class="task-details">
+              <span class="task-title">${task.title}</span><br><br>
+              Scheduled: ${new Date(task.scheduledTime).toLocaleString()}<br>
+              ${
+                task.rescheduledTime
+                  ? `Rescheduled: ${new Date(
+                      task.rescheduledTime
+                    ).toLocaleString()}`
+                  : ""
+              } -
+              Reschedule Count: ${task.rescheduleCount || 0}
+          </div>
+          <div class="task-actions">
+              <button class="edit-btn" data-id="${
+                task.id
+              }"><i class="fas fa-edit"></i></button>
+              <button class="delete-btn" data-id="${
+                task.id
+              }"><i class="fas fa-trash"></i></button>
+              ${
+                task.completed
+                  ? `<button class="undo-btn" data-id="${task.id}">Undo</button>`
+                  : `<button class="complete-btn" data-id="${task.id}">Complete</button>`
+              }
+          </div>
+      `;
 
     if (task.completed) {
       li.classList.add("completed");
     }
+
+    // Apply temporary highlight *after* the element is created and added to the DOM
+    if (task.recentlyScheduled) {
+      li.classList.add("recently-scheduled");
+      setTimeout(() => {
+        li.classList.remove("recently-scheduled");
+        task.recentlyScheduled = false; // Prevent styles from remaining
+
+        //Crucial: Save tasks to localStorage *after* removing the flag
+        saveTasks();
+      }, 60000); // 1 minute
+    }
+
+    //Edit button functionality
+
+    const editBtn = li.querySelector(".edit-btn");
+    editBtn.addEventListener("click", () => {
+      taskTitleInput.value = task.title;
+      taskDatetimeInput.value = new Date(task.scheduledTime)
+        .toISOString()
+        .slice(0, 16);
+      autoUncompleteSelect.value = task.autoUncompleteDays;
+
+      addTaskBtn.textContent = "Update Task";
+      addTaskBtn.dataset.editingId = task.id;
+
+      addTaskBtn.removeEventListener("click", addTaskBtnClickHandler);
+
+      addTaskBtn.clickHandler = function () {
+        updateTask(task.id);
+      };
+
+      addTaskBtn.addEventListener("click", addTaskBtn.clickHandler);
+    });
+
+    // Delete button functionality
+    const deleteBtn = li.querySelector(".delete-btn");
+    deleteBtn.addEventListener("click", () => {
+      tasks = tasks.filter((t) => t.id !== task.id);
+      saveTasks();
+      renderTasks();
+    });
 
     return li;
   }
@@ -196,6 +376,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const title = taskTitleInput.value.trim();
     const scheduledTime = taskDatetimeInput.value;
     const autoUncompleteDays = autoUncompleteSelect.value;
+
+    console.log(scheduledTime);
 
     // VALIDATION: Check if title and scheduledTime are not empty
     if (!title) {
@@ -270,9 +452,12 @@ document.addEventListener("DOMContentLoaded", function () {
         addTaskBtn.dataset.editingId = taskId;
 
         addTaskBtn.removeEventListener("click", addTaskBtnClickHandler);
+
+        // Define clickHandler *outside* the event listener and before setting it
         addTaskBtn.clickHandler = function () {
           updateTask(taskId);
         };
+
         addTaskBtn.addEventListener("click", addTaskBtn.clickHandler);
       }
     }
@@ -307,9 +492,10 @@ document.addEventListener("DOMContentLoaded", function () {
         autoUncompleteSelect.value = "none";
         addTaskBtn.textContent = "Add Task";
         delete addTaskBtn.dataset.editingId;
-        addTaskBtn.removeEventListener("click", addTaskBtnClickHandler);
 
-        addTaskBtn.addEventListener("click", addTaskBtnClickHandler);
+        addTaskBtn.removeEventListener("click", addTaskBtn.clickHandler); //remove the existing custom click handler
+
+        addTaskBtn.addEventListener("click", addTaskBtnClickHandler); //reattach the default add task function
       }
     }
   }
@@ -347,6 +533,9 @@ document.addEventListener("DOMContentLoaded", function () {
     if (timeDiff > 0) {
       setTimeout(() => {
         showNotification("Task Reminder", `Task "${task.title}" is due!`);
+        playNotificationSound();
+        task.recentlyScheduled = true;
+
         // Auto-Reschedule Logic
         if (task.autoReschedule) {
           const rescheduleMinutes =
@@ -468,10 +657,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const soundItem = document.createElement("div");
       soundItem.classList.add("sound-item");
       soundItem.innerHTML = `
-            <span>${sound.name}</span>
-            <button class="play-sound" data-id="${sound.id}">Play</button>
-            <button class="delete-sound" data-id="${sound.id}">Delete</button>
-            `;
+    <span>${sound.name}</span>
+    <button class="play-sound" data-id="${sound.id}">Play</button>
+    <button class="delete-sound" data-id="${sound.id}">Delete</button>
+    `;
       soundList.appendChild(soundItem);
     });
   }
