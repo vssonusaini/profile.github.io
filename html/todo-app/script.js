@@ -69,7 +69,7 @@ function connectToMQTT() {
         clientId: 'todo-app-' + Math.random().toString(16).substr(2, 8) // Unique client ID
     };
 
-    mqttClient = mqtt.connect('ws://broker.hivemq.com:8000/mqtt', options);
+    mqttClient = mqtt.connect('ws://broker.hivemq.com:8884/mqtt', options);
 
     mqttClient.on('connect', () => {
         console.log('Connected to MQTT broker');
