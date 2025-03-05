@@ -65,16 +65,19 @@ function connectToMQTT() {
         mqttClient.end(); // Disconnect any existing client
     }
     const options = {
-        protocol: 'ws',
-        clientId: 'todo-app-' + Math.random().toString(16).substr(2, 8) // Unique client ID
+        clientId: 'todo-app-' + Math.random().toString(16).substr(2, 8), // Unique client ID
+        //  protocol: 'wss',  // The protocol is inferred from the URL.
+        clean: true, // Important: Start with a clean session.
+        reconnectPeriod: 1000, // Try to reconnect every 1 second if disconnected.
+
     };
 
-    mqttClient = mqtt.connect('ws://broker.hivemq.com:8884/mqtt', options);
+    mqttClient = mqtt.connect('wss://broker.hivemq.com:8884/mqtt', options);
 
     mqttClient.on('connect', () => {
         console.log('Connected to MQTT broker');
-        //Subscribe topic
-        mqttClient.subscribe(`todo/history/${broadcastSettings.key}`, (err) => {
+        // Subscribe topic (using the user's key)
+        mqttClient.subscribe(`todo/history/${broadcastSettings.key}`, { qos: 1 }, (err) => { // Added QoS
             if (err) {
                 console.error('Failed to subscribe:', err);
             } else {
