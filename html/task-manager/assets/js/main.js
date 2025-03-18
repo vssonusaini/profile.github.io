@@ -761,6 +761,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   renderTasks();
+
+  function shouldRunAutoUncompleteTasks() {
+            const lastRunDate = localStorage.getItem('lastAutoUncompleteDate');
+            const today = new Date().toLocaleDateString();
+
+            return lastRunDate !== today; // Return true if it hasn't run today, false otherwise
+        }
+
+        function checkToday() {
+            if (!shouldRunAutoUncompleteTasks()) {
+                console.log("autoUncompleteTasks already ran today.");
+                return; // Exit if already ran today
+            }
+
+            // --- Your logic to uncomplete tasks goes here ---
+            console.log("Running autoUncompleteTasks...");
+
+            // Call Hear
+          autoUncompleteTasks()
+
+            const today = new Date().toLocaleDateString();
+            localStorage.setItem('lastAutoUncompleteDate', today);
+            console.log(`autoUncompleteTasks ran successfully on ${today}`);
+        }
+
+
+        // Initial run on page load
+        if (shouldRunAutoUncompleteTasks()) {
+            checkToday();
+        }
+  
   setInterval(autoUncompleteTasks, 24 * 60 * 60 * 1000);
   // setInterval(autoUncompleteTasks, 10000);
 });
