@@ -77,10 +77,10 @@ async function processFile(file) {
                     for (let row = range.e.r; row >= range.s.r; row--) {
                         const cellAddress = XLSX.utils.encode_cell({ r: row, c: range.s.c });
 
-                        if (worksheet[cellAddress] && worksheet[cellAddress].v != null && worksheet[cellAddress].v != undefined) {
-                            lastRow = row;
-                            break;
-                        }
+                        // if (worksheet[cellAddress] && worksheet[cellAddress].v != null && worksheet[cellAddress].v != undefined) {
+                        //     lastRow = row;
+                        //     break;
+                        // }
                     }
                     const sheetData = XLSX.utils.sheet_to_json(worksheet, {
                         header: 1,
