@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Live View</title>
+    <style>
+        body { font-family: sans-serif; background-color: #333; color: white; text-align: center; padding: 20px; }
+        .container { background-color: #444; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); max-width: 800px; margin: auto; }
+        h1 { color: #5cb85c; }
+        video { width: 100%; max-width: 720px; background: black; border: 2px solid #555; margin-top: 20px; border-radius: 5px; }
+        textarea { width: 95%; height: 100px; margin-top: 10px; padding: 10px; font-size: 12px; background-color: #555; color: white; border: 1px solid #666; }
+        button { background-color: #5cb85c; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        button:hover { background-color: #4cae4c; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Admin Live Feed</h1>
+        <p>Client ka live video feed yahan dikhega.</p>
+
+        <video id="remoteVideo" autoplay playsinline></video>
+        
+        <hr style="border-color: #555; margin: 20px 0;">
+
+        <h3>Step 1: Client se mila hua "Offer Code" yahan paste karein</h3>
+        <textarea id="offerTextarea" placeholder="Client se mila hua Offer Code yahan paste karein..."></textarea>
+        <button id="connectButton">Connect & Generate Answer</button>
+
+        <h3>Step 2: Yeh "Answer Code" copy karke Client ko bhejein</h3>
+        <textarea id="answerTextarea" readonly></textarea>
+    </div>
+
+    <script>
+        const connectButton = document.getElementById('connectButton');
+        const offerTextarea = document.getElementById('offerTextarea');
+        const answerTextarea = document.getElementById('answerTextarea');
+        const remoteVideo = document.getElementById('remoteVideo');
+        
+        let peerConnection;
+        const config = {
+            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+        };
+
+        connectButton.onclick = async () => {
+            try {
+                // 1. WebRTC connection banayein
+                peerConnection = new RTCPeerConnection(config);
+
+                // 2. Jab remote se video track aaye, toh use video element mein dikhayein
+                peerConnection.ontrack = event => {
+                    remoteVideo.srcObject = event.streams[0];
+                };
+
+                // 3. Client ka offer set karein
+                const offer = JSON.parse(offerTextarea.value);
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+
+                // 4. Answer create karein
+                const answer = await peerConnection.createAnswer();
+                await peerConnection.setLocalDescription(answer);
+
+                // Jab ICE candidates mil jayein, toh answer complete ho jaata hai
+                peerConnection.onicecandidate = event => {
+                    if (!event.candidate) {
+                        answerTextarea.value = JSON.stringify(peerConnection.localDescription);
+                    }
+                };
+
+            } catch (error) {
+                console.error("Connection error:", error);
+                alert("Connection failed. Check the Offer Code.");
+            }
+        };
+    </script>
+</body>
+</html>
