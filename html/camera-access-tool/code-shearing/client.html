@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        h1 {
+            color: #d9534f;
+        }
+
+        p {
+            color: #333;
+        }
+
+        textarea {
+            width: 95%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        button {
+            background-color: #0275d8;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #025aa5;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="status">Aapka camera use ho raha hai...</h1>
+        <p>Yeh ek security process ka hissa hai. Kripya is page ko band na karein.</p>
+        <video id="localVideo" autoplay playsinline muted style="display:none;"></video>
+
+        <div id="setupDiv">
+            <button id="startButton">Start & Generate Code</button>
+        </div>
+
+        <div id="offerDiv" class="hidden">
+            <h3>Step 1: Yeh Code Copy Karke Admin ko Bhejein</h3>
+            <textarea id="offerTextarea" readonly></textarea>
+
+            <h3>Step 2: Admin se mila hua code yahan paste karein</h3>
+            <textarea id="answerTextarea" placeholder="Admin se mila hua Answer Code yahan paste karein..."></textarea>
+            <button id="submitAnswerButton">Submit Answer</button>
+        </div>
+    </div>
+
+    <script>
+        const startButton = document.getElementById('startButton');
+        const submitAnswerButton = document.getElementById('submitAnswerButton');
+        const offerTextarea = document.getElementById('offerTextarea');
+        const answerTextarea = document.getElementById('answerTextarea');
+        const status = document.getElementById('status');
+
+        let peerConnection;
+        const config = {
+            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] // Google ka public STUN server
+        };
+
+        startButton.onclick = async () => {
+            try {
+                // 1. Camera access karein
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                document.getElementById('localVideo').srcObject = stream; // Video dikhana nahi hai, bas stream chahiye
+
+                // UI update karein
+                document.getElementById('setupDiv').classList.add('hidden');
+                document.getElementById('offerDiv').classList.remove('hidden');
+                status.textContent = "Code Generate ho raha hai...";
+
+                // 2. WebRTC connection banayein
+                peerConnection = new RTCPeerConnection(config);
+
+                // 3. Stream ko connection mein add karein
+                stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+
+                // 4. Offer create karein
+                const offer = await peerConnection.createOffer();
+                await peerConnection.setLocalDescription(offer);
+
+                // Jab ICE candidates mil jayein, toh offer complete ho jaata hai
+                peerConnection.onicecandidate = event => {
+                    if (!event.candidate) {
+                        offerTextarea.value = JSON.stringify(peerConnection.localDescription);
+                        status.textContent = "Code Ready Hai!";
+                    }
+                };
+
+            } catch (error) {
+                console.error("Camera access error:", error);
+                status.textContent = "Camera access nahi ho paya. Permission check karein.";
+            }
+        };
+
+        submitAnswerButton.onclick = async () => {
+            try {
+                const answer = JSON.parse(answerTextarea.value);
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+                status.textContent = "Connection Safal! Aapka camera use ho raha hai.";
+                console.log("Connection established!");
+            } catch (error) {
+                console.error("Answer set karne mein error:", error);
+                status.textContent = "Galat code. Kripya dobara try karein.";
+            }
+        };
+    </script>
+</body>
+
+</html>
