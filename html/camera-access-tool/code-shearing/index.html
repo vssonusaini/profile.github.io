@@ -1,144 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camera Access</title>
+    <title>Security Access</title>
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: auto;
-        }
-
-        h1 {
-            color: #d9534f;
-        }
-
-        p {
-            color: #333;
-        }
-
-        textarea {
-            width: 95%;
-            height: 100px;
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 12px;
-        }
-
-        button {
-            background-color: #0275d8;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #025aa5;
-        }
-
-        .hidden {
-            display: none;
-        }
+        body { font-family: sans-serif; background-color: #f0f0f0; text-align: center; padding: 20px; }
+        .container { background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 600px; margin: auto; }
+        h1, h3 { color: #333; }
+        p#status { font-size: 1.2em; font-weight: bold; color: #d9534f; min-height: 25px;}
+        textarea { width: 95%; height: 100px; margin-top: 10px; padding: 10px; font-size: 12px; }
+        button { background-color: #0275d8; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; margin: 10px 5px; }
+        button:hover { background-color: #025aa5; }
+        button.share-btn { background-color: #5cb85c; }
+        button.share-btn:hover { background-color: #4cae4c; }
+        .hidden { display: none; }
     </style>
 </head>
-
 <body>
 
     <div class="container">
-        <h1 id="status">Aapka camera use ho raha hai...</h1>
-        <p>Yeh ek security process ka hissa hai. Kripya is page ko band na karein.</p>
+        <h1>Security Verification</h1>
+        <p id="status">Please select an option to share.</p>
         <video id="localVideo" autoplay playsinline muted style="display:none;"></video>
 
-        <div id="setupDiv">
-            <button id="startButton">Start & Generate Code</button>
+        <div id="selectionDiv">
+            <!-- <button class="share-btn" onclick="startStream('camera')">Share Only Camera</button> -->
+            <button class="share-btn" onclick="startStream('audiocam')">Share Camera</button>
+            <button class="share-btn" onclick="startStream('screen')">Share Screen</button>
         </div>
 
-        <div id="offerDiv" class="hidden">
-            <h3>Step 1: Yeh Code Copy Karke Admin ko Bhejein</h3>
+        <div id="connectionDiv" class="hidden">
+            <h3>Step 1: Copy this Code and Send it to the Admin</h3>
             <textarea id="offerTextarea" readonly></textarea>
-
-            <h3>Step 2: Admin se mila hua code yahan paste karein</h3>
-            <textarea id="answerTextarea" placeholder="Admin se mila hua Answer Code yahan paste karein..."></textarea>
-            <button id="submitAnswerButton">Submit Answer</button>
+            
+            <h3>Step 2: Paste the code received from the Admin here</h3>
+            <textarea id="answerTextarea" placeholder="Paste the Answer Code received from the Admin here..."></textarea>
+            <button id="submitAnswerButton">Final Connect</button>
         </div>
     </div>
 
     <script>
-        const startButton = document.getElementById('startButton');
-        const submitAnswerButton = document.getElementById('submitAnswerButton');
+        const statusEl = document.getElementById('status');
+        const selectionDiv = document.getElementById('selectionDiv');
+        const connectionDiv = document.getElementById('connectionDiv');
         const offerTextarea = document.getElementById('offerTextarea');
         const answerTextarea = document.getElementById('answerTextarea');
-        const status = document.getElementById('status');
+        const submitAnswerButton = document.getElementById('submitAnswerButton');
 
         let peerConnection;
+        let localStream;
         const config = {
-            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] // Google ka public STUN server
+            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
         };
 
-        startButton.onclick = async () => {
+        async function startStream(type) {
             try {
-                // 1. Camera access karein
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-                document.getElementById('localVideo').srcObject = stream; // Video dikhana nahi hai, bas stream chahiye
-
-                // UI update karein
-                document.getElementById('setupDiv').classList.add('hidden');
-                document.getElementById('offerDiv').classList.remove('hidden');
-                status.textContent = "Code Generate ho raha hai...";
-
-                // 2. WebRTC connection banayein
-                peerConnection = new RTCPeerConnection(config);
-
-                // 3. Stream ko connection mein add karein
-                stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
-
-                // 4. Offer create karein
-                const offer = await peerConnection.createOffer();
-                await peerConnection.setLocalDescription(offer);
-
-                // Jab ICE candidates mil jayein, toh offer complete ho jaata hai
-                peerConnection.onicecandidate = event => {
-                    if (!event.candidate) {
-                        offerTextarea.value = JSON.stringify(peerConnection.localDescription);
-                        status.textContent = "Code Ready Hai!";
-                    }
+                let stream;
+                const mediaOptions = {
+                    'camera': { video: true, audio: false },
+                    'audiocam': { video: true, audio: true },
+                    'screen': { video: true }
                 };
 
+                statusEl.textContent = 'Waiting for permission...';
+                if (type === 'screen') {
+                    stream = await navigator.mediaDevices.getDisplayMedia(mediaOptions[type]);
+                } else {
+                    stream = await navigator.mediaDevices.getUserMedia(mediaOptions[type]);
+                }
+                
+                localStream = stream;
+                document.getElementById('localVideo').srcObject = localStream;
+
+                selectionDiv.classList.add('hidden');
+                connectionDiv.classList.remove('hidden');
+                statusEl.textContent = 'Generating code...';
+
+                await createOffer();
+
             } catch (error) {
-                console.error("Camera access error:", error);
-                status.textContent = "Camera access nahi ho paya. Permission check karein.";
+                console.error("Stream access error:", error);
+                statusEl.textContent = "Could not get access. Please check permissions.";
             }
-        };
+        }
+
+        async function createOffer() {
+            peerConnection = new RTCPeerConnection(config);
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.onicecandidate = event => {
+                if (!event.candidate) {
+                    offerTextarea.value = JSON.stringify(peerConnection.localDescription);
+                    statusEl.textContent = "Code Ready! Send this to the Admin.";
+                }
+            };
+            
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+        }
 
         submitAnswerButton.onclick = async () => {
+            if (!answerTextarea.value) {
+                statusEl.textContent = "Please paste the Answer Code.";
+                return;
+            }
             try {
                 const answer = JSON.parse(answerTextarea.value);
                 await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-                status.textContent = "Connection Safal! Aapka camera use ho raha hai.";
-                console.log("Connection established!");
+                statusEl.textContent = "Connection Successful! Your stream is active.";
             } catch (error) {
-                console.error("Answer set karne mein error:", error);
-                status.textContent = "Galat code. Kripya dobara try karein.";
+                console.error("Error setting answer:", error);
+                statusEl.textContent = "Invalid code. Please try again.";
             }
         };
     </script>
 </body>
-
 </html>
