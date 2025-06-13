@@ -1,136 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Live View</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <style>
-        body {
-            font-family: sans-serif;
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .container {
-            background-color: #444;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h1 {
-            color: #5cb85c;
-        }
-
-        p#status {
-            min-height: 20px;
-        }
-
-        video {
-            width: 100%;
-            max-width: 720px;
-            background: black;
-            border: 2px solid #555;
-            margin-top: 20px;
-            border-radius: 5px;
-        }
-
-        textarea {
-            width: 95%;
-            height: 100px;
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 12px;
-            background-color: #555;
-            color: white;
-            border: 1px solid #666;
-        }
-
-        button {
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        button:hover {
-            background-color: #4cae4c;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #333; color: white; padding: 20px; }
+        .panel { max-width: 800px; margin: auto; background-color: #444; padding: 20px; border-radius: 12px; margin-bottom: 20px; text-align: center; }
+        h1, h3 { color: #5cb85c; }
+        video { width: 100%; background: black; border: 2px solid #555; border-radius: 8px; }
+        textarea { width: 100%; box-sizing: border-box; height: 80px; margin-top: 5px; padding: 10px; background-color: #555; color: white; border: 1px solid #666; border-radius: 6px; }
+        button { background-color: #5cb85c; color: white; border: none; padding: 12px 18px; border-radius: 6px; cursor: pointer; font-size: 15px; margin: 5px; transition: background-color 0.2s; }
+        button:hover { background-color: #4cae4c; }
+        button:disabled { background-color: #777; cursor: not-allowed; opacity: 0.6; }
+        .rec-btn { background-color: #d9534f; } .rec-btn:hover { background-color: #c9302c; }
+        .location-btn { background-color: #f0ad4e; } .location-btn:hover { background-color: #ec971f; }
+        #statsBox { margin-top: 10px; background: #3a3a3a; padding: 10px; border-radius: 5px; }
+        #map { height: 400px; width: 100%; border-radius: 8px; margin-top: 15px; }
+        #chatBox { border: 1px solid #666; height: 150px; overflow-y: scroll; text-align: left; padding: 10px; background: #555; margin-top: 15px; border-radius: 6px; }
+        #chatInput { width: calc(100% - 85px); padding: 10px; border-radius: 6px; border: 1px solid #666; background: #555; color: white; }
+        .button-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
     </style>
 </head>
-
 <body>
-
-    <div class="container">
+    <div class="panel">
         <h1>Admin Live Feed</h1>
         <p id="status">Waiting for the Client's 'Offer Code'...</p>
-
         <video id="remoteVideo" autoplay playsinline></video>
+        <div id="statsBox">Video Bitrate: <span>N/A</span></div>
+        <canvas id="snapshotCanvas" style="display:none;"></canvas>
+    </div>
 
+    <div class="panel">
+        <h3>Client Location</h3>
+        <p id="locationCoords">Waiting for location data...</p>
+        <div id="map"></div>
+    </div>
+
+    <div class="panel">
+        <h3>Remote Control Panel</h3>
+        <div class="button-group">
+            <button id="muteButton" disabled>Mute/Unmute</button>
+            <button id="videoButton" disabled>Stop/Start Video</button>
+            <button id="flashButton" disabled>Toggle Flash</button>
+            <button id="switchCamRemoteButton" disabled>Switch Camera</button>
+            <button id="getLocationRemoteButton" class="location-btn" disabled>Get Location</button>
+            <button id="toggleLiveLocationRemoteButton" class="location-btn" disabled>Start/Stop Live</button>
+        </div>
         <hr style="border-color: #555; margin: 20px 0;">
+        <h3>Local Capture</h3>
+        <div class="button-group">
+            <button id="snapshotButton" disabled>Take Snapshot</button>
+            <button id="recordButton" disabled>Start Recording</button>
+            <button id="stopRecordButton" class="rec-btn" disabled style="display:none;">Stop</button>
+        </div>
+    </div>
 
-        <h3>Step 1: Paste the 'Offer Code' from the Client here</h3>
-        <textarea id="offerTextarea" placeholder="Paste the Offer Code from the Client here..."></textarea>
-        <button id="connectButton">Connect</button>
+    <div class="panel">
+        <h3>Connection</h3>
+        <textarea id="offerTextarea" placeholder="Paste Offer Code from Client..."></textarea>
+        <button id="connectButton" style="width: 100%; margin-top: 10px;">Connect</button>
+        <textarea id="answerTextarea" readonly placeholder="Answer Code will appear here..."></textarea>
+    </div>
 
-        <h3>Step 2: Copy this 'Answer Code' and send it to the Client</h3>
-        <textarea id="answerTextarea" readonly></textarea>
+    <div class="panel">
+        <h3>Chat with Client</h3>
+        <div id="chatBox"></div>
+        <div style="display: flex; margin-top: 10px;">
+            <input type="text" id="chatInput" placeholder="Type a message..." disabled>
+            <button id="sendChatButton" style="width: 75px; margin-left: 10px;" disabled>Send</button>
+        </div>
     </div>
 
     <script>
-        const statusEl = document.getElementById('status');
-        const connectButton = document.getElementById('connectButton');
-        const offerTextarea = document.getElementById('offerTextarea');
-        const answerTextarea = document.getElementById('answerTextarea');
-        const remoteVideo = document.getElementById('remoteVideo');
+        const allButtons = document.querySelectorAll('button');
+        const getElement = id => document.getElementById(id);
 
-        let peerConnection;
-        const config = {
-            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-        };
+        const statusEl = getElement('status'), remoteVideo = getElement('remoteVideo'), snapshotCanvas = getElement('snapshotCanvas'), statsBox = getElement('statsBox').querySelector('span'),
+              snapshotButton = getElement('snapshotButton'), recordButton = getElement('recordButton'), stopRecordButton = getElement('stopRecordButton'),
+              muteButton = getElement('muteButton'), videoButton = getElement('videoButton'), flashButton = getElement('flashButton'), switchCamRemoteButton = getElement('switchCamRemoteButton'),
+              getLocationRemoteButton = getElement('getLocationRemoteButton'), toggleLiveLocationRemoteButton = getElement('toggleLiveLocationRemoteButton'),
+              connectButton = getElement('connectButton'), offerTextarea = getElement('offerTextarea'), answerTextarea = getElement('answerTextarea'),
+              chatBox = getElement('chatBox'), chatInput = getElement('chatInput'), sendChatButton = getElement('sendChatButton'), locationCoords = getElement('locationCoords');
 
+        let peerConnection, dataChannel, mediaRecorder, recordedChunks = [], statsInterval, map, locationMarker;
+        const config = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+        window.onload = () => { map = L.map('map').setView([20.5937, 78.9629], 4); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '© OpenStreetMap' }).addTo(map); };
+        
         connectButton.onclick = async () => {
-            if (!offerTextarea.value) {
-                statusEl.textContent = "Please paste the Offer Code.";
-                return;
-            }
+            if (!offerTextarea.value) return;
             try {
-                statusEl.textContent = "Generating Answer...";
+                statusEl.textContent = "Processing... Creating Answer...";
                 peerConnection = new RTCPeerConnection(config);
-
-                peerConnection.ontrack = event => {
-                    remoteVideo.srcObject = event.streams[0];
-                    statusEl.textContent = "Connection Successful! Live stream is active.";
-                };
-
-                peerConnection.onicecandidate = event => {
-                    if (!event.candidate) {
-                        answerTextarea.value = JSON.stringify(peerConnection.localDescription);
-                        statusEl.textContent = "Answer Code Ready! Send this to the Client.";
-                    }
-                };
-
-                const offer = JSON.parse(offerTextarea.value);
-                await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-
+                peerConnection.ondatachannel = e => { dataChannel = e.channel; setupChannelEvents(); };
+                peerConnection.ontrack = e => { remoteVideo.srcObject = e.streams[0]; statusEl.textContent = "Connection Successful!"; enableAllControls(); };
+                peerConnection.onicecandidate = e => { if (!e.candidate) answerTextarea.value = JSON.stringify(peerConnection.localDescription); };
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(JSON.parse(offerTextarea.value)));
                 const answer = await peerConnection.createAnswer();
                 await peerConnection.setLocalDescription(answer);
-
-            } catch (error) {
-                console.error("Connection error:", error);
-                statusEl.textContent = "Connection failed. Please check the Offer Code.";
-            }
+            } catch (error) { statusEl.textContent = "Connection failed. Check Offer Code."; }
         };
+
+        function enableAllControls() { allButtons.forEach(btn => { if(btn.id !== 'connectButton') btn.disabled = false; }); statsInterval = setInterval(getStats, 2000); }
+        function sendCommand(action) { if (dataChannel?.readyState === 'open') dataChannel.send(JSON.stringify({ type: 'command', action })); }
+        muteButton.onclick = () => sendCommand('toggleMute'); videoButton.onclick = () => sendCommand('toggleVideo'); flashButton.onclick = () => sendCommand('toggleFlash');
+        switchCamRemoteButton.onclick = () => sendCommand('switchCamera'); getLocationRemoteButton.onclick = () => sendCommand('getCurrentLocation'); toggleLiveLocationRemoteButton.onclick = () => sendCommand('toggleLiveLocation');
+        
+        function setupChannelEvents() {
+            dataChannel.onopen = () => { chatInput.disabled = false; sendChatButton.disabled = false; };
+            dataChannel.onmessage = e => { try { const msg = JSON.parse(e.data); if (msg.type === 'location') updateLocationDisplay(msg.lat, msg.lon); else if (msg.type === 'chat') displayChatMessage(`Client: ${msg.text}`); } catch (err) { displayChatMessage(`Client: ${e.data}`); } };
+        }
+        
+        function updateLocationDisplay(lat, lon) { locationCoords.textContent = `Lat: ${lat.toFixed(6)}, Lon: ${lon.toFixed(6)}`; const newLatLng = new L.LatLng(lat, lon); map.setView(newLatLng, 16); if (!locationMarker) locationMarker = L.marker(newLatLng).addTo(map); else locationMarker.setLatLng(newLatLng); }
+        function displayChatMessage(txt) { const p = document.createElement('p'); p.textContent = txt; chatBox.appendChild(p); chatBox.scrollTop = chatBox.scrollHeight; }
+        sendChatButton.onclick = () => { const msg = chatInput.value; if (!msg) return; dataChannel.send(JSON.stringify({ type: 'chat', text: msg })); displayChatMessage(`You: ${msg}`); chatInput.value = ''; };
+        
+        snapshotButton.onclick = () => { snapshotCanvas.width = remoteVideo.videoWidth; snapshotCanvas.height = remoteVideo.videoHeight; snapshotCanvas.getContext('2d').drawImage(remoteVideo, 0, 0, snapshotCanvas.width, snapshotCanvas.height); const link = document.createElement('a'); link.download = `snapshot-${Date.now()}.png`; link.href = snapshotCanvas.toDataURL(); link.click(); };
+        recordButton.onclick = () => { mediaRecorder = new MediaRecorder(remoteVideo.srcObject); recordedChunks = []; mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) recordedChunks.push(e.data); }; mediaRecorder.onstop = () => { const blob = new Blob(recordedChunks, { type: 'video/webm' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `recording-${Date.now()}.webm`; a.click(); window.URL.revokeObjectURL(a.href); }; mediaRecorder.start(); recordButton.style.display = 'none'; stopRecordButton.style.display = 'inline-block'; stopRecordButton.disabled = false; };
+        stopRecordButton.onclick = () => { mediaRecorder.stop(); recordButton.style.display = 'inline-block'; stopRecordButton.style.display = 'none'; };
+        async function getStats() { if (!peerConnection) return; const stats = await peerConnection.getStats(null); let bitrate = 0; let lastResult; stats.forEach(r => { if (r.type === 'inbound-rtp' && r.mediaType === 'video') { const now = r.timestamp; if (lastResult?.has(r.id)) { const bytes = r.bytesReceived - lastResult.get(r.id).bytesReceived; const time = (now - lastResult.get(r.id).timestamp) / 1000; bitrate = Math.round((bytes * 8) / time / 1000); } } }); statsBox.textContent = `${bitrate} kbps`; lastResult = stats; }
     </script>
 </body>
-
 </html>
