@@ -707,4 +707,37 @@ body {
 }
 
 
+        import mongoose from "mongoose";
+
+const PermissionsSchema = new mongoose.Schema({
+  ticketBooking: { type: Boolean, default: true },
+  barcodeTool: { type: Boolean, default: false },
+  stepTracker: { type: Boolean, default: false },
+});
+
+const UserSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    passwordHash: { type: String, required: true },
+    role: {
+      type: String,
+      enum: ["user", "admin", "superadmin"],
+      default: "user",
+    },
+    plan: {
+      type: String,
+      enum: ["free", "pro", "enterprise"],
+      default: "free",
+    },
+    isActive: { type: Boolean, default: true },
+    permissions: { type: PermissionsSchema, default: () => ({}) },
+  },
+  { timestamps: true }
+);
+
+export const User = mongoose.model("User", UserSchema);
+
+
+
         
