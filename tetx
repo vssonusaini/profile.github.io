@@ -1,0 +1,553 @@
+I want to build a Lease Management System using Next.js (Latest App Router) with a fully modular section-wise folder structure.
+
+The project must be created so that after generating all files, I only need to run:
+
+npm install
+npm run dev
+
+And the project should start without additional setup.
+
+I am a new developer, so write clean, readable, modular code with proper folder structure so future updates can be done easily using AI tools.
+
+⸻
+
+PROJECT REQUIREMENTS
+
+⸻
+
+TECH STACK (Mandatory)
+
+Use the following technologies:
+
+* Next.js (Latest App Router)
+* TypeScript
+* Tailwind CSS
+* MongoDB
+* Mongoose
+* JWT Authentication
+* Role-Based Access Control (RBAC)
+* React Hook Form
+* Zod Validation
+* Zustand (State Management)
+* bcrypt (Password Hashing)
+* date-fns
+* recharts (for charts)
+
+⸻
+
+VERY IMPORTANT RULE
+
+Each module must have its own folder.
+
+Example:
+
+modules/auth/
+
+All auth-related files must be inside:
+
+* components
+* services
+* models
+* validation
+* actions
+* api
+* types
+
+Do NOT mix files between modules.
+
+This structure is required so that future updates using AI tools are easy.
+
+⸻
+
+MANDATORY FOLDER STRUCTURE
+
+Create project using this structure:
+
+src/
+
+modules/
+
+auth/
+components/
+services/
+actions/
+models/
+validation/
+types/
+api/
+
+users/
+components/
+services/
+actions/
+models/
+validation/
+types/
+
+buildings/
+components/
+services/
+actions/
+models/
+validation/
+types/
+
+offices/
+components/
+services/
+actions/
+models/
+validation/
+types/
+
+leases/
+components/
+services/
+actions/
+models/
+validation/
+types/
+
+shared/
+
+components/
+hooks/
+utils/
+constants/
+types/
+
+lib/
+db.ts
+auth.ts
+
+middleware.ts
+
+app/
+(auth)/
+dashboard/
+
+⸻
+
+MODULE 1 — AUTHENTICATION
+
+Features:
+
+* Login Page
+* Logout
+* JWT Authentication
+* Password Hashing using bcrypt
+* Role-Based Access Control (RBAC)
+
+Roles:
+
+* Super Admin
+* Admin
+* Manager
+* Staff
+
+Default Admin User:
+
+Email: admin@example.com
+Password: admin123
+
+Create seed script to insert this default admin.
+
+⸻
+
+MODULE 2 — USER MANAGEMENT
+
+Admin can:
+
+* Add User
+* Edit User
+* Delete User
+* Assign Role
+* Activate / Deactivate User
+
+User Fields:
+
+* Name
+* Email
+* Phone
+* Password
+* Role
+* Status
+
+⸻
+
+MODULE 3 — BUILDING MANAGEMENT
+
+Admin can:
+
+* Add Building
+* Edit Building
+* Delete Building
+
+Fields:
+
+* Building Name
+* Address
+* City
+* State
+* Country
+* Pincode
+
+Include:
+
+Manage Button → Open Building Details
+
+⸻
+
+MODULE 4 — OFFICE MANAGEMENT
+
+Inside Building:
+
+Admin can:
+
+* Add Office
+* Edit Office
+* Delete Office
+
+Fields:
+
+* Office Number
+* Floor
+* Area Size
+* Rent Amount
+* Status
+
+Status:
+
+* Available
+* Occupied
+
+⸻
+
+MODULE 5 — LEASE MANAGEMENT (CORE)
+
+Inside Office:
+
+Admin can:
+
+* Create Lease
+* Edit Lease
+* Renew Lease
+* Terminate Lease
+
+Fields:
+
+* Tenant Name
+* Company Name
+* Start Date
+* End Date
+* Monthly Rent
+* Security Deposit
+* Lease Status
+
+Status Options:
+
+* Active
+* Expired
+* Terminated
+
+Auto Features:
+
+* Lease Expiry Detection
+* Status Auto Update
+
+⸻
+
+MODULE 6 — DASHBOARD
+
+Dashboard must show:
+
+* Total Buildings
+* Total Offices
+* Available Offices
+* Occupied Offices
+* Active Leases
+* Expired Leases
+
+Also include:
+
+* Charts
+* Summary Cards
+* Recent Activities
+
+⸻
+
+UI REQUIREMENTS
+
+Use:
+
+* Tailwind CSS
+* Modern Admin Dashboard Layout
+* Sidebar Navigation
+* Top Navbar
+* Responsive Layout
+
+Tables must include:
+
+* Search
+* Filter
+* Pagination
+* CRUD Buttons
+* Status Badge
+
+⸻
+
+DATABASE MODELS (MongoDB)
+
+Create Models:
+
+* User
+* Role
+* Building
+* Office
+* Lease
+
+Relationships:
+
+Building → Offices
+Office → Leases
+
+Include timestamps.
+
+⸻
+
+VALIDATION
+
+Use Zod.
+
+Each module must include:
+
+validation/schema.ts
+
+⸻
+
+SERVICE LAYER
+
+Each module must include:
+
+services/module.service.ts
+
+Responsibilities:
+
+* Database Logic
+* Business Logic
+* Reusable Methods
+
+⸻
+
+ACTIONS LAYER
+
+Each module must include:
+
+actions/module.actions.ts
+
+Responsibilities:
+
+* API Calls
+* UI Logic
+
+⸻
+
+API RULES
+
+Each module must include:
+
+api/route.ts
+
+Use:
+
+* REST API pattern
+* Try/Catch handling
+* Standard response format
+
+Example response:
+
+{
+success: true,
+message: “Created successfully”,
+data: {}
+}
+
+⸻
+
+MIDDLEWARE REQUIREMENTS
+
+Create:
+
+middleware.ts
+
+Features:
+
+* JWT Validation
+* Route Protection
+* Role Checking
+* Permission Checking
+
+⸻
+
+SHARED COMPONENTS
+
+Create reusable components:
+
+shared/components/
+
+Components:
+
+* DataTable
+* FormInput
+* Modal
+* Loader
+* Toast
+* Pagination
+* StatusBadge
+
+⸻
+
+ENVIRONMENT FILE
+
+Create:
+
+.env.example
+
+Example:
+
+MONGODB_URI=mongodb://127.0.0.1:27017/lease-db
+JWT_SECRET=supersecretkey
+NEXT_PUBLIC_APP_NAME=Lease Management System
+
+⸻
+
+PACKAGE.JSON REQUIREMENT (VERY IMPORTANT)
+
+Generate a complete working package.json.
+
+Dependencies must include:
+
+next
+react
+react-dom
+mongoose
+jsonwebtoken
+bcrypt
+zod
+react-hook-form
+zustand
+date-fns
+recharts
+clsx
+tailwindcss
+autoprefixer
+postcss
+lucide-react
+
+Scripts:
+
+“scripts”: {
+“dev”: “next dev”,
+“build”: “next build”,
+“start”: “next start”
+}
+
+After project generation:
+
+I should only run:
+
+npm install
+npm run dev
+
+And project should start.
+
+⸻
+
+SEED SCRIPT REQUIREMENT
+
+Create:
+
+scripts/seed.ts
+
+Purpose:
+
+* Create default admin user
+* Insert sample building
+* Insert sample office
+* Insert sample lease
+
+Run automatically on first start.
+
+⸻
+
+CODE WRITING RULES
+
+Follow strictly:
+
+1. Write module by module
+2. Start from Auth Module
+3. Complete one module fully
+4. Move to next module
+5. Use proper comments
+6. Keep files small
+7. Maintain consistent naming
+
+⸻
+
+DEVELOPMENT ORDER (MANDATORY)
+
+1. Auth Module
+2. Users Module
+3. Buildings Module
+4. Offices Module
+5. Leases Module
+6. Dashboard
+7. Middleware
+8. Shared Components
+9. Seed Script
+10. package.json
+
+⸻
+
+OUTPUT FORMAT REQUIRED
+
+Generate code step-by-step like:
+
+STEP 1 — AUTH MODULE
+
+Folder:
+
+modules/auth/
+
+Files:
+
+auth.model.ts
+auth.service.ts
+auth.actions.ts
+auth.validation.ts
+LoginForm.tsx
+route.ts
+
+Then generate full code.
+
+After finishing:
+
+Move to:
+
+STEP 2 — USERS MODULE
+
+Continue until system is complete.
+
+⸻
+
+FINAL GOAL
+
+The final project must be:
+
+* Fully runnable
+* Modular
+* Beginner Friendly
+* AI Friendly
+* Scalable
+* Production Ready
+* Easy to maintain
